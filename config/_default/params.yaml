@@ -15,7 +15,7 @@ keywords: Blog, Doc, Ansible, GitHub Pages, Hugo
 
 logo: images/square.webp # Logo image. Default to images/logo.webp.
 # logo: false # Disable Logo
-brand: Może Bałtyk
+brand: 
 
 palette: cyan # Default palette. Optional. You'll need to clear the browser cache after modifying this.
 # Available palettes. Default to ALL. Empty array means disable.

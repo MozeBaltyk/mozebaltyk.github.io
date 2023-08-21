@@ -33,3 +33,5 @@ When prospecting about creating my Blog; I went throught the normal questions th
 See also documentation of this [Awesome Hugo theme](https://hbs.razonyang.com/v1/en/docs/getting-started/prerequisites/).
 See also [README.md](https://github.com/razonyang/hugo-theme-bootstrap-skeleton/blob/main/README.md).
 See also [Deployment](https://hbs.razonyang.com/v1/en/docs/deployment/github-pages/)
+
+See also [Deployment]https://docs.github.com/en/pages/getting-started-with-github-pages/configuring-a-publishing-source-for-your-github-pages-site#publishing-with-a-custom-github-actions-workflow
