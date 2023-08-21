@@ -1,0 +1,20 @@
+en:
+  languageName: English
+  weight: 1
+
+fr:
+  languageName: French
+  weight: 2
+
+pl:
+  languageName: Polish
+  weight: 3
+
+#zh-hans:
+#  languageName: 简体中文
+#  weight: 4
+#  params:
+#    description: 一个快速、响应式和功能丰富的 Hugo 博客主题
+#    keywords: 'Hugo, Bootstrap, 博客主题'
+#    archive:
+#      dateFormat: 01-02
