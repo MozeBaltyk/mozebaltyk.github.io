@@ -1,11 +1,16 @@
-+++
-title = "About me"
-description = "Nothing to say about myself, but rather on IT..."
-date = "2023-08-23"
-reward = false
-postDate = false
-readingTime = false
-+++
+---
+title: "About"
+description: "Nothing to say about myself, but rather on IT..."
+reward: false
+postDate: false
+readingTime: false
+menu:
+  main:
+    parent: blog
+    weight: 5
+    params:
+      icon: '<i class="fas fa-fw fa-question-circle"></i>'
+---
 
 This is just another blog probably among many others, where I can share some of my knowledge on IT topics with the will to contribute to Opensource world.
 
@@ -14,7 +19,7 @@ It also complete the documentation of my Github projects and act as a WYSWYG of 
 Some facts about me:
 
 * I appreciate to contributes anonymously.
-* I convince that Opensource is awesome.
+* I truely believe that Opensource is the good way to go.
 * No big ambitions, just willing to contribute to the community.
 * Below this page there is small button to redirect to my Github.
 * I speak Polish and French beside English
@@ -47,6 +52,4 @@ a Y    ? ,     h   ]     *   y   R           *   x s +   < 2   ] = z P          
   =    1 G         ^         s               E     < h     #       v "               B >         
   L    `           o         H               w     6 )     /       + @               _           
   >    ^           ]         m               G       '     Z       n C               w
-
-
 ```

@@ -1,11 +1,16 @@
-+++
-title = "O mnie"
-description = "Nie mam za duzo powiedrzyc o mnie, ale rciej o IT..."
-date = "2023-08-23"
-reward = false
-postDate = false
-readingTime = false
-+++
+---
+title: "O mnie"
+description: "Nie mam za duzo powiedrzyc o mnie, ale rciej o IT..."
+reward: false
+postDate: false
+readingTime: false
+menu:
+  main:
+    parent: blog
+    weight: 5
+    params:
+      icon: '<i class="fas fa-fw fa-question-circle"></i>'
+---
 
 To kolejny blog, prawdopodobnie spośród wielu innych, na którym mogę podzielić się swoją wiedzą na tematy IT z chęcią współtworzenia świata Opensource.  
 
@@ -14,7 +19,7 @@ Uzupełnia również dokumentację moich projektów Github i działa jako WYSWYG
 Kilka faktów o mnie: 
 
 * Doceniam anonimowy wkład. 
-* Przekonuję, że Opensource jest niesamowite. 
+* Jestem przekonany, że Opensource jest niesamowite. 
 * Brak wielkich ambicji, po prostu chęć wniesienia wkładu do społeczności. 
 * Poniżej tej strony znajduje się mały przycisk przekierowujący do mojego Githuba.
 * Umiem po Polsku i po francusko poza angileski.
@@ -45,6 +50,4 @@ a Y    ? ,     h   ]     *   y   R           *   x s +   < 2   ] = z P          
   =    1 G         ^         s               E     < h     #       v "               B >         
   L    `           o         H               w     6 )     /       + @               _           
   >    ^           ]         m               G       '     Z       n C               w
-
-
 ```

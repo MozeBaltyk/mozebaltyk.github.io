@@ -1,23 +1,31 @@
 ---
 # type: docs 
-title: The Bad, the Good, the Lucky
+title: The Bad, the Good and the Ugly Git
 date: 2023-08-21T03:48:10+02:00
-featured: false
+featured: true
 draft: true
 comment: true
 toc: true
 reward: true
 pinned: false
-carousel: false
+carousel: true
 series:
-categories: []
-tags: []
-images: []
+  - News
+categories:
+  - Articles
+tags:
+  - Git
+  - Dev
+authors:
+  - mozebaltyk
+images: [./bad-good-ugly-git/carousel.webp]
 ---
 
-Summary.
+When it come about IT, git is impossible to be ignore... even for infrastructure guys!
 
 <!--more-->
+
+
 
 ## The bad Surprise
 
