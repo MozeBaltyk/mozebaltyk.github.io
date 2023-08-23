@@ -28,18 +28,21 @@ Here are my thoughts and what I learnt...
 
 <!--more-->
 
-In short the few questions I went through:
+In short, here the few questions I went through. By the way, Probably you can notice that those questions go from theory to practice.
   - Why ?
   - Where ?
   - Which Techno ?
   - Which Theme ?
 
-Probably you can notice that those questions go from theory to practice. 
 
-### Why ?
-Why would you like a blog ? Looking at "Why would you like a blog" will lead you to conclusion that is good for your bisness. You need to be visible on the net to increase you .  Recently, I was listening a guy on Youtube which critized the 
+# Why ?
 
-### Where to host the Blog ?
+Why would you like a blog ? Search with google "Why would you like a blog" will lead you to conclusion that is good for your bisness. You need to be visible on the net to increase you credibility as an expert and so on. Nonetheless, I was recently listening a guy on Youtube who critized blogs for good reasons. Everybody is doing it. At the end, everybody start it but nobody keep up writing articles. It ends looking as a poor vitrin of yourself, and for good reasons, if you do not fuel your blog with regular new articles. Anyway; this guy end up showing some interestind blogs with unexpected content and remember us that it's still worth it. And you are bloging ?    
+
+So in my case, first it's an exercice. Due to my IT job, I need to see how does it work. What are the possibilities and techno available for it. Second, I wanted a place with multiple purpose. A place for article about my though like this one but also a place to centralize my documentation.Longtime ago, when I started in IT and did not know what I was doing and I simply took notes in OneNote. For technical notes, that's not the best. No versioning, no code highlight, and proprietary software. Sharing some notes, also ask extra effort to export in word before to send. Along the years, my personal notes were growing and always. First I add the idea to move everything in markdown have an mdBook, but that's would only for a documentation solution... 
+
+
+# Where to host the Blog ?
  
 Of course, I first thought about self hosting on VPS but to much hassle when there is much easier options. Like Hubspot 
 
