@@ -9,7 +9,7 @@ menu:
     parent: blog
     weight: 5
     params:
-      icon: '<i class="fas fa-fw fa-question-circle"></i>'
+      icon: '<i class="fas fa-fw fa-question-circle" style="color:#517bc0;"></i>'
 ---
 
 To kolejny blog, prawdopodobnie spośród wielu innych, na którym mogę podzielić się swoją wiedzą na tematy IT z chęcią współtworzenia świata Opensource.  
