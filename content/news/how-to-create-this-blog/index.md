@@ -131,13 +131,43 @@ $ hugo server
 
 ## A word on giscus
 
+In config/default/params.yaml, there is a bloc on giscus config, a comments system powered by GitHub Discussions, so the comments left on your articles goes in discussions of your github Pages.  
+
+So to do so, you will need to:
+- make your repoistory public.
+- enable [discussions](https://docs.github.com/en/repositories/managing-your-repositorys-settings-and-features/enabling-features-for-your-repository/enabling-or-disabling-github-discussions-for-a-repository) in the porject settings.
+- activate [giscus app](https://github.com/apps/giscus) for on your account (you can limit to your blog project)
+- Then, giving the URL of your repository
+
+After custom config, on my case I left everything by default, you got a block of xml values that you can reuse in the config/default/params.yaml of your Hugo Blog. 
+
+```yaml
+# See https://giscus.app
+giscus:
+  repo: "MozeBaltyk/mozebaltyk.github.io" # required.
+  repoId: "R_kgDOKJSCfA" # required. R_kgDOKJSCfA
+  category: "General" # required.
+  categoryId: "DIC_kwDOKJSCfM4CYvA_" # required.
+  theme: "dark" # Default to auto.
+```
+
+On their side, visitors will need a Github account and must authorize the giscus app to post on their behalf using the GitHub OAuth flow. 
+
 
 ## Edit Articles 
 
+Simple way to do an article (one folder by articles):
 ```bash
- hugo new news/new-post/index.md
- hugo new news/new-post/index.fr.md
- hugo new news/new-post/index.pl.md
+hugo new news/new-post/index.md
+hugo new news/new-post/index.fr.md
+hugo new news/new-post/index.pl.md
+```
+
+Several articles in one folder (one _index.md + all articles):
+```bash
+vi docs/Devops/Containers/_index.md
+hugo new docs/Devops/Containers/docker.md
+hugo new docs/Devops/Containers/podman.md
 ```
 
 Please remind that, the created posts are generally in draft state. You’ll need to specify the `-D` parameter of the command hugo server for previewing.           
@@ -146,12 +176,17 @@ Similarly, you need to change the draft to false or remove draft parameter if yo
 
 ## Deployment
 
+The deployement of this blog is done by Github Wokflow. Here, you can adopt several strategy.  
+
+I started with everytime I was pushing it deploy, which give me no time after saving to read again my articles. Then I put it on `workflow_dispatch`, which means only when I manully trigger the workflow to build, but I think that the proper way to do, is to developp on a branch and deploy only when the branch is merge. 
+
+Here is how
 
 ## Sources: 
 See also documentation of this [Awesome Hugo theme](https://hbs.razonyang.com/v1/en/docs/getting-started/prerequisites/). 
 
-See also [README.md](https://github.com/razonyang/hugo-theme-bootstrap-skeleton/blob/main/README.md).   
+See also [README of this theme](https://github.com/razonyang/hugo-theme-bootstrap-skeleton/blob/main/README.md).   
 
-See also [Deployment](https://hbs.razonyang.com/v1/en/docs/deployment/github-pages/).     
+See also [Deployment of this theme](https://hbs.razonyang.com/v1/en/docs/deployment/github-pages/).     
 
-See also [Deployment](https://docs.github.com/en/pages/getting-started-with-github-pages/configuring-a-publishing-source-for-your-github-pages-site#publishing-with-a-custom-github-actions-workflow).    
+See also [Github Pages](https://docs.github.com/en/pages/getting-started-with-github-pages/configuring-a-publishing-source-for-your-github-pages-site#publishing-with-a-custom-github-actions-workflow).    

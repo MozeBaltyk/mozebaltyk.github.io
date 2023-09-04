@@ -7,4 +7,4 @@ menu:
       icon: '<i class="fas fa-fw fa-book"></i> '
 ---
 
-The example of Docs layout.
+This is somes personnals documentation build all long my career. You will find it only in the english page.
