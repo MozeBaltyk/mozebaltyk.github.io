@@ -16,15 +16,13 @@ categories:
 tags: 
   - Hugo
   - Git
-  - Hosting
 authors:
   - mozebaltyk
 images: [./how-to-create-this-blog/carousel.webp]
 ---
 
 
-When prospecting about creating my Blog; I went throught the normal questions that everybody have.   
-Here are my thoughts and what I learnt...
+When prospecting about creating my Blog; I went throught the normal questions that everybody met. Why would I loose precious hours of my life doing something that anyway nobody is gonna to read it. Here are my thoughts about this non-sens and what I learnt...
 
 <!--more-->
 
@@ -48,7 +46,8 @@ Of course, I first thought about self hosting on VPS but to much hassle when the
 
 ## Which techno to use ?
 
-Working with Hugo is pretty convenient, you draft your article then launch `hugo server -D` so you can see in your browser how looks your blog with all draft articles.
+Working with Hugo is pretty convenient, you draft your article then launch `hugo server -D` so you can see in your browser how looks your blog with all draft articles. Oki but why not Zola or Jekill... 
+
 
 ## Which super theme to use ?
 
