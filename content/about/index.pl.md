@@ -16,6 +16,9 @@ To kolejny blog, prawdopodobnie spośród wielu innych, na którym mogę podziel
 
 Uzupełnia również dokumentację moich projektów Github i działa jako WYSWYG moich projektów README.md.   
 
+Więc ten blog będzie miał dwie główne części, jedną dla dokumentacji, która będzie tylko w języku angielskim i jedną dla artykułów, które postaram się przetłumaczyć w trzech językach.
+Nie powiem ze dam do konca radę. ;)   
+
 Kilka faktów o mnie: 
 
 * Doceniam anonimowy wkład. 

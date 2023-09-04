@@ -12,9 +12,11 @@ menu:
       icon: '<i class="fas fa-fw fa-question-circle" style="color:#517bc0;"></i>'
 ---
 
-Ceci est juste un autre blog, probablement parmi tant d'autres, où je peux partager certaines de mes connaissances sur des sujets IT avec la volonté de contribuer au monde Opensource. 
+Ceci est juste un autre blog, probablement parmi tant d'autres, où je peux partager certaines de mes connaissances sur des sujets IT avec la volonté de contribuer au monde Opensource. Eventuellement, ce blog me permettra de rassembler mes reflexions sur certains sujets. 
 
-Cela me permet de complèter également la documentation de mes projets Github et agit comme un WYSWYG de mes projets README.md. 
+Cela me permet de complèter également la documentation de mes projets Github et agit comme un WYSWYG de mes projets README.md.   
+
+Donc ce blog sera diviser en deux parties, une pour la documentation, exclusivement en anglais, une autre pour des articles que je m'efforcerais de traduire dans les trois langues.   
 
 Quelques faits à mon sujet: 
 
