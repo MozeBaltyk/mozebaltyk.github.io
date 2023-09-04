@@ -21,11 +21,9 @@ authors:
 images: [./bad-good-ugly-git/carousel.webp]
 ---
 
-When it come about IT, git is impossible to be ignore... even for infrastructure guys!
+When it come about IT, git is impossible to be ignore... even for an infrastructure guys!
 
 <!--more-->
-
-
 
 ## The bad Surprise
 
@@ -49,8 +47,26 @@ Here is the joy of coding, Continously Integration and the good opportunity to k
 
 ## And an Opportunity...
 
-Let's make a small reminder on some basics about git! There are plenty of article, tutorials on the net but this article is going to be my personnal notes on the topics.
+Let's make a small reminder on some basics about git! There are plenty of article, tutorials on the Net but this article is going to be my personnal notes on the topics.
 
+Each project local or hosted have a hidden directory `.git` with its own `.git/config` but you also got in your home directory an `.gitconfig` which is global. 
+So when in the `.git/config` of your project, it does not find the user and email, it get the global one from `~/.gitconfig` or ask you to set it up. This can become relevant when you are handling a lot of projects between different repositories publics and on premise. 
+
+So usually, you will have to setup: 
+
+```bash
+# Setup
+cd ~/my_project
+git config user.name "john.smith"
+git config user.email "john.smith@example.com"
+
+# Check
+git config user.name
+git config user.email
+
+git config --global user.name
+git config --global user.email
+```
 
 
 
@@ -110,4 +126,10 @@ Host github.com
   User git
   IdentityFile ~/.ssh/id_ed25519
   IdentitiesOnly yes
+```
+
+The top is to use `gh` which is the github-cli tools for handling github projects. So it's noticable that github priviligate SSH protocol over HTTPS.
+
+```bash
+ gh repo clone MozeBaltyk/MozeBaltyk
 ```
