@@ -1,6 +1,6 @@
 ---
 # type: docs 
-title: The Bad, the Good and the Ugly Git
+title: 📡 The Bad, the Good and the Ugly Git
 date: 2023-08-21T03:48:10+02:00
 featured: true
 draft: true
@@ -47,7 +47,7 @@ Here is the joy of coding, Continously Integration and the good opportunity to k
 
 ## And an Opportunity...
 
-Let's make a small reminder on some basics about git! There are plenty of article, tutorials on the Net but this article is going to be my personnal notes on the topics.
+Let's make a small reminder on some basics about git! There are plenty of article, tutorials on the Net but this article is going to be my personnal notes on the topics. 
 
 Each project local or hosted have a hidden directory `.git` with its own `.git/config` but you also got in your home directory an `.gitconfig` which is global. 
 So when in the `.git/config` of your project, it does not find the user and email, it get the global one from `~/.gitconfig` or ask you to set it up. This can become relevant when you are handling a lot of projects between different repositories publics and on premise. 
@@ -76,7 +76,13 @@ As you probably know, there is three method to connect to a github project with 
 
 SSH will go through port 22. This make look obvious way to go but sometime in your company and specially if you work on a VPN, the port 22 will be block to outbound network.
 
-HTTPS, ok but Github.com decided to block password method. So you will need to initiate a connexion first with GH 
+HTTPS have one advantage, it is that you will probably always be able to clone. 
+
+```bash 
+git clone https://github.com/MozeBaltyk/mozebaltyk.github.io.git
+```
+
+Ok but Github.com decided to block password method. So you will need to initiate a connexion first with GH so you can get a token as describe below:
 
 ```bash
 gh auth login 
@@ -88,6 +94,7 @@ github.com
   ✓ Token: gho_*******************************
   ✓ Token scopes: admin:public_key, gist, read:org, repo
 
+# And give the token everytime, you want to push... (Password is not what you think, it's expecting the Token)
 git push                                                                                                                                           
 Username for 'https://github.com': MozeBaltyk
 Password for 'https://MozeBaltyk@github.com':
@@ -104,6 +111,12 @@ To https://github.com/mozebaltyk/mozebaltyk.github.io.git
    26a5e21b..ab53b64f  main -> main
 ```
 
+This one used to work but I think not anymore (I should try it)
+```bash
+#Connect with token 
+git config --global url."https://${username}:${access_token}@github.com".insteadOf "https://github.com"
+```
+
 But the best is to switch to SSH (if you can) which allow you to set a ssh key. So if you need to switch from HTTPS to SSH
 
 ```bash
@@ -116,6 +129,10 @@ git remote set-url origin git@github.com:MozeBaltyk/abc.git
 
 # at the global level
 git config --global url.ssh://git@github.com/.insteadOf https://github.com/
+
+# or local
+cd my_project
+git config url.ssh://git@github.com/.insteadOf https://github.com/
 ```
 
 Then configure which ssh key to use for Github in $HOME/.ssh/config (create directory/file if necessary)
@@ -128,8 +145,15 @@ Host github.com
   IdentitiesOnly yes
 ```
 
-The top is to use `gh` which is the github-cli tools for handling github projects. So it's noticable that github priviligate SSH protocol over HTTPS.
+The top is to use `gh` which is the github-cli tools for handling github projects. So it's noticable that github prefers SSH protocol over HTTPS.
 
 ```bash
+# Cloning with GH will set SSH as default protocol 
  gh repo clone MozeBaltyk/MozeBaltyk
+
+# gh clone https is also possible
+gh repo clone https://github.com/MozeBaltyk/mozebaltyk.github.io.git
+
+# this one I do not know for what it is ...
+ gh repo clone  git+https://github.com/MozeBaltyk/AnsiColt.git
 ```

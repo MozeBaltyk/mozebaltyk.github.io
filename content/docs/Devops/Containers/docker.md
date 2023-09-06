@@ -1,7 +1,7 @@
 ---
 date: 2023-08-01T21:00:00+08:00
-title: Docker
-navWeight: 50 # Upper weight gets higher precedence, optional.
+title: 🐳 Docker
+navWeight: 60 # Upper weight gets higher precedence, optional.
 series:
   - Containers
 categories:

@@ -1,6 +1,6 @@
 ---
 date: 2023-08-01T21:00:00+08:00
-title: Gitea
+title: 🍵 Gitea
 navWeight: 50 # Upper weight gets higher precedence, optional.
 series:
   - Repository
@@ -11,22 +11,23 @@ categories:
 
 ### Prerequis 
 
-	- Firewalld activated
+	- Firewalld activated, important otherwise the routing to the app is not working 
 	- Podman, jq installed
 
 
 ### Import image
 
+```bash
 podman pull docker.io/gitea/gitea:1-rootless
 podman save docker.io/gitea/gitea:1-rootless -o gitea-rootless.tar
 podman load < gitea-rootless.tar
-
+```
 
 ### Install
 
 cat /etc/systemd/system/container-gitea-app.service
 
-```init
+```ini
 # container-gitea-app.service
 [Unit]
 Description=Podman container-gitea-app.service

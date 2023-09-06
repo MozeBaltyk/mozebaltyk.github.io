@@ -1,7 +1,7 @@
 ---
 # type: docs 
-title: How to Create this Blog
-date: 2023-08-21T02:59:46+02:00
+title: 🌌 How to Create this Blog
+date: 2023-09-06T02:59:46+02:00
 featured: true
 draft: false
 comment: true
@@ -26,30 +26,30 @@ When prospecting about creating my Blog; I went throught the normal questions th
 
 <!--more-->
 
-In short, here the few questions I went through. By the way, Probably you can notice that those questions go from theory to practice.
+In short, here the few questions I went through. By the way, you can notice that those questions go from theory to practice.
 Why ? Where ? Which Techno ? Which Theme ?
 
 
-## Why ?
+### The big question ?
 
-Why would you like a blog ? Search with google "Why would you like a blog" will lead you to conclusion that is good for your bisness. You need to be visible on the net to increase you credibility as an expert and so on. Nonetheless, I was recently listening a guy on Youtube who critized blogs for good reasons. Everybody is doing it. At the end, everybody start it but nobody keep up writing articles. It ends looking as a poor vitrin of yourself, and for good reasons, if you do not fuel your blog with regular new articles. Anyway; this guy end up showing some interestind blogs with unexpected content and remember us that it's still worth it. And you are bloging ?    
+Why would you like wawte your precious time on a blog ? Search with google "Why would you like a blog" will lead you to conclusion that is good for your bisness. You need to be visible on the net to increase you credibility as an expert and so on. Nonetheless, I was recently listening a guy on Youtube who critized blogs. Everybody is doing it. At the end, everybody start it but nobody keep up writing articles. It ends looking as a poor vitrin of yourself, and for good reasons, if you do not fuel your blog with regular new articles. Anyway; this guy end up showing some interestind blogs with unexpected content and remember us that it's still worth it. And you, are you bloging ?    
 
-So in my case, first it's an exercice. Due to my IT job, I need to see how does it work. What are the possibilities and techno available for it. Second, I wanted a place with multiple purpose. A place for article about my thoughts and findings like this one but also a place to centralize my documentation. Longtime ago, when I started in IT and did not know what I was doing and I simply took notes in OneNote. I know, I should not do this. I was young and did not know what I was doing... For technical notes, that's not the best. No versioning, no code highlight, and proprietary software. Sharing some notes, also ask extra effort to export in word before to send. Along the years, my personal notes were growing and it got tedious to keep it ordered. First I add the idea to move everything in markdown, then have an mdBook, but that's would be only a documentation solution. So came the blog idea. 
+So in my case, first it's an exercice. Due to my IT job, I need to see how does it work. What are the possibilities and techno available for it. Second, I wanted a place with multiple purpose. A place for article about my thoughts and findings like this one but also a place to centralize my documentation. Longtime ago, when I started in IT and did not know what I was doing and I simply took notes in OneNote. I know, I should not do this. I was young and did not know what I was doing... For technical notes, that's not the best. No versioning, no code highlight, and proprietary software. Sharing some notes, also ask extra effort to export in Word document before to be send. Along the years, my personal notes were growing and it got tedious to keep it ordered. First I add the idea to move everything in markdown, then have an mdBook, but that's would be only a documentation solution. So came the blog idea. 
 
 But more over, blog it's also a way to get open to the 🌏
 
 
-## Where to host the Blog ?
+### Where to host the Blog ?
  
-Of course, I first thought about self hosting on VPS but to much hassle when there is much easier options. Like Hubspot 
+Of course, I first thought about self hosting on VPS but to much hassle when there is much easier options, like Hubspot or Wordpress.  
 
 
-## Which techno to use ?
+### Which tech to pickup ?
 
 Working with Hugo is pretty convenient, you draft your article then launch `hugo server -D` so you can see in your browser how looks your blog with all draft articles. Oki but why not Zola or Jekill... 
 
 
-## Which super theme to use ?
+### Which awesome theme to use ?
 
 Understand the terms: 
 
@@ -59,7 +59,7 @@ Understand the terms:
 - featured
 
 
-## Prerequisites
+### So first, the Prerequisites
 
 As prerequisites, we need Nodejs, npm, GO, dart SASS, and Hugo extended version as describe [here](https://hbs.razonyang.com/v1/en/docs/getting-started/prerequisites/#build-tools):    
 
@@ -102,7 +102,7 @@ $ hugo version
 hugo v0.117.0-b2f0696cad918fb61420a6aff173eb36662b406e+extended linux/amd64 BuildDate=2023-08-07T12:49:48Z VendorInfo=snap:0.117.0
 ``` 
 
-## Creating the Project 
+### Creating the Project 
 
 ```bash 
 $ cd myblog
@@ -121,17 +121,17 @@ $ hugo server
 ```
 
 
-## Publish it with Github Pages 
+### Publish it with Github Pages 
 
 So Github propose to publish for free your blog. Except that you won't be able to choose your domain (except if you pay for it of course), one big benefic of doing so, is the Github workflow which will allow you to autodeploy as we will see later.
 
 You can have One site per GitHub account and organization in this case you blog will be available at https://{{username}}.github.io like this one or you can unlimited project sites in this case, you site will be avalaible at http://username.github.io/repository. The last option, could be a good choice for documenting a project.
 
 
-## Settings
+### Few Settings
 
 
-## A word on giscus
+### A word on giscus
 
 In config/default/params.yaml, there is a bloc on giscus config, a comments system powered by GitHub Discussions, so the comments left on your articles goes in discussions of your github Pages.  
 
@@ -156,7 +156,9 @@ giscus:
 On their side, visitors will need a Github account and must authorize the giscus app to post on their behalf using the GitHub OAuth flow. 
 
 
-## Edit Articles 
+### Edit Articles 
+
+Of course, using your vim editor with your favorite customization, you will enjoy better articles writing.
 
 Simple way to do an article (one folder by articles):
 ```bash
@@ -176,7 +178,7 @@ Please remind that, the created posts are generally in draft state. You’ll nee
 Similarly, you need to change the draft to false or remove draft parameter if you want to publish the article.
 
 
-## Deployment
+### The Deployment
 
 The deployement of this blog is done by Github Wokflow. Here, you can adopt several strategy.  
 
@@ -184,7 +186,13 @@ I started with everytime I was pushing it deploy, which give me no time after sa
 
 Here is how
 
-## Sources: 
+
+### Bonus point for those who read till the end 
+
+Do not forget to put some funny [icons](https://github.com/markdown-templates/markdown-emojis) in your markdown !   
+
+
+### Sources: 
 See also documentation of this [Awesome Hugo theme](https://hbs.razonyang.com/v1/en/docs/getting-started/prerequisites/). 
 
 See also [README of this theme](https://github.com/razonyang/hugo-theme-bootstrap-skeleton/blob/main/README.md).   

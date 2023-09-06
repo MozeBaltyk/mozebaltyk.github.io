@@ -1,6 +1,6 @@
 ---
 # type: docs 
-title: How to Create this Blog
+title: 🌌 How to Create this Blog
 date: 2023-08-21T02:59:46+02:00
 featured: true
 draft: false
