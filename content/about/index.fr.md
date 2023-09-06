@@ -21,7 +21,7 @@ Donc ce blog sera diviser en deux parties, une pour la documentation, exclusivem
 Quelques faits à mon sujet: 
 
 * J'apprécie de contribuer anonymement. 
-* Je suis convaincu que l'Opensource est la bonne voie. 
+* L'Opensource est la voie à prendre. 
 * Pas de grandes ambitions, juste prêt à contribuer modestement à la communauté. 
 * En dessous de cette page, il y a un bouton qui rediriger vers mon Github.
 * En plus du Francais, je parle Polonais et Anglais.

@@ -22,7 +22,7 @@ Nie powiem ze dam do konca radę. ;)
 Kilka faktów o mnie: 
 
 * Doceniam anonimowy wkład. 
-* Jestem przekonany, że Opensource jest niesamowite. 
+* Jestem przekonany, że Opensource jest jedyny sposób. 
 * Brak wielkich ambicji, po prostu chęć wniesienia wkładu do społeczności. 
 * Poniżej tej strony znajduje się mały przycisk przekierowujący do mojego Githuba.
 * Umiem po Polsku i po francusko poza angileski.

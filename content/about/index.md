@@ -21,7 +21,7 @@ So this Blog will have two main parts, one for documentation which will be only 
 Some facts about me:
 
 * I appreciate to contributes anonymously.
-* I truely believe that Opensource is the good way to go.
+* Opensource is the good way to go.
 * No big ambitions, just willing to contribute to the community.
 * Below this page there is small button to redirect to my Github.
 * I speak Polish and French beside English
