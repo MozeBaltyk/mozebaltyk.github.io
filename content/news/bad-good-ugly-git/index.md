@@ -10,9 +10,9 @@ reward: true
 pinned: false
 carousel: true
 series:
-  - News
-categories:
   - Articles
+categories:
+  - Blog
 tags:
   - Git
   - Dev

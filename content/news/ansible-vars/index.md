@@ -10,11 +10,12 @@ reward: true
 pinned: false
 carousel: true
 series:
-  - News
-categories:
   - Articles
+categories:
+  - Blog
 tags:
   - Ansible
+  - Devops
 authors:
   - mozebaltyk
 images: [./ansible-vars/carousel.webp]

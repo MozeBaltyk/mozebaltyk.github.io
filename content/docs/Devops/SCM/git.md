@@ -11,7 +11,7 @@ categories:
 
 > GIT is a distributed version control system that was created by Linus Torvalds, the mastermind of Linux itself. It was designed to be a superior version control system to those that were readily available, the two most common of these being CVS and Subversion (SVN).
 > Whereas CVS and SVN use the Client/Server model for their systems, GIT operates a little differently. Instead of downloading a project, making changes, and uploading it back to the server, GIT makes the local machine act as a server.
-> [Link](https://www.tecmint.com/install-git-to-create-and-share-your-own-projects-on-github-repository/)
+> <cite>[Tecmint](https://www.tecmint.com/install-git-to-create-and-share-your-own-projects-on-github-repository/)</cite>
 
 
 ### The basics
