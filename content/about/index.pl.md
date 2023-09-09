@@ -26,7 +26,7 @@ Kilka faktów o mnie:
 * Brak wielkich ambicji, po prostu chęć wniesienia wkładu do społeczności. 
 * Poniżej tej strony znajduje się mały przycisk przekierowujący do mojego Githuba.
 * Umiem po Polsku i po francusko poza angileski.
-
+* Zwykle piszę projekty na [licencji Apache](https://www.apache.org/licenses/LICENSE-2.0.html)
 
 ```
 u         W   ; `   ?   ! d   &   # : / q   t       +     l 7   F ( + W   Z m O @ . z H N > X 9  

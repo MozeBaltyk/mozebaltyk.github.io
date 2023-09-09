@@ -26,49 +26,66 @@ When prospecting about creating my Blog; I went throught the normal questions th
 
 <!--more-->
 
-In short, here the few questions I went through. By the way, you can notice that those questions go from theory to practice.
-Why ? Where ? Which Techno ? Which Theme ?
-
 # My Reflexions on the topic
+
+In short, here the few questions I went through. Why, Where, Which way, Which Theme ? 
+By the way, you can notice that those questions go from theory to practice.
 
 ## The big question ?
 
-Why would you like wawte your precious time on a blog ? Search with google "Why would you like a blog" will lead you to conclusion that is good for your bisness. You need to be visible on the net to increase you credibility as an expert and so on. Nonetheless, I was recently listening a guy on Youtube who critized blogs. Everybody is doing it. At the end, everybody start it but nobody keep up writing articles. It ends looking as a poor vitrin of yourself, and for good reasons, if you do not fuel your blog with regular new articles. Anyway; this guy end up showing some interestind blogs with unexpected content and remember us that it's still worth it. And you, are you bloging ?    
+Why would you like wawte your precious time on a blog ? Search with google "Why would you like a blog" will lead you to conclusion that is good for your bisness. You need to be visible on the net to increase you credibility as an expert and so on. Nonetheless, I was recently listening a guy on Youtube who critized blogs. Everybody is doing it. At the end, everybody start it but nobody keep up writing articles. It ends looking as a poor vitrin of yourself, and for good reasons, if you do not fuel your blog with regular new articles. Anyway; this guy end up showing some interesting blogs with unexpected content and remember us that it's still worth it. And you, are you bloging ?    
 
 So in my case, first it's an exercice. Due to my IT job, I need to see how does it work. What are the possibilities and techno available for it. Second, I wanted a place with multiple purpose. A place for article about my thoughts and findings like this one but also a place to centralize my documentation. Longtime ago, when I started in IT and did not know what I was doing and I simply took notes in OneNote. I know, I should not do this. I was young and did not know what I was doing... For technical notes, that's not the best. No versioning, no code highlight, and proprietary software. Sharing some notes, also ask extra effort to export in Word document before to be send. Along the years, my personal notes were growing and it got tedious to keep it ordered. First I add the idea to move everything in markdown, then have an mdBook, but that's would be only a documentation solution. So came the blog idea. 
 
 But more over, blog it's also a way to get open to the 🌏
 
 
-## Where to host the Blog ?
+## Where to host my Blog ?
  
-Of course, I first thought about self hosting on VPS but to much hassle when there is much easier options, like Hubspot or Wordpress.  
+Of course, I first thought about self hosting on VPS but to much hassle when there is much easier options, like Hubspot or Wordpress. Those are CMS, the job is done for you. Then I do not see the possibility to really move from those. You can export a XML for Wordpress and in HTML in Hubspot to move to another platform and then hassle to understand why it does not fit to the new platform. No, let's be serious and not fall in some "vendor locking".
+
+So Github offer to publish for free your blog. Except that you won't be able to choose your domain (except if you pay for it of course), one big benefic of doing so, is the Github workflow which will allow you to autodeploy as we will see later. You can always move to another repository or even to some self-hosting. It's always benefic to work
+
+You can have One site per GitHub account and organization in this case you blog will be available at https://{{username}}.github.io like this one or you can unlimited project sites in this case, you site will be avalaible at http://{{username}}.github.io/repository. The last option, could be a good choice for documenting a project with a mdbook.
 
 
 ## Which tech to pickup ?
 
-Working with Hugo is pretty convenient, you draft your article then launch `hugo server -D` so you can see in your browser how looks your blog with all draft articles. Oki but why not Zola or Jekill... 
+A good companion to Github pages are the static site generators. Those static site generators are framework which take articles in markdown then generate a static site. Markdown is a easy language popular for writing docs and allow easy to customization. So it does the jobs quite effectively with a quick effect. After one hour, this site was already running and presenting good. Tweeking is relatively intuitive, of course you won't be able to create crazzy effect with dynamic data.
+
+Working with Hugo is pretty convenient, you draft your article then launch `hugo server -D` so you can see in your browser how looks your blog with all draft articles. Oki but why not Zola or Jekyll... Jekyll is the default choice for a Github Page in ruby but most of the interesting themes are charged. Zola, I found too few themes. So Hugo is popular choice, so plenty of documentations and tutorials. 
 
 
 ## Which awesome theme to use ?
 
-Understand the terms: 
+Looks trivial, but a theme well documented make the difference. Some of the theme have bearly documentation or redirect to hugo pages. 
+
+Among the Features that I was looking for :
+* Table of Contents.
+* Font Size Switcher.
+* Multilingual.
+* Local Search. 
+* Responsive.
+* Syntax Highlighting.
+* Possibility to Comments.
+
+Taxonomies are classifications of logical relationships between content. Understand the taxonomies, will allow you organize your blog more efficiently.
 
 - series
 - categories
 - tags
 - featured
+ 
 
+# Let's Practice
 
-# The Practices
+## First the Prerequisites
 
-## So first, the Prerequisites
-
-As prerequisites, we need Nodejs, npm, GO, dart SASS, and Hugo extended version as describe [here](https://hbs.razonyang.com/v1/en/docs/getting-started/prerequisites/#build-tools):    
+As prerequisites, we need Nodejs, npm, GO, dart SASS, and Hugo extended version as describe [here](https://hbs.razonyang.com/v1/en/docs/getting-started/prerequisites/#build-tools :    
 
 ```bash 
 # Install nodejs and npm 
-sudo apt install nodejs npm
+sudo apt install nodejs npm git
 
 # Install GO
 wget https://go.dev/dl/go1.21.0.linux-amd64.tar.gz
@@ -94,53 +111,71 @@ hugo v0.117.0-b2f0696cad918fb61420a6aff173eb36662b406e+extended linux/amd64 Buil
 To be fair, you could also do it with `snap`:     
 
 ```bash
-$ sudo snap install dart-sass
+sudo snap install dart-sass
 
-$ sudo snap install hugo
+sudo snap install hugo
 
-$ which hugo
+which hugo
 /snap/bin/hugo
 
-$ hugo version
+hugo version
 hugo v0.117.0-b2f0696cad918fb61420a6aff173eb36662b406e+extended linux/amd64 BuildDate=2023-08-07T12:49:48Z VendorInfo=snap:0.117.0
 ``` 
 
 ## Creating the Project 
 
 ```bash 
-$ cd myblog
-$ git submodule add https://github.com/razonyang/hugo-theme-bootstrap themes/hugo-theme-bootstrap
-$ git clone https://github.com/razonyang/hugo-theme-bootstrap-skeleton /tmp/hbs-skeleton
-$ mkdir config
-$ cp -a /tmp/hbs-skeleton/config/* ./config
-$ cp -r /tmp/hbs-skeleton/content/* ./content
-$ cp -r /tmp/hbs-skeleton/archetypes/* ./archetypes
-$ cp -r /tmp/hbs-skeleton/static/* ./static
-$ cp -r /tmp/hbs-skeleton/assets/* ./assets
-$ sed -i "s/theme:.*/theme: hugo-theme-bootstrap/g" config/_default/config.yaml
-$ hugo mod npm pack
-$ npm install
-$ hugo server
+cd myblog
+git submodule add https://github.com/razonyang/hugo-theme-bootstrap themes/hugo-theme-bootstrap
+git clone https://github.com/razonyang/hugo-theme-bootstrap-skeleton /tmp/hbs-skeleton
+mkdir config
+cp -a /tmp/hbs-skeleton/config/* ./config
+cp -r /tmp/hbs-skeleton/content/* ./content
+cp -r /tmp/hbs-skeleton/archetypes/* ./archetypes
+cp -r /tmp/hbs-skeleton/static/* ./static
+cp -r /tmp/hbs-skeleton/assets/* ./assets
+sed -i "s/theme:.*/theme: hugo-theme-bootstrap/g" config/_default/config.yaml
+hugo mod npm pack
+npm install
+hugo server
 ```
-
-
-## Publish it with Github Pages 
-
-So Github propose to publish for free your blog. Except that you won't be able to choose your domain (except if you pay for it of course), one big benefic of doing so, is the Github workflow which will allow you to autodeploy as we will see later.
-
-You can have One site per GitHub account and organization in this case you blog will be available at https://{{username}}.github.io like this one or you can unlimited project sites in this case, you site will be avalaible at http://username.github.io/repository. The last option, could be a good choice for documenting a project.
-
 
 ## Few Settings
 
+The two first to complete `author.yaml` which contain all your social link and `params.yaml` for global settings about appearance and options.
 
-## A word on giscus
+### Add a language 
+
+First, the language need to be listed in `./config/_default/languages.yaml` then create `config.lg.yaml` and if you have a custom menu `menu.lg.yaml`. Then you will have to create in index.lg.md next to your index.md.
+
+```bash
+config git:main ❯ tree -L 2
+.
+├── _default
+│   ├── author.yaml
+│   ├── config.fr.yaml
+│   ├── config.pl.yaml
+│   ├── config.yaml
+│   ├── languages.yaml
+│   ├── menu.en.yaml
+│   ├── menu.fr.yaml
+│   ├── menu.pl.yaml
+│   ├── params.yaml
+│   ├── server.yaml
+│   └── social.yaml
+└── production
+    ├── config.yaml
+    └── params.yaml
+```
+
+
+### A word on giscus
 
 In config/default/params.yaml, there is a bloc on giscus config, a comments system powered by GitHub Discussions, so the comments left on your articles goes in discussions of your github Pages.  
 
 So to do so, you will need to:
-- make your repoistory public.
-- enable [discussions](https://docs.github.com/en/repositories/managing-your-repositorys-settings-and-features/enabling-features-for-your-repository/enabling-or-disabling-github-discussions-for-a-repository) in the porject settings.
+- make your repository public.
+- enable [discussions](https://docs.github.com/en/repositories/managing-your-repositorys-settings-and-features/enabling-features-for-your-repository/enabling-or-disabling-github-discussions-for-a-repository) in the project settings.
 - activate [giscus app](https://github.com/apps/giscus) for on your account (you can limit to your blog project)
 - Then, giving the URL of your repository
 
@@ -158,6 +193,64 @@ giscus:
 
 On their side, visitors will need a Github account and must authorize the giscus app to post on their behalf using the GitHub OAuth flow. 
 
+
+### Change the Tables of Contents
+
+Also the table of content take only the title starting from `##` but can be change if you set a `./config/_default/markup.yaml`
+
+```yaml
+markup:
+  tableOfContents:
+    endLevel: 4
+    ordered: false
+    startLevel: 1
+```
+
+### Change the code highligthing
+
+
+set inside `./config/_default/markup.yaml`
+
+```yaml
+markup:
+  highlight:
+    anchorLineNos: false
+    codeFences: true
+    guessSyntax: false
+    hl_Lines: ""
+    hl_inline: false
+    lineAnchors: ""
+    lineNoStart: 1
+    lineNos: true              # require by this theme
+    lineNumbersInTable: false  # require by this theme
+    noClasses: false           # require by this theme
+    noHl: false
+    style: dracula
+    tabWidth: 4
+```
+
+Import the chromastyles in your project:
+
+```sh
+hugo gen chromastyles --style=dracula > assets/main/scss/_highlight.scss
+```
+
+### Had some icons
+
+You will be able to add icons from **fortawesome** by completing the `./assets/icons/custom.js`, then use those icone in CSS marks.
+
+```js
+import { faBlog, faBook, faFile, faNewspaper, faAnchor, faInfinity, faCode, faBug, faLightbulb, faTerminal, } from '@fortawesome/free-solid-svg-icons';
+// import { faAddressBook } from '@fortawesome/free-regular-svg-icons';
+// import { faAmazon, faGoogle } from '@fortawesome/free-brands-svg-icons';
+
+const icons = [
+    faBook, faBlog, faFile, faNewspaper, faAnchor, faInfinity, faCode, faBug, faLightbulb, faTerminal
+    // faAddressBook,
+    // faAmazon, faGoogle,
+];
+export default icons;
+```
 
 ## Edit Articles 
 
@@ -177,25 +270,132 @@ hugo new docs/Devops/Containers/docker.md
 hugo new docs/Devops/Containers/podman.md
 ```
 
-Please remind that the created posts are generally in draft state. You’ll need to specify the `-D` parameter of the command hugo server for previewing.           
+Please remind that the created posts are generally in draft state. You’ll need to specify the `-D` parameter of the command hugo server for previewing.
 Similarly, you need to change the draft to false or remove draft parameter if you want to publish the article.
 
 
-## The Deployment
+
+### Publish it with Github Pages 
 
 The deployement of this blog is done by Github Wokflow. Here, you can adopt several strategy.  
 
-I started with everytime I was pushing it deploy, which give me no time after saving to read again my articles. Then I put it on `workflow_dispatch`, which means only when I manully trigger the workflow to build, but I think that the proper way to do, is to developp on a branch and deploy only when the branch is merge. 
+I started with everytime that I was pushing, it deploy. It gave me no time after saving to read again my articles. Then I put it on `workflow_dispatch`, which means only when I manully trigger the workflow to build, but I think that the proper way to do, is to developp on a branch and deploy only when the branch is merge. 
 
-Here is how
+Here is my current workflow which currently work on manual triggering:
 
+```yaml
+name: Deploy
+on:
+  workflow_dispatch:
 
-# Bonus point for those who read till the end 
+permissions:
+  contents: read
+  pages: write
+  id-token: write
+
+concurrency:
+  group: "pages"
+  cancel-in-progress: false
+
+# Default to bash
+defaults:
+  run:
+    shell: bash
+
+jobs:
+  # Build job
+  build:
+    runs-on: ubuntu-latest
+    env:
+      HUGO_VERSION: 0.117.0
+    steps:
+      - name: Install Hugo CLI
+        run: |
+          wget -O ${{ runner.temp }}/hugo.deb https://github.com/gohugoio/hugo/releases/download/v${HUGO_VERSION}/hugo_extended_${HUGO_VERSION}_linux-amd64.deb \
+          && sudo dpkg -i ${{ runner.temp }}/hugo.deb
+
+      - name: Checkout 🛎️
+        uses: actions/checkout@v3
+        with:
+          submodules: recursive
+
+      - name: Setup Node
+        uses: actions/setup-node@v3
+        with:
+          node-version: '16'
+  
+      - name: Cache dependencies
+        uses: actions/cache@v2
+        with:
+          path: ~/.npm
+          key: ${{ runner.os }}-node-${{ hashFiles('**/package-lock.json') }}
+          restore-keys: |
+                        ${{ runner.os }}-node-
+  
+      - name: Install dependencies
+        run: npm install
+
+      - name: Setup Hugo
+        uses: peaceiris/actions-hugo@v2
+        with:
+          hugo-version: 'latest'
+          extended: true
+
+      - name: Setup Pages
+        id: pages
+        uses: actions/configure-pages@v3
+
+      - name: Install Node.js dependencies
+        run: "[[ -f package-lock.json || -f npm-shrinkwrap.json ]] && npm ci || true"
+
+      - name: Build with Hugo
+        env:
+          # For maximum backward compatibility with Hugo modules
+          HUGO_ENVIRONMENT: production
+          HUGO_ENV: production
+        run: |
+          hugo \
+            --minify --gc --enableGitInfo \
+            --baseURL "${{ steps.pages.outputs.base_url }}/"
+
+      - name: Upload artifact
+        uses: actions/upload-pages-artifact@v2
+        with:
+          path: ./public
+
+  # Deployment job
+  deploy:
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
+    runs-on: ubuntu-latest
+    needs: build
+    steps:
+      - name: Deploy to GitHub Pages 🚀
+        id: deployment
+        uses: actions/deploy-pages@v2
+
+```
+
+### Update it.
+
+```bash
+$ cd themes/hugo-theme-bootstrap
+$ git fetch
+$ git checkout [version]
+$ cd ../../
+$ hugo mod npm pack
+$ npm update
+$ git add themes/hugo-theme-bootstrap package.hugo.json package.json package-lock.json
+$ git commit -m 'Bump theme to [version]'
+```
+
+### Bonus point for those who read till the end 
 
 Do not forget to put some funny [icons](https://github.com/markdown-templates/markdown-emojis) in your markdown !   
 
 
-# Sources: 
+## Sources
 See also documentation of this [Awesome Hugo theme](https://hbs.razonyang.com/v1/en/docs/getting-started/prerequisites/). 
 
 See also [README of this theme](https://github.com/razonyang/hugo-theme-bootstrap-skeleton/blob/main/README.md).   

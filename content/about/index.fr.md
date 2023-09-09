@@ -25,8 +25,7 @@ Quelques faits à mon sujet:
 * Pas de grandes ambitions, juste prêt à contribuer modestement à la communauté. 
 * En dessous de cette page, il y a un bouton qui rediriger vers mon Github.
 * En plus du Francais, je parle Polonais et Anglais.
-
-J'écris généralement des projets sous une [licence Apache 2.0] (https://www.apache.org/licenses/LICENSE-2.0.html), ce qui est assez permissif.
+* J'écris généralement des projets sous une [licence Apache 2.0] (https://www.apache.org/licenses/LICENSE-2.0.html)
 
 
 ```

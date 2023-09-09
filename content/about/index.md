@@ -25,8 +25,7 @@ Some facts about me:
 * No big ambitions, just willing to contribute to the community.
 * Below this page there is small button to redirect to my Github.
 * I speak Polish and French beside English
-
-I usually write projects under a [Apache 2.0 License](https://www.apache.org/licenses/LICENSE-2.0.html) which is quite permissive.
+* I usually write projects under a [Apache 2.0 License](https://www.apache.org/licenses/LICENSE-2.0.html)
 
 
 ```
