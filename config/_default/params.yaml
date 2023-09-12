@@ -6,7 +6,7 @@ mainSections:
 # titleSeparator: '|' # Title separator. Default to -.
 
 description: Yet another blog, yes but this one is mine
-keywords: Blog, Doc, Ansible, GitHub Pages, Hugo
+keywords: Blog, Doc, Ansible, GitHub Pages, Hugo, Devops, Kubernetes, Sysadmin
 # images:
 #   - site-feature-image.jpg
 
@@ -99,7 +99,7 @@ sidebar:
   # collapsed: true # Collapse sidebar widgets by default on small screens.
 
 codeBlock:
-  # maxLines: 8
+  #maxLines: 8
   lineNos: false # true/false represents that show/hide the line numbers by default.
 
 post:
@@ -108,11 +108,11 @@ post:
   # copyright: false # Whether to display copyright section on each post.
   # plainifyExcerpt: false # Format excerpt in HTML if false.
   featuredImage: true # Show the featured image above the content.
-  numberifyHeadings: true # Count headings automatically.
+  # numberifyHeadings: true # Count headings automatically.
   # numberifyHeadingsEndLevel: 4 # The depth of headings to count. Default to 6.
   numberifyHeadingsSeparator: . # The separator between of number and headings.
-  # tocStyleType: decimal # The TOC's CSS list-style-type property.
-  # imageTitleAsCaption: true
+  # tocStyleType: decimal # The s's CSS list-style-type property.
+  imageTitleAsCaption: true
   # panel: false # Disable the post panel.
   # nav: false # Disable post navigations.
   # The page position after clicking the read more button, read more from content if true. Default to the beginning of page.
@@ -153,7 +153,7 @@ creativeCommons:
 
 #staticman:
   #endpoint: https://yourstaticmaninstance # Required, replace with your own Staticman instance.
-  #repo: user/repo # Required
+  #repo: MozeBaltyk/mozebaltyk.github.io # Required
   #service: github # or gitlab. Default to GitHub.
   #branch: main # Default to master.
   #property: comments # Default to comments.
@@ -174,8 +174,8 @@ giscus:
   repoId: "R_kgDOKJSCfA" # required. R_kgDOKJSCfA
   category: "General" # required.
   categoryId: "DIC_kwDOKJSCfM4CYvA_" # required.
-  theme: "dark" # Default to auto.
-  # mapping: "title" # Default to pathname.
+  # theme: "dark" # Default to auto.
+  mapping: "title" # Default to pathname.
   # inputPosition: "bottom" # Default to top.
   # reactions: false # Disable reactions.
   # metadata: true # Emit discussion metadata.
@@ -264,5 +264,5 @@ topAppBar:
   # nav:
     # expand: true # Expand docs navigations.
 
-#feeds:
-  # content: true
+feeds:
+  content: true
