@@ -1,6 +1,6 @@
 ---
 date: 2023-08-01T21:00:00+08:00
-title: Makefile
+title: 👷 Makefile
 navWeight: 50 # Upper weight gets higher precedence, optional.
 series:
   - Command-Liner
@@ -57,6 +57,6 @@ make help
 
 [Tutorials](https://makefiletutorial.com/)
 
-A [Gist](https://gist.github.com/klmr/575726c7e05d8780505a) on colored help
+A [Gist](https://gist.github.com/klmr/575726c7e05d8780505a) for a colored help
 
-git https://gist.githubusercontent.com/klmr/575726c7e05d8780505a/raw/5133761c901dc93c5dcc41f4a0446fe631c04713/Makefile
+The [RAW version](https://gist.githubusercontent.com/klmr/575726c7e05d8780505a/raw/5133761c901dc93c5dcc41f4a0446fe631c04713/Makefile)

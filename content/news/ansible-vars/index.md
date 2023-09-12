@@ -1,5 +1,5 @@
 ---
-# type: docs 
+type: news 
 title: 💫 My thoughs about Ansible Collections and Variables
 date: 2023-08-22T03:48:10+02:00
 featured: true

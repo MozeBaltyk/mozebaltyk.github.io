@@ -1,6 +1,6 @@
 ---
-# type: docs 
-title: 📡 The Bad, the Good and the Ugly Git
+type: news 
+title: 👺 The Bad, the Good and the Ugly Git
 date: 2023-08-21T03:48:10+02:00
 featured: true
 draft: true
@@ -148,12 +148,15 @@ Host github.com
 The top is to use `gh` which is the github-cli tools for handling github projects. So it's noticable that github prefers SSH protocol over HTTPS.
 
 ```bash
-# Cloning with GH will set SSH as default protocol 
- gh repo clone MozeBaltyk/MozeBaltyk
+# Cloning with GH will set SSH as default protocol:
+gh repo clone MozeBaltyk/MozeBaltyk
 
-# gh clone https is also possible
+# If you target a specific Github:
+GH_HOST=github.example.com gh repo clone MozeBaltyk/MozeBaltyk
+
+# gh clone https is also possible:
 gh repo clone https://github.com/MozeBaltyk/mozebaltyk.github.io.git
 
-# this one I do not know for what it is ...
- gh repo clone  git+https://github.com/MozeBaltyk/AnsiColt.git
+# this one in https when you target a specific Github repo:
+gh repo clone git+https://github.com/MozeBaltyk/MozeBaltyk.git
 ```

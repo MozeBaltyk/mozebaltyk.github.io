@@ -9,13 +9,13 @@ categories:
 ---
 
 
-### Prerequis 
+## Prerequis 
 
 	- Firewalld activated, important otherwise the routing to the app is not working 
 	- Podman, jq installed
 
 
-### Import image
+## Import image
 
 ```bash
 podman pull docker.io/gitea/gitea:1-rootless
@@ -23,7 +23,7 @@ podman save docker.io/gitea/gitea:1-rootless -o gitea-rootless.tar
 podman load < gitea-rootless.tar
 ```
 
-### Install
+## Install
 
 cat /etc/systemd/system/container-gitea-app.service
 
@@ -79,9 +79,9 @@ ExecStopPost=/usr/bin/podman container rm \
 WantedBy=multi-user.target default.target
 ```
 
-Configuration inside /var/lib/containers/storage/volumes/gitea-config-volume/_data/app.ini
-```bash
-vi /var/lib/containers/storage/volumes/gitea-config-volume/_data/app.ini
+Configuration inside `/var/lib/containers/storage/volumes/gitea-config-volume/_data/app.ini`
+
+```ini
 [server]
 APP_DATA_PATH           = /var/lib/gitea
 SSH_DOMAIN              = localhost
@@ -100,11 +100,15 @@ OFFLINE_MODE            = false
 ```
 
 ```bash
+# Start app
 systemctl daemon-reload 
 systemctl start container-gitea-app
-```
 
-```bash 
+# Get IP 
+sudo podman inspect --format '{{range.NetworkSettings.Networks}}{{.IPAddress}}{{end}}' gitea-app
+sudo podman inspect --format '{{range.NetworkSettings.Networks}}{{.IPAddress}}{{end}}' gitea-db
+
+# Get inside the container
 podman exec -it gitea-app /bin/bash
 
 # inside the container
@@ -115,7 +119,7 @@ New user 'local_admin' has been successfully created!
 ```
 
 
-### some documentations:
+## Sources:
 
 https://www.digitalocean.com/community/tutorials/how-to-install-gitea-on-ubuntu-using-docker
 

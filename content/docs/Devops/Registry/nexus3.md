@@ -19,7 +19,7 @@ podman load < nexus3.tar
 
 Create a service inside `/etc/systemd/system/container-nexus3.service` with content below:  
 
-```init
+```ini
 [Unit]
 Description=Nexus Podman container
 Wants=syslog.service

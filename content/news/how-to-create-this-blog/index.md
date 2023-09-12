@@ -1,5 +1,5 @@
 ---
-type: "posts" 
+type: news
 title: 🌌 How to Create this Blog
 date: 2023-09-06T02:59:46+02:00
 featured: true
@@ -22,64 +22,64 @@ images: [./how-to-create-this-blog/carousel.webp]
 ---
 
 
-When prospecting about creating my Blog; I went throught the normal questions that everybody met. Why would I loose precious hours of my life doing something that anyway nobody is gonna to read it. Here are my thoughts about this non-sens and what I learnt...
+When prospecting about creating my Blog; I went throught the normal questions that everyone meet. Why would I loose precious hours of my life doing something that anyway nobody is gonna to read. Here are my thoughts about this non-sens and what I learnt...
 
 <!--more-->
 
-# My Reflexions on the topic
+## My Reflexions on the topic
 
-In short, here the few questions I went through. Why, Where, Which way, Which Theme ? 
-By the way, you can notice that those questions go from theory to practice.
-
-## The big question ?
-
-Why would you like wawte your precious time on a blog ? Search with google "Why would you like a blog" will lead you to conclusion that is good for your bisness. You need to be visible on the net to increase you credibility as an expert and so on. Nonetheless, I was recently listening a guy on Youtube who critized blogs. Everybody is doing it. At the end, everybody start it but nobody keep up writing articles. It ends looking as a poor vitrin of yourself, and for good reasons, if you do not fuel your blog with regular new articles. Anyway; this guy end up showing some interesting blogs with unexpected content and remember us that it's still worth it. And you, are you bloging ?    
-
-So in my case, first it's an exercice. Due to my IT job, I need to see how does it work. What are the possibilities and techno available for it. Second, I wanted a place with multiple purpose. A place for article about my thoughts and findings like this one but also a place to centralize my documentation. Longtime ago, when I started in IT and did not know what I was doing and I simply took notes in OneNote. I know, I should not do this. I was young and did not know what I was doing... For technical notes, that's not the best. No versioning, no code highlight, and proprietary software. Sharing some notes, also ask extra effort to export in Word document before to be send. Along the years, my personal notes were growing and it got tedious to keep it ordered. First I add the idea to move everything in markdown, then have an mdBook, but that's would be only a documentation solution. So came the blog idea. 
-
-But more over, blog it's also a way to get open to the 🌏
+In short, here the few questions I went through. Why, Where, Which way, Which Theme ? By the way, you can notice that those questions go from theory to practice.
 
 
-## Where to host my Blog ?
+### The big question ?
+
+Why would you like waste your precious time on a blog ? A search on google "Why would you like a blog ?" will lead you to conclusion that´s good for your bisness. You need to be visible on the net to increase you credibility as an expert and so on. Nonetheless, I was recently listening a guy on Youtube who critized blogs. Everybody is doing it. At the end, everybody start it but nobody keep up writing articles. It ends looking as a poor vitrin of yourself, and for good reasons, if you do not fuel your blog with regular new articles. Anyway, this guy end up showing some interesting blogs with unexpected content and remember us that it's still worth it but ask effort. And you, are you bloging ?    
+
+So in my case, first it's an exercice. Due to my IT job, I need to see how does it work. What are the possibilities and technology available for it. Second, I wanted a place with multiple purpose. A place for article about my thoughts and findings like this one but also a place to centralize my documentation. Longtime ago, when I started in IT and did not know what I was doing and I simply took notes in OneNote. I know, I should not do this. I was young and did not know what I was doing... For technical notes, that's not the best. No versioning, no code highlight, and proprietary software. Sharing some notes, also ask extra effort to export in Word document before to be send. Along the years, my personal notes were growing and it got tedious to keep it ordered. First I add the idea to move everything in markdown, then have an mdBook, but that's would be only a documentation solution. So came the blog idea. 
+
+But more over, blog it's also a way to get open to the 🌏.
+
+
+### Where to host my Blog ?
  
-Of course, I first thought about self hosting on VPS but to much hassle when there is much easier options, like Hubspot or Wordpress. Those are CMS, the job is done for you. Then I do not see the possibility to really move from those. You can export a XML for Wordpress and in HTML in Hubspot to move to another platform and then hassle to understand why it does not fit to the new platform. No, let's be serious and not fall in some "vendor locking".
+Of course, I first thought about self hosting on VPS but to much hassle when there is much easier options, like Hubspot or Wordpress. Those are CMS, the job is done for you. Then I do not see the possibility to really move from those. You can export a XML from Wordpress or an HTML in Hubspot to move to another platform and then hassle to understand why it does not fit to the new platform. It's hard to believe, there will be *no vendor locking* behind. So let's be serious and not fall in some trap.
 
-So Github offer to publish for free your blog. Except that you won't be able to choose your domain (except if you pay for it of course), one big benefic of doing so, is the Github workflow which will allow you to autodeploy as we will see later. You can always move to another repository or even to some self-hosting. It's always benefic to work
+So Github offer to publish for free your blog with *Github page*. Except that you won't be able to choose your domain (except if you pay for it, of course), one big benefic of doing so, is the Github workflow which will allow you to autodeploy as we will see later. You can always move to another repository or even to some self-hosting. It's always benefic to work
 
-You can have One site per GitHub account and organization in this case you blog will be available at https://{{username}}.github.io like this one or you can unlimited project sites in this case, you site will be avalaible at http://{{username}}.github.io/repository. The last option, could be a good choice for documenting a project with a mdbook.
+You can have One site per GitHub account and organization in this case your blog will be available at *https://{{username}}.github.io* like this one or you can unlimited project sites in this case, you site will be avalaible at *http://{{username}}.github.io/repository*. The last option, could be a good choice for documenting a project with a mdbook include in the project.
 
 
-## Which tech to pickup ?
+### Which tech to pickup ?
 
 A good companion to Github pages are the static site generators. Those static site generators are framework which take articles in markdown then generate a static site. Markdown is a easy language popular for writing docs and allow easy to customization. So it does the jobs quite effectively with a quick effect. After one hour, this site was already running and presenting good. Tweeking is relatively intuitive, of course you won't be able to create crazzy effect with dynamic data.
 
 Working with Hugo is pretty convenient, you draft your article then launch `hugo server -D` so you can see in your browser how looks your blog with all draft articles. Oki but why not Zola or Jekyll... Jekyll is the default choice for a Github Page in ruby but most of the interesting themes are charged. Zola, I found too few themes. So Hugo is popular choice, so plenty of documentations and tutorials. 
 
 
-## Which awesome theme to use ?
+### Which awesome theme to use ?
 
-Looks trivial, but a theme well documented make the difference. Some of the theme have bearly documentation or redirect to hugo pages. 
-
-Among the Features that I was looking for :
-* Table of Contents.
-* Font Size Switcher.
+Looks trivial, but a theme well documented make the difference. Some of the theme have bearly documentation or redirect to hugo pages. Plus somes essantials features, nothing fancy but you would expect :
+* A Table of Contents.
 * Multilingual.
 * Local Search. 
-* Responsive.
 * Syntax Highlighting.
 * Possibility to Comments.
-
-Taxonomies are classifications of logical relationships between content. Understand the taxonomies, will allow you organize your blog more efficiently.
-
-- series
-- categories
-- tags
-- featured
+* Font Size Switcher.
+* Responsive.
+* Light/Dark mode
  
+So I went through *[Hugo-theme-bootstrap](https://github.com/razonyang/hugo-theme-bootstrap)* which look quite classical but pretty efficient, plenty of widgets which make the blog quite confortable, easy to use and to developp and not too flat. 
 
-# Let's Practice
+Here a quick over view of what this theme have to offer us: 
 
-## First the Prerequisites
+![Center](/HBS-list-feat.PNG#center)
+
+
+## Let's Practice
+
+First, note that's everything what I will describe below have to match with *Hugo-theme-bootstrap* and some slitghly changes could occur with other theme.  
+
+### First the Prerequisites
 
 As prerequisites, we need Nodejs, npm, GO, dart SASS, and Hugo extended version as describe [here](https://hbs.razonyang.com/v1/en/docs/getting-started/prerequisites/#build-tools :    
 
@@ -122,7 +122,9 @@ hugo version
 hugo v0.117.0-b2f0696cad918fb61420a6aff173eb36662b406e+extended linux/amd64 BuildDate=2023-08-07T12:49:48Z VendorInfo=snap:0.117.0
 ``` 
 
-## Creating the Project 
+### Creating the Project 
+
+Create a blank project in Github and clone it.
 
 ```bash 
 cd myblog
@@ -140,11 +142,11 @@ npm install
 hugo server
 ```
 
-## Few Settings
+### Few Settings
 
 The two first to complete `author.yaml` which contain all your social link and `params.yaml` for global settings about appearance and options.
 
-### Add a language 
+#### Add a language 
 
 First, the language need to be listed in `./config/_default/languages.yaml` then create `config.lg.yaml` and if you have a custom menu `menu.lg.yaml`. Then you will have to create in index.lg.md next to your index.md.
 
@@ -169,7 +171,7 @@ config git:main ❯ tree -L 2
 ```
 
 
-### A word on giscus
+#### A word on giscus
 
 In config/default/params.yaml, there is a bloc on giscus config, a comments system powered by GitHub Discussions, so the comments left on your articles goes in discussions of your github Pages.  
 
@@ -187,47 +189,18 @@ giscus:
   repo: "MozeBaltyk/mozebaltyk.github.io" # required.
   repoId: "R_kgDOKJSCfA" # required. R_kgDOKJSCfA
   category: "General" # required.
-  categoryId: "DIC_kwDOKJSCfM4CYvA_" # required.
-  theme: "dark" # Default to auto.
+  categoryId: "DIC_kwDOKJSCfM4CYvA_" # required. 
 ```
 
 On their side, visitors will need a Github account and must authorize the giscus app to post on their behalf using the GitHub OAuth flow. 
 
 
-### Change the Tables of Contents
+#### Change the Tables of Contents
 
-Also the table of content take only the title starting from `##` but can be change if you set a `./config/_default/markup.yaml`
-
-```yaml
-markup:
-  tableOfContents:
-    endLevel: 4
-    ordered: false
-    startLevel: 1
-```
-
-### Change the code highligthing
+Also the table of content take only the title starting from `h2` end to `h3` but no parameter seems to exist to change this in `./config/_default/params.yaml`
 
 
-set inside `./config/_default/markup.yaml`
-
-```yaml
-markup:
-  highlight:
-    anchorLineNos: false
-    codeFences: true
-    guessSyntax: false
-    hl_Lines: ""
-    hl_inline: false
-    lineAnchors: ""
-    lineNoStart: 1
-    lineNos: true              # require by this theme
-    lineNumbersInTable: false  # require by this theme
-    noClasses: false           # require by this theme
-    noHl: false
-    style: dracula
-    tabWidth: 4
-```
+#### Change the code highligthing
 
 Import the chromastyles in your project:
 
@@ -235,9 +208,9 @@ Import the chromastyles in your project:
 hugo gen chromastyles --style=dracula > assets/main/scss/_highlight.scss
 ```
 
-### Had some icons
+#### Had some icons
 
-You will be able to add icons from **fortawesome** by completing the `./assets/icons/custom.js`, then use those icone in CSS marks.
+You will be able to add icons from **fortawesome** by completing the `./assets/icons/custom.js`, then use those icons in CSS marks.
 
 ```js
 import { faBlog, faBook, faFile, faNewspaper, faAnchor, faInfinity, faCode, faBug, faLightbulb, faTerminal, } from '@fortawesome/free-solid-svg-icons';
@@ -252,7 +225,7 @@ const icons = [
 export default icons;
 ```
 
-## Edit Articles 
+### Edit Articles 
 
 Of course, using your vim editor with your favorite customization, you will enjoy better articles writing.
 
@@ -270,16 +243,51 @@ hugo new docs/Devops/Containers/docker.md
 hugo new docs/Devops/Containers/podman.md
 ```
 
+Note that in docs the `_index.md` become a Section in the Menu.
+
 Please remind that the created posts are generally in draft state. You’ll need to specify the `-D` parameter of the command hugo server for previewing.
 Similarly, you need to change the draft to false or remove draft parameter if you want to publish the article.
 
+### images
+
+About images, either you had in `./static/your-articles-name/an-images.webp` and define it in your article's front. The images on front matter are preferred.
+
+```yaml
+--- 
+title: 📡 The Bad, the Good and the Ugly Git
+[...]
+authors:
+  - mozebaltyk
+images: [./bad-good-ugly-git/carousel.webp]
+---
+```
+
+Another method is to put it in the article´s folder.
+
+> Page images resources that match the filename’s patterns: *feature*, *cover* and *thumbnail*. Such as posts/my-page/feature.png, posts/my-page/thumnail.jpg.
+>
+> The page images resources will be resized to several smaller versions to suit the users devices for saving the bandwidth.
+
+A parameter exist to make this image appear above the content or not, in `params.yaml` set `featuredImage: true`.
+
+Then during the writing of the articles, just put the image in the article folder (with a name different from *feature*, *cover* or *thumbnail*) and add it in the article with `![Center](/HBS-list-feat.PNG#center)`
+ 
+
+## Organisation
+
+Taxonomies are classifications of logical relationships between content. Understand the taxonomies, will allow you to organize your blog more efficiently.
+
+- series
+- categories
+- tags
+- featured
 
 
-### Publish it with Github Pages 
+## Publish it
 
-The deployement of this blog is done by Github Wokflow. Here, you can adopt several strategy.  
+The deployement of this blog is done by Github Wokflow with will create an artificat to publish it with Github Pages. Here, you can adopt several strategy.  
 
-I started with everytime that I was pushing, it deploy. It gave me no time after saving to read again my articles. Then I put it on `workflow_dispatch`, which means only when I manully trigger the workflow to build, but I think that the proper way to do, is to developp on a branch and deploy only when the branch is merge. 
+I started with everytime that I was pushing, it deploy. It gave me no time after saving to read again my articles. Then I put it on `workflow_dispatch`, which means only when I manually trigger the workflow to build, but I think that the proper way to do, is to developp on a branch and deploy only when the branch is merge, trigger the deployment and publish it. 
 
 Here is my current workflow which currently work on manual triggering:
 
@@ -377,7 +385,9 @@ jobs:
 
 ```
 
-### Update it.
+## Update it.
+
+To update the theme
 
 ```bash
 $ cd themes/hugo-theme-bootstrap
@@ -390,9 +400,9 @@ $ git add themes/hugo-theme-bootstrap package.hugo.json package.json package-loc
 $ git commit -m 'Bump theme to [version]'
 ```
 
-### Bonus point for those who read till the end 
+## 💡 Bonus point
 
-Do not forget to put some funny [icons](https://github.com/markdown-templates/markdown-emojis) in your markdown !   
+For those who read till the end, do not forget to put some funny [markdown emojis](https://github.com/markdown-templates/markdown-emojis) in your markdown !   
 
 
 ## Sources

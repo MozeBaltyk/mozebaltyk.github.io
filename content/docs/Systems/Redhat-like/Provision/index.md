@@ -1,11 +1,12 @@
 ---
 date: 2023-08-01T21:00:00+08:00
-title: Proivision hosts
+title: Provision hosts
 navWeight: 1200 # Upper weight gets higher precedence, optional.
 series:
-  - Documentation
+  - RedHat
+  - Devops
 categories:
   - Systems
 ---
 
-# Proivision hosts
+# Provision hosts

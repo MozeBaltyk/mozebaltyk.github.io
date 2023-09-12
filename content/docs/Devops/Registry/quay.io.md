@@ -27,6 +27,8 @@ podman login -u init \
   quay01.example.local:8443 \
   --tls-verify=false
 
+# Get IP
+sudo podman inspect --format '{{range.NetworkSettings.Networks}}{{.IPAddress}}{{end}}' quay-app
 
 #unistall 
 sudo ./mirror-registry uninstall -v \
