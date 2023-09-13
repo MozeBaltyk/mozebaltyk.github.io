@@ -1,6 +1,6 @@
 ---
 date: 2023-08-01T21:00:00+08:00
-title: Git
+title: 🚦 Git
 navWeight: 50 # Upper weight gets higher precedence, optional.
 series:
   - SCM
@@ -14,7 +14,7 @@ categories:
 > <cite>[Tecmint](https://www.tecmint.com/install-git-to-create-and-share-your-own-projects-on-github-repository/)</cite>
 
 
-### The basics
+## The basics
 
 ```bash
 # Clone an existing Projet: 
@@ -31,7 +31,7 @@ git push origin master
 git add -A
 ```
 
-### Branches
+## Branches
 ```bash
 # List 
 git branch
@@ -64,7 +64,7 @@ git rebase origin/master
 git checkout -- filename.yml
 ```
 
-### Investigate
+## Investigate
 
 ```bash
 git log
@@ -72,7 +72,7 @@ git log -p <commit_nbr>
 git log --oneline --decorate --graph --all   : Voir en graphes tous les commits 
 ```
 
-### Resolve conflict 
+## Resolve conflict 
 
 During a push, you realise that someone already pushed, so git ask you to pull first
 ```bash
@@ -131,7 +131,7 @@ AnsiColt git:main ❯ git commit -m "desactivate workflow"
 AnsiColt git:main ❯ git push
 ```
 
-### .gitconfig
+## My .gitconfig
 
 Set some usefull aliases inside your `~/.gitconfig`:
 

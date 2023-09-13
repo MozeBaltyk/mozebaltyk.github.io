@@ -19,7 +19,7 @@ tags:
   - Dev
 authors:
   - mozebaltyk
-images: []
+images: [./MakefileVsJustfile/carousel.webp]
 ---
 
 Makefile VS Justfile
