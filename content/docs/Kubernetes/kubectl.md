@@ -40,7 +40,6 @@ dev-context \
 kubectl config use-context lab
 ```
 
-
 * Switch context
 
 ```bash
@@ -51,7 +50,20 @@ kubectl config get-contexts
 
 #### Kubecm
 
-## Secrets
+The problem with the kubeconfig is that it get nexted in one kubeconfig and difficult to manage on long term.
+The best way to install it, is with Arkade `arkade get kubecm` - see [arkade](https://github.com/alexellis/arkade).
+
+Here, the most usefull
+```bash 
+kubecm list 
+kubecm add -f new-cluster.yaml
+kubecm delete
+kubecm rename
+kubecm switch # Kubecm s (is also fine)
+kubecm export
+```
+
+## Manage Secrets
 
 ```bash 
 kubectl create secret tls urls-tls --key="tls.key" --cert="tls.crt"  -n longhorn-system --dry-run=client -o yaml

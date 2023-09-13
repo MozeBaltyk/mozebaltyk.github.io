@@ -14,7 +14,7 @@ categories:
 * List all images in Helm chart
 
 ```bash
-images=$(helm template -g $helm |yq -N '..|.image? | select(.)'|sort|uniq|grep ":"|egrep -v '*:[[:blank:]]' || echo "")
+images=$(helm template -g $helm |yq -N '..|.image? | select(. == "*" and . != null)'|sort|uniq|grep ":"|egrep -v '*:[[:blank:]]' || echo "")
 ```
 
 * upload images listed in an Helm chart
@@ -24,7 +24,7 @@ load_helm_images(){
   for helm in $(ls ../../roles/*/files/helm/*.tgz); do
     printf "\e[1;34m[INFO]\e[m Look for images in ${helm}...\n"
 
-    images=$(helm template -g $helm |yq -N '..|.image? | select(.)'|sort|uniq|grep ":"|egrep -v '*:[[:blank:]]' || echo "")
+    images=$(helm template -g $helm |yq -N '..|.image? | select(. == "*" and . != null)'|sort|uniq|grep ":"|egrep -v '*:[[:blank:]]' || echo "")
 
     dir=$( dirname $helm | xargs dirname )
 
