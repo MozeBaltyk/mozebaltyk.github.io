@@ -160,3 +160,5 @@ gh repo clone https://github.com/MozeBaltyk/mozebaltyk.github.io.git
 # this one in https when you target a specific Github repo:
 gh repo clone git+https://github.com/MozeBaltyk/MozeBaltyk.git
 ```
+
+The logic is exactly the same with glab-cli, the CLI version for GitLab. 

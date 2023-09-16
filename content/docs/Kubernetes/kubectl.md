@@ -4,6 +4,7 @@ title: 🎲 Kubectl
 navWeight: 50 # Upper weight gets higher precedence, optional.
 series:
   - Admnistration
+  - Certificates
 categories:
   - Kubernetes
 ---
@@ -65,6 +66,9 @@ kubecm export
 
 ## Manage Secrets
 
+* Add Certificates in a Secrets
+
 ```bash 
 kubectl create secret tls urls-tls --key="tls.key" --cert="tls.crt"  -n longhorn-system --dry-run=client -o yaml
 ```
+

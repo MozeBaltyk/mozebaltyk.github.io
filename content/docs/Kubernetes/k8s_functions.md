@@ -4,9 +4,9 @@ title: 🐣 Bash Functions for Kubernetes
 navWeight: 50 # Upper weight gets higher precedence, optional.
 series:
   - Shell
-  - Kubernetes
-categories:
   - Scripting
+categories:
+  - Kubernetes
 ---
 
 ## A list of nice findings for Kubernetes 

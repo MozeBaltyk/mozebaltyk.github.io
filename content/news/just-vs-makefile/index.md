@@ -26,9 +26,20 @@ Makefile VS Justfile
 
 <!--more-->
 
+## The cool stuffs with Makefile
+
+Nothing to say, it's POSIX so it eveywhere almost by default since 1976 (47 years). So that's the reference, either you do better or worst than Make.   
+
+I can list few points:  
+
+* Cool that it exists and you should have went through.
+
+* Make is “task runner” and “build tool” since it's capable to not run a target if a dependencies is up-to-date when justfile is just "task runner". 
+  But on the other hand, `Just` just want to be a "task runner"...
+
 ## The cool stuffs with Justfile
 
-Here a list of what justfile can do but not makefile:
+Here a list of what justfile can do natively but not makefile:
 
 * `just --choose` - will let you choose in interactif mode among the recipes.   
 
@@ -42,7 +53,7 @@ Available recipes:
     test                        # Test
 ```
 
-* Possibility to make a hidden function to make the documentation, the default recipes (or even to complete this doc). 
+* Possibility to make a hidden recipe for documentation, the default recipes (or even to complete this doc). 
 Imagines that you need to create a custom PHONY with a beautifull sed to do the same in makefile... 
 
 ```makefile
@@ -51,6 +62,8 @@ _help:
     @just --list --unsorted
     @printf "Some Extra infos"
 ```
+
+* hidden recipes from documentation 
 
 * Possibility to create aliases for all the recipes automaticly: 
 
@@ -66,6 +79,29 @@ done
 just --list               # sorted in an alphanumeric order  
 just --list --unsorted    # sorted in the order given in the justfile
 ```
+
+* Parameterization in makefile will look like `make something -e CHOICE=test`, in justfile `just something test` since inside an justfile, you can define arguments to your recipes.
+
+* Autocompletion on your recipes
+
+```bash
+$ just
+blank      -- Args: PROJECT *GROUP     # Create a new empty project on remote repository.
+build      -- Args: PROJECT NAMESPACE  # Build collection locally.
+clone      -- Args: PROJECT            # Clone a project from repository keeping directory structure for ansible.
+clone_all  -- Args: *GROUP             # Git clone all projects from your repository, or if argument provided only from specific group.
+init       -- Args: PROJECT *GROUP     # Create a new ansible collection on repository.
+install    -- Args: PROJECT *VERSION   # Install a ansible collection. (if PROJECT is an artifact .tar.gz install local)
+local      -- Args: PROJECT NAMESPACE  # Create a new ansible collection on localhost (not on repository like function below).
+release    -- Args: PROJECT *VERSION   # Release collection on your repository to the given version in command or in galaxy.yml.
+role       -- Args: GROUP PROJECT ROLE # Create a new ansible role inside an existing collection.
+```
+
+* Syntax Check. Will point to error in your `justfile` code. 
+
+* Recipes can be written in arbitrary languages, like Python, NodeJS, bash.
+
+* just a "task runner" and all the points listed above are going to this purpose. 
 
 
 ## The Justfile's limitation
@@ -157,6 +193,11 @@ show-help:
         }' \
         | cat
 ```
+
+## Conlcusion
+
+As you can see, the list is long and you end up with a beautifull tool which allow you to organize your tasks linked between them, autodocumented, and quite safe.
+It tries to avoid the complexity and idiosyncrasie of `Makefile`. In some way, `Makefile` code is nested with your shell and diving into an existing long script can become tedious. 
 
 ## source
 
