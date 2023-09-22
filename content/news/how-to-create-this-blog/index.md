@@ -45,14 +45,14 @@ First I add the idea to move everything in markdown, and put it in an mdBook, bu
  
 Of course, I first thought about self hosting on VPS but to much hassle when there is much easier options, like Hubspot or Wordpress. Those are CMS, the job is done for you. Then I do not see the possibility to really move from those. You can export a XML from Wordpress or an HTML in Hubspot to move to another platform and then hassle to understand why it does not fit to the new platform. It's hard to believe, there will be *no vendor locking* behind. So let's be serious and not fall in some trap.
 
-So Github offer to publish for free your blog with *Github page*. Except that you won't be able to choose your domain (except if you pay for it, of course), one big benefic of doing so, is the Github workflow which will allow you to autodeploy as we will see later. You can always move to another repository or even to some self-hosting. It's always benefic to work
+So Github offer to publish for free your blog with *Github page*. Except that you won't be able to choose your domain (except if you pay for it, of course), one big benefic of doing so, is the Github workflow which will allow you to autodeploy as we will see later. You can always move to another repository or even to some self-hosting. It's always benefic to work in collaboration, that's the how I was all my career learning.  
 
 You can have One site per GitHub account and organization in this case your blog will be available at *https://{{username}}.github.io* like this one or you can unlimited project sites in this case, you site will be avalaible at *http://{{username}}.github.io/repository*. The last option, could be a good choice for documenting a project with a mdbook include in the project.
 
 
 ### Which tech to pickup ?
 
-A good companion to Github pages are the static site generators. Those static site generators are framework which take articles in markdown then generate a static site. Markdown is a easy language, popular for writing docs and allow easy to customization. So it does the jobs quite effectively with a quick effect. After one hour, this site was already running and presenting good. Tweeking is relatively intuitive, of course you won't be able to create crazzy effect with dynamic data. Keep it simple and stupid.
+A good companion to *Github pages* are the static site generators. Those static site generators are framework which take articles in markdown then generate a static site. Markdown is a easy language, popular for writing docs and allow easy to customization. One thing that I really appreciate with markdown is how uniform you notes became. *Github pages* + *Hugo* + *Markdown* do the jobs quite effectively with a quick effect. After one hour, this site was already running and presenting good. Tweeking is relatively intuitive, of course you won't be able to create crazzy effect with dynamic data. Keep it simple and stupid.
 
 Working with Hugo is pretty convenient, you draft your article then launch `hugo server -D` so you can see in your browser how looks your blog with all draft articles. Oki but why not Zola or Jekyll... Jekyll is the default choice for a Github Page in ruby but most of the interesting themes are charged. Zola, I found too few themes. So Hugo is popular choice, so plenty of documentations and tutorials. 
 

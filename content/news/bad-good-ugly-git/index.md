@@ -162,3 +162,8 @@ gh repo clone git+https://github.com/MozeBaltyk/MozeBaltyk.git
 ```
 
 The logic is exactly the same with glab-cli, the CLI version for GitLab. 
+
+
+## Bonus point 
+
+For those who read till the end, [gitmoji](https://gitmoji.dev/) is an Art. 

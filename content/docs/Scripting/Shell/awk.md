@@ -10,74 +10,74 @@ categories:
 
 
 ## The Basics
+    
+`awk` is treat each line as a table, by default space are separators of columns.    
+     
+General syntax is `awk 'search {action}' file_to_parse`.    
+    
+```bash
+# Give the value higher than 75000 in column $4
+df | awk '$4 > 75000'   
 
-Si on ne trouve pas awk sur la machine, il se peut qu'il y ait une version plus récente comme nawk ou (pour linux) gawk.
- 
-3 formats d'execusion de cette commande :
-	awk 'schema_recherché' fichier_de_recherche
-	awk '{action_a_effectuer}' fichier_de_recherche
-	awk 'schema_recherché {action_a_effectuer}' fichier_de_recherche
- 
-se combine aussi avec des commandes shell : cmd | awk 'recherche'  (exemple : df | nawk '$4 > 75000') 
- 
-Les expressions recherchées doivent être entre / / ou ; ; 
+# Print the all line when column $4 is higher than 75000
+df | awk '$4 > 75000 {print $0}' 
+```
+           
+But if you look for a string, the search need to be included in `/search/` or `;search;`.       
+When you print `$0` represent the all line, `$1` first column, `$2` second column etc.     
+    
+Alternative to `awk` can be `nawk` or `gawk`.           
+     
+## Awk Output 
 
-Le document filtré est organisé comme un tableau où :
-	$0  - est la ligne entière
-	$1  - la première colonne
-	$2  - la deuxième etc.
-	
-$0=toupper($0)
+In General, as an action you want to `{ print }` as this example:   
 
-### Output de Awk 
-print :  permet d'imprimer à l'écran ce qu'on souhaite
-	exemple : date | nawk '{print "Mois :" $2 "\nAnnée :" $6}'
-	Rq : il faut mettre entre guillemets le text et hors des guillements l'appel au variable.
+```bash
+# Print different columns
+date | awk '{print "Month :" $2 "\nYear :" $6}'   
 
-awk '{print $0=toupper($0)}'    :  passer toute la ligne ($0) en uppercase 
+# Pass the all line in uppercase
+awk '{print $0=toupper($0)}'
 
-Options caracteres speciaux : 
-\b  - un espace en arrière
-\n  - nouvelle ligne
-\t  - tabulation
-\c  - n'importe quel autre caractère (continue la ligne)
-\r  - saut de page
+# Call awk script
+awk -f file
 
-### Script AWK 
-awk -f  : faire appel à un script déjà écrit 
- 
-### Les variables d'enregistrements
-awk '{print NR, $0}'  :  donnera le numero de ligne devant chaque ligne
-NF   :  donne le nombre de colonne
+# print the all lines with line number in front of.
+awk '{print NR, $0}'
+```   
 
-awk -v FS="|" -v OFS="*" -v IGNORECASE=1  :   -v defini une variable
-	FS="|" /!\ par contre le resultat remplace le | par un espace
-	OFS  : le Output Field Separator
-	FS=OFS="|" Au final, on peut faire 
+When you print:    
+* `$0` represent the all line 
+* `$1` first column
+* `$2` second column etc. 
+* `NR` print Line number
+* `NF` number of columns
 
-### FS Field Separator
-awk -F   : choisir les champs séparateurs
-awk -F:  : définit les ":" comme séparateur
-awk -F'[ :\t]'  :  définit les espaces, ":", et les tabulations comme séparateur.
+## Field Seperator 
 
-Autre methode - utiliser les variables FS et OFS. 
+```bash
+awk -v FS="|" -v OFS="*" -v IGNORECASE=1  
+# -v          =  define a variable
+# FS="|"      =  Field Separator
+# OFS         =  Output Field Separator
+# FS=OFS="|"  =  set both with same value
 
-/!\ Les Métacaractères restent les mêmes sauf que \<, \>, \(,\), \{,\} ne sont pas utilisable avec awk
+# Another way to define FS is with argument "-F"
+awk -F';'      
 
-### Operators
-~  - opérateur de combinaison
-!  - exclu 
-
-exemple : awk '$2 !~ /^D|^C/{print $0}' awkdata.txt => les lignes qui commencent par D ou C dans la colonne 2 sont exclu de la recherche, donc resort toutes les autres lignes.
-
-exemple 2 : awk '$2 ~ /^....$/{print $0}' awkdata.txt => va chercher dans la colonne 2 les lignes à 4 caractères.  
- 
-find . -printf "%u %s\n" | awk '{user[$1]+=$2}; END{ for( i in user) print i " " user[i]}'
-
+# Define several FS ("space" + ":" and "tabs") 
+awk -F'[ :\t]' 
+```
 
 ## Example
 
 ```bash
+# look in column 2 for lines with 4 caracters
+awk '$2 ~ /^....$/{print $0}' awkdata.txt 
+
+# Operator and REGEX - exclude lines which start with D or C in cloumn 2, so you get all the rest. 
+awk '$2 !~ /^D|^C/{print $0}' awkdata.txt
+
 # Several conditions AND/OR 
 lsblk -lnb | awk '/disk/ &&  $4=='380968960' || $4=='2147487744' {print $1}'
 

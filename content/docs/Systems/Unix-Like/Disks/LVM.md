@@ -1,6 +1,6 @@
 ---
 date: 2023-08-28T21:00:00+08:00
-title: 📃 LVM
+title: 🧐 LVM
 navWeight: 520 # Upper weight gets higher precedence, optional.
 series:
   - Unix-Like
@@ -8,6 +8,23 @@ series:
 categories:
   - Systems
 ---
+
+## Notions
+
+list of component: 
+* PV (Physical Volume) 
+* VG (Volume Group) 
+* LV (Logical Volume) 
+* PE (Physical Extend)
+* LE (Logical Extend)
+* FS (File Sytem) 
+
+LVM2 use a new driver, the device-mapper allow the us of disk´s sectors in different targets:
+	- linear (most used in LVM). 
+	- stripped (stripped on several disks)
+	- error (all I/O are consider in errors)
+	- snapshot (allow snapshot async)
+  - mirror (integrate elements usefull for pvmove commande)
 
 ## Basic checks 
 
@@ -23,16 +40,28 @@ vgscan
 lvscan
 
 # Details info
-pvdisplay  [sda]
-pvdisplay -m /dev/emcpowerd1 
-vgdisplay  [vg_root]
+pvdisplay   [sda]
+pvdisplay   -m /dev/emcpowerd1 
+vgdisplay   [vg_root]
 lvdisplay   [/dev/vg_root/lv_usr]
 
+# Summary details
+lvmdiskscan
+  /dev/sda1 [     600.00 MiB]
+  /dev/sda2 [       1.00 GiB]
+  /dev/sda3 [      38.30 GiB] LVM physical volume
+  /dev/sdb1 [    <100.00 GiB] LVM physical volume
+  /dev/sdc1 [     <50.00 GiB] LVM physical volume
+  /dev/sdj  [      20.00 GiB]
+  1 disk
+  2 partitions
+  0 LVM physical volume whole disks
+  3 LVM physical volumes
 ```
 
 ## Common Scenario in LVM 
 
-Extend an existing LVM filesystem:
+* Extend an existing LVM filesystem:
 ```bash
 parted /dev/sda resizepart 3 100%
 udevadm settle
@@ -46,11 +75,11 @@ xfs_growfs /dev/vg00/var
 lvextend -L +10G /dev/vg00/var
 resize2fs /dev/vg00/var
 
-# Extend to a pourcentage
-lvextend -l +100%FREE /dev/vg00/var
+# Extend to a pourcentage and resize automaticly whatever FS type.
+lvextend -l +100%FREE /dev/vg00/var -r 
 ```
 
-Create a new LVM filesystem:
+* Create a new LVM filesystem:
 ```bash
 parted /dev/sdb mklabel gpt mkpart primary 1 100% set 1 lvm on
 udevadm settle
@@ -65,10 +94,13 @@ echo "/dev/mapper/vg01-lv_data   /data                  xfs     defaults        
 mount -a 
 
 # Create an ext4
-
+mkfs.ext4 /dev/vg01/lv_data
+mkdir /data
+echo "/dev/mapper/vg01-lv_data   /data                  ext4     defaults        0 0" >>  /etc/fstab 
+mount -a 
 ```
 
-Remove SWAP:
+* Remove SWAP:
 ```bash
 swapoff -v /dev/dm-1
 lvremove /dev/vg00/swap
@@ -83,7 +115,7 @@ sysctl -p
 ```
 
 
-## LVM sur une partition VS direct en Raw Disk 
+## LVM on partition VS on Raw Disk 
 Even if in the past I was using partition MS-DOS disklabel or GPT disklabel for PV, I prefer now to use directly LVM on the main block device. 
 There is no reason to use 2 disklabels, unless you have a very specific use case (like disk with boot sector and boot partition).
 

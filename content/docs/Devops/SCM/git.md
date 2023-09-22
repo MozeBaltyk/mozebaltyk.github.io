@@ -32,6 +32,7 @@ git add -A
 ```
 
 ## Branches
+
 ```bash
 # List 
 git branch
@@ -54,8 +55,11 @@ git push origin :test_branch
 #Merge Branches dev with master
 git checkout master 
 git merge dev 
+```
 
-Rollback
+## Rollback
+
+```bash
 #Quit a commit
 git rebase --skip
 git rebase origin/master
