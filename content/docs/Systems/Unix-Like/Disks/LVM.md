@@ -9,7 +9,7 @@ categories:
   - Systems
 ---
 
-## Notions
+## The Basics
 
 list of component: 
 * PV (Physical Volume) 
@@ -25,6 +25,13 @@ LVM2 use a new driver, the device-mapper allow the us of disk´s sectors in diff
 	- error (all I/O are consider in errors)
 	- snapshot (allow snapshot async)
   - mirror (integrate elements usefull for pvmove commande)
+
+* below example show you a striped volume and linear volume
+```bash
+lvs --all --segments -o +devices
+server_xplore_col1   vgdata -wi-ao----   21 striped   1.07t /dev/md2(40229),/dev/md3(40229),/dev/md4(40229),/dev/md5(40229),…
+server_xplore_col2   vgdata -wi-ao----    1 linear  219.87g /dev/md48(0)  
+```
 
 ## Basic checks 
 
@@ -59,7 +66,7 @@ lvmdiskscan
   3 LVM physical volumes
 ```
 
-## Common Scenario in LVM 
+## Usual Scenario in LVM 
 
 * Extend an existing LVM filesystem:
 ```bash
@@ -75,7 +82,7 @@ xfs_growfs /dev/vg00/var
 lvextend -L +10G /dev/vg00/var
 resize2fs /dev/vg00/var
 
-# Extend to a pourcentage and resize automaticly whatever FS type.
+# Extend to a pourcentage and resize automaticly whatever is the FS type.
 lvextend -l +100%FREE /dev/vg00/var -r 
 ```
 
@@ -114,6 +121,36 @@ echo "vm.swappiness = 0" >> /etc/sysctl.conf
 sysctl -p
 ```
 
+* Move data form disk to another:
+```shell
+# #n case of crash, just relaunch pvmove without arguments
+pvmove /dev/emcpowerd1 /dev/emcpowerc1
+
+# Remove PV from a VG
+vgreduce /dev/emcpowerd1 vg01
+
+# Remove all unused PV from VG01
+vgreduce -a vg01
+
+# remove all PV
+pvremove /dev/emcpowerd1
+```
+
+* mount `/var` even if doesn't want:
+```shell
+lvchange -ay --ignorelockingfailure --sysinit vgroot/var   
+```
+
+* Renaming:
+```shell
+# VG rename
+vgrename 
+
+# LV rename
+lvrename
+
+# PV does not need to be rename
+```  
 
 ## LVM on partition VS on Raw Disk 
 Even if in the past I was using partition MS-DOS disklabel or GPT disklabel for PV, I prefer now to use directly LVM on the main block device. 
