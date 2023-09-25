@@ -12,19 +12,22 @@ categories:
 ## Server Side
 
 Install du package samba + (samba-client  pour les cptes + debug + test)
-/etc/samba/smb.conf
-	[home]
-	Workgroup=WORKGROUP (le grp par defaul sur windows)
-	Hosts allow = ...
-	[shared]
-	browseable = yes
+
+* `/etc/samba/smb.conf`
+```ini
+[home]
+Workgroup=WORKGROUP (le grp par defaul sur windows)
+Hosts allow = ...
+[shared]
+browseable = yes
 path = /shared
 valid users = user01, @un_group_au_choix
 writable = yes
-	passdb backend = tdbsam, passwords are stored in the /var/lib/samba/private/passdb.tdb file.
+passdb backend = tdbsam #passwords are stored in the /var/lib/samba/private/passdb.tdb file.
+```
 
-testparm :  Test de la config Samba
-/usr/bin/testparm -s /etc/samba/smb.conf
+`testparm` :  Test de la config Samba
+`/usr/bin/testparm -s /etc/samba/smb.conf`
 
 smbclient -L \192.168.56.102 -U test   :   liste les partages samba dispo
 smbclient //192.168.56.102/sharedrepo -U test  :  connecter a un depot 

@@ -51,6 +51,20 @@ For SATA disks:
 smartctl -s on -d ata /dev/sda
 ```
 
+To get all SMART details of your drive:
+
+For IDE disks:
+
+```shell
+smartctl -a /dev/hda
+```
+
+For SATA disks:
+
+```shell
+smartctl -a -d ata /dev/sda
+```
+
 ## Run S.M.A.R.T. Tests
 
 To run various S.M.A.R.T. tests on your hard drive, you can use the following commands:
@@ -105,21 +119,6 @@ To start the `smartd` daemon:
 
 Remember to remove the `-M test` option from the configuration after testing.
 
-## Other Tips
-
-To get all SMART details of your drive:
-
-For IDE disks:
-
-```shell
-smartctl -a /dev/hda
-```
-
-For SATA disks:
-
-```shell
-smartctl -a -d ata /dev/sda
-```
 
 These commands will provide comprehensive information about your drive's SMART attributes.
 

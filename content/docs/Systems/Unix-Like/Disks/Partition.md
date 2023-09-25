@@ -71,8 +71,6 @@ sudo sh -c 'for x in /sys/class/scsi_disk/*; do echo "1" > $x/device/rescan; don
 sudo sh -c 'for BUS in /sys/class/scsi_host/host*/scan; do  echo "- - -" >  ${BUS} ; done '
 ```
 
-
-
 ## ⚠️ Cleanup and erase disks ⚠️
 
 Here you wipe staff, do not expect to get it back ! 
@@ -101,8 +99,6 @@ Dban Autonuke 💣 – this also work when it comes to erase all disks...
 	https://sourceforge.net/projects/dban/files/dban/
 	dban-1.0.7  => Previous Version for HP ilo2 with Array cciss 
 	dban-2.3.0  => Recent Version 
-
-
 
 ## Partitioning
 

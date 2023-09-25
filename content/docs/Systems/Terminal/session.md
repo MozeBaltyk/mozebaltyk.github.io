@@ -20,20 +20,21 @@ Usefull to keep a track or document and share what have been done.
 
 For RHEL - something like Tlog exists and can be configure and centralised with Rsyslog.
 
+## Terminal 
 
-## Definition des Alias 
+`/etc/DIR_COLORS.xterm` define terminal colors
+`dircolors` change colors in the `ls` output
 
+Define terminal:
 ```bash
-# define an alias
-alias  ll=`ls -lrt`;  
+# Activate vi
+set -o vi
 
-# cumule command
-alias  mon_script=`cd /le/repertoire/de/mon/script; ./mon_script;  cd -`; 
+# Desactive vi
+set +o vi           
 
-alias                  # List all aliases ongoing
-type <alias_name>      # give some info on alias
-alias <alias_name>     # give content of an alias
-unalias <alias_name>   # delete an alias
+# Activate emacs
+set -o emacs 
 ```
 
 ## Communicate with other sessions
@@ -62,53 +63,56 @@ uuencode test.txt test.txt | mailx -s "test" toto@example.com                   
 uuencode test.txt test.txt; mailx -a test.txt -s "test" toto@example.com < /dev/null    # mail with attach file (mailx < 12.x)
 ```
 
-
 ## TTY / STTY
- 
-## Set your stty (for raccourci clavier)  
-/!\ definir le stty => surtout quand on est en Ksh ou rien n'est mappe .
+  
+when you are in ksh on some old system nothing is define. So you need to map by yourself:
 
-stty -a    : pour lister les stty possible
-stty erase [la touche backspace] [Enter]   : definit la touche Erase
-stty –echo : tous ce que tu tapes, n'est plus visible dans le terminal
-stty echo : remet la visibilite dans le terminal
+```bash
+# list all stty possible
+stty -a    
+
+# make Backspace touch erase 
+stty erase [la touche backspace] [Enter]   
+
+# everything what you type is not visible
+stty –echo
+
+# get the visibilty back
+stty echo 
+```
 
 ## Les Profiles 
-	Ø profile https://doc.ubuntu-fr.org/variables_d_environnement
 	
-/etc/profile  :  Script de demarrage commun a tous les utilisateurs
-~/.profile  : Fichier profile prope a l'utilisateur (il est execute si le .bash_profile n'existe pas)
-/etc/bash.bashrc  ou  ~/.bashrc. : interactif non-login Shells. ( si déjà connecté et ouvres un nouveau terminal ou tapes la cmd "bash")
-/etc/.bash_profile ou ~/.bash_profile : executé lors d'un login au Shell ( par console ou ssh, exec premier fois )
+`/etc/profile`     - common to all users.      
+`~/.profile`       - user´s profile execute if .bash_profile does not exist.      
+`/etc/bash.bashrc` or `~/.bashrc ` - interactif non-login Shells. ( when terminal is open or `bash` cmd).     
+`~/.bash_profile`  - executed when login to Shell.      
+`TMOUT=300`        - session TimeOut.    
+`sources .bashrc`  - Reload `.bashrc`.    
 
-Pour que le .bashrc se lance tout le temps ( à mettre dans le .bash_profile ):
-	if [ -f ~/.bashrc ]; then
+when you want `.bashrc` to trigger all the time, to put in `.bash_profile`:
+```bash
+if [ -f ~/.bashrc ]; then
    source ~/.bashrc
 fi
+```
 
-Variables dans Profiles
-TMOUT=300 :   variable du Time Out de la Session
+## Definition des Alias 
 
-sources .bashrc  :  Rafraichir un Bash avec son .bashrc
+```bash
+# define an alias
+alias  ll=`ls -lrt`;  
 
+# cumule command
+alias  mon_script=`cd /le/repertoire/de/mon/script; ./mon_script;  cd -`; 
 
-## Parametrage du Terminal 
-printenv               :  Voir toutes les variables d'environnement   
-setenv    VAR=valeur   :  definir une variable et la passer dans les variables d'environnement.    
-export PS1="\[\033[36m\]\u\[\033[0m\]@\[\033[36m\]\h:\[\033[0m\]\$PWD#>"  
-(prompt utilisateur sympa,  a mettre dans   ~/.bash_profile   ou   ~/.bashrc  )
+alias                  # List all aliases ongoing
+type <alias_name>      # give some info on alias
+alias <alias_name>     # give content of an alias
+unalias <alias_name>   # delete an alias
+```
 
-set -o vi           : active    
-set +o vi           : desactive 
-set -o <vi|emacs>   : definir le mode vi ou emacs pour le terminal 
-(Au début d'une ligne on est en mode insertion, pour passer en mode commande il faut appuyer sur la touche échap.)
-
- 
-Couleurs Terminaux des repertoires et fichiers 
-Modifier les couleurs des répertoires  =>  /etc/DIR_COLORS.xterm  (Linux)
- => dircolors    :    commande pour modifer les couleurs du "ls" 
- => voir dans l'Onglet : SHELL > [Bash] les prompts
-
+---
 
 ## Sources
 
