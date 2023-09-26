@@ -11,7 +11,7 @@ categories:
 * List 
 
 ```bash
-
+ansible-galaxy collection list
 ```
 
 * Install an Ansible Collection 
@@ -35,5 +35,13 @@ ansible-galaxy collection install -r ./requirement.yaml
 * Requirement file to install Ansible Collection
 
 ```yaml
+collections:
+- name: kubernetes.core
 
+- source: https://gitlab.example.com/super-group/collector.git
+  type: git
+  version: "v1.0.6"
+
+- source: https://gitlab.ipolicedev.int/another-projects/plates.git
+  type: git
 ```
