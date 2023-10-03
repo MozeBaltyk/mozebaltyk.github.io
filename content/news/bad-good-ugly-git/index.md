@@ -68,8 +68,6 @@ git config --global user.name
 git config --global user.email
 ```
 
-
-
 ## Git with a Github projects
 
 As you probably know, there is three method to connect to a github project with git, SSH, HTTPS and gh. 
@@ -162,6 +160,33 @@ gh repo clone git+https://github.com/MozeBaltyk/MozeBaltyk.git
 ```
 
 The logic is exactly the same with glab-cli, the CLI version for GitLab. 
+
+## Now AnsiColt
+
+Here come the time to improve a bit [AnsiColt](https://github.com/MozeBaltyk/AnsiColt) with what I have learnt. So when I start or clone a project either in Gitlab or Github, I make sure that `git config -local user.name` and `git config -local user.email` are confgiure for the project. To do so, I need to get the info from somewhere... 
+
+* for Github  `~/.config/gh/hosts.yml`:
+```yaml
+github.com:
+  oauth_token: gho_******************
+  user: MozeBaltyk
+  git_protocol: ssh
+  email: john@example.com
+``` 
+
+* for Gitlab have one config file `~/.config/glab-cli/config.yml`:
+```yaml
+hosts:
+    gitlab.example.com:
+        token: **************
+        api_host: gitlab.example.com
+        git_protocol: https
+        api_protocol: https
+        user: john
+        email: john.doe@gg.com
+``` 
+
+By default email value does not exist on those config files. so If I do not find it, I will add it. Doing this, allow me to get the settings for all future repos cloning or creations.   
 
 
 ## Bonus point 

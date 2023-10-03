@@ -101,8 +101,36 @@ seconds ago Up 4 seconds 0.0.0.0:5000->5000/tcp registry
 docker tag myhaproxy 192.168.1.11:5000/myhaproxy
 docker images
 docker push 192.168.1.11:5000/myhaproxy
+```
 
-# Check
+* Get catalog and tags from a Registry
+
+```bash
+# Check individual 
 curl 192.168.1.11:5000/v2/_catalog
 curl 192.168.1.11:5000/v2/myhaproxy/tags/list
+
+# Get a list of all images:tags 
+for i in $(curl -sk https://registry.example.com/v2/_catalog | jq -r '.repositories[]'); 
+do 
+  for tag in $(curl -sk https://registry.example.com/v2/${i}/tags/list | jq -r '.tags[]'); 
+    do echo ${i}/${tag}; 
+  done; 
+done
+
+# Podman/Docker pull
+for i in $(curl -sk https://registry.example.com/v2/_catalog | jq -r '.repositories[]'); 
+do 
+  for tag in $(curl -sk https://registry.example.com/v2/${i}/tags/list | jq -r '.tags[]'); 
+    do podman pull --tls-verify=false registry.example.com/${i}:${tag};
+  done; 
+done
+
+# Test if manifest is valid
+for i in $(curl -sk https://registry.example.com/v2/_catalog | jq -r '.repositories[]'); 
+do 
+  for tag in $(curl -sk https://registry.example.com/v2/${i}/tags/list | jq -r '.tags[]'); 
+    do curl -sk https://registry.example.com/v2/${i}/manifests/${tag};
+  done; 
+done
 ```

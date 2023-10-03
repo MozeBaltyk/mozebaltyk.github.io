@@ -45,6 +45,16 @@ Here a list of what justfile can do natively but not makefile:
 
 * Define your work dir `just --justfile ~/.user.justfile --working-directory ~` (I am not convince that you can do it with Makefile) 
 
+* Precheck of the code. 
+
+```bash 
+bash: line 1: repository: unbound variable
+error: Backtick failed with exit code 127
+  |
+4 | REPOSITORY := `if [ -n $repository ]; then echo "$repository"; else echo "github.com"; fi`
+  |               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+```
+
 * Automaticly document the recipes if a commented line is set just before the recipe, so when you execute `just --list`, you get: 
 
 ```text
@@ -198,6 +208,7 @@ show-help:
 
 As you can see, the list is long and you end up with a beautifull tool which allow you to organize your tasks linked between them, autodocumented, and quite safe.
 It tries to avoid the complexity and idiosyncrasie of `Makefile`. In some way, `Makefile` code is nested with your shell and diving into an existing long script can become tedious. 
+By the way, one project I did with justfile, [AnsiColt](https://github.com/MozeBaltyk/AnsiColt).
 
 ## source
 
