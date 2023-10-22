@@ -4,7 +4,7 @@ title: 🚩 Files
 navWeight: 530 # Upper weight gets higher precedence, optional.
 series:
   - Unix-Like
-  - Disk
+  - Investigate
 categories:
   - Systems
 ---

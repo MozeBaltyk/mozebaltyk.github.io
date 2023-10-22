@@ -25,3 +25,9 @@ When it came about Ansible collection and Variables...
 
 <!--more-->
 
+
+* Token for a private project in Galaxy 
+ansible-galaxy role install --token $GITLAB_TOKEN -r requirements.yml --force
+
+* Gitlab Token 
+git clone https://gitlab-ci-token:${CI_JOB_TOKEN}@gitlab.example.com/<namespace>/<project>
