@@ -1,5 +1,5 @@
 # Sample workflow for building and deploying a Hugo site to GitHub Pages
-name: "Hugo-CI-CD"
+name: "Deploy Github Pages"
 
 on:
   workflow_dispatch:
