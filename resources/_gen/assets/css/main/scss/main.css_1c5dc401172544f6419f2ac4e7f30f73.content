@@ -14625,7 +14625,17 @@ textarea.form-control-lg {
 }
 
 html {
+  background: url("/images/bg-light.jpg") no-repeat center center fixed;
+  background-size: cover;
   scroll-padding-top: 64px;
+}
+
+html body {
+  background-color: unset;
+}
+
+html[data-bs-theme='dark'] {
+  background-image: url("/images/bg-dark.jpg");
 }
 
 a {

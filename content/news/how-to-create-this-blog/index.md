@@ -22,7 +22,7 @@ images: [./how-to-create-this-blog/carousel.webp]
 ---
 
 
-When prospecting about creating my Blog; I went throught the normal questions that everyone meet. Why would I loose precious hours of my life doing something that anyway nobody is gonna to read. Here are my thoughts about this non-sens and what I learnt...
+When prospecting about creating my Blog, I went throught the normal questions that probably everyone meet. Why would I loose precious hours of my life doing something that anyway nobody is gonna to read. Here are my thoughts about this non-sens and what I learnt...
 
 <!--more-->
 
@@ -82,7 +82,7 @@ First, note that's everything what I will describe below have to match with *Hug
 
 ### First the Prerequisites
 
-As prerequisites, we need Nodejs, npm, GO, dart SASS, and Hugo extended version as describe [here](https://hbs.razonyang.com/v1/en/docs/getting-started/prerequisites/#build-tools :    
+As prerequisites, we need Nodejs, npm, GO, dart SASS, and Hugo extended version as describe [here](https://hbs.razonyang.com/v1/en/docs/getting-started/prerequisites/#build-tools):    
 
 ```bash 
 # Install nodejs and npm 
