@@ -15803,18 +15803,22 @@ table {
   }
 }
 
+.top-app-bar .search-bar .search-input {
+  padding-left: 2.25rem;
+}
+
 @media (min-width: 1400px) {
-  .top-app-bar .search-bar {
+  .top-app-bar .search-bar .search-input {
     width: 180px;
+    transition: 0.5s width ease-in-out;
+  }
+  .top-app-bar .search-bar .search-input:focus {
+    width: 240px;
   }
 }
 
-.top-app-bar .search-bar .search-input {
-  padding-left: 2rem;
-}
-
 .top-app-bar .search-bar .search-shortcut {
-  margin-top: 0.35rem;
+  margin-top: 0.575rem;
 }
 
 .top-app-bar .dropdown-item-icon {

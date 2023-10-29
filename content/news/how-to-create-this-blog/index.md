@@ -71,7 +71,7 @@ Looks trivial, but a theme well documented make the difference. Some of the them
  
 So I went through *[Hugo-theme-bootstrap](https://github.com/razonyang/hugo-theme-bootstrap)* which look quite classical but pretty efficient, plenty of widgets which make the blog quite confortable, easy to use and to developp and not too flat. 
 
-Here a quick over view of what this theme have to offer us: 
+Here a quick over view of what this theme have to offer: 
 
 ![Center](/HBS-list-feat.PNG#center)
 
@@ -82,7 +82,9 @@ First, note that's everything what I will describe below have to match with *Hug
 
 ### First the Prerequisites
 
-As prerequisites, we need Nodejs, npm, GO, dart SASS, and Hugo extended version as describe [here](https://hbs.razonyang.com/v1/en/docs/getting-started/prerequisites/#build-tools):    
+As prerequisites, we need Nodejs, npm, GO, dart SASS, and Hugo extended version as describe [here](https://hbs.razonyang.com/v1/en/docs/getting-started/prerequisites/#build-tools)    
+
+This was done on an Ubuntu WSL: 
 
 ```bash 
 # Install nodejs and npm 
@@ -397,7 +399,7 @@ $ git checkout [version]
 $ cd ../../
 $ hugo mod npm pack
 $ npm update
-$ git add themes/hugo-theme-bootstrap package.hugo.json package.json package-lock.json
+$ git add themes/hugo-theme-bootstrap package.hugo.json package.json package-lock.json node_modules
 $ git commit -m 'Bump theme to [version]'
 ```
 
