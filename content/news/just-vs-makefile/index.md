@@ -3,7 +3,7 @@
 title: 👷👮 Makefile VS Justfile
 date: 2023-08-21T03:48:10+02:00
 featured: true
-draft: true
+draft: false
 comment: true
 toc: true
 reward: true
@@ -45,7 +45,7 @@ Here a list of what justfile can do natively but not makefile:
 
 * Define your work dir `just --justfile ~/.user.justfile --working-directory ~` (I am not convince that you can do it with Makefile) 
 
-* Precheck of the code. 
+* Code Precheck is highly appreciate. 
 
 ```bash 
 bash: line 1: repository: unbound variable

@@ -1,7 +1,7 @@
 ---
 type: news 
 title: 🎉 The Beauty of WSL
-date: 2023-08-22T03:48:10+02:00
+date: 2023-10-29T03:48:10+02:00
 featured: true
 draft: true
 comment: true

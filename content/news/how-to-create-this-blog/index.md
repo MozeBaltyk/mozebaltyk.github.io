@@ -1,7 +1,7 @@
 ---
 type: news
 title: 🌌 How to Create this Blog
-date: 2023-09-06T02:59:46+02:00
+date: 2023-10-29T02:59:46+02:00
 featured: true
 draft: false
 comment: true
@@ -342,14 +342,14 @@ jobs:
 To update the theme
 
 ```bash
-$ cd themes/hugo-theme-bootstrap
-$ git fetch
-$ git checkout [version]
-$ cd ../../
-$ hugo mod npm pack
-$ npm update
-$ git add themes/hugo-theme-bootstrap package.hugo.json package.json package-lock.json node_modules
-$ git commit -m 'Bump theme to [version]'
+cd themes/hugo-theme-bootstrap
+git fetch
+git checkout [version]
+cd ../../
+hugo mod npm pack
+npm update
+git add themes/hugo-theme-bootstrap package.hugo.json package.json package-lock.json node_modules
+git commit -m 'Bump theme to [version]'
 ```
 
 ## 💡 Bonus point

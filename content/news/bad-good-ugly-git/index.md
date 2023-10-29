@@ -3,7 +3,7 @@ type: news
 title: 👺 The Bad, the Good and the Ugly Git
 date: 2023-08-21T03:48:10+02:00
 featured: true
-draft: true
+draft: false
 comment: true
 toc: true
 reward: true
@@ -28,11 +28,8 @@ When it come about IT, git is impossible to be ignore... even for an infrastruct
 ## The bad Surprise
 
 Few days ago, I was wondering why my commits are not counted in my Github Activity Dashboard after a good day of pushing code...
-
 After a quick investigation, I notice that in my project directory `git config user.name` and `git config user.email` are not set.
-
 I go in Github to checks my last commit, actually it's right my push was done with the `git config --global user.name`.
-
 Not a big deal, but this reveal my name when I would rather appreciate to stay anonymous (just a personnal choice).
 
 
@@ -146,7 +143,7 @@ Host github.com
 The top is to use `gh` which is the github-cli tools for handling github projects. So it's noticable that github prefers SSH protocol over HTTPS.
 
 ```bash
-# Cloning with GH will set SSH as default protocol:
+# Cloning with GH  (usually SSH as default protocol in your ~/.config/gh/config.yml):
 gh repo clone MozeBaltyk/MozeBaltyk
 
 # If you target a specific Github:
@@ -155,7 +152,7 @@ GH_HOST=github.example.com gh repo clone MozeBaltyk/MozeBaltyk
 # gh clone https is also possible:
 gh repo clone https://github.com/MozeBaltyk/mozebaltyk.github.io.git
 
-# this one in https when you target a specific Github repo:
+#Same as above in https
 gh repo clone git+https://github.com/MozeBaltyk/MozeBaltyk.git
 ```
 
