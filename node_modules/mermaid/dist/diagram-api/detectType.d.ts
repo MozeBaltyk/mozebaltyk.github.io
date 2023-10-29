@@ -1,5 +1,6 @@
-import { MermaidConfig } from '../config.type.js';
-import type { DiagramDetector, DiagramLoader, ExternalDiagramDefinition } from './types.js';
+import type { MermaidConfig } from '../config.type.js';
+import type { DetectorRecord, DiagramDetector, DiagramLoader, ExternalDiagramDefinition } from './types.js';
+export declare const detectors: Record<string, DetectorRecord>;
 /**
  * Detects the type of the graph text.
  *
@@ -37,6 +38,5 @@ export declare const detectType: (text: string, config?: MermaidConfig) => strin
  * @param diagrams - Diagrams to lazy load, and their detectors, in order of importance.
  */
 export declare const registerLazyLoadedDiagrams: (...diagrams: ExternalDiagramDefinition[]) => void;
-export declare const loadRegisteredDiagrams: () => Promise<void>;
 export declare const addDetector: (key: string, detector: DiagramDetector, loader?: DiagramLoader) => void;
 export declare const getDiagramLoader: (key: string) => DiagramLoader | undefined;

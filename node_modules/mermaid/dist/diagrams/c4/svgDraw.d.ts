@@ -1,4 +1,4 @@
-export function drawRect(elem: any, rectData: any): any;
+export function drawRect(elem: any, rectData: any): import("../common/commonTypes.js").D3RectElement;
 export function drawImage(elem: any, width: any, height: any, x: any, y: any, link: any): void;
 export function drawRels(elem: any, rels: any, conf: any): void;
 export function drawC4Shape(elem: any, c4Shape: any, conf: any): any;

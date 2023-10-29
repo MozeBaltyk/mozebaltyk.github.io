@@ -1,5 +1,5 @@
 import * as graphlib from 'dagre-d3-es/src/graphlib/index.js';
-import { ClassRelation, ClassNote, ClassMap, NamespaceMap } from './classTypes.js';
+import type { ClassRelation, ClassNote, ClassMap, NamespaceMap } from './classTypes.js';
 /**
  * Function that adds the vertices found during parsing to the graph to be rendered.
  *
@@ -42,7 +42,7 @@ export declare const addRelations: (relations: ClassRelation[], g: graphlib.Grap
  */
 export declare const setConf: (cnf: any) => void;
 /**
- * Draws a flowchart in the tag with id: id based on the graph definition in text.
+ * Draws a class diagram in the tag with id: id based on the definition in text.
  *
  * @param text -
  * @param id -
