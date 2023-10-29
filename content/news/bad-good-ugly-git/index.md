@@ -1,7 +1,7 @@
 ---
 type: news 
 title: 👺 The Bad, the Good and the Ugly Git
-date: 2023-08-21T03:48:10+02:00
+date: 2023-10-28T03:48:10+02:00
 featured: true
 draft: false
 comment: true
@@ -21,7 +21,7 @@ authors:
 images: [./bad-good-ugly-git/carousel.webp]
 ---
 
-When it come about IT, git is impossible to be ignore... even for an infrastructure guys!
+When it come about IT, git cannot to be ignore... even for an infrastructure guys!
 
 <!--more-->
 

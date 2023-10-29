@@ -1,7 +1,7 @@
 ---
 type: news 
 title: 🎉 The Beauty of WSL
-date: 2023-10-29T03:48:10+02:00
+date: 2023-08-08T03:48:10+02:00
 featured: true
 draft: false
 comment: true
@@ -21,6 +21,9 @@ authors:
 images: [./wsl-beauty/carousel.webp]
 ---
 
+WSL stand for *Windows Subsystem Linux*. It allow us to get the best of both world...
+
+<!--more-->
 
 ## Get Started 
 

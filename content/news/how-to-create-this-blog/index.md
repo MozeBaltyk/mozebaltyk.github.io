@@ -339,7 +339,16 @@ jobs:
 
 ## Update it.
 
-To update the theme
+Set your `.gitignore`:
+
+```text
+.hugo_build.lock
+hugo_stats.json
+node_modules/
+resources/
+```
+
+Then update the theme
 
 ```bash
 cd themes/hugo-theme-bootstrap
@@ -348,7 +357,7 @@ git checkout [version]
 cd ../../
 hugo mod npm pack
 npm update
-git add themes/hugo-theme-bootstrap package.hugo.json package.json package-lock.json node_modules
+git add themes/hugo-theme-bootstrap package.hugo.json package.json package-lock.json
 git commit -m 'Bump theme to [version]'
 ```
 

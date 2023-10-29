@@ -1,7 +1,7 @@
 ---
 # type: docs 
 title: 👷👮 Makefile VS Justfile
-date: 2023-08-21T03:48:10+02:00
+date: 2023-10-27T03:48:10+02:00
 featured: true
 draft: false
 comment: true

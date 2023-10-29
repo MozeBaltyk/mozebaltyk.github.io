@@ -3,7 +3,7 @@ type: news
 title: 🍛 Discovering Orientdb
 date: 2023-08-22T03:48:10+02:00
 featured: true
-draft: true
+draft: false
 comment: true
 toc: true
 reward: true
@@ -21,12 +21,21 @@ authors:
 images: [./orientdb/carousel.webp]
 ---
 
+OrientDB get into the GraphDB category. It's a lightweight DB writen in java which can be embedded in applications. 
+One project which have a strong dependencies on Orientdb is the Nexus Repository which carry an embedded OrientDB.
+
+<!--more-->
 
 ## A bit of History 
 
-One project which have a strong dependencies on Orientdb is the Nexus Repository as embended. Both DB bring GraphDB, key/Values and Document store but ArcadeDB have much more features and understand much more languages. 
+OrientDB was created in 2010 by Luca Garulli, a pionneer in the multi-model databases. Nonetheless, even if OrientDB is a recognized opensource project, since the acquisition by SAP and the leaving of the foundator in 2021, OrientDB looks hardly supproted. The foundator forked the project to ArkadeDB. 
 
+For ArcadeDB the vision stay clearly opensource and it's visible that it's much more dynamic even though the project is only two years old. 
 
+> All things open source moves faster compared to the proprietary world.
+>
+> -- <cite>Luca Garulli</cite>
+> -- [Blog](https://blog.arcadedb.com/welcome-to-arcadedb)
 
 ## OrientDB Install 
 
@@ -62,23 +71,23 @@ podman exec -it orientdb /bin/sh
 
 Fine Tuning: 
 
-* Xmx + diskCache.buffersize < Memory 
+* `Xmx + diskCache.buffersize < Memory` 
 
-* diskCache.buffersize  > Xmx 
-     usually better assigning small heap and large disk cache buffer (off-heap memory)  
-     => source: https://orientdb.com/docs/last/tuning/Performance-Tuning.html 
+* `diskCache.buffersize > Xmx` Usually better assigning small heap and large disk cache buffer (off-heap memory) 
+  [Source](https://orientdb.com/docs/last/tuning/Performance-Tuning.html)
 
-* If the sum of maximum heap and disk cache buffer is too high, it could cause the OS to swap with huge slowdown. (you get back to the point 1/) 
+* If the sum of maximum heap and disk cache buffer is too high, it could cause the OS to swap with huge slowdown. (Get back to the first point) 
 
-* Setting MaxDirectMemorySize to a very high value should not concern you as it does not mean that OrientDB will consume all 512GB of memory. 
-  The size of direct memory consumed by OrientDB is limited by the size of the disk cache (variable storage.diskCache.bufferSize).
-  Source: https://orientdb.com/docs/last/internals/Embedded-Server.html?highlight=MaxDirectMemorySize#requirements
+* Setting *MaxDirectMemorySize* to a very high value should not concern you as it does not mean that OrientDB will consume all 512GB of memory. 
+  The size of direct memory consumed by OrientDB is limited by the size of the disk cache (variable storage.diskCache.bufferSize). 
+  [Source](https://orientdb.com/docs/last/internals/Embedded-Server.html?highlight=MaxDirectMemorySize#requirements)
 
-* xms = xmx 
+* `xms = xmx` Generally a good pratice. 
 
-* -Dmemory.useUnsafe=false ? 
+* `-Dmemory.useUnsafe=false` This one, I do not know what it's for, but does not inspire me confidence... so should we pass it to `true` ?  
 
-So for a server with 24GB memory, this should give a config like this in your ./bin/server.sh:
+
+To resume, for a server with 24GB memory, this should give a config like this in your `${ORIENTDB_HOME}/bin/server.sh` like the one below:
 
 ```bash
 ORIENTDB_OPTS_MEMORY="-Xms8G -Xmx8G -XX:MaxDirectMemorySize=512G -Dstorage.diskCache.bufferSize=12400"
@@ -86,7 +95,9 @@ ORIENTDB_OPTS_MEMORY="-Xms8G -Xmx8G -XX:MaxDirectMemorySize=512G -Dstorage.diskC
 
 ## Monitoring
 
-* Push agent jar corresponding to your orientdb version inside `${ORIENTDB_HOME}/plugins` directory
+After config below, you should be able to see metrics in your dashboard in the *server management* part. 
+
+* Push agent.jar corresponding to your orientdb version inside `${ORIENTDB_HOME}/plugins` directory
 
 * inside `${ORIENTDB_HOME}/bin/server.sh`
 
@@ -136,7 +147,5 @@ fi
 * openfiles on systems 
 
 ```bash
-lsof -u svc_orientdb | wc -l
-
-for i in $(ps -ef | grep java | grep -v grep | awk '{print $2}'); do ls /proc/${i}/fd/ | wc -l; done
+lsof -u orientdb | wc -l
 ```
