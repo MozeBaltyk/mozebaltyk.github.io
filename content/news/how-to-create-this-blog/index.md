@@ -288,31 +288,15 @@ Taxonomies are classifications of logical relationships between content. Underst
 
 ## Publish it
 
-The deployement of this blog is done by Github Wokflow with will create an artificat to publish it with Github Pages. Here, you can adopt several strategy.  
+To deploy the blog, I simply use Github Wokflow which build and publish it with Github Pages. Here, you can adopt several strategy for your own deployment.  
 
-I started with everytime that I was pushing, it deploy. It gave me no time after saving to read again my articles. Then I put it on `workflow_dispatch`, which means only when I manually trigger the workflow to build, but I think that the proper way to do, is to developp on a branch and deploy only when the branch is merge, trigger the deployment and publish it. 
+I started with everytime that I was pushing the code, it deploy. It gave me no time after saving to read again my articles. Then I put it on `workflow_dispatch`, so I manually trigger the workflow to publish it. But the proper way to do, I just push on branch call `gh-pages` then merge it with the main so it trigger the publication only when it arrive on the main branch.   
 
-Here is my current workflow which currently work on manual triggering:
+I will not put all the workflow code, his you can get it [here](https://github.com/MozeBaltyk/mozebaltyk.github.io/tree/main/.github/workflows).    
+
+Here just a general idea abot the two jobs for building and deploying:
 
 ```yaml
-name: Deploy
-on:
-  workflow_dispatch:
-
-permissions:
-  contents: read
-  pages: write
-  id-token: write
-
-concurrency:
-  group: "pages"
-  cancel-in-progress: false
-
-# Default to bash
-defaults:
-  run:
-    shell: bash
-
 jobs:
   # Build job
   build:
@@ -321,58 +305,24 @@ jobs:
       HUGO_VERSION: 0.117.0
     steps:
       - name: Install Hugo CLI
-        run: |
-          wget -O ${{ runner.temp }}/hugo.deb https://github.com/gohugoio/hugo/releases/download/v${HUGO_VERSION}/hugo_extended_${HUGO_VERSION}_linux-amd64.deb \
-          && sudo dpkg -i ${{ runner.temp }}/hugo.deb
 
       - name: Checkout 🛎️
-        uses: actions/checkout@v3
-        with:
-          submodules: recursive
 
       - name: Setup Node
-        uses: actions/setup-node@v3
-        with:
-          node-version: '16'
-  
+
       - name: Cache dependencies
-        uses: actions/cache@v2
-        with:
-          path: ~/.npm
-          key: ${{ runner.os }}-node-${{ hashFiles('**/package-lock.json') }}
-          restore-keys: |
-                        ${{ runner.os }}-node-
   
       - name: Install dependencies
-        run: npm install
 
       - name: Setup Hugo
-        uses: peaceiris/actions-hugo@v2
-        with:
-          hugo-version: 'latest'
-          extended: true
 
       - name: Setup Pages
-        id: pages
-        uses: actions/configure-pages@v3
 
       - name: Install Node.js dependencies
-        run: "[[ -f package-lock.json || -f npm-shrinkwrap.json ]] && npm ci || true"
 
       - name: Build with Hugo
-        env:
-          # For maximum backward compatibility with Hugo modules
-          HUGO_ENVIRONMENT: production
-          HUGO_ENV: production
-        run: |
-          hugo \
-            --minify --gc --enableGitInfo \
-            --baseURL "${{ steps.pages.outputs.base_url }}/"
 
       - name: Upload artifact
-        uses: actions/upload-pages-artifact@v2
-        with:
-          path: ./public
 
   # Deployment job
   deploy:
@@ -385,7 +335,6 @@ jobs:
       - name: Deploy to GitHub Pages 🚀
         id: deployment
         uses: actions/deploy-pages@v2
-
 ```
 
 ## Update it.
