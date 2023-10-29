@@ -126,6 +126,15 @@ error: Backtick failed with exit code 127
   |
 4 | REPOSITORY := `if [ -n $repository ]; then echo "$repository"; else echo "github.com"; fi`
   |               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+# Get the same error in case the env var is not defined, but still better than above condition.
+REPOSITORY := env_var('REPOSITORY')
+```
+
+Ok, so what I wrote above is not true anymore. This was before, I found [this](https://just.systems/man/en/chapter_37.html):
+
+```bash
+REPOSITORY    :=  env_var_or_default('REPOSITORY', "github.com") 
 ```
 
 ### Variables in backtick
@@ -217,3 +226,5 @@ By the way, one project I did with justfile, [AnsiColt](https://github.com/MozeB
 [The Offical doc](https://just.systems/man/en/)
 
 [Github Casey/just](https://github.com/casey/just)
+
+[Create some spell](https://dany98.hashnode.dev/just-harness-command-line-spells)
