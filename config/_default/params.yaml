@@ -56,7 +56,7 @@ googleAdsense:
 
 # readingTime: false # Whether to display the reading time.
 # postDate: false # Whether to display the post date in the post meta section.
-
+carouselPostCount: 6
 # featuredPostCount: 10 # The number of featured posts shown in sidebar. Turn off by setting it to false.
 # recentPostCount: 10 # The number of recent posts shown in sidebar. Turn off by setting it to false.
 # relatedPostCount: 10 # The number of related posts. Turn off by setting it to false.
