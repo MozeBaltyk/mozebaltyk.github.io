@@ -107,6 +107,27 @@ if [ -z "$JAVA_OPTS_SCRIPT" ] ; then
 fi
 ```
 
+So you can get in ${ORIENTDB_HOME}/logs/orient-server.log.0 :
+
+```log
+*******************************************************************************************************************************************
+PROFILER AUTO DUMP 'full' OUTPUT (to disabled it set 'profiler.autoDump.interval' = 0):
+OrientDB Memory profiler: HEAP=674.70MB of 7.67GB - DISKCACHE (1 dbs)=2.88MB of 12.11GB - OS=5.43GB of 23.28GB - FS=48.91GB of 49.98GB
+*******************************************************************************************************************************************
+```
+
+* Activate JMX inside `${ORIENTDB_HOME}/config/orientdb-server-config.xml` make the metrics available in the dashboard.
+
+```xml
+        <!-- JMX SERVER, TO TURN ON SET THE 'ENABLED' PARAMETER TO 'true' -->
+        <handler class="com.orientechnologies.orient.server.handler.OJMXPlugin">
+            <parameters>
+                <parameter name="enabled" value="true"/>
+                <parameter name="profilerManaged" value="true"/>
+            </parameters>
+        </handler>
+```
+
 * inside `${ORIENTDB_HOME}/config/profiler.json`
 
 ```json
@@ -127,12 +148,12 @@ fi
       "domain": "Test"
     },
     "console": {
-      "enabled": false,
-      "interval": 5000
+      "enabled": true,
+      "interval": 60
     },
     "csv": {
-      "enabled": false,
-      "directory": "/tmp/orientdb-server-metrics.csv",
+      "enabled": true,
+      "directory": "/tmp/metrics",
       "interval": 5000
     },
     "prometheus": {
@@ -144,8 +165,11 @@ fi
 
 ## Other resources consumptions 
 
-* openfiles on systems 
+* openfiles on systems: `lsof -u orientdb | wc -l`
 
-```bash
-lsof -u orientdb | wc -l
-```
+* Memory usage: `top -o %MEM -c`
+
+
+## Securing 
+
+https://www.digitalocean.com/community/tutorials/how-to-secure-your-orientdb-database-on-ubuntu-16-04
