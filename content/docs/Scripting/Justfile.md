@@ -27,6 +27,17 @@ publish:
   rm -rf {{tarball}} {{tardir}}
 ```
 
+This one can be really usefull to define a default value which can be redefine with env variable:
+
+```bash
+# in terminal:
+export REPOSITORY=gitlab.com
+
+# in justfile 
+REPOSITORY    :=  env_var_or_default('REPOSITORY', "github.com") 
+```
+
+
 
 ## Sources
 
