@@ -58,7 +58,7 @@ Here some shortcut in *Windows Terminal* but not only 😉 :
   - `ctrl shift t`     :  terminal 
   - `ctrl shift n`     :  new windows
   - `ctrl alt 1 2 3`   :  changer de fenetre 
-  - `Windows + v`      :  see you paste buffer 
+  - `Windows + v`      :  see the paste buffer 
   - `Alt Shift`   +    :  split vertical 
   - `Alt shit`    -    :  split horizontal
   - `Alt arrow`        :  to change panel
