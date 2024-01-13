@@ -14697,6 +14697,7 @@ a {
   height: 100%;
   color: var(--hbs-secondary);
   font-weight: bold;
+  text-orientation: sideways;
   text-transform: uppercase;
 }
 

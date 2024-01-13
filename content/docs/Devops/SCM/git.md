@@ -153,3 +153,34 @@ Set some usefull aliases inside your `~/.gitconfig`:
     # enable colours for diff, log, etc.
     ui = true
 ```
+
+## Git submodules
+
+```bash
+# Initialisation a new project (here an ansible collection)
+git clone https://<username>:<token>@gitlab.example.com/group/namespace.general.git
+ansible-galaxy collection init namespace.general
+git add -A &&  git commit -m "Initialisation" && git push 
+
+# Add submodules 
+git submodule add https://<username>:<token>@gitlab.example.com/group/namespace.another.git
+git submodule add https://<username>:<token>@gitlab.example.com/group/namespace.second.git
+git add -A &&  git commit -m "Initialisation" && git push 
+
+# Update submodules
+cd namespace/general
+git pull --recurse-submodules     #Fetch and show if there were changes from submodule
+git submodule update --remote
+git add -A
+git commit -am "message"
+git push
+
+# Update to last tag
+cd namespace/general/my/submodule
+git fetch && git tag | tail -1
+git checkout $(git tag | tail -1) 
+cd ../..
+git add my/submodule
+git commit -m "update submodules"
+git push
+```
