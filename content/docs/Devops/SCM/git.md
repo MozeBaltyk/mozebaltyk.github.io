@@ -170,7 +170,7 @@ git add -A &&  git commit -m "Initialisation" && git push
 # Update submodules
 cd namespace/general
 git pull --recurse-submodules     #Fetch and show if there were changes from submodule
-git submodule update --remote
+git submodule update --remote --merge
 git add -A
 git commit -am "message"
 git push
@@ -183,4 +183,10 @@ cd ../..
 git add my/submodule
 git commit -m "update submodules"
 git push
+
+# Remove a submodule
+git submodule deinit [submodule-path]
+git rm --cached [submodule-path]
+rm -rf .git/modules/test
+git config --remove-section submodule.test
 ```

@@ -11,7 +11,7 @@ categories:
 
 
 
-## Specific to RHEL 
+* Specific to RHEL 
 
 ```bash
 # Create a trust zone for the two interconnect
