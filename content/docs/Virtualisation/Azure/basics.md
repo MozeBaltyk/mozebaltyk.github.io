@@ -14,17 +14,23 @@ categories:
 ```bash
   #On your Azure CLI
   az --version                                     # Version expected 2.1.0 or higher 
+
   az group delete --name kubernetes -y
+
   az group create -n kubernetes -l westeurope
+
   az network vnet create -g kubernetes \
     -n kubernetes-vnet \
     --address-prefix 10.240.0.0/24 \
     --subnet-name kubernetes-subnet
+
   az network nsg create -g kubernetes -n kubernetes-nsg
+
   az network vnet subnet update -g kubernetes \
     -n kubernetes-subnet \
     --vnet-name kubernetes-vnet \
     --network-security-group kubernetes-nsg
+
   az network nsg rule create -g kubernetes \
     -n kubernetes-allow-ssh \
     --access allow \
@@ -36,6 +42,7 @@ categories:
     --source-address-prefix '*' \
     --source-port-range '*' \
     --priority 1000
+
   az network nsg rule create -g kubernetes \
     -n kubernetes-allow-api-server \
     --access allow \
@@ -47,12 +54,15 @@ categories:
     --source-address-prefix '*' \
     --source-port-range '*' \
     --priority 1001
+
   az network nsg rule list -g kubernetes --nsg-name kubernetes-nsg --query "[].{Name:name,  Direction:direction, Priority:priority, Port:destinationPortRange}" -o table
+
   az network lb create -g kubernetes --sku Standard \
     -n kubernetes-lb \
     --backend-pool-name kubernetes-lb-pool \
     --public-ip-address kubernetes-pip \
     --public-ip-address-allocation static
+
   az network public-ip list --query="[?name=='kubernetes-pip'].{ResourceGroup:resourceGroup,   Region:location,Allocation:publicIpAllocationMethod,IP:ipAddress}" -o table
   #For Ubuntu 
   # az vm image list --location westeurope --publisher Canonical --offer UbuntuServer --sku 18.04-LTS --all -o table
@@ -60,8 +70,10 @@ categories:
   # az vm image list --location westeurope --publisher RedHat --offer RHEL  --sku 8 --all -o table
   # => choosen one : 8-lvm-gen2
   WHICHOS="RedHat:RHEL:8-lvm-gen2:8.5.2022032206"
+
   # K8s Controller 
   az vm availability-set create -g kubernetes -n controller-as
+
   for i in 0 1 2; do
 	  echo "[Controller ${i}] Creating public IP..."
 	  az network public-ip create -n controller-${i}-pip -g kubernetes --sku Standard > /dev/null
@@ -75,6 +87,7 @@ categories:
 	  --ip-forwarding \
 	  --lb-name kubernetes-lb \
 	  --lb-address-pools kubernetes-lb-pool >/dev/null
+
 	  echo "[Controller ${i}] Creating VM..."
 	  az vm create -g kubernetes \
 	  -n controller-${i} \
@@ -88,6 +101,7 @@ categories:
 	  --storage-sku StandardSSD_LRS 
 	  #--generate-ssh-keys > /dev/null
   done
+
   #K8s Worker 
   az vm availability-set create -g kubernetes -n worker-as
   for i in 0 1; do
@@ -115,6 +129,7 @@ categories:
   --admin-username 'kuberoot'> /dev/null \
   --admin-password 'Changeme!' \
   done
-  #Summarize 
+
+  #Summarize
   az vm list -d -g kubernetes -o table
 ```

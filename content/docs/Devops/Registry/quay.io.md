@@ -46,6 +46,14 @@ curl -u root:password https://<url>:<port>/v2/ocp4/openshift4/tags/list | jq
 ```
 
 
+### unlock user init/admin
+
+```bash
+QUAY_POSTGRES=`podman ps | grep quay-postgres | awk '{print $1}'`
+
+podman exec -it $QUAY_POSTGRES psql -d quay -c "UPDATE "public.user" SET invalid_login_attempts = 0 WHERE username = 'init'"
+```
+
 ### Source 
 
 [Mirror-registry](https://docs.openshift.com/container-platform/4.10/installing/disconnected_install/installing-mirroring-creating-registry.html#mirror-registry-localhost_installing-mirroring-creating-registry)
