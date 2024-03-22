@@ -34,8 +34,13 @@ git add -A
 ## Branches
 
 ```bash
-# List 
+# List local branch
 git branch
+master
+* new_branch
+
+# List remote branch
+git branch -r
 master
 * new_branch
 

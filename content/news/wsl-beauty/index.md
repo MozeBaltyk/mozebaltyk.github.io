@@ -52,20 +52,19 @@ wsl --unregister Ubuntu
 
 WSL is your Linux VM on windows, you can also use *Windows Terminal* for your own confort.
 
-Here some shortcut in *Windows Terminal* but not only 😉 : 
+Here some shortcut in *Windows Terminal* but not only 😉 :
 
-  - `alt + enter`      :  mode full ecran 
-  - `ctrl shift t`     :  terminal 
+  - `alt + enter`      :  mode full ecran
+  - `ctrl shift t`     :  terminal
   - `ctrl shift n`     :  new windows
-  - `ctrl alt 1 2 3`   :  changer de fenetre 
-  - `Windows + v`      :  see the paste buffer 
-  - `Alt Shift`   +    :  split vertical 
+  - `ctrl alt 1 2 3`   :  changer de fenetre
+  - `Windows + v`      :  see the paste buffer
+  - `Alt Shift`   +    :  split vertical
   - `Alt shit`    -    :  split horizontal
   - `Alt arrow`        :  to change panel
-  - `code .`           :  open VSCode from your current directory 
+  - `code .`           :  open VSCode from your current directory
 
-
-## Free some space on your WSL 
+## Free some space on your WSL
 
 * checks which directory contains the most data:
 
@@ -73,10 +72,10 @@ Here some shortcut in *Windows Terminal* but not only 😉 :
 du -h --max-depth 1
 ```
 
-* Activate Hyper-V module in windows features:   
+* Activate Hyper-V module in windows features:  
 
-  Inside the **control-panel** -> Turn windows features on or off -> activate Hyper-v -> restart.     
-  This is required to activate optimize-vhd command.   
+  Inside the **control-panel** -> Turn windows features on or off -> activate Hyper-v -> restart.  
+  This is required to activate optimize-vhd command.  
 
 
 * Let's shrink - As admin in powershell:
@@ -87,7 +86,6 @@ wsl --shutdown
 #Find ext4.vhdx in \Users\USER\AppData\Local\Packages\
 optimize-vhd -Path C:\Users\<USER>\AppData\Local\Packages\AlmaLinuxOSFoundation.AlmaLinux8WSL_xxxxxxxxxxxxxx\LocalState\ext4.vhdx -Mode full
 ```
-
 
 ## Export/Import your WSL
 

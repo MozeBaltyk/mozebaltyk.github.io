@@ -45,7 +45,6 @@ curl -u init: https://quay01.example.local:8443/v2/_catalog | jq
 curl -u root:password https://<url>:<port>/v2/ocp4/openshift4/tags/list | jq
 ```
 
-
 ### unlock user init/admin
 
 ```bash
