@@ -9,8 +9,6 @@ categories:
 ---
 
 
-
-
 * Specific to RHEL 
 
 ```bash
