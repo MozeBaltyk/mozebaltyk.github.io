@@ -41,7 +41,6 @@ netbox-operator
 └── watches.yaml
 ```
 
-
 ```bash
 ## Create first role
 operator-sdk create api --group app  --version v1alpha1 --kind Deployment --generate-role

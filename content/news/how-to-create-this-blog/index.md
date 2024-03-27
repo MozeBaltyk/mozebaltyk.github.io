@@ -283,6 +283,7 @@ Taxonomies are classifications of logical relationships between content. Underst
 
 To deploy the blog, I simply use Github Wokflow which build and publish it with Github Pages. Here, you can adopt several strategy for your own deployment.  
 
+
 I started with everytime that I was pushing the code, it deploy. It gave me no time after saving to read again my articles. Then I put it on `workflow_dispatch`, so I manually trigger the workflow to publish it. But the proper way to do, I just push on branch `gh-pages` which is set as the default then merge it with the main so it trigger the publication only when it arrive on the main branch.
 
 In the settings, in the tab branch protection, an option **Lock branch** prevent to directly commit on `main`.
@@ -296,6 +297,7 @@ And option **Require a pull request before merging** oblige you to review change
 > From Github documentation:
 >
 > When enabled, all commits must be made to a non-protected branch and submitted via a pull request before they can be merged into a branch that matches this rule.
+
 
 I will not put all the workflow code, you can get it [here](https://github.com/MozeBaltyk/mozebaltyk.github.io/tree/main/.github/workflows).
 
