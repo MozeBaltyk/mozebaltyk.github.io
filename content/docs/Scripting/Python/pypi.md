@@ -49,9 +49,9 @@ index-url=https://nexus3.server/repository/internal-pypi/simple
 trusted-host=nexus3.server
 ```
 
-## Bonus point 
+## Bonus point
 
-How to finish this Netbox installation : 
+How to finish this Netbox installation :
 
 ```bash
 # install roles and collections dependencies
@@ -108,7 +108,7 @@ postgresql_users:
     role_attr_flags: CREATEDB,NOSUPERUSER
 ```
 
-* prepare playbooks 
+* prepare playbooks
 
 ```yaml
 ---

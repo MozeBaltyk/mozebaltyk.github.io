@@ -48,4 +48,7 @@ terraform apply terraform.tfplan
 ```
 
 * Connect to Droplet with private ssh key
+
+```bash
 ssh root@$(terraform output -json ip_address_workers | jq -r '.[0]') -i .key
+```
