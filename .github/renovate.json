@@ -1,0 +1,22 @@
+{
+    "labels": ["dependencies"],
+    "schedule": ["after 7am on saturday"],
+    "ansible-galaxy": { "fileMatch": ["(^|/)(galaxy|requirements|ee-requirements)(\\.ansible)?\\.ya?ml$"] },
+    "pre-commit": {
+      "enabled": true,
+      "addLabels": ["pre-commit"]
+    },
+    "packageRules": [
+      {
+        "matchManagers": ["dockerfile"],
+        "matchPackagePatterns": ["ubi8"],
+        "matchUpdateTypes": ["minor"],
+        "automerge": true
+      },
+      {
+        "matchManagers": ["github-actions"],
+        "matchUpdateTypes": ["minor"],
+        "automerge": true
+      }
+    ]
+}

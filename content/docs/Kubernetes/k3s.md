@@ -9,9 +9,7 @@ categories:
 ---
 
 
-
-
-## Specific to RHEL 
+* Specific to RHEL 
 
 ```bash
 # Create a trust zone for the two interconnect
@@ -40,4 +38,23 @@ sudo systemctl status k3s-agent
 sudo podman run --privileged -d --restart=unless-stopped -p 80:80 -p 443:443 rancher/rancher
 sudo podman ps 
 sudo podman logs 74533d50d991  2>&1 | grep "Bootstrap Password:"
+```
+
+## Check Certificates 
+
+```bash
+# Get CA from K3s master
+openssl s_client -connect localhost:6443 -showcerts < /dev/null 2>&1 | openssl x509 -noout -enddate
+openssl s_client -showcerts -connect 193.168.51.103:6443 < /dev/null 2>/dev/null|openssl x509 -outform PEM
+openssl s_client -showcerts -connect 193.168.51.103:6443 < /dev/null 2>/dev/null|openssl x509 -outform PEM | base64 | tr -d '\n'
+
+# Check end date:
+for i in `ls /var/lib/rancher/k3s/server/tls/*.crt`; do echo $i; openssl x509 -enddate -noout -in $i; done
+
+# More efficient: 
+cd /var/lib/rancher/k3s/server/tls/
+for crt in *.crt; do printf '%s: %s\n' "$(date --date="$(openssl x509 -enddate -noout -in "$crt"|cut -d= -f 2)" --iso-8601)" "$crt"; done | sort
+
+# Check CA issuer
+for i in $(find . -maxdepth 1 -type f -name "*.crt"); do  openssl x509 -in ${i} -noout -issuer; done
 ```

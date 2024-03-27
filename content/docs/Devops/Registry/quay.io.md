@@ -45,6 +45,13 @@ curl -u init: https://quay01.example.local:8443/v2/_catalog | jq
 curl -u root:password https://<url>:<port>/v2/ocp4/openshift4/tags/list | jq
 ```
 
+### unlock user init/admin
+
+```bash
+QUAY_POSTGRES=`podman ps | grep quay-postgres | awk '{print $1}'`
+
+podman exec -it $QUAY_POSTGRES psql -d quay -c "UPDATE "public.user" SET invalid_login_attempts = 0 WHERE username = 'init'"
+```
 
 ### Source 
 
