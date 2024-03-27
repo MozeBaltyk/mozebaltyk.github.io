@@ -211,7 +211,7 @@ Import the chromastyles in your project:
 hugo gen chromastyles --style=dracula > assets/main/scss/_highlight.scss
 ```
 
-#### Had some icons
+#### Add some extras icons
 
 You will be able to add icons from **fortawesome** by completing the `./assets/icons/custom.js`, then use those icons in CSS marks.
 

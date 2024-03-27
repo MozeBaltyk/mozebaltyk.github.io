@@ -11,6 +11,14 @@ categories:
 
 ## Server Idm - Identity Manager 
 
+* prerequisites :
+
+  * [ ] repository configured
+  * [ ] NTP synchronize
+  * [ ] check config DHCP/DNS 
+  * [ ] hostname -f == hostname 
+  * [ ] acces to webui IDM : https://idm01.idm.ad-support.local/ipa/ui/
+
 ```bash
 yum install -y ipa-server ipa-server-dns
 

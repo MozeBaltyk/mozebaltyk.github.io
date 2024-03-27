@@ -21,13 +21,13 @@ authors:
 images: [./wsl-beauty/carousel.webp]
 ---
 
-WSL stand for *Windows Subsystem Linux*. It allow us to get the best of both world...
+WSL stand for *Windows Subsystem Linux*. It allow us to get the best of both Linux and Windows world...
 
 <!--more-->
 
 ## Get Started 
 
-Of course, As admin in an powershell:
+Of course, As admin inside a powershell terminal :
 
 ```powershell
 # Update your WSL first
@@ -59,9 +59,10 @@ Here some shortcut in *Windows Terminal* but not only 😉 :
   - `ctrl shift n`     :  new windows
   - `ctrl alt 1 2 3`   :  changer de fenetre
   - `Windows + v`      :  see the paste buffer
-  - `Alt Shift`   +    :  split vertical
-  - `Alt shit`    -    :  split horizontal
+  - `Alt Shift =`      :  split vertical
+  - `Alt shit -`       :  split horizontal
   - `Alt arrow`        :  to change panel
+  - `Alt shit arrow`   :  resize panel  
   - `code .`           :  open VSCode from your current directory
 
 ## Free some space on your WSL

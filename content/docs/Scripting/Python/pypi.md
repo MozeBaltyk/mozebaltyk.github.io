@@ -80,11 +80,37 @@ netbox_python_packages:
   - python3.11-psycopg2
   - python3.11-pip
 netbox_python_binary: /usr/bin/python3.11
+netbox_cert: "{{ lookup('hashi_vault', 'secret=kv/data/mgt/cmdb:ssl_cert') }}"
+netbox_key: "{{ lookup('hashi_vault', 'secret=kv/data/mgt/cmdb:ssl_key') }}"
+redis_bind: 127.0.0.1
+redis_version: "7.2.4"
+redis_tarball: "redis-{{ redis_version }}.tar.gz"
+netbox_stable: true
+netbox_database_socket: "{{ postgresql_unix_socket_directories[0] }}"
+netbox_superuser_password: "{{ lookup('hashi_vault', 'secret=kv/data/mgt/cmdb:admin_password') }}"
+netbox_socket: "127.0.0.1:8000"
+netbox_protocol: uwsgi
+netbox_git: false
+netbox_install_epel: false
+netbox_stable_version: "3.7.3"
+netbox_stable_uri: "/tmp/netbox-{{ netbox_stable_version }}.tar.gz"
+netbox_config:
+  ALLOWED_HOSTS:
+    - {{ var_hostname }}.{{ var_domain }}
+    - {{ var_hostname }}
+    - netbox.{{ var_domain }}
+    - netbox
+  MEDIA_ROOT: "{{ netbox_shared_path }}/media"
+  REPORTS_ROOT: "{{ netbox_shared_path }}/reports"
+  SCRIPTS_ROOT: "{{ netbox_shared_path }}/scripts"
+postgresql_users:
+  - name: "{{ netbox_database_user }}"
+    role_attr_flags: CREATEDB,NOSUPERUSER
 ```
 
 * prepare playbooks 
 
-```
+```yaml
 ---
 - name: install netbox
   hosts: "{{ var_hostname }}"
@@ -93,33 +119,7 @@ netbox_python_binary: /usr/bin/python3.11
     - geerlingguy.postgresql
     - davidwittman.redis
     - ansible-role-netbox
-  vars:
-    netbox_cert: "{{ lookup('hashi_vault', 'secret=kv/data/mgt/cmdb:ssl_cert') }}"
-    netbox_key: "{{ lookup('hashi_vault', 'secret=kv/data/mgt/cmdb:ssl_key') }}"
-    redis_bind: 127.0.0.1
-    redis_version: "7.2.4"
-    redis_tarball: "redis-{{ redis_version }}.tar.gz"
-    netbox_stable: true
-    netbox_database_socket: "{{ postgresql_unix_socket_directories[0] }}"
-    netbox_superuser_password: "{{ lookup('hashi_vault', 'secret=kv/data/mgt/cmdb:admin_password') }}"
-    netbox_socket: "127.0.0.1:8000"
-    netbox_protocol: uwsgi
-    netbox_git: false
-    netbox_install_epel: false
-    netbox_stable_version: "3.7.3"
-    netbox_stable_uri: "/tmp/netbox-{{ netbox_stable_version }}.tar.gz"
-    netbox_config:
-      ALLOWED_HOSTS:
-        - {{ var_hostname }}.{{ var_domain }}
-        - {{ var_hostname }}
-        - netbox.{{ var_domain }}
-        - netbox
-      MEDIA_ROOT: "{{ netbox_shared_path }}/media"
-      REPORTS_ROOT: "{{ netbox_shared_path }}/reports"
-      SCRIPTS_ROOT: "{{ netbox_shared_path }}/scripts"
-    postgresql_users:
-      - name: "{{ netbox_database_user }}"
-        role_attr_flags: CREATEDB,NOSUPERUSER
+
   pre_tasks:
     - name: Copy netbox source
       copy:
@@ -137,6 +137,7 @@ netbox_python_binary: /usr/bin/python3.11
         owner: root
         group: root
         mode: 0644
+        
   post_tasks:
     - name: Install nginx
       dnf:
