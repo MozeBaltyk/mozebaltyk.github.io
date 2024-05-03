@@ -9,7 +9,7 @@ categories:
 ---
 
 
-* Specific to RHEL 
+* Specific to RHEL
 
 ```bash
 # Create a trust zone for the two interconnect
@@ -31,16 +31,7 @@ sudo systemctl restart k3s-agent
 sudo systemctl status k3s-agent
 ```
 
-## Rancher 
-
-```bash
-# Rancher local install - for example on WSL 
-sudo podman run --privileged -d --restart=unless-stopped -p 80:80 -p 443:443 rancher/rancher
-sudo podman ps 
-sudo podman logs 74533d50d991  2>&1 | grep "Bootstrap Password:"
-```
-
-## Check Certificates 
+## Check Certificates
 
 ```bash
 # Get CA from K3s master
@@ -57,4 +48,56 @@ for crt in *.crt; do printf '%s: %s\n' "$(date --date="$(openssl x509 -enddate -
 
 # Check CA issuer
 for i in $(find . -maxdepth 1 -type f -name "*.crt"); do  openssl x509 -in ${i} -noout -issuer; done
+```
+
+## General Checks RKE2/K3S
+
+Nice gist to troubleshoot etcd [link](https://gist.github.com/superseb/3b78f47989e0dbc1295486c186e944bf#on-the-etcd-host-itself)
+
+```bash
+journalctl -u rke2-server.service -f
+
+tail -f /var/lib/rancher/rke2/agent/containerd/containerd.log
+
+tail -f /var/lib/rancher/rke2/agent/logs/kubelet.log
+
+# crictl
+export CRI_CONFIG_FILE=/var/lib/rancher/rke2/agent/etc/crictl.yaml
+/var/lib/rancher/rke2/bin/crictl ps
+
+/var/lib/rancher/rke2/bin/crictl --config /var/lib/rancher/rke2/agent/etc/crictl.yaml ps
+
+/var/lib/rancher/rke2/bin/crictl --runtime-endpoint unix:///run/k3s/containerd/containerd.sock ps -a
+
+/var/lib/rancher/rke2/bin/ctr --address /run/k3s/containerd/containerd.sock --namespace k8s.io container ls
+
+# Kubectl
+export KUBECONFIG=/etc/rancher/rke2/rke2.yaml 
+export PATH=$PATH:/usr/local/bin/:/var/lib/rancher/rke2/bin/
+kubectl get addon -A
+```
+
+* check etcd endpoint status
+
+```bash
+export CRI_CONFIG_FILE=/var/lib/rancher/rke2/agent/etc/crictl.yaml
+etcdcontainer=$(/var/lib/rancher/rke2/bin/crictl ps --label io.kubernetes.container.name=etcd --quiet)
+/var/lib/rancher/rke2/bin/crictl exec $etcdcontainer sh -c "ETCDCTL_ENDPOINTS='https://127.0.0.1:2379' ETCDCTL_CACERT='/var/lib/rancher/rke2/server/tls/etcd/server-ca.crt' ETCDCTL_CERT='/var/lib/rancher/rke2/server/tls/etcd/server-client.crt' ETCDCTL_KEY='/var/lib/rancher/rke2/server/tls/etcd/server-client.key' ETCDCTL_API=3 etcdctl endpoint status --cluster --write-out=table"
+```
+
+* check etcd health status
+
+```bash
+export CRI_CONFIG_FILE=/var/lib/rancher/rke2/agent/etc/crictl.yaml
+etcdcontainer=$(/var/lib/rancher/rke2/bin/crictl ps --label io.kubernetes.container.name=etcd --quiet)
+/var/lib/rancher/rke2/bin/crictl exec $etcdcontainer sh -c "ETCDCTL_ENDPOINTS='https://127.0.0.1:2379' ETCDCTL_CACERT='/var/lib/rancher/rke2/server/tls/etcd/server-ca.crt' ETCDCTL_CERT='/var/lib/rancher/rke2/server/tls/etcd/server-client.crt' ETCDCTL_KEY='/var/lib/rancher/rke2/server/tls/etcd/server-client.key' ETCDCTL_API=3 etcdctl endpoint health --cluster --write-out=table"
+```
+
+## Rancher
+
+```bash
+# Rancher local install - for example on WSL 
+sudo podman run --privileged -d --restart=unless-stopped -p 80:80 -p 443:443 rancher/rancher
+sudo podman ps 
+sudo podman logs 74533d50d991  2>&1 | grep "Bootstrap Password:"
 ```
