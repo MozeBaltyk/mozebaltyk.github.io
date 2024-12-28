@@ -13,7 +13,7 @@ keywords = "Blog, Doc, Ansible, GitHub Pages, Hugo, Devops, Kubernetes, Sysadmin
 
 logo = "images/square.webp" # Logo image. Default to "images/logo.webp".
 # logo = false # Disable Logo
-brand = "HBS v1"
+brand = "Bałtyk Blog"
 
 palette = "cyan" # Default palette. Optional. You'll need to clear the browser cache after modifying this.
 # palettes = ["blue", "blue gray", "purple"] # Available palettes. Default to ALL.
