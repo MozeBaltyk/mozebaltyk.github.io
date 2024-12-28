@@ -1,0 +1,6 @@
+[[main]]
+  identifier = "Discussions"
+  name = "discussions"
+  url = "https://github.com/MozeBaltyk/mozebaltyk.github.io/discussions/new"
+  [main.params]
+    icon = '<i class="fas fa-fw fa-comments"></i>'
