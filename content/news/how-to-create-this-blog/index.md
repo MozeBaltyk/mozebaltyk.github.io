@@ -104,21 +104,10 @@ curl -LJO https://github.com/gohugoio/hugo/releases/download/v${HUGO_VERSION}/hu
 sudo apt install -y ./hugo_extended_${HUGO_VERSION}_linux-amd64.deb
 
 # Install Hugo (RHEL 9)
-cat <<EOF | sudo tee /etc/yum.repos.d/hugo.repo
-[copr:copr.fedorainfracloud.org:daftaupe:hugo]
-name=Copr repo for hugo owned by daftaupe
-baseurl=https://download.copr.fedorainfracloud.org/results/daftaupe/hugo/epel-7-x86_64/
-type=rpm-md
-skip_if_unavailable=True
-gpgcheck=1
-gpgkey=https://download.copr.fedorainfracloud.org/results/daftaupe/hugo/pubkey.gpg
-repo_gpgcheck=0
-enabled=1
-enabled_metadata=1
-EOF
-sudo dnf repolist
-sudo dnf makecache
-sudo dnf -y install hugo
+HUGO_VERSION="0.135.0"
+curl -LJO https://github.com/gohugoio/hugo/releases/download/v${HUGO_VERSION}/hugo_extended_${HUGO_VERSION}_linux-amd64.tar.gz
+tar -xzf hugo_extended_${HUGO_VERSION}_linux-amd64.tar.gz
+sudo mv hugo /usr/bin/hugo
 
 hugo version                                                                                                                            
 hugo v0.117.0-b2f0696cad918fb61420a6aff173eb36662b406e+extended linux/amd64 BuildDate=2023-08-07T12:49:48Z VendorInfo=gohugoio

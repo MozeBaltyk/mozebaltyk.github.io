@@ -7,4 +7,3 @@ hugo_stats.json
 *.swp
 *.tar.gz
 *Zone.Identifier
-.hugo_build.lock
