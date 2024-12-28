@@ -30,6 +30,9 @@ mirror="https://mirror.openshift.com/pub/openshift-v4/clients"
 wget ${mirror}/mirror-registry/latest/mirror-registry.tar.gz
 tar zxvf mirror-registry.tar.gz
 
+# Get oc-mirror
+curl https://mirror.openshift.com/pub/openshift-v4/x86_64/clients/ocp/latest/oc-mirror.rhel9.tar.gz -O
+
 # Basic install 
 sudo ./mirror-registry install \
   --quayHostname quay01.example.local \
@@ -48,6 +51,9 @@ podman login -u init \
   -p 7u2Dm68a1s3bQvz9twrh4Nel0i5EMXUB \
   quay01.example.local:8443 \
   --tls-verify=false
+
+# By default login go in:
+cat $XDG_RUNTIME_DIR/containers/auth.json 
 
 # Get IP
 sudo podman inspect --format '{{range.NetworkSettings.Networks}}{{.IPAddress}}{{end}}' quay-app

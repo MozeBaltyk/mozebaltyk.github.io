@@ -43,6 +43,9 @@ mirror:
 ```
 
 ```bash
+# install oc-mirror:
+curl https://mirror.openshift.com/pub/openshift-v4/x86_64/clients/ocp/latest/oc-mirror.rhel9.tar.gz -O
+
 # Get an example of imageset
 oc-mirror init --registry quay.example.com:8443/mirror/oc-mirror-metadata
 
@@ -77,6 +80,12 @@ openshift-install create cluster --dir . --log-level=info
 openshift-install destroy cluster --log-level=info
 ```
 
+* for baremetal make a iso boot USB
+
+```bash
+dd if=$HOME/ocp-latest/rhcos-live.iso of=/dev/sdb bs=1024k status=progress
+```
+
 ## Add node 
 
 ```bash
@@ -97,39 +106,39 @@ platform:
 
 ## baremetal - use ipmi to provision baremetal
 platform:
-   baremetal:
-     apiVIP: 192.168.111.5
-     ingressVIP: 192.168.111.7
-     provisioningNetwork: "Managed"
-     provisioningNetworkCIDR: 172.22.0.0/24
-     provisioningNetworkInterface: eno1
-     clusterProvisioningIP: 172.22.0.2
-     bootstrapProvisioningIP: 172.22.0.3
-     hosts:
-       - name: master-0
-         role: master
-         bmc:
-           address: ipmi://192.168.111.1
-           username: admin
-           password: password
-         bootMACAddress: 52:54:00:a1:9c:ae
-         hardwareProfile: default
-       - name: master-1
-         role: master
-         bmc:
-           address: ipmi://192.168.111.2
-           username: admin
-           password: password
-         bootMACAddress: 52:54:00:a1:9c:af
-         hardwareProfile: default
-       - name: master-2
-         role: master
-         bmc:
-           address: ipmi://192.168.111.3
-           username: admin
-           password: password
-         bootMACAddress: 52:54:00:a1:9c:b0
-         hardwareProfile: default
+  baremetal:
+    apiVIP: 192.168.111.5
+    ingressVIP: 192.168.111.7
+    provisioningNetwork: "Managed"
+    provisioningNetworkCIDR: 172.22.0.0/24
+    provisioningNetworkInterface: eno1
+    clusterProvisioningIP: 172.22.0.2
+    bootstrapProvisioningIP: 172.22.0.3
+    hosts:
+      - name: master-0
+        role: master
+        bmc:
+          address: ipmi://192.168.111.1
+          username: admin
+          password: password
+        bootMACAddress: 52:54:00:a1:9c:ae
+        hardwareProfile: default
+      - name: master-1
+        role: master
+        bmc:
+          address: ipmi://192.168.111.2
+          username: admin
+          password: password
+        bootMACAddress: 52:54:00:a1:9c:af
+        hardwareProfile: default
+      - name: master-2
+        role: master
+        bmc:
+          address: ipmi://192.168.111.3
+          username: admin
+          password: password
+        bootMACAddress: 52:54:00:a1:9c:b0
+        hardwareProfile: default
 
 ## vpshere - old syntax and deprecated form (new one in 4.15 with "failure domain")
 vsphere:
