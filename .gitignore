@@ -1,9 +1,10 @@
+node_modules/
+.idea/
+.hugo_build.lock
+public/
+resources/
+hugo_stats.json
 *.swp
 *.tar.gz
 *Zone.Identifier
 .hugo_build.lock
-hugo_stats.json
-node_modules/
-node_modules
-public/
-resources/
