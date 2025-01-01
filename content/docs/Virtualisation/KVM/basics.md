@@ -24,6 +24,9 @@ sudo dnf install virt-manager -y
 sudo dnf install -y virt-top libguestfs-tools
 sudo gpasswd -a $USER libvirt
 
+# Helper
+sudo dnf -y install bridge-utils
+
 # Start libvirt
 sudo systemctl start libvirtd
 sudo systemctl enable libvirtd
@@ -75,6 +78,9 @@ sudo virsh net-edit hostbridge
 sudo virsh net-info hostbridge
 sudo virsh net-dhcp-leases hostbridge
 
+# Due to bridge-utils package
+brctl show
+
 # Create a VM with this bridge
 virt-install \
 --name pfsense --ram 2048 --vcpus 2 \
@@ -93,7 +99,6 @@ sudo virsh net-undefine hostbridge
 sudo nmcli con del virbr1
 sudo nmcli con del eno1
 ```
-
 
 ### install Pfsense VM
 
@@ -154,12 +159,28 @@ virt-install \
 virsh start pfsense
 ```
 
+* Create OKD vm
+
+```bash
+virt-install \
+--name okd --ram 2048 --vcpus 2 \
+--disk $HOME/okd-latest/disk0.qcow2,size=50,format=qcow2 \
+--autostart \
+--cdrom $HOME/okd-latest/rhcos-live.iso \
+--network bridge=virbr0,model=e1000 \
+--network bridge=virbr1,model=e1000 \
+--graphics vnc,listen=0.0.0.0 --noautoconsole \
+--osinfo detect=on,require=off \
+--debug
+```
+
 ### Checks Pfsense VM
 
 ```bash
 # Checks
 virsh list
 virsh domifaddr pfsense
+virsh domiflist pfsense
 
 # Connect to console
 virt-viewer --domain-name pfsense
@@ -180,3 +201,24 @@ sudo virsh net-undefine pfsense-router
 sudo nmcli con del virbr1
 sudo nmcli con del eno1
 ```
+
+### Create a worker 
+
+```bash
+# Generate a MAC address
+date +%s | md5sum | head -c 6 | sed -e 's/\([0-9A-Fa-f]\{2\}\)/\1:/g' -e 's/\(.*\):$/\1/' | sed -e 's/^/52:54:00:/';echo
+
+sudo virt-install -n worker03.ocp4.example.com \
+  --description "Worker03 Machine for Openshift 4 Cluster" \
+  --ram=8192 \
+  --vcpus=4 \
+  --os-type=Linux \
+  --os-variant=rhel8.0 \
+  --noreboot \
+  --disk pool=default,bus=virtio,size=50 \
+  --graphics none \
+  --serial pty \
+  --console pty \
+  --pxe \
+  --network bridge=openshift4,mac=52:54:00:95:d4:ed
+  ```

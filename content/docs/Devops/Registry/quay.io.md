@@ -63,7 +63,7 @@ sudo ./mirror-registry uninstall -v \
   --quayRoot <example_directory_name>
 
 # Info
-curl -u init: https://quay01.example.local:8443/v2/_catalog | jq
+curl -u init:password https://quay01.example.local:8443/v2/_catalog | jq
 curl -u root:password https://<url>:<port>/v2/ocp4/openshift4/tags/list | jq
 
 # Get an example of imageset

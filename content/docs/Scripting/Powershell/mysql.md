@@ -9,7 +9,7 @@ categories:
   - Scripting
 ---
 
-## 
+## Example
 ```Powershell
 # Import values with details connexion
 . .\values.ps1
