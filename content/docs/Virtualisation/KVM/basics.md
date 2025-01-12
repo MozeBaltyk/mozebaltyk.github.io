@@ -21,7 +21,7 @@ lsmod | grep kvm
 sudo dnf install virt-install virt-viewer -y
 sudo dnf install -y libvirt
 sudo dnf install virt-manager -y
-sudo dnf install -y virt-top libguestfs-tools
+sudo dnf install -y virt-top libguestfs-tools guestfs-tools
 sudo gpasswd -a $USER libvirt
 
 # Helper
