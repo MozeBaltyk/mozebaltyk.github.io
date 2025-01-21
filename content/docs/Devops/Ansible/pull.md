@@ -78,13 +78,26 @@ Found cloud-config data types: user-data, network-config
 
 2. network-config at /var/lib/cloud/instances/nocloud/network-config.json:
   Valid schema network-config
+```
 
+Few troubleshooting commands:
+
+```bash
 sudo cloud-init status --long
+
+sudo cloud-init schema --system
 
 sudo cat /var/lib/cloud/instance/user-data.txt
 ```
 
-Rerun ansible part
+Rerun ansible part :
+
 ```bash
 cloud-init single --name cc_ansible
+```
+
+Checks which step take the most time:
+
+```bash
+cloud-init analyze blame
 ```
