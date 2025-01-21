@@ -98,3 +98,98 @@ wsl --unregister AlmaLinux8-full
 
 wsl --list -v
 ```
+
+## Activate Systemd
+
+Need WSL2 and Windows 11, add below line a the top of the file /etc/wsl.conf
+
+```ini
+# /etc/wsl.conf
+[boot]
+systemd=true
+```
+
+## Install KVM on WSL
+
+* First you need systemd enable
+
+* inside `%UserProfile%\.wslconfig` :
+
+```ini
+[wsl2]
+nestedVirtualization=true
+```
+
+* restart WSL
+
+```powershell
+wsl.exe --shutdown
+```
+
+```bash
+sudo apt update
+sudo apt install qemu-kvm libvirt-daemon-system libvirt-clients bridge-utils cpu-checker \
+network-manager iptables-persistent linux-headers-generic \
+qemu uml-utilities virt-manager git \
+wget libguestfs-tools p7zip-full make dmg2img tesseract-ocr \
+tesseract-ocr-eng genisoimage vim net-tools screen firewalld libncurses-dev -y
+sudo apt install virt-manager
+sudo addgroup kvm
+sudo adduser `id -un` libvirt
+sudo adduser `id -un` kvm
+newgrp libvirt
+```
+
+## Make podman engine and kind work on WSL2
+
+* Update crun 
+
+```bash
+CRUN_VER='1.11.2'
+
+curl -L "https://github.com/containers/crun/releases/download/${CRUN_VER}/crun-${CRUN_VER}-linux-amd64" -o "${HOME}/.local/bin/crun"
+
+chmod +x "${HOME}/.local/bin/crun"
+
+cat << EOF > $HOME/.config/containers/containers.conf
+[engine]
+cgroup_manager = "cgroupfs"
+
+[engine.runtimes]
+crun = [
+  "${HOME}/.local/bin/crun",
+  "/usr/bin/crun"
+]
+EOF
+```
+
+* Adapt podman general config `/usr/share/containers/containers.conf`
+
+```ini
+[engine]
+cgroup_manager = "cgroupfs"
+events_logger = "journald"
+
+[engine.runtimes]
+crun = [
+   "/home/ccaron/.local/bin/crun",
+   "/usr/bin/crun"
+]
+```
+
+* Delegate service
+
+```bash
+cat << EOF > /etc/systemd/system/user@.service.d/delegate.conf
+[Service]
+Delegate=yes
+EOF
+```
+
+* Adapt `%USERPROFILE%\.wslconfig` to systemd in cgroup
+
+```ini
+[wsl2]
+nestedVirtualization=true
+kernelCommandLine = cgroup_no_v1=all systemd.unified_cgroup_hierarchy=1
+```

@@ -52,3 +52,7 @@ terraform apply terraform.tfplan
 ```bash
 ssh root@$(terraform output -json ip_address_workers | jq -r '.[0]') -i .key
 ```
+
+## Work with yaml in terraform
+
+https://plainenglish.io/blog/terraform-yaml

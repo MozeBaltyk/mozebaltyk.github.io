@@ -222,3 +222,8 @@ sudo virt-install -n worker03.ocp4.example.com \
   --pxe \
   --network bridge=openshift4,mac=52:54:00:95:d4:ed
   ```
+
+
+## Sources
+
+[Blog redhat](https://developers.redhat.com/articles/2024/12/18/rootless-virtual-machines-kvm-and-qemu?sc_cid=RHCTG0250000436140#connectivity_between_vms)
