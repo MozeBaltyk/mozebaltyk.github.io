@@ -172,7 +172,7 @@ events_logger = "journald"
 
 [engine.runtimes]
 crun = [
-   "/home/ccaron/.local/bin/crun",
+   "${HOME}/.local/bin/crun",
    "/usr/bin/crun"
 ]
 ```
