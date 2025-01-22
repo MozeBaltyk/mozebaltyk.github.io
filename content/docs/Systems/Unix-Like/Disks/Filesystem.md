@@ -11,6 +11,7 @@ categories:
 
 
 ##  FS Types
+
 `ext4` :  le plus répandu sous GNU/Linux (issu de ext2 et ext3). Il est journalisé, c'est à dire qu'il trace les opérations d'écriture pour garantir l'intégrité des données en cas d'arrêt brutal du disque. De plus, il peut gérer des volumes de taille jusque 1 024 pébioctets et permet la pré-allocation d'une zone contiguë pour un fichier, afin de minimiser la fragmentation. Utilisez ce système de fichiers si vous comptez pouvoir relire des informations depuis votre Mac OS X ou Windows.
 
 `ReiserFS` : C'est un système de fichiers journalisé qui a été réimplémenté à partir de zéro et bénéficie de beaucoup d'innovations. Il est plus rapide qu'ext4 pour le traitement de répertoires contenant des milliers de fichiers de petite taille. Il permet l'agrandissement à chaud et la diminution à froid de la taille des partitions
@@ -20,46 +21,32 @@ categories:
 `Ufs` : pour FreeBSD et Solaris   |  Vxfs : Pour HP-UX  |  JFS : Pour AIX
 
 ## Listages et Verifications FS
-df -Th :   lister les FS et voir l'espace libre (-T type de FS, -h human Reading)
-mount -a : Voir les FS montes. (S'appui sur /proc/mounts)
-[RHEL] findmnt :   voir les FS montés de manière plus lisible.
 
-fsck  :  check fs (a faire que si le FS est demonte)
+```bash
+df -Th    # lister les FS et voir l'espace libre (-T type de FS, -h human Reading)
+mount -a  # Voir les FS montes. (S'appui sur /proc/mounts)
+findmnt   # voir les FS montés de manière plus lisible.
+
+fsck      # Check fs (a faire que si le FS est demonte)
 fsck -y /dev/mapper/vgdata-etc
+```
 
-Creation et Exploitation
-mkfs -t ext4 /dev/hda3  : pour creer un type de filesystem sur un partition hda = choix du disk / 3 = a la partition.
-mkfs.ext4 /dev/vdb3   :  (remplacer ext4 avec ce qu'on veut)
+* FS Creation
 
-mount /dev/dsk/sda /mon_fs    |  
-	 umount  : monter/demonter un FS,  
-	 umount -lf /ec/dev/app 
-mount -o remount,ro /usr  :   remonter (sans interuption de service) en "Read Only" le FS /usr
-mount -o remount,rw /usr  :   remonter (sans interuption de service) en "Read Write" le FS /usr
+```bash
+mkfs -t ext4 /dev/hda3  # pour creer un type de filesystem sur un partition hda = choix du disk / 3 = a la partition.
+mkfs.ext4 /dev/vdb3     # (remplacer ext4 avec ce qu'on veut)
 
+mount /dev/dsk/sda /mon_fs
+umount -lf /ec/dev/app 
 
-## Check mount 
-[root@bcp-int-ampa1 ~]# grep mqm  /var/log/messages
-Oct 27 11:49:15 bcp-int-ampa1 systemd: Unit var-mqm.mount is bound to inactive unit dev-mapper-mqmclient\x2dvar_mqm.device. Stopping, too.
-Oct 27 11:49:15 bcp-int-ampa1 systemd: Unmounting /var/mqm...
+mount -o remount,ro /usr   #remonter (sans interuption de service) en "Read Only" le FS /usr
+mount -o remount,rw /usr   #remonter (sans interuption de service) en "Read Write" le FS /usr
+```
 
-[root@bcp-int-ampa1 ~]# systemctl status /var/mqm
-● var-mqm.mount - /var/mqm
-   Loaded: loaded (/etc/fstab; bad; vendor preset: disabled)
-   Active: inactive (dead) since Tue 2020-10-27 12:00:45 CET; 4min 0s ago
-    Where: /var/mqm
-     What: /dev/mapper/mqmclient-var_mqm
-     Docs: man:fstab(5)
-           man:systemd-fstab-generator(8)
-  Process: 1978129 ExecUnmount=/bin/umount /var/mqm (code=exited, status=0/SUCCESS)
+## Mount Bind
 
-Oct 27 12:00:45 bcp-int-ampa1.int.bcp.psf systemd[1]: Unit var-mqm.mount is bound to inactive unit dev-mapper-mqmclient\x2dvar_mqm.device. Stopping, too.
-Oct 27 12:00:45 bcp-int-ampa1.int.bcp.psf systemd[1]: Unmounting /var/mqm...
-Oct 27 12:00:45 bcp-int-ampa1.int.bcp.psf systemd[1]: Unmounted /var/mqm.
-Warning: var-mqm.mount changed on disk. Run 'systemctl daemon-reload' to reload units.
-
-
-## Mount Bind 
+```bash
 mount --bind /mnt/sshfs/lrancid01ch /data/externes/rancidRANIP  : "mount --bind" pour associer deux repertoires
 	On doit les retrouver dans le mount : mount | grep rancidRANIP
 	/mnt/sshfs/lrancid01ch on /data/externes/rancidRANIP type none (rw,bind)
@@ -74,24 +61,26 @@ Configuration
 /etc/mnttab :  config Dynamic
 /etc/fstab :  config Static
 /proc/mounts :  vu par le Kernel
+```
 
+## FStab
 
-## FStab 
+```ini
 UUID="aaa-33-212122edwfs"   /mnt/point   ext4  defaults  0  0    # 0=No Backup / 0=no fsck au reboot
 UUID="sss-555-343435346"    /mnt/autre   xfs   defaults  1  1    # 1=backup / 1 FS important pour le systeme
 UUID="444-rrr-345234523"    /mnt/suivant  vfat  defaults  1  2   # 2=fsck - mais le systeme peut demarrer sans. 
 UUID="111-4343-42342"       swap         swap  defaults  0  0    # SWAP 
+```
 
-/!\ Attention Error in your FSTAB: 
-	- When adding a device to fstab, unless you are using LVM or a filesystem that supports snapshots*, use the UUID.
-	- use UUID of the disk (except when using LVM)
-	- Instead of default use _netdev in the fstab for iscsi
-	- Use option 0 0 
+/!\ Attention Error in your FSTAB:
 
-From <https://xan.manning.io/2017/05/29/best-practice-for-mounting-an-lvm-logical-volume-with-etc-fstab.html> 
+- When adding a device to fstab, unless you are using LVM or a filesystem that supports snapshots*, use the UUID.
+- use UUID of the disk (except when using LVM)
+- Instead of default use _netdev in the fstab for iscsi
+- Use option 0 0
 
+## Autofs : Auto mount
 
-## Autofs : Montage Automatique
 Autofs  : dans fstab ou en manuel, si la connexion internet se perd, alors le montage se stoppe. Autofs monte automatiquent les sshfs. Paquet a installer.
 
 Options

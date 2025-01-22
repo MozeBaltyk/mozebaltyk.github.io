@@ -142,7 +142,7 @@ newgrp libvirt
 
 ## Make podman engine and kind work on WSL2
 
-* Update crun 
+* Update crun
 
 ```bash
 CRUN_VER='1.11.2'
