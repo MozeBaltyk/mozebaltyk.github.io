@@ -81,7 +81,7 @@ git log -p <commit_nbr>
 git log --oneline --decorate --graph --all   : Voir en graphes tous les commits 
 ```
 
-## Resolve conflict 
+## Resolve conflict
 
 During a push, you realise that someone already pushed, so git ask you to pull first
 ```bash
