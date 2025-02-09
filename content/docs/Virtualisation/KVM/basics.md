@@ -174,6 +174,37 @@ virt-install \
 --debug
 ```
 
+```bash
+sudo virt-install -n master01 \
+  --description "Master01 OKD Cluster" \
+  --ram=8192 \
+  --cdrom "$HOME/okd-latest/rhcos-live.iso" \
+  --vcpus=2 \
+  --disk pool=default,bus=virtio,size=10 \
+  --graphics none \
+  --osinfo detect=on,require=off \
+  --serial pty \
+  --console pty \
+  --network network=openshift4,mac=52:54:00:36:14:e5
+```
+
+```bash
+sudo cp {{OKUB_INSTALL_PATH}}/rhcos-live.iso /var/lib/libvirt/images/rhcos-live-{{PRODUCT}}-{{RELEASE_VERSION}}.iso
+export COREOS_INSTALLER="podman run --privileged --pull always --rm -v /dev:/dev -v /var/lib/libvirt/images:/data -w /data quay.io/coreos/coreos-installer:release"
+sudo ${COREOS_INSTALLER} iso kargs modify -a "ip={{IP_MASTERS}}::{{GATEWAY}}:{{NETMASK}}:okub-sno:{{INTERFACE}}:none:{{DNS_SERVER}}" "rhcos-live-{{PRODUCT}}-{{RELEASE_VERSION}}.iso"
+sudo virt-install --name="openshift-sno" \
+ --vcpus=4 \
+ --ram=8192 \
+ --disk path=/var/lib/libvirt/images/sno-{{PRODUCT}}-{{RELEASE_VERSION}}.qcow2,bus=sata,size=120 \
+ --network network=sno,model=virtio \
+ --boot menu=on \
+ --graphics vnc --console pty,target_type=serial --noautoconsole \
+ --cpu host-passthrough \
+ --osinfo detect=on,require=off \
+ --cdrom /var/lib/libvirt/images/rhcos-live-{{PRODUCT}}-{{RELEASE_VERSION}}.iso
+```
+
+
 ### Checks Pfsense VM
 
 ```bash
