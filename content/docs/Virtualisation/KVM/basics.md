@@ -33,6 +33,12 @@ sudo systemctl enable libvirtd
 sudo systemctl status libvirtd
 ```
 
+### Basic Checks
+
+```bash
+virsh nodeinfo
+```
+
 ### Config a Bridge network
 
 Important note that network are created with root user but VM with current user.
