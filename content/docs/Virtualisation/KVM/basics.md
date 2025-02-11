@@ -21,13 +21,22 @@ lsmod | grep kvm
 sudo dnf install virt-install virt-viewer -y
 sudo dnf install -y libvirt
 sudo dnf install virt-manager -y
-sudo dnf install -y virt-top libguestfs-tools
+sudo dnf install -y virt-top libguestfs-tools guestfs-tools
 sudo gpasswd -a $USER libvirt
+
+# Helper
+sudo dnf -y install bridge-utils
 
 # Start libvirt
 sudo systemctl start libvirtd
 sudo systemctl enable libvirtd
 sudo systemctl status libvirtd
+```
+
+### Basic Checks
+
+```bash
+virsh nodeinfo
 ```
 
 ### Config a Bridge network
@@ -75,6 +84,9 @@ sudo virsh net-edit hostbridge
 sudo virsh net-info hostbridge
 sudo virsh net-dhcp-leases hostbridge
 
+# Due to bridge-utils package
+brctl show
+
 # Create a VM with this bridge
 virt-install \
 --name pfsense --ram 2048 --vcpus 2 \
@@ -93,7 +105,6 @@ sudo virsh net-undefine hostbridge
 sudo nmcli con del virbr1
 sudo nmcli con del eno1
 ```
-
 
 ### install Pfsense VM
 
@@ -154,12 +165,59 @@ virt-install \
 virsh start pfsense
 ```
 
+* Create OKD vm
+
+```bash
+virt-install \
+--name okd --ram 2048 --vcpus 2 \
+--disk $HOME/okd-latest/disk0.qcow2,size=50,format=qcow2 \
+--autostart \
+--cdrom $HOME/okd-latest/rhcos-live.iso \
+--network bridge=virbr0,model=e1000 \
+--network bridge=virbr1,model=e1000 \
+--graphics vnc,listen=0.0.0.0 --noautoconsole \
+--osinfo detect=on,require=off \
+--debug
+```
+
+```bash
+sudo virt-install -n master01 \
+  --description "Master01 OKD Cluster" \
+  --ram=8192 \
+  --cdrom "$HOME/okd-latest/rhcos-live.iso" \
+  --vcpus=2 \
+  --disk pool=default,bus=virtio,size=10 \
+  --graphics none \
+  --osinfo detect=on,require=off \
+  --serial pty \
+  --console pty \
+  --network network=openshift4,mac=52:54:00:36:14:e5
+```
+
+```bash
+sudo cp {{OKUB_INSTALL_PATH}}/rhcos-live.iso /var/lib/libvirt/images/rhcos-live-{{PRODUCT}}-{{RELEASE_VERSION}}.iso
+export COREOS_INSTALLER="podman run --privileged --pull always --rm -v /dev:/dev -v /var/lib/libvirt/images:/data -w /data quay.io/coreos/coreos-installer:release"
+sudo ${COREOS_INSTALLER} iso kargs modify -a "ip={{IP_MASTERS}}::{{GATEWAY}}:{{NETMASK}}:okub-sno:{{INTERFACE}}:none:{{DNS_SERVER}}" "rhcos-live-{{PRODUCT}}-{{RELEASE_VERSION}}.iso"
+sudo virt-install --name="openshift-sno" \
+ --vcpus=4 \
+ --ram=8192 \
+ --disk path=/var/lib/libvirt/images/sno-{{PRODUCT}}-{{RELEASE_VERSION}}.qcow2,bus=sata,size=120 \
+ --network network=sno,model=virtio \
+ --boot menu=on \
+ --graphics vnc --console pty,target_type=serial --noautoconsole \
+ --cpu host-passthrough \
+ --osinfo detect=on,require=off \
+ --cdrom /var/lib/libvirt/images/rhcos-live-{{PRODUCT}}-{{RELEASE_VERSION}}.iso
+```
+
+
 ### Checks Pfsense VM
 
 ```bash
 # Checks
 virsh list
 virsh domifaddr pfsense
+virsh domiflist pfsense
 
 # Connect to console
 virt-viewer --domain-name pfsense
@@ -180,3 +238,29 @@ sudo virsh net-undefine pfsense-router
 sudo nmcli con del virbr1
 sudo nmcli con del eno1
 ```
+
+### Create a worker 
+
+```bash
+# Generate a MAC address
+date +%s | md5sum | head -c 6 | sed -e 's/\([0-9A-Fa-f]\{2\}\)/\1:/g' -e 's/\(.*\):$/\1/' | sed -e 's/^/52:54:00:/';echo
+
+sudo virt-install -n worker03.ocp4.example.com \
+  --description "Worker03 Machine for Openshift 4 Cluster" \
+  --ram=8192 \
+  --vcpus=4 \
+  --os-type=Linux \
+  --os-variant=rhel8.0 \
+  --noreboot \
+  --disk pool=default,bus=virtio,size=50 \
+  --graphics none \
+  --serial pty \
+  --console pty \
+  --pxe \
+  --network bridge=openshift4,mac=52:54:00:95:d4:ed
+  ```
+
+
+## Sources
+
+[Blog redhat](https://developers.redhat.com/articles/2024/12/18/rootless-virtual-machines-kvm-and-qemu?sc_cid=RHCTG0250000436140#connectivity_between_vms)

@@ -9,7 +9,8 @@ categories:
 ---
 
 
-Interesting example from justfile documentation:  where it create mktemp and set it in variable then by concatenation you get a full path to the tar.gz.  
+Interesting example from justfile documentation:   
+where it create mktemp and set it in variable then by concatenation you get a full path to the tar.gz.  
 Then the Recipe "publish" create the artifact again and push it to a server.
 
 ```makefile

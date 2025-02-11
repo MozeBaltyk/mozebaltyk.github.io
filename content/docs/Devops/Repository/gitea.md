@@ -9,7 +9,7 @@ categories:
 ---
 
 
-## Prerequis 
+## Prerequis
 
 	- Firewalld activated, important otherwise the routing to the app is not working 
 	- Podman, jq installed
@@ -117,7 +117,6 @@ bash-5.1$ gitea admin user create --username local_admin --email admins@email.ea
 generated random password is 'qwertyuiop'
 New user 'local_admin' has been successfully created!
 ```
-
 
 ## Sources:
 
