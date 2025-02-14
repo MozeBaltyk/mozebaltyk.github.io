@@ -41,7 +41,7 @@ I can list few points:
 
 Here a list of what justfile can do natively but not makefile:
 
-* `just --choose` - will let you choose in interactif mode among the recipes.   
+* `just --choose` - will let you choose in interactif mode among the recipes.
 
 * Define your work dir `just --justfile ~/.user.justfile --working-directory ~` (I am not convince that you can do it with Makefile) 
 
@@ -111,7 +111,9 @@ role       -- Args: GROUP PROJECT ROLE # Create a new ansible role inside an exi
 
 * Recipes can be written in arbitrary languages, like Python, NodeJS, bash.
 
-* just a "task runner" and all the points listed above are going to this purpose. 
+* just a "task runner" and all the points listed above are going to this purpose.
+
+* use tag `[private]` to make the recepies unvisible from the list
 
 
 ## The Justfile's limitation
@@ -219,6 +221,78 @@ As you can see, the list is long and you end up with a beautifull tool which all
 It tries to avoid the complexity and idiosyncrasie of `Makefile`. In some way, `Makefile` code is nested with your shell and diving into an existing long script can become tedious. 
 By the way, one project I did with justfile, [AnsiColt](https://github.com/MozeBaltyk/AnsiColt).
 
+## Other tips
+
+
+* Create a CLI:
+
+```shell
+alias acme='just --justfile ~/acme/cli/justfile'"
+```
+
+```makefile
+[private]
+@default:
+  just --list
+
+# Show arch and os name
+@os-info:
+  echo "Arch: {{arch()}}"
+  echo "OS: {{os()}}"
+```
+
+* Use tags in justfile
+
+```makefile
+[private] # make the reciepe invisible during list
+@default:
+  just --list
+
+# Show arch and os name
+@os-info:
+  echo "Arch: {{arch()}}"
+  echo "OS: {{os()}}"
+
+# List systemd services
+[linux] # apply only to linux os
+@list-systemd-services:
+  systemctl list-units --type=service
+
+# Get the size of a folder
+[linux]
+[no-cd] # apply from where you are
+get-folder-size path:
+  du -sh {{path}}
+
+# Get the size of a folder in MB
+[windows]
+[no-cd]
+get-folder-size path:
+  (Get-ChildItem "{{path}}" -Recurse -Force | Measure-Object -Property Length -Sum).Sum / 1MB
+
+### Script in Python3 ###
+# scale jpg image by 50%
+[no-cd]
+scale-jpg path:
+  #!/usr/bin/env python3
+
+  import PIL.Image
+  image = PIL.Image.open("{{path}}")
+  factor = 0.5
+  image = image.resize((round(image.width * factor), round(image.height * factor)))
+  image.save("{{path}}.s50.jpg")
+
+### use Nix to run python3 ###
+# scale jpg image by 50%
+[no-cd]
+scale-jpg path:
+  #! /usr/bin/env nix-shell
+  #! nix-shell -i python3 -p python3Packages.pillow
+
+  import PIL.Image
+```
+
+
 ## source
 
 [Some Memo](https://cheatography.com/linux-china/cheat-sheets/justfile/)
@@ -228,3 +302,5 @@ By the way, one project I did with justfile, [AnsiColt](https://github.com/MozeB
 [Github Casey/just](https://github.com/casey/just)
 
 [Create some spell](https://dany98.hashnode.dev/just-harness-command-line-spells)
+
+[Blog](https://blog.chay.dev/create-an-internal-cli/)
