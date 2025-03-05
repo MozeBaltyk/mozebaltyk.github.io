@@ -193,3 +193,14 @@ EOF
 nestedVirtualization=true
 kernelCommandLine = cgroup_no_v1=all systemd.unified_cgroup_hierarchy=1
 ```
+
+## Make WSL copy the host network 
+
+* Usefull when you change WIFI, add to `%USERPROFILE%\.wslconfig`:
+
+```ini
+[wsl2]
+networkingMode=mirrored
+dnsTunneling=true
+autoProxy=true
+```
