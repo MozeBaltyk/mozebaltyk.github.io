@@ -142,7 +142,7 @@ sudo apt install xsltproc uidmap
 sudo apt -y install qemu-system virt-manager 
 
 sudo addgroup kvm
-sudo adduser `id -un` libvirt
+sudo adduser `id -un` libvirt-qemu
 sudo adduser `id -un` kvm
 newgrp libvirt
 ```
