@@ -44,6 +44,7 @@ helm repo update
 
 #Pretty usefull to configure
 helm show values elastic/eck-operator
+helm show values grafana/grafana --version 8.5.1 
 
 #See different version available
 helm search repo hashicorp/vault

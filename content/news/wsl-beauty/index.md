@@ -101,7 +101,7 @@ wsl --list -v
 
 ## Activate Systemd
 
-Need WSL2 and Windows 11, add below line a the top of the file /etc/wsl.conf
+Need WSL2 and Windows 11, add below line a the top of the file `/etc/wsl.conf`
 
 ```ini
 # /etc/wsl.conf
@@ -149,6 +149,14 @@ newgrp libvirt
 
 ## Make podman engine and kind work on WSL2
 
+* Adapt `%USERPROFILE%\.wslconfig` to systemd in cgroup
+
+```ini
+[wsl2]
+nestedVirtualization=true
+kernelCommandLine = cgroup_no_v1=all systemd.unified_cgroup_hierarchy=1
+```
+
 * Update UID map and podman user config:
 
 ```bash
@@ -170,13 +178,12 @@ events_logger = "journald"
 EOF
 ```
 
-* Adapt `%USERPROFILE%\.wslconfig` to systemd in cgroup
+* Install Kind
 
-```ini
-[wsl2]
-nestedVirtualization=true
-kernelCommandLine = cgroup_no_v1=all systemd.unified_cgroup_hierarchy=1
+```bash
+[ $(uname -m) = x86_64 ] && curl -Lo ./kind https://kind.sigs.k8s.io/dl/v0.27.0/kind-linux-amd64
 ```
+
 
 ## Make WSL copy the host network 
 
