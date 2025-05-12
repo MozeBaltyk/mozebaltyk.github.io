@@ -24,3 +24,5 @@ images: [./podman-systemd/carousel.webp]
 Do we really need kubernetes when what you will see below is real...
 
 <!--more-->
+
+Thanks to [Yaakov](https://blog.yaakov.online/replacing-kubernetes-with-systemd/)
