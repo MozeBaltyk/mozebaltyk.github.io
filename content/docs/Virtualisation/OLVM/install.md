@@ -152,6 +152,7 @@ To show all installed unit files use 'systemctl list-unit-files'.
 rm -rf /var/tmp/localvm*
 dnf remove cockpit-ovirt-dashboard -y
 dnf remove ovirt-hosted-engine-setup -y
+# Becarefull to have nothing in your /var/lib/iscsi
 # Then restart ovirt install from scratch
 ```
 

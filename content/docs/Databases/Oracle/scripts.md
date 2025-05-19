@@ -8,6 +8,63 @@ categories:
   - Databases
 ---
 
+## Inside a Shell script
+
+* One line command:
+
+```bash
+# Set the SID 
+ORAENV_ASK=NO
+export ORACLE_SID=HANA
+. oraenv
+
+# Trigger oneline command
+echo -e "select inst_id, instance_name, host_name, database_status from gv\$instance;" | sqlplus -S / as sysdba
+```
+
+* In bash script:
+
+```bash
+su - oracle -c '
+export SQLPLUS="sqlplus -S / as sysdba"
+export ORAENV_ASK=NO;
+export ORACLE_SID='${SID}';
+. oraenv | grep -v "remains";
+
+${SQLPLUS} <<EOF2
+set lines 200 pages 2000;
+select inst_id, instance_name, host_name, database_status from gv\$instance;
+exit;
+EOF2
+
+unset ORAENV_ASK;
+'
+```
+
+## Inside SQL Prompt
+
+```sql
+-- with an absolute path 
+@C:\Users\Matthieu\test.sql 
+
+-- or trigger from director on which sqlplus was launched
+@test.sql
+
+-- START syntax possible as well
+START test.sql  
+```
+
+## Variables usages
+
+```sql
+-- User variable (if not define, oracle will prompt)
+SELECT * FROM &my_table;
+
+-- Prompt user to set a variable
+ACCEPT my_table PROMPT "Which table would you like to interrogate ? "
+SELECT * FROM $my_table;
+```
+
 
 ## Some Examples
 
@@ -129,6 +186,3 @@ SQL> Create table emp as select * from employees;
 SQL> UPDATE emp SET LAST_NAME='ABC';
 SQL> commit;
 ```
-
-## Procedures
-
