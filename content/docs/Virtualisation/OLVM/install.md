@@ -19,7 +19,7 @@ categories:
 
 -	`/var/tmp` 10 GB space at least
 
--	Prepared storage of at least 74 GB to be used as a data storage domain dedicated to the engine virtual machine. 
+-	Prepared a shared-storage (nfs or iscsi) of at least 74 GB to be used as a data storage domain dedicated to the engine virtual machine. ISCSI need to be discovered before oVirt install.
 
 -	If you are using iSCSI storage, do not use the same iSCSI target for the *self-hosted engine* storage domain and any additional storage domains.
 
@@ -74,7 +74,6 @@ NB:
 
 ### Install KVM on secondary nodes
 
-
 * After that *Self-hosted engine** is deployed and reachable, start to deploy secondary host:
 
 ```bash
@@ -83,7 +82,6 @@ dnf install oracle-ovirt-release-45-el8
 dnf clean all   
 dnf repolist
 ```
-
 
 * Then on *Virtmanager console* > *Administration* > *Hosts* > *add a host* 
 
@@ -121,8 +119,13 @@ NB: this is relevant only when you have several network interfaces configured. B
 * After installation on first node:
 
 ```bash
+systemctl status -l ovirt-engine
+systemctl status -l ovirt-ha-agent
+
 hosted-engine --check-deployed
 hosted-engine --vm-status
+
+hosted-engine --connect-storage
 ```
 
 * Check ovirt services

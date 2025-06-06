@@ -14,9 +14,6 @@ categories:
 * Connect to VM *hosted-engine* with root and password setup during the install:
 
 ```bash
-# Change admin console password
-ovirt-aaa-jdbc-tool user password-reset admin --password-valid-to="2035-12-31 12:00:00Z"
-
 # Generate a backup 
 engine-backup --scope=all --mode=backup --file=/root/backup --log=/root/backuplog
 
@@ -30,7 +27,7 @@ engine-backup --mode=restore --file=file_name --log=log_file_name --restore-perm
 engine-setup
 ```
 
-### KVM Administration
+### host Administration
 
 * Connect in ssh to the Host:
 
@@ -50,22 +47,16 @@ hosted-engine --vm-status
 engine-upgrade-check
 dnf update ovirt\*setup\* # update the setup package
 engine-setup # launch it to update the engine
-
 ```
 
-* Connect individually to KVM *Virtmanager* (usefull if you loose the *ovirt-engine*)
+* /!\ Connect individually to KVM *Virtmanager* does not work OVirt use libvirt but not like KVM do... 
 
-```bash
-# on Ubuntu
-sudo apt-get install virt-manager ssh-askpass-gnome
+* `Virt-viewer` on windows allow to connect to the console VM in SPICE:
 
-# Generate and copy sshkey
-ssh-keygen
-ssh-copy-id root@192.168.123.xxx
-ssh-copy-id root@192.168.123.xxx 
-
-# Connect
-virt-manager -c 'qemu+ssh://root@192.168.123.xxx/system?keyfile=id_ed25519'
+```powershell
+# install it in powershell as admin
+winget source update
+winget install virt-viewer
 ```
 
 ## Certificates / CA
