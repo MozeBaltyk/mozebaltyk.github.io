@@ -1,6 +1,0 @@
-main:
-  - name: Dyskusja
-    identifier: dyskusja
-    url: https://github.com/MozeBaltyk/mozebaltyk.github.io/discussions/new
-    params:
-      icon: '<i class="fas fa-fw fa-comments"></i>'

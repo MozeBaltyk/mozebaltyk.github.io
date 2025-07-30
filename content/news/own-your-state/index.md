@@ -1,6 +1,6 @@
 ---
 type: news 
-title: 💫 OWn your state
+title: 💫 Own your state
 date: 2023-08-22T03:48:10+02:00
 featured: true
 draft: true
