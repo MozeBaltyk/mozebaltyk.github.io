@@ -1,33 +1,15 @@
-# sass_transpiler = "dartsass"
-
 mainSections = ["blog", "posts", "news"] # Default to ["posts"].
-
-# titleSeparator = "|" # Title separator. Default to "-".
-
 description = "Yet another blog, yes but this one is mine"
 keywords = "Blog, Doc, Ansible, GitHub Pages, Hugo, Devops, Kubernetes, Sysadmin"
-# images = ["site-feature-image.jpg"]
-
-# metaRobots = "noindex, nofollow" # Default value for Meta Tag "robots"
-# metaRobots = "" # disable Meta Tag "robots"
-
 logo = "images/square.webp" # Logo image. Default to "images/logo.webp".
-# logo = false # Disable Logo
 brand = "Bałtyk Blog"
-
 palette = "cyan" # Default palette. Optional. You'll need to clear the browser cache after modifying this.
 # palettes = ["blue", "blue gray", "purple"] # Available palettes. Default to ALL.
 # palettes = [] # Disable palette switcher.
-
 # color = "dark" # light, dark or auto. Default to auto.
-
 # fullWidth = true # Full width.
 # fixedHeader = false # Turn on/off fixed header.
-
 dateFormat = ":date_full"
-
-# Google Adsense
-googleAdsense = ""
 
 # math = true # Enable math globally.
 # toc = false # Disable TOC globally.
@@ -37,12 +19,9 @@ googleAdsense = ""
 # diagram = true
 # socialShare = false # disable social network sharing
 # searchBar = false # disable search-bar
-
 # poweredBy = false # Whether to show powered by.
-
 # readingTime = false # Whether to display the reading time.
 # postDate = false # Whether to display the post date in the post meta section.
-
 # featuredPostCount = 10 # The number of featured posts shown in sidebar. Turn off by setting it to false.
 # recentPostCount = 10 # The number of recent posts shown in sidebar. Turn off by setting it to false.
 # relatedPostCount = 10 # The number of related posts. Turn off by setting it to false.
@@ -53,9 +32,7 @@ googleAdsense = ""
 taxonomyPostCount = 20    # The number of taxonomy's posts. Turn off by setting it to false.
 countTaxonomyPosts = true # Count posts of taxonomy.
 # taxonomySortingMethod = "popularity" # Sorting taxonomies by popularity, sort alphabetically by default.
-
 # sidebarTaxonomies = ["categories", "tags", "series"] # The order of taxonomies on the sidebar.
-
 # pinnedPost = false # Turn on/off pinned posts.
 pinnedPostCount = 3 # The number of pinned posts.
 
@@ -240,31 +217,6 @@ short_name = "MB"
 # theme_color = ""
 # background_color = ""
 
-# Icons
-# [[pwa.manifest.icons]]
-#   sizes = "96x96"
-#   src = "/images/icons/icon-96x96.png"
-# [[pwa.manifest.icons]]
-#   sizes = "144x144"
-#   src = "/images/icons/icon-144x144.png"
-[pwa.precache]
-# fonts = [
-#   "/assets/katex/fonts/KaTeX_Math-Italic.woff2"
-# ]
-# images = [
-#   "/images/logo.webp",
-#   "/images/profile.webp"
-# ]
-# pages = [
-#   "/"
-# ]
-# scripts = [
-#   "/assets/js/foo.js"
-# ]
-# styles = [
-#   "https://fonts.googleapis.com/css2?family=Roboto&display=swap"
-# ]
-
 [contact]
 #endpoint = "https://getform.io/f/56041c81-9e03-4c24-b9c5-61238854d4cd" # Backend endpoint, remove this line if you're using Netlify.
 # file = true # Enable file upload
@@ -275,8 +227,6 @@ short_name = "MB"
 [repo]
 url = "https://github.com/MozeBaltyk/mozebaltyk.github.io"
 branch = "main"
-#subPath = "exampleSite"
-# dateFormat = "02/01/2006, 15:04:05 PM"
 
 [fullWidthInSections]
 docs = true
@@ -288,9 +238,6 @@ docs = true
 # expandBreakpoint = "xl" # expand the content above the specific breakpoint: lg, xl, xxl.
 [topAppBar.social]
 github = "MozeBaltyk/mozebaltyk.github.io"
-#patreon = "razonyang"
-#paypal = "razonyang"
-# rss = "" # Disable RSS link
 
 [docs]
 [docs.nav]
@@ -300,63 +247,11 @@ reduceFontSize = true
 [feeds]
 # content = true
 
-[social]
-#email = "user@domain.tld"
-# facebook = "yourfacebookusername"
-github = "MozeBaltyk/mozebaltyk.github.io"
-# gitlab = "yourgitlabusername"
-# linkedin = "yourlinkedinusername"
-# xing = "yourxingusername"
-# stackoverflow = "yourstackoverflowuserid"
-#twitter = "razonyang"
-# weibo = "yourweibousername"
-# zhihu = "yourzhihuusername"
-# instagram = "yourinstagramusername"
-# itchio = "youritchiousername"
-# quora = "yourquorausername"
-# tumblr = "yourtumblrusername"
-# reddit = "yourredditusername"
-# telegram = "yourtelegramusername"
-# qq = "yourqqnumber"
-# dockerhub = "yourdockerhubusername"
-# bitbucket = "yourbitbucketworkspaceid"
-# kaggle = "yourkaggleusername"
-# medium = "yourmediumusername" # Medium username or custom domain(e.g. https://razonyang.com).
-# lastfm = "yourlastfmusername"
-# bilibili = "yourbilibiliuserid"
-# youtube = "youryoutubechannelid"
-# discord = "yourdiscordinvitecode"
-# discourse = "https://yourforum.tld"
-# facebookgroup = "yourfacebookgroupname"
-# tiktok = "yourtiktokusername"
-# artstation = "yourartstationusername"
-# pinterest = "yourpinterestusername"
-# mastodon = "yourmastodonusername"
-# liberapay = "yourliberapayaccount"
-#paypal="razonyang"
-#patreon="razonyang"
-# tipeee="yourtipeeeaccount-fr"
-# rss = "" # Disable RSS link
+[author]
+name = "Może Bałtyk"
+bio = "Infrastructure Engineer, Ansibler, Future Gopher."
+company = "Home"
+location = "<a href=https://www.openstreetmap.org/search?query=Earth>Earth</a>"
 
-# [author]
-# name = "Może Bałtyk"
-# # avatar = "images/profile.png" # Avatar image. Default to "images/profile.webp".
-# bio = "Infrastructure Engineer, Ansibler, Future Gopher."
-# company = 'Home'
-# # company = '<a href="https://example.com" target="_blank" rel="noopener noreferrer">Company</a>'
-# location = "Earth"
-# # alternatives:
-# # location = "<a href='https://www.openstreetmap.org/search?query=Earth'>Earth</a>"
-# # location = "<a href='https://www.google.com/maps/search/Earth'>Earth</a>"
-# # about = "https://domain.tld" # The external about page. The internal about page will be used if not set.
-# 
-# [author.params]
-#   #layout = "compact"
-# 
-# [author.social]
-#   #email = "razonyang@gmail.com"
-#   #github = "razonyang/hugo-theme-bootstrap"
-#   #twitter = "razonyang"
-#   #patreon = "razonyang"
-#   #paypal = "razonyang"
-#   # rss = "" # Disable RSS link
+[social]
+github = "MozeBaltyk/mozebaltyk.github.io"
