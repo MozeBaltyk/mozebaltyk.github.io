@@ -3,7 +3,7 @@ type: news
 title: 🚀  The Homelab Journey
 date: 2023-08-22T03:48:10+02:00
 featured: true
-draft: true
+draft: false
 comment: true
 toc: true
 reward: true
@@ -91,8 +91,8 @@ Forth options would be with real servers bare-metal, if you have access to cheap
 ### What would I install on it...
 
 A kubernetes of course but which one k3s, rke2, OKD... for now, it's hard to say. My first though was k3s since there is so many example already out there, well documented like [Picluster](https://picluster.ricsanfre.com/docs/home/) or 
-[Khue's Homelab](https://homelab.khuedoan.com/). K3s is lightweight but what I see usually is that you add stuff on it like cilium, ingress-nginx etc. at the end, they were building a rke2... That's why I went directly to rke2 with an Ansible Collection to deploy it with some customizations. The project named [Rkub](https://github.com/MozeBaltyk/Rkub).
+[Khue's Homelab](https://homelab.khuedoan.com/). K3s is lightweight but what I see usually is that you add stuff on it like *cilium*, *ingress-nginx*, etc. at the end, they were building a *rke2*... That's why I went directly to *rke2* with an Ansible Collection to deploy it with some customizations. The project named [Rkub](https://github.com/MozeBaltyk/Rkub).
 
-OKD/Openshift also have is homelab but not on bare-metal, mostly KVM or Proxmox like this [one](https://github.com/amrut-asm/homelab) or this [one](https://github.com/sawa2d2/k8s-on-kvm). So in parallel, I also started a Terraform project to deploy OKD named [Okub](https://github.com/MozeBaltyk/Okub).
+OKD/Openshift also have is homelab but not on bare-metal, mostly KVM or Proxmox like this [one](https://github.com/amrut-asm/homelab) or this [one](https://github.com/sawa2d2/k8s-on-kvm). So in parallel, I also started a Terraform project to deploy OKD, named [Okub](https://github.com/MozeBaltyk/Okub).
 
 Let's see where I will arrive with those projects... 
