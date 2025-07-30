@@ -84,6 +84,19 @@ sudo virsh net-edit hostbridge
 sudo virsh net-info hostbridge
 sudo virsh net-dhcp-leases hostbridge
 
+# Check with a small script 
+echo -e "\n##### KVM networks #####\n"
+kvm_system_networks_all=$(sudo virsh net-list --all)
+echo -e "Available KVM networks in qemu:///system :\n$kvm_system_networks_all"
+for net in $(sudo virsh net-list --name); do
+    bridge_name=$(sudo virsh net-info --network ${net} | grep Bridge | cut -d":" -f2 | sed 's/^[[:space:]]*//')
+    for br in ${bridge_name}; do
+        br_info=$(ip -br -c address show dev ${br} || echo "No IP address assigned to bridge ${br}")
+    done
+    echo -e "\n\033[1;34m${net}\033[0m have the Bridge: $br_info"
+done
+echo -e "\n"
+
 # Due to bridge-utils package
 brctl show
 

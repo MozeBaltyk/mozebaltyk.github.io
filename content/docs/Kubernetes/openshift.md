@@ -75,7 +75,11 @@ oc delete pod cs-redhat-operator-index-m2k2n -n openshift-marketplace
 openshift-install coreos print-stream-json | grep '\.iso[^.]'
 
 openshift-install create install-config
+
+openshift-install create manifests
+
 openshift-install create ignition-configs
+
 openshift-install create cluster --dir . --log-level=info
 openshift-install destroy cluster --log-level=info
 ```
@@ -98,6 +102,12 @@ export CLUSTER_REQUEST=$(jq --null-input --arg openshift_cluster_id "$OPENSHIFT_
 ```
 
 ## Platform in install-config
+
+* Get all info on how to config
+
+```shell
+openshift-install explain installconfig.platform.libvirt
+```
 
 ```yaml
 ## none 

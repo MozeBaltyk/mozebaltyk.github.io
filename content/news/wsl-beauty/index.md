@@ -101,7 +101,7 @@ wsl --list -v
 
 ## Activate Systemd
 
-Need WSL2 and Windows 11, add below line a the top of the file /etc/wsl.conf
+Need WSL2 and Windows 11, add below line a the top of the file `/etc/wsl.conf`
 
 ```ini
 # /etc/wsl.conf
@@ -128,63 +128,26 @@ wsl.exe --shutdown
 
 ```bash
 sudo apt update
-sudo apt install qemu-kvm libvirt-daemon-system libvirt-clients bridge-utils cpu-checker \
-network-manager iptables-persistent linux-headers-generic \
-qemu uml-utilities virt-manager git \
-wget libguestfs-tools p7zip-full make dmg2img tesseract-ocr \
-tesseract-ocr-eng genisoimage vim net-tools screen firewalld libncurses-dev -y
-sudo apt install virt-manager
+sudo apt install cpu-checker
+sudo kvm-ok
+
+#Basic
+sudo apt -y install libvirt-daemon-system bridge-utils qemu-kvm libvirt-daemon
+
+#Extra tools
+sudo apt install virtinst libosinfo-bin virt-top libguestfs-tools 
+sudo apt install xsltproc uidmap
+
+# GUI tools
+sudo apt -y install qemu-system virt-manager 
+
 sudo addgroup kvm
-sudo adduser `id -un` libvirt
+sudo adduser `id -un` libvirt-qemu
 sudo adduser `id -un` kvm
 newgrp libvirt
 ```
 
 ## Make podman engine and kind work on WSL2
-
-* Update crun
-
-```bash
-CRUN_VER='1.11.2'
-
-curl -L "https://github.com/containers/crun/releases/download/${CRUN_VER}/crun-${CRUN_VER}-linux-amd64" -o "${HOME}/.local/bin/crun"
-
-chmod +x "${HOME}/.local/bin/crun"
-
-cat << EOF > $HOME/.config/containers/containers.conf
-[engine]
-cgroup_manager = "cgroupfs"
-
-[engine.runtimes]
-crun = [
-  "${HOME}/.local/bin/crun",
-  "/usr/bin/crun"
-]
-EOF
-```
-
-* Adapt podman general config `/usr/share/containers/containers.conf`
-
-```ini
-[engine]
-cgroup_manager = "cgroupfs"
-events_logger = "journald"
-
-[engine.runtimes]
-crun = [
-   "${HOME}/.local/bin/crun",
-   "/usr/bin/crun"
-]
-```
-
-* Delegate service
-
-```bash
-cat << EOF > /etc/systemd/system/user@.service.d/delegate.conf
-[Service]
-Delegate=yes
-EOF
-```
 
 * Adapt `%USERPROFILE%\.wslconfig` to systemd in cgroup
 
@@ -192,4 +155,45 @@ EOF
 [wsl2]
 nestedVirtualization=true
 kernelCommandLine = cgroup_no_v1=all systemd.unified_cgroup_hierarchy=1
+```
+
+* Update UID map and podman user config:
+
+```bash
+# rootless podman 4.9.3 on WSL2 + Ubuntu 24.04:
+sudo apt-get install uidmap
+
+echo "ubuntu:100000:2097152" | sudo tee  /etc/subuid
+echo "ubuntu:100000:2097152" | sudo tee  /etc/subgid
+
+cat << EOF > $HOME/.config/containers/containers.conf
+unqualified-search-registries=["docker.io"]
+
+[aliases]
+"library"="docker.io/library"
+
+[engine]
+cgroup_manager = "cgroupfs"
+events_logger = "journald"
+EOF
+```
+
+* Install Kind
+
+```bash
+[ $(uname -m) = x86_64 ] && curl -Lo ./kind https://kind.sigs.k8s.io/dl/v0.27.0/kind-linux-amd64
+chmod +x ./kind
+sudo mv ./kind /usr/local/bin/kind
+```
+
+
+## Make WSL copy the host network 
+
+* Usefull when you change WIFI, add to `%USERPROFILE%\.wslconfig`:
+
+```ini
+[wsl2]
+networkingMode=mirrored
+dnsTunneling=true
+autoProxy=true
 ```

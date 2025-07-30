@@ -130,7 +130,7 @@ cd my_project
 git config url.ssh://git@github.com/.insteadOf https://github.com/
 ```
 
-Then configure which ssh key to use for Github in $HOME/.ssh/config (create directory/file if necessary)
+Then configure which ssh key to use for Github in `$HOME/.ssh/config` (create directory/file if necessary)
 ```bash
 # Github
 Host github.com

@@ -8,6 +8,13 @@ categories:
   - Systems
 ---
 
+## Tutorials
+
+https://vimvalley.com/
+https://vim-adventures.com/
+https://www.vimgolf.com/
+
+
 ## Plugins
 
 ```bash
