@@ -55,9 +55,9 @@ hb:
       # see https://hbstack.dev/modules/blog/sidebar/profile/
       profile:
         title: Bałtyk Blog
-        description: This is a blog about IT. Here I share my thoughts, discoveries, and documentation on sysadmin and devops topics.
+        description: "A simple IT blog trying to make sense of it all. Thoughts, discoveries, and documentation from sysadmin and DevOps work — learned by breaking, fixing, and sometimes finding elegant solutions."
         avatar_size: 80
-        avatar: "images/avatar.jpg"
+        avatar: "images/avatar.png"
         #company: COMPANY
         #location: Earth
         socials:

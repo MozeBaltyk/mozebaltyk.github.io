@@ -5,5 +5,5 @@ main:
     params:
       icon:
         vendor: bootstrap
-        name: signpost-2
+        name: signpost-split
         color: "#fd7e14"
