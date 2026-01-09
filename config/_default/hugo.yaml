@@ -46,7 +46,7 @@ markup:
     lineNumbersInTable: false
     # add custom style for code blocks
     codefences: true
-    style: github
+    style: monokai
 
 # see https://gohugo.io/content-management/related/#configure-related-content
 related:
