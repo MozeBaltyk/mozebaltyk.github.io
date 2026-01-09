@@ -53,8 +53,8 @@ hb:
       width: .35 # the width of sidebar.
       position: start # the sidebar position: start (left) or end (right).
       profile:
-        # title: Profile title other than site title.
-        # description: Profile description other than site description.
+        title: Bałtyk Blog
+        description: This is a blog about IT. Here I share my thoughts, documentation and discoveries on sysadmin and devops fields.
         avatar_size: 100
         #company: COMPANY
         #location: Earth
