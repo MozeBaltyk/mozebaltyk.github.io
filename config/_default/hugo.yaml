@@ -21,7 +21,6 @@ outputs:
     - HTML
     - Offline        # required by PWA module for displaying the offline pages.
     - RSS
-    - JSON          # required by search module.
     - SearchIndex    # required by search module.
     - WebAppManifest # required by PWA module to make your site installable.
 

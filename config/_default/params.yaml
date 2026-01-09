@@ -13,9 +13,9 @@ hb:
   # The rocket icon to scroll back to top.
   back_to_top:
     animation: true
-    icon_height: 2em
-    icon_name: arrow-up-circle
-    icon_width: 2em
+    icon_height: 3em
+    icon_name: arrow-up
+    icon_width: 3em
     position_bottom: 1rem
     position_end: 1rem
 
@@ -27,13 +27,11 @@ hb:
     socials:
       github: MozeBaltyk/mozebaltyk.github.io
       rss: true
+    # ring bell what take into account as news.
     news:
       sections:
         - docs
         - posts
-    # test
-    banner:
-      transparentize_navbar_bg: true
   footer:
     # see https://hbstack.dev/en/docs/modules/socials/.
     socials:
