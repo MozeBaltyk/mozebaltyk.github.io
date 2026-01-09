@@ -1,0 +1,9 @@
+main:
+  - identifier: navigate
+    name: Navigate
+    weight: 9
+    params:
+      icon:
+        vendor: bootstrap
+        name: signpost-2
+        color: "#fd7e14"

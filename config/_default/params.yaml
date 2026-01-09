@@ -1,0 +1,166 @@
+description: Yet another blog, yes but this one is mine.
+
+hb:
+  # js_bundle_name: main # the JS bundle name.
+  # css_bundle_name: main # the CSS bundle name.
+  full_width: false # when true, the layout takes full width globally.
+  color: dark
+
+  # Background image module settings
+  background_image:
+    modern_format: webp
+    
+  # The rocket icon to scroll back to top.
+  back_to_top:
+    animation: true
+    icon_height: 2em
+    icon_name: arrow-up-circle
+    icon_width: 2em
+    position_bottom: 1rem
+    position_end: 1rem
+
+  # Header part
+  header:
+    brand: Bałtyk Blog # the brand name, leave it empty to use site's title.
+    logo_bg: '#712cf9' # logo background color, used by logo with transparent background.
+    # see https://hbstack.dev/en/docs/modules/socials/.
+    socials:
+      github: MozeBaltyk/mozebaltyk.github.io
+      rss: true
+    news:
+      sections:
+        - docs
+        - posts
+    # test
+    banner:
+      transparentize_navbar_bg: true
+  footer:
+    # see https://hbstack.dev/en/docs/modules/socials/.
+    socials:
+      _color: true # when false, remove the color of social icons.
+      github: MozeBaltyk/mozebaltyk.github.io
+      rss: true
+  blog:
+    list_cols_md: 2
+    list_cols_lg: 3
+    toc:
+      position: end # start (left) or end (right).
+    social_share_buttons:
+      alignment: center
+      media:
+        - twitter
+        - facebook
+        - linkedin
+    sidebar:
+      sticky: true # set it to false to not stick the sidebar.
+      width: .35 # the width of sidebar.
+      position: start # the sidebar position: start (left) or end (right).
+      posts:
+        recent_count: 0 # the number of recent posts.
+        featured_count: 0  # the number of featured posts.
+        style: pills # pills, tabs or underline.
+        list_style: slide # slide or vertical.
+      taxonomies:
+        count: true # whether to show the number of posts associated to the item.
+        limit: 10 # the maximum number of the item.
+        style: pills # pills, tabs or underline.
+        separate: false # whether to separate into mutliple sections.
+        authors:
+          disable: true # whether to disable this taxonomy.
+          weight: 1 # the weight of this taxonomy, lower gets higher priority.
+          count: false # override the global count setting.
+          limit: 5 # override the global limit setting.
+        categories:
+          disable: false
+          weight: 2
+        series:
+          disable: false
+          weight: 3
+        tags:
+          disable: false
+          weight: 4
+          limit: 25
+          # title: Popular Tags # override the title.
+    paginate: 12 # paginate.
+    # addon from https://hbstack.dev/modules/blog/overview/
+    post_thumbnail_default: images/thumbnail.jpg
+    # if image above does not exist, use the placeholder below with text:
+    post_thumbnail_placeholder: Bałtyk Blog # the text of thumbnail placeholder, default to site title.
+    # post_thumbnail: false # whether to show the thumbnails.
+    # post_date_format: ":date_long" # see https://gohugo.io/functions/dateformat/#datetime-formatting-layouts.
+    home: # homepage settings.
+      # taxonomies: false # remove the taxonomies stat from the homepage.
+      featured_posts: 5 # the number of the featured posts, 0 means disabled.
+      pinned_posts_position: "list"
+      main_sections: # leave it empty to include all regular pages.
+        - posts
+    giscus:
+      repo: MozeBaltyk/mozebaltyk.github.io
+      repo_id: R_kgDOKJSCfA
+      category_id: DIC_kwDOKJSCfM4CYvA_
+  docs:
+    giscus:
+      repo: MozeBaltyk/mozebaltyk.github.io
+      repo_id: R_kgDOKJSCfA
+      category_id: DIC_kwDOKJSCfM4CYvA_
+  content_panel:
+    repo:
+      service: github # github or gitlab.
+      repo: MozeBaltyk/mozebaltyk.github.io
+      branch: main
+      subpath: # the subpath of the content, leave it empty if the content is in the root path.
+  # gallery:
+  #   thumbnail_size: "x640"
+  # google_fonts:
+    # families:
+      # - name: Lato
+
+seo:
+  favicons: # see https://hugomods.com/en/docs/seo/#favicons-module
+    icon: images/logo.png # use logo as favicon.
+
+# PWA settings, see https://hugomods.com/en/docs/pwa/#site-parameters.
+pwa:
+  debug: false
+  manifest:
+    background_color: '#D7E3BF'
+    theme_color: '#D7E3BF'
+    short_name: 'BB'
+
+# see https://hugomods.com/search/configurations/.
+search:
+  stall_threshold: 300
+  min_match_char_length: 3
+  case_sensitive: false
+  threshold: 0.0
+  index_all_pages: true
+  index_content: true
+  ignore_location: true
+
+mermaid:
+  # replace it with other CDNs or self-hosted URLs.
+  js_url: https://cdn.jsdelivr.net/npm/mermaid@latest/dist/mermaid.esm.min.mjs
+
+hugopress:
+  modules:
+    hb-custom:
+      hooks:
+        # see layouts/partials/hugopress/modules/hb-custom/hooks/head-end.html.
+        head-end:
+          cacheable: true
+        # see layouts/partials/hugopress/modules/hb-custom/hooks/body-end.html.
+        body-end:
+          cacheable: true
+        # see layouts/partials/hugopress/modules/hb-custom/hooks/hb-blog-sidebar.html.
+        # hb-blog-sidebar:
+        #  cacheable: true
+        #  weight: 1
+    # change the order of sidebar modules.
+    hb-blog-sidebar-taxonomies:
+      hooks:
+        hb-blog-sidebar:
+          weight: 2
+    hb-blog-sidebar-posts:
+      hooks:
+        hb-blog-sidebar:
+          weight: 3
