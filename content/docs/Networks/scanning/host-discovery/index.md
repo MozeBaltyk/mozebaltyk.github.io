@@ -1,7 +1,7 @@
 ---
 title: "Host Discovery"
 date: 2026-01-05T19:02:56-08:00
-draft: false
+draft: true
 description: "Techniques for identifying active systems."
 noindex: false
 featured: false

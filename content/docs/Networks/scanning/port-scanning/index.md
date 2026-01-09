@@ -1,7 +1,7 @@
 ---
 title: "Port Scanning"
 date: 2026-01-05T18:40:49-08:00
-draft: false
+draft: true
 description: "Methods for discovering open ports"
 noindex: false
 featured: false

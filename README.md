@@ -43,7 +43,7 @@ The two way to build it with docker:
 * DEV mode
 ```bash
 # run it with the hugo image - closer to the manual way
- podman build \
+podman build \
   -t user/my-site:1 \
   --build-arg HUGO_BASEURL=http://localhost:8080 \
   -f Dockerfile.dev

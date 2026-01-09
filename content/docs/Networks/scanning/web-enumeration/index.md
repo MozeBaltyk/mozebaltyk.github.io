@@ -1,7 +1,7 @@
 ---
 title: "Web Enumeration"
 date: 2026-01-05T12:18:06-08:00
-draft: false
+draft: true
 description: "Identifying security weaknesses and CVEs"
 noindex: false
 featured: false
