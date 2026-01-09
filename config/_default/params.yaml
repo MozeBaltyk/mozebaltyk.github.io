@@ -13,9 +13,9 @@ hb:
   # The rocket icon to scroll back to top.
   back_to_top:
     animation: true
-    icon_height: 3em
-    icon_name: arrow-up
-    icon_width: 3em
+    icon_height: 2em
+    icon_name: balloon-fill
+    icon_width: 2em
     position_bottom: 1rem
     position_end: 1rem
 
