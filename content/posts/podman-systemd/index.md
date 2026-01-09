@@ -22,7 +22,7 @@ images: [./podman-systemd/carousel.webp]
 sidebar: false
 ---
 
-Do we really need kubernetes when what you will see below is real...
+Do we really need kubernetes when you will see what is below...
 
 <!--more-->
 

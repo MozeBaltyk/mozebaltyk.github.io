@@ -36,7 +36,7 @@ Not a big deal, but this reveal my name when I would rather appreciate to stay a
 
 ## A good Solution
 
-I developed a while ago, a tools name [AnsiColt](https://github.com/MozeBaltyk/AnsiColt) to handle the creation of Ansible Collections and manage the diverses projects that I maintain through all my repositories which are divided between Github and GitLab repositories.
+I developed a while ago, a tools name [AnsiColt](https://github.com/MozeBaltyk/AnsiColt) (Which is a *retired* projects by now) to handle the creation of Ansible Collections and manage the diverses projects that I maintain through all my repositories which are divided between Github and GitLab repositories.
 
 One of my hassle is that I am involved in projects stored on diverse SVC as Github or Gitlab. During cloning process, I did not immediatly set the user individually for each projects, so instead of, it was reling on the global config.
 

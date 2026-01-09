@@ -22,7 +22,7 @@ sidebar: false
 
 | Logo | Title | Description | References |
 | :- | :-: | :- | :- |
-| <img src="logo_WST.png" width="32" alt="WST logo"/> | WST | A menu to deploy my workstation on WSL | <a target="_blank" href="https://github.com/MozeBaltyk/wst">github link</a></br> |
+| <img src="logo_WST.png" width="36" alt="WST logo"/> | WST | A menu to deploy my workstation on WSL | <a target="_blank" href="https://github.com/MozeBaltyk/wst">github link</a></br> |
 | Rkub | Rkub | Ansible Collection to deploy a RKE2 cluster with Rancher, Longhorn and Neuvector in Airgap mode. | <a target="_blank" href="https://github.com/MozeBaltyk/Rkub">github link</a></br> |
 | Okub | Okub | Collection to deploy OKD on diverse providers | <a target="_blank" href="https://github.com/MozeBaltyk/Okub">github link</a></br> |
 | UpOnLAN | UpOnLAN | A Wake-on-lan and Pxeboot server in container. | <a target="_blank" href="https://github.com/MozeBaltyk/UpOnLAN">github link</a></br> |
