@@ -34,16 +34,16 @@ When using CI, each job is a runner, so new triggered container for each step of
 
 I wrote a documentation about `s3cmd` which cover 3 differents use cases (manual usage; in a github workflow; or mounting S3 bucket as a FS) in `docs/storage/s3`. The purpose of this article is not to repeat the documentation but rather underline the fact that we don't need this dependence to *Terraform Cloud* and another account somewhere else, when `s3cmd` can help us to do the job.
 
-## The solution ^^
+## The solution!
 
-### To resume the big steps:
+### The big steps
 
 * Install and init a connection with `s3cmd`
 * Create a bucket
 * Use it as your terrafrom backend
 * Cleanup after if needed.
 
-### In a *Github Workflows*:
+### Inside a *Github Workflows*:
 
 This is pretty usefull in a pipeline, but do not forget to include a job to cleanup everything once done...
 
