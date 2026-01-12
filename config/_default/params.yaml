@@ -27,11 +27,6 @@ hb:
     socials:
       github: MozeBaltyk/mozebaltyk.github.io
       rss: true
-    # github.com/hbstack/header/modules/git-repo settings
-    git_repo:
-      name: mozebaltyk.github.io
-      owner: MozeBaltyk
-      service: github
     # ring bell what take into account as news.
     news:
       sections:
