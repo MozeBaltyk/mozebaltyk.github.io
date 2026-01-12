@@ -1,5 +1,6 @@
 --- 
 title: 💫 Podman as a service
+description: "Do we really need kubernetes when you will see what is below..."
 date: 2025-07-03T03:48:10+02:00
 noindex: false
 featured: true
@@ -21,8 +22,6 @@ authors:
 images: [./podman-systemd/carousel.webp]
 sidebar: false
 ---
-
-Do we really need kubernetes when you will see what is below...
 
 <!--more-->
 

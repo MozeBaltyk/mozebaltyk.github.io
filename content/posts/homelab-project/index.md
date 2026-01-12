@@ -1,5 +1,6 @@
 ---
 title: 🚀 The Homelab Journey
+description: "A journey to my homelab..."
 date: 2025-06-01T03:48:10+02:00
 noindex: false
 featured: true
@@ -23,13 +24,9 @@ images: [./homelab-project/carousel.webp]
 sidebar: false
 ---
 
-A journey to my homelab...
-
-<!--more-->
-
 {{< bs/alert warning >}}
 {{< markdownify >}}
-I wrote this article before the short supply on RAM due to IA high demands! 
+I wrote this article before the short supply on RAM due to AI high demands! 
 {{< /markdownify >}}
 {{< /bs/alert >}}
 
@@ -37,7 +34,7 @@ Let expose the problem, I need a homelab, of course on budget. My wife won't let
 Ok, so the NAS have no CPU power but the NUC have it, the NUC does not have enough disks space but the NAS have it. What about playing with cluster technologies ? "Oh, then install proxmox!", Yep. but what the purpose to do virtualisation when there is no redondancy ?
 So, Let's find out, if there is not another setup possible which will be more or less at the same price!
 
-### First the hardware
+## First the hardware
 
 Let's study three possible setup with a rough estimation about costs:
 
@@ -96,7 +93,7 @@ About the "3 mini PCs" option:
 
 Forth options would be with real servers bare-metal, if you have access to cheap energy and have the budget for it, go for it... In the article, we will not dig into this option. But my point here is the "3 mini PCs" option can be much fun option and not so costly for a homelab.
 
-### What would I install on it...
+## What would I install on it...
 
 A kubernetes of course but which one k3s, rke2, OKD... for now, it's hard to say. My first though was k3s since there is so many example already out there, well documented like [Picluster](https://picluster.ricsanfre.com/docs/home/),
 [Khue's Homelab](https://homelab.khuedoan.com/) or [rpi4cluster](https://rpi4cluster.com/). K3s is lightweight but what I see usually is that you add stuff on it like *cilium*, *ingress-nginx*, etc. at the end, they were building a *rke2*... That's why I went directly to *rke2* with an Ansible Collection to deploy it with some customizations. The project named [Rkub](https://github.com/MozeBaltyk/Rkub).

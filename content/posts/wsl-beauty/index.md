@@ -1,5 +1,6 @@
 ---
 title: 🎉 The Beauty of WSL
+description: "WSL stand for *Windows Subsystem Linux*. It allow us to get the best of both Linux and Windows world..."
 date: 2025-05-01T03:48:10+02:00
 noindex: false
 featured: true
@@ -23,10 +24,6 @@ authors:
 images: [./wsl-beauty/carousel.webp]
 sidebar: false
 ---
-
-WSL stand for *Windows Subsystem Linux*. It allow us to get the best of both Linux and Windows world...
-
-<!--more-->
 
 ## Get Started 
 

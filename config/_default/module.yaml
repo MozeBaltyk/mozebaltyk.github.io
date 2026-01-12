@@ -7,6 +7,7 @@ imports:
   # To change the background image
   - path: github.com/hbstack/background-image
   - path: github.com/hbstack/back-to-top
+  - path: github.com/hbstack/header/modules/git-repo
 
   # theme modules
   - path: github.com/hbstack/theme-cards

@@ -1,5 +1,6 @@
 ---
 title: 👷👮 Makefile VS Justfile
+description: "The two task-runners comparison!"
 date: 2024-10-31T03:48:10+02:00
 noindex: false
 featured: true

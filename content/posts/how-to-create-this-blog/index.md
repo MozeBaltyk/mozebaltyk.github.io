@@ -1,5 +1,6 @@
 ---
 title: 🌌 How to Create this Blog
+description: "The beginning of this blog, the first version."
 date: 2023-10-01T02:59:46+02:00
 noindex: false
 featured: true
@@ -10,7 +11,7 @@ reward: true
 pinned: false
 carousel: true
 series:
-  - Homelab
+  - Devops
 categories:
   - Posts
 tags: 
