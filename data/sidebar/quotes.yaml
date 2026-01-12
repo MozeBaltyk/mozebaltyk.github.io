@@ -1,0 +1,35 @@
+- text: "There is no cloud, it’s just someone else’s computer."
+  author: "Sysadmin proverb"
+
+- text: "If you didn’t document it, it didn’t happen."
+  author: "IT folklore"
+
+- text: "Automation without understanding is just faster failure."
+  author: "DevOps wisdom"
+
+- text: "The system always works exactly as designed."
+  author: "Engineering law"
+
+- text: "Hope is not a strategy."
+  author: "Operations truth"
+
+- text: "Every system is perfectly designed to get the results it gets."
+  author: "W. Edwards Deming"
+
+- text: "First make it work, then make it right, then make it fast."
+  author: "Kent Beck"
+
+- text: "Simplicity is a feature."
+  author: "Unix philosophy"
+
+- text: "Your monitoring is only as good as your alerts at 3 AM."
+  author: "On-call reality"
+
+- text: "If it’s not automated, it’s technical debt."
+  author: "DevOps maxim"
+
+- text: "The best way to predict the future is to invent it."
+  author: "Alan Kay"
+
+- text: "Talk is cheap. Show me the code."
+  author: "Linus Torvalds"

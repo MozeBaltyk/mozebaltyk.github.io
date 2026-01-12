@@ -1,3 +1,60 @@
 <div class="hb-module text-center">
-  SIDEBAR
+  <aside class="hb-sidebar">
+
+    {{/* Load data */}}
+    {{ $quotes := site.Data.sidebar.quotes | default slice }}
+    {{ $jokes  := site.Data.sidebar.jokes  | default slice }}
+    {{ $wisdom := site.Data.sidebar.wisdom | default slice }}
+
+    {{/* Build unified list */}}
+    {{ $items := slice }}
+
+    {{ range $quotes }}
+      {{ $items = $items | append (dict
+        "type" "quote"
+        "emoji" "💬"
+        "title" "Quote"
+        "text" .text
+        "author" .author
+      ) }}
+    {{ end }}
+
+    {{ range $jokes }}
+      {{ $items = $items | append (dict
+        "type" "joke"
+        "emoji" "😂"
+        "title" "IT Joke"
+        "text" .
+      ) }}
+    {{ end }}
+
+    {{ range $wisdom }}
+      {{ $items = $items | append (dict
+        "type" "wisdom"
+        "emoji" "🧠"
+        "title" "Tech Wisdom"
+        "text" .
+      ) }}
+    {{ end }}
+
+    {{/* Hour-based rotation key */}}
+    {{ $hourKey := now.Format "2006010215" | int }}
+        
+    {{ if gt (len $items) 0 }}
+      {{ $index := mod $hourKey (len $items) }}
+      {{ $item := index $items $index }}
+
+      <section class="hb-sidebar-box random-citation">
+        <h5>{{ $item.emoji }} {{ $item.title }}</h5>
+
+        <blockquote>
+          “{{ $item.text }}”
+          {{ with $item.author }}
+            <footer>— {{ . }}</footer>
+          {{ end }}
+        </blockquote>
+      </section>
+    {{ end }}
+
+  </aside>
 </div>
