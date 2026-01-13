@@ -1,1 +1,5 @@
 {{/* Put custom HTML markup before the end of <head>. */}}
+
+{{/* Load custom sidebar JS */}}
+{{ $js := resources.Get "hb/modules/custom/js/index.ts" | js.Build | minify | fingerprint }}
+<script src="{{ $js.RelPermalink }}" defer></script>
