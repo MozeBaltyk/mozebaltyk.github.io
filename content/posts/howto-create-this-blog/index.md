@@ -11,7 +11,7 @@ reward: true
 pinned: false
 carousel: true
 series:
-  - Devops
+  - Tutorials
 categories:
   - Posts
 tags: 
@@ -19,7 +19,7 @@ tags:
   - Git
 authors:
   - mozebaltyk
-images: [./how-to-create-this-blog/carousel.webp]
+images: [./howto-create-this-blog/carousel.webp]
 sidebar: false
 ---
 
@@ -77,7 +77,7 @@ So I went through *[Hugo-theme-bootstrap](https://github.com/razonyang/hugo-them
 
 Here a quick over view of what this theme have to offer:
 
-![Center](./how-to-create-this-blog/HBS-list-feat.PNG#center)
+![Center](./howto-create-this-blog/HBS-list-feat.PNG#center)
 
 ## Let's Practice
 

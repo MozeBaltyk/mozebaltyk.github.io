@@ -18,6 +18,7 @@ series:
 #  - Devops
 #  - Homelab
 #  - Hacking
+#  - Tutorials
 categories:
   - Posts
 tags:

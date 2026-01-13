@@ -13,6 +13,7 @@
   - Devops
   - Homelab
   - Hacking
+  - Tutorials
 **Categories**:
   - Docs
   - Posts
