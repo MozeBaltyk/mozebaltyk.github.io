@@ -7,6 +7,7 @@ defaultContentLanguageInSubdir: false # when true, append the default language c
 enableRobotsTXT: true
 timeout: 120s
 enableEmoji: true
+enableGitInfo: true
 
 title_sections: true # when false, remove the sections from the title.
 title_sections_depth: 0 # the depth of sections on the title.

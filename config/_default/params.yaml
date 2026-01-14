@@ -8,9 +8,16 @@ hb:
 
   # Background image module settings
   background_image:
-    brightness: 20
+    brightness: 10
     modern_format: webp
-    
+
+  # Google Fonts module settings
+  google_fonts:
+    families:
+      - name: Poppins
+      - name: Fira Code
+      - name: Agbalumo
+
   # The rocket icon to scroll back to top.
   back_to_top:
     animation: true
@@ -47,7 +54,7 @@ hb:
       position: end # start (left) or end (right).
     social_share_buttons:
       alignment: center
-      size: 2em
+      size: 1em
       media:
         - twitter
         - linkedin
