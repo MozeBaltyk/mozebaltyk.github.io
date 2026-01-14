@@ -1,9 +1,9 @@
 // This SCSS styles will be compiled into the CSS bundle automatically.
-@import 'site';
-@import 'header';
 
 /*! purgecss start ignore */
 
 /*! PUT YOU STYLE HERE TO AVOID GETTING REMOVING BY PURGECSS. */
+@import 'site';
+@import 'header';
 
 /*! purgecss end ignore */
