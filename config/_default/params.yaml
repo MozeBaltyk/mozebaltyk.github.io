@@ -4,11 +4,11 @@ hb:
   # js_bundle_name: main # the JS bundle name.
   # css_bundle_name: main # the CSS bundle name.
   full_width: false # when true, the layout takes full width globally.
-  color: dark
+  color: dark # default color theme when toggle is not loaded
 
   # Background image module settings
   background_image:
-    brightness: 0.3
+    brightness: 20
     modern_format: webp
     
   # The rocket icon to scroll back to top.
@@ -22,6 +22,7 @@ hb:
 
   # Header part
   header:
+    sticky: true # whether to stick the header.  
     brand: Bałtyk Blog # the brand name, leave it empty to use site's title.
     logo_bg: '#712cf9' # logo background color, used by logo with transparent background.
     # see https://hbstack.dev/en/docs/modules/socials/.
@@ -46,6 +47,7 @@ hb:
       position: end # start (left) or end (right).
     social_share_buttons:
       alignment: center
+      size: 2em
       media:
         - twitter
         - linkedin
@@ -100,7 +102,7 @@ hb:
     # post_date_format: ":date_long" # see https://gohugo.io/functions/dateformat/#datetime-formatting-layouts.
     home: # homepage settings.
       # taxonomies: false # remove the taxonomies stat from the homepage.
-      featured_posts: 5 # the number of the featured posts, 0 means disabled.
+      featured_posts: 6 # the number of the featured posts, 0 means disabled.
       pinned_posts_position: "list"
       main_sections: # leave it empty to include all regular pages.
         - posts
