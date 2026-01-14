@@ -4,7 +4,7 @@ date: {{ .Date }}
 draft: true
 description: "{{ replace .Name "-" " " | title }}"
 noindex: false
-featured: false
+featured: true
 pinned: false
 comment: true
 toc: true
