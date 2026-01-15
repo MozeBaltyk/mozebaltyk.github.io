@@ -65,6 +65,14 @@ ExecStopPost=/usr/bin/podman rm -f my-nginx
 WantedBy=multi-user.target
 ```
 
+* Check it:
+
+```bash
+systemctl --user status container-my-nginx
+systemctl --user restart container-my-nginx
+journalctl --user -u container-my-nginx
+```
+
 ## Some other interesting example ...
 
 Thanks to [Yaakov](https://blog.yaakov.online/replacing-kubernetes-with-systemd/)
