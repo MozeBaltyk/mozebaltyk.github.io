@@ -1,5 +1,5 @@
 ---
-title: 💫 Own your terraform state (with s3cmd)
+title: ⛄ Own your terraform state (with s3cmd)
 date: 2025-05-05T03:48:10+02:00
 noindex: false
 featured: true

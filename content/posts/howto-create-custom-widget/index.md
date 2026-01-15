@@ -1,10 +1,10 @@
 ---
-title: "How to Create Custom Widget"
+title: "🎺 How to Create Custom Widget"
+description: "How to create a custom sidebar widget in a Hugo static website."
 date: 2026-01-13T15:09:09+01:00
 draft: false
-description: "How to create a custom sidebar widget in a Hugo static website."
 noindex: false
-featured: false
+featured: true
 pinned: false
 comment: true
 toc: true
@@ -110,9 +110,6 @@ to include the data in the website.
 </div>
 ```
 
-For troubleshooting, you can inspect the page source and search for the
-`random-citation` class to verify that the data is correctly embedded.
-
 ## Typescript or Javascript
 
 JavaScript is the language executed by the browser, while TypeScript is a
@@ -199,3 +196,80 @@ time a page is loaded, creating the impression of randomness while
 remaining fully static.
 
 ![Random citation widget](./howto-create-custom-widget/result_widget.png#center)
+
+## Troubleshooting
+
+1. Inspect the page source and search for the
+`random-citation` class to verify that the data are correctly embedded.
+
+2. Add a log at the top of `index.ts`:
+
+```ts
+console.log("Random citation script loaded");
+```
+
+Open DevTools → Console and reload the page.
+
+If the message does not appear, the script is not being loaded.
+Verify the `hb-head-end.html` hook and `resources.Get` path.
+
+3. Test DOM access manually
+
+In DevTools → Console, run to test data access:
+
+`document.querySelector(".citation-category div")?.dataset`
+
+## Data flow diagram
+
+The following diagram illustrates how data flows from Hugo to the
+browser and finally into the rendered widget. 
+
+At no point does JavaScript access Hugo data directly.All data access 
+happens through the DOM via `data-*` attributes that were generated at build time.
+
+```text
+ BUILD TIME (Hugo)
+ ─────────────────────────────────────────────────
+
+   data/sidebar/quotes.yaml
+   data/sidebar/jokes.yaml
+   data/sidebar/wisdom.yaml
+              │
+              ▼
+      ┌─────────────────────┐
+      │   .Site.Data        │
+      │   (Hugo context)    │
+      └─────────┬───────────┘
+                │ Go templates
+                ▼
+      ┌─────────────────────┐
+      │ Generated HTML      │
+      │ hidden <div> nodes  │
+      │ data-* attributes   │
+      └─────────┬───────────┘
+                │
+                │ static HTML
+                ▼
+
+ RUNTIME (Browser)
+ ─────────────────────────────────────────────────
+
+      ┌─────────────────────┐
+      │ Browser DOM         │
+      │ (parsed HTML)       │
+      └─────────┬───────────┘
+                │
+                │ JavaScript
+                ▼
+      ┌─────────────────────┐
+      │ index.ts            │
+      │ - select category   │
+      │ - select citation   │
+      └─────────┬───────────┘
+                │
+                ▼
+      ┌─────────────────────┐
+      │ Visible Sidebar     │
+      │ Random citation     │
+      └─────────────────────┘
+```

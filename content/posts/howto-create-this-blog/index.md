@@ -3,7 +3,7 @@ title: 🌌 How to Create this Blog
 description: "The beginning of this blog, the first version."
 date: 2023-10-01T02:59:46+02:00
 noindex: false
-featured: true
+featured: false
 draft: false
 comment: true
 toc: true
@@ -116,7 +116,7 @@ curl -LJO https://github.com/gohugoio/hugo/releases/download/v${HUGO_VERSION}/hu
 tar -xzf hugo_extended_${HUGO_VERSION}_linux-amd64.tar.gz
 sudo mv hugo /usr/bin/hugo
 
-hugo version                                                                                                                            
+hugo version
 hugo v0.117.0-b2f0696cad918fb61420a6aff173eb36662b406e+extended linux/amd64 BuildDate=2023-08-07T12:49:48Z VendorInfo=gohugoio
 ```
 
@@ -198,7 +198,7 @@ After custom config, on my case I left everything by default, you got a block of
 # See https://giscus.app
 giscus:
   repo: "MozeBaltyk/mozebaltyk.github.io" # required.
-  repoId: "R_kgDOKJSCfA" # required. R_kgDOKJSCfA
+  repoId: "R_kgDOKJSCfA" # required.
   category: "General" # required.
   categoryId: "DIC_kwDOKJSCfM4CYvA_" # required. 
 ```

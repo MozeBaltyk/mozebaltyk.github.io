@@ -7,7 +7,7 @@ draft: false
 comment: true
 toc: true
 reward: true
-pinned: false
+pinned: true
 carousel: true
 series:
   - Devops
