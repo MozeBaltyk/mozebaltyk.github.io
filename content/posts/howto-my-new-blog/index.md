@@ -166,7 +166,7 @@ hb:
 
 On their side, visitors will need a Github account and must authorize the giscus app to post on their behalf using the GitHub OAuth flow.
 
-## Code blocks
+## Bootstrap module
 
 NB: remove the backslash to use those blocks of code.
 
@@ -206,6 +206,8 @@ give this effect:
 Example of informational banner
 {{< /markdownify >}}
 {{< /bs/alert >}}
+
+Refere to this [doc](https://bootstrap.hugomods.com/docs/collapse/) for all the examples. 
 
 ## Deployment
 
