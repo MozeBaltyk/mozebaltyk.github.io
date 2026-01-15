@@ -306,7 +306,7 @@ hb:
 
 On their side, visitors will need a Github account and must authorize the giscus app to post on their behalf using the GitHub OAuth flow.
 
-## Bootstrap module
+## Shortcodes
 
 NB: remove the backslash to use those blocks of code.
 
@@ -348,6 +348,9 @@ Example of informational banner
 {{< /bs/alert >}}
 
 Refere to this [doc](https://bootstrap.hugomods.com/docs/collapse/) for all the examples.
+
+
+The list of all [shortcodes](https://hbstack.dev/docs/content/shortcodes/)
 
 ## Images
 
