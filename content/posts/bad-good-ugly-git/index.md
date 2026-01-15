@@ -18,7 +18,8 @@ tags:
   - Devops
 authors:
   - mozebaltyk
-images: [./bad-good-ugly-git/carousel.webp]
+images: 
+  - "./bad-good-ugly-git/carousel.jpg"
 sidebar: false
 ---
 
