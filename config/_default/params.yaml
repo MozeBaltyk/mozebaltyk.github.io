@@ -14,6 +14,7 @@ hb:
   # Google Fonts module settings
   google_fonts:
     families:
+      - name: JetBrains Mono
       - name: Fira Code
       - name: Agbalumo
 
