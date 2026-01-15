@@ -2,7 +2,7 @@
 title: "🔭 My New Blog"
 description: "Sometime in life, you need to upgrade..."
 date: 2026-01-10T00:35:41+01:00
-draft: true
+draft: false
 noindex: false
 featured: true
 pinned: true
@@ -349,7 +349,6 @@ Example of informational banner
 
 Refere to this [doc](https://bootstrap.hugomods.com/docs/collapse/) for all the examples.
 
-
 The list of all [shortcodes](https://hbstack.dev/docs/content/shortcodes/)
 
 ## Images
@@ -361,7 +360,6 @@ The first image of the images parameter, usually used for static and external im
 The page image’s resources that naming in pattern `feature*`, such as `feature.png`, `featured-xx.jpg`. The featured image resource will be resized in smaller size, to save user’s and server’s bandwidth.
 
 * Image used in article goes in `static/<article name>/image.jpg`
-
 
 ## Deployment
 
@@ -383,3 +381,5 @@ At this stage, what could you do more:
 * Auto-update with `renovate.json`
 
 * Write your docs with Obsidian: [Here](https://github.com/orgs/hbstack/discussions/92) are some elements about how to set it correctly.
+
+* Dig into [shortcode](https://hbstack.dev/docs/content/shortcodes/)

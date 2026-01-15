@@ -27,6 +27,12 @@ hb:
     position_bottom: 1rem
     position_end: 1rem
 
+  # Blockquote params
+  blockquotes:
+    border_style: secondary
+    border_width: 4
+    bordered: true
+
   # Header part
   header:
     sticky: true # whether to stick the header.  
