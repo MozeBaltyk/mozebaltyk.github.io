@@ -14,7 +14,6 @@ hb:
   # Google Fonts module settings
   google_fonts:
     families:
-      - name: Poppins
       - name: Fira Code
       - name: Agbalumo
 
@@ -115,13 +114,13 @@ hb:
         - posts
     giscus:
       repo: MozeBaltyk/mozebaltyk.github.io
-      repo_id: R_kgDOKJSCfA
-      category_id: DIC_kwDOKJSCfM4CYvA_
+      repo_id: R_kgDOQ2m3SA
+      category_id: DIC_kwDOQ2m3SM4C095e
   docs:
     giscus:
       repo: MozeBaltyk/mozebaltyk.github.io
-      repo_id: R_kgDOKJSCfA
-      category_id: DIC_kwDOKJSCfM4CYvA_
+      repo_id: R_kgDOQ2m3SA
+      category_id: DIC_kwDOQ2m3SM4C095e
   content_panel:
     repo:
       service: github # github or gitlab.
