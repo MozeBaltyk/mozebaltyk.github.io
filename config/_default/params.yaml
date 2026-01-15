@@ -55,6 +55,7 @@ hb:
     social_share_buttons:
       alignment: center
       size: 1em
+      labels: false
       media:
         - twitter
         - linkedin

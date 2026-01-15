@@ -25,22 +25,73 @@ authors:
 sidebar: false
 ---
 
-I use to have a blog 
+## Intro
 
-All the good reasons to have a blog...
+I used to have a blog, but it was running on a theme that was becoming less and less maintained. Eventually, the moment had to come: burn it down and start again from scratch.
 
-The benefit of **hbstack** and its' themes ? A bit of history
+Starting fresh felt like the right decision — not just technically, but also as an opportunity to refactor and polish my blog.
 
-Some of the HBstack features, I found necessary for my blogs:
-* Search index
-* Post and docs layout
-* Sidebar and TOC (table of content)
-* Handle Emoji and Bootstrap icons
-* Ring bell in menu for new articles
-* Hooks to customize 
-* Syntax Highlighting
-* Comments Panels (giscuss module from Github)
-* Light/Dark mode
+
+## On The Value of Blogging.
+
+This blog exists as a place to think slowly.
+
+Most technical work is ephemeral: incidents fade, decisions are forgotten,
+and lessons learned are rarely written down. Blogging is my way of pushing
+back against that.
+
+Writing forces clarity. It turns intuition into explanation and highlights
+what I don’t yet understand. The goal is not completeness or authority, but
+honesty.
+
+There is no schedule and no algorithm to please. Some posts may be rough,
+others precise. If these notes help someone else along the way, that’s a
+bonus — but not the objective.
+
+## The Tech choice 
+
+For this new iteration of my blog, I chose **Hugo** with the
+**HBStack theme cards**, deployed on **GitHub Pages**.
+
+### Why Hugo?
+
+Hugo is a fast, opinionated static site generator that focuses on content first. 
+
+Once generated, the site is just plain HTML, CSS, and JavaScript —
+easy to host, easy to secure, and extremely fast.
+
+For me, Hugo offers:
+- Excellent performance
+- No runtime dependencies
+- A simple content workflow
+- Long-term stability
+
+### Why HBStack and its themes?
+
+HBStack builds on top of Hugo using **modules**, offering a flexible and well-structured ecosystem of themes and extensions.
+
+What really sold me was the availability of **hooks**, which allow deep customization without forking or hacking the theme itself (js,css or html).
+
+Some HBStack features I consider essential for my blog:
+
+- Post and documentation layouts
+- Sidebar and table of contents (TOC)
+- Emoji and Bootstrap icon support
+- Notification badge for new articles
+- Customization hooks
+- Syntax highlighting
+- Comment system (Giscus, backed by GitHub)
+- Light / Dark mode
+- Search index
+
+### Why GitHub Pages?
+
+GitHub Pages provides a simple, reliable hosting solution for static sites.
+Combined with Hugo, it allows me to:
+- Host the site for free
+- Version content alongside code
+- Deploy automatically via GitHub Actions
+- Avoid server maintenance entirely
 
 ## Start from scratch 
 
@@ -98,13 +149,60 @@ title: Bałtyk Blog
 # in ./config/_default/params.yaml
 hb:
   background_image:
-    brightness: 0.3
+    brightness: 10
     modern_format: webp
 ```
 
 then put images in `assets\images\background.jpg`
 
-* Organize menu and add icons
+* To organize menu and add icons
+
+Either define in `./config/_default/menus.en.yaml`:
+
+```md
+main:
+  - identifier: navigate
+    name: Navigate
+    weight: 9
+    params:
+      icon:
+        vendor: bootstrap
+        name: signpost-split
+        color: "#fd7e14"
+```
+
+then you can defined the children like `./Categories/_index.en.md` with :
+
+```md
+---
+title: Categories
+menu:
+  main:
+    parent: navigate
+    params:
+      icon:
+        vendor: bs
+        name: folder
+        color: orange
+      description: All of categories.
+---
+```
+or directly from the `index.en.md`:
+
+```md
+---
+title: Posts
+menu:
+  main:
+    weight: 1
+    params:
+      icon:
+        vendor: bs
+        name: body-text
+        color: "#20c997"
+      description: Some posts on IT topics.
+---
+```
 
 * Change the *back-to-top* icon
 
@@ -120,13 +218,49 @@ hb:
     position_end: 1rem
 ```
 
-## Organisational choices
+## The Taxonomies
 
-The menu
+Taxonomies give structure to a growing collection of articles.
 
-The taxonomies will allow to categories, will help the index and allow to make correlations between articles.
+They allow posts to be categorized, indexed, and connected to one another
+beyond simple chronology. Instead of a linear stream, the blog becomes a
+graph: topics intersect, ideas resurface, and related articles can be
+discovered naturally.
 
-# Manage Images
+In practice, taxonomies help both the reader and the author. Readers can
+navigate by themes rather than dates, while I can spot recurring subjects,
+gaps, or patterns in what I write over time.
+
+Used well, taxonomies are not just metadata — they are a lightweight form of
+knowledge organization that keeps a blog coherent as it evolves
+
+in `params.yaml`, you can tell sidebar which one to use to propose some switch button:
+
+```yaml
+hb:
+  blog:
+    sidebar:
+      taxonomies:
+        count: true # whether to show the number of posts associated to the item.
+        limit: 10 # the maximum number of the item.
+        style: pills # pills, tabs or underline.
+        separate: false # whether to separate into mutliple sections.
+        authors:
+          disable: true # whether to disable this taxonomy.
+          weight: 1 # the weight of this taxonomy, lower gets higher priority.
+          count: false # override the global count setting.
+          limit: 5 # override the global limit setting.
+        categories:
+          disable: false
+          weight: 2
+        series:
+          disable: false
+          weight: 3
+        tags:
+          disable: false
+          weight: 4
+          limit: 25
+```
 
 # Editing some content
 
@@ -134,6 +268,12 @@ Based on the *Archetypes* that I defined, I can create a new posts :
 
 ```bash
 hugo new --kind posts posts/my-new-blog.md
+```
+
+or docs:
+
+```bash
+hugo new --kind docs docs/Devops/IaC/index.md
 ```
 
 #### A word on giscus
@@ -207,15 +347,24 @@ Example of informational banner
 {{< /markdownify >}}
 {{< /bs/alert >}}
 
-Refere to this [doc](https://bootstrap.hugomods.com/docs/collapse/) for all the examples. 
+Refere to this [doc](https://bootstrap.hugomods.com/docs/collapse/) for all the examples.
+
+## Images
+
+* Featured image:
+
+The first image of the images parameter, usually used for static and external images.
+
+The page image’s resources that naming in pattern `feature*`, such as `feature.png`, `featured-xx.jpg`. The featured image resource will be resized in smaller size, to save user’s and server’s bandwidth.
+
+* Image used in article goes in `static/<article name>/image.jpg`
+
 
 ## Deployment
 
 On this side as well, there is improvment since a new docker images with all dependencies is provided on docker.io. Which is the local testing of the blog and reproductibilty.  
 
 But the github workflows deployment in `.github/workflows/gh-pages.yaml` with a *build* job and a "deploy" job which trigger when I push on main.
-
-## Plug it with Obsidian ?
 
 ## Bonuses
 
@@ -229,3 +378,5 @@ At this stage, what could you do more:
 * Check the uptime of your site with a simple [github action](https://github.com/upptime/upptime)
 
 * Auto-update with `renovate.json`
+
+* Write your docs with Obsidian: [Here](https://github.com/orgs/hbstack/discussions/92) are some elements about how to set it correctly.
