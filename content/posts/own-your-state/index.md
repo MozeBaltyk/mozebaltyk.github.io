@@ -47,7 +47,7 @@ I wrote a documentation about `s3cmd` which cover 3 differents use cases (manual
 
 This is pretty usefull in a pipeline, but do not forget to include a job to cleanup everything once done...
 
-* Init the vars :
+* Set the vars in the repository config and use them in the *Github Workflows*:
 
 ```yaml 
 env:
@@ -130,7 +130,7 @@ env:
           tofu apply terraform.tfplan
 ```
 
-Doing so, I was able to pass the state throught the different jobs in my pipeline. Instead of doing one big job with all the step, I found this solution more elegent.   
+Doing so, I was able to pass the state throught the different jobs in my pipeline. Instead of doing one big job with all the steps, I found this solution more elegant.   
 
 ## The full Pipeline
 

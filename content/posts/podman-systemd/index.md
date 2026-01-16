@@ -335,7 +335,7 @@ Quadlet was originally developed to simplify the process. You can think of it as
 
 I won’t go into more detail on this topic here, as I haven’t used it enough yet to form a solid opinion.   
 
-## Why not Docker Compose or Kubernetes?
+## Why not *Docker Compose* or *Kubernetes*?
 
 Why not *docker-compose*, which does pretty much the same thing?
 Because, as mentioned at the beginning of this article, services bring advantages. *docker-compose* is not a service. It does not start at boot, it is not monitored by the operating system, and it does not integrate with *systemd*. It is excellent for development and testing, but less suitable for production.
