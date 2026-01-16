@@ -1,4 +1,26 @@
 # A list of blogs that I would like to follow with RSS
-# Name; URL; Categories; Language 
-https://blog.while-true-do.io/
-https://blog.yaakov.online
+# Name; URL; description; 
+- name: While True Do
+  url: https://blog.while-true-do.io/
+  description: A blog about programming, technology, and software development.
+- name: Yaakov Online
+  url: https://blog.yaakov.online
+  description: A personal blog covering technology, programming, and self-hosting.
+- name: Tech Blog by Alex Ellis
+  url: https://www.alexellis.io/blog/
+  description: Insights and tutorials on cloud-native technologies and serverless computing.
+- name: Self-Hosted
+  url: https://selfhosted.show/blog
+  description: A blog dedicated to self-hosting software and services.
+- name: The New Stack
+  url: https://thenewstack.io/ 
+  description: Analysis and insights on cloud-native computing and DevOps.
+- name: N90
+  url: https://n9o.xyz/
+  description: A blog about containers and IA agents.
+- name: Chris Titus Tech
+  url: https://christitus.com/blog/
+  description: A blog focused on Linux, Windows, and tech tutorials.
+- name: Root&Beer
+  url: https://rootandbeer.com/
+  description: A blog about hacking and cybersecurity.
