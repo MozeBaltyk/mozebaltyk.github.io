@@ -1,8 +1,8 @@
 ---
 title: "{{ replace .Name "-" " " | title }}"
+description: "{{ replace .Name "-" " " | title }}"
 date: {{ .Date }}
 draft: true
-description: "{{ replace .Name "-" " " | title }}"
 noindex: false
 featured: true
 pinned: false
@@ -11,6 +11,8 @@ toc: true
 reward: true
 carousel: true
 series: 
+  - Posts
+categories:
 # One of below choices:
 #  - SysAdmin
 #  - DBA
@@ -19,8 +21,6 @@ series:
 #  - Homelab
 #  - Hacking
 #  - Tutorials
-categories:
-  - Posts
 tags:
   - Migration
 images:

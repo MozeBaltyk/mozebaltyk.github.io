@@ -6,18 +6,18 @@
 
 ## Organisation of this blog
 
-* **Series**:  
+* **Series**:
+  - Docs
+  - Posts
+  - Projects 
+* **Categories**:
   - SysAdmin
   - DBA
   - Network
   - Devops
   - Homelab
   - Hacking
-  - Tutorials  
-* **Categories**:
-  - Docs
-  - Posts
-  - Projects
+  - Tutorials
 * **Tags**: 
 
 ## Importants links for this blogs

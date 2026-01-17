@@ -1,8 +1,8 @@
 ---
-title: "{{ replace .Name "-" " " | title }}"
+title: "{{ replace .Name "-" " " | title }}"µ
+description: "{{ replace .Name "-" " " | title }}"
 date: {{ .Date }}
 draft: true
-description: "{{ replace .Name "-" " " | title }}"
 noindex: false
 featured: false
 pinned: false

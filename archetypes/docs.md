@@ -13,7 +13,9 @@ nav_icon:
   vendor: bootstrap
   name: book
   className: text-primary
-series: 
+series:
+  - Docs
+categories:
 # One of below choices:
 #  - SysAdmin
 #  - DBA
@@ -21,8 +23,6 @@ series:
 #  - Devops
 #  - Homelab
 #  - Hacking
-categories:
-  - Docs
 tags:
   - Migration
 images:
