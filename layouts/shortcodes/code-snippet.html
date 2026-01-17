@@ -1,0 +1,21 @@
+{{- $name := printf "{code/%s,codes/%s}" ($.Get 0) ($.Get 0) }}
+{{- $res := .Page.Resources.GetMatch $name }}
+
+{{- with $res }}
+  {{- /* 1. Explicit language argument */ -}}
+  {{- $lang := $.Get 1 | default "" }}
+
+  {{- /* 2. Fallback to file extension */ -}}
+  {{- if not $lang }}
+    {{- $lang = replaceRE "^.*\\." "" .Name | lower }}
+  {{- end }}
+
+  {{- /* 3. Final fallback */ -}}
+  {{- if not $lang }}
+    {{- $lang = "txt" }}
+  {{- end }}
+
+  {{- highlight .Content $lang "" }}
+{{- else }}
+  {{- warnf "code snippet not found: %s" $name }}
+{{- end }}
