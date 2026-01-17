@@ -1,0 +1,53 @@
+# /etc/systemd/system/container-gitea-app.service
+[Unit]
+Description=Gitea (Podman container)
+Wants=network-online.target
+After=network-online.target
+RequiresMountsFor=/var/lib/containers/storage
+
+# If you manage the db via systemd
+Requires=container-gitea-db.service
+After=container-gitea-db.service
+
+[Service]
+Environment=PODMAN_SYSTEMD_UNIT=%n
+Restart=on-failure
+RestartSec=5
+TimeoutStartSec=120
+TimeoutStopSec=70
+
+Type=notify
+NotifyAccess=all
+
+# Ensure db exists and healthy
+ExecStartPre=/bin/sh -c 'until podman inspect --format "{{.State.Health.Status}}" gitea-db | grep -q healthy; do sleep 2; done'
+
+ExecStart=/usr/bin/podman run \
+  --name gitea-app \
+  --replace \
+  --detach \
+  --sdnotify=conmon \
+  --env DB_TYPE=mysql \
+  --env DB_HOST=gitea-db:3306 \
+  --env DB_NAME=gitea \
+  --env DB_USER=gitea \
+  --env DB_PASSWD=password \
+  --volume gitea-data-volume:/var/lib/gitea:Z \
+  --volume gitea-config-volume:/etc/gitea:Z \
+  --network gitea-net \
+  --publish 2222:2222 \
+  --publish 3000:3000 \
+  --label io.containers.autoupdate=registry \
+  docker.io/gitea/gitea:1-rootless
+
+ExecStop=/usr/bin/podman stop \
+  --ignore \
+  --time 10 \
+  gitea-app
+
+ExecStopPost=/usr/bin/podman rm \
+  --ignore \
+  gitea-app
+
+[Install]
+WantedBy=multi-user.target

@@ -1,0 +1,18 @@
+# /etc/systemd/system/podman-network-gitea-net.service
+[Unit]
+Description=Podman network gitea-net
+Wants=network-online.target
+After=network-online.target
+
+[Service]
+Type=oneshot
+RemainAfterExit=yes
+
+# Create network
+ExecStart=/usr/bin/podman network create gitea-net
+
+# Optional: remove network on stop (only if you really want ownership)
+ExecStop=/usr/bin/podman network rm gitea-net
+
+[Install]
+WantedBy=multi-user.target

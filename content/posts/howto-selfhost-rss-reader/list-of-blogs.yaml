@@ -24,3 +24,6 @@
 - name: Root&Beer
   url: https://rootandbeer.com/
   description: A blog about hacking and cybersecurity.
+- name: Utba Zafar
+  url: https://utbazafar.com/
+  description: A blog about homelab and self-hosting.

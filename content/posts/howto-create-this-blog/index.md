@@ -11,12 +11,13 @@ reward: true
 pinned: false
 carousel: true
 series:
-  - Tutorials
-categories:
   - Posts
+categories:
+  - Tutorials
 tags: 
   - Hugo
   - Git
+  - Blog
 authors:
   - mozebaltyk
 images: [./howto-create-this-blog/carousel.webp]

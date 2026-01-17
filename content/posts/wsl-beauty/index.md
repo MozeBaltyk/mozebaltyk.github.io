@@ -11,9 +11,9 @@ reward: true
 pinned: false
 carousel: true
 series:
-  - SysAdmin
-categories:
   - Posts
+categories:
+  - SysAdmin
 tags:
   - Windows
   - Linux

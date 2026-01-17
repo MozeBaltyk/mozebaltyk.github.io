@@ -10,9 +10,9 @@ reward: true
 pinned: true
 carousel: true
 series:
-  - Devops
-categories:
   - Posts
+categories:
+  - Devops
 tags:
   - Git
   - Devops

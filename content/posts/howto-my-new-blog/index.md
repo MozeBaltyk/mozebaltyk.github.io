@@ -10,14 +10,14 @@ comment: true
 toc: true
 reward: true
 carousel: true
-series: 
-  - Tutorials
-categories:
+series:
   - Posts
+categories:
+  - Tutorials
 tags:
-  - Migration
   - Hugo
   - Git
+  - Blog
 images:
   - ./howto-my-new-blog/carousel.jpg
 authors:
@@ -308,17 +308,19 @@ On their side, visitors will need a Github account and must authorize the giscus
 
 ## Shortcodes
 
+HBstack theme provides a bench shortcodes embended in its bootstrap module [here](https://hbstack.dev/docs/content/shortcodes/)
+
 NB: remove the backslash to use those blocks of code.
 
 * Toogle of config files between toml/yaml/json:
 
-```md
-\{\{< bs/config-toggle "params" >\}\}
+```markdown
+{{</* bs/config-toggle "params" */>}}
 hb:
   blog:
     home:
       pinned_posts_position: list
-\{\{< /bs/config-toggle >\}\}
+{{</* /bs/config-toggle */>}}
 ```
 This one is a nice one, since it automaticly create a block of code with 3 tabs to switch between the 3 type of config (TOML/YAML/JSON) like below:
 
@@ -329,27 +331,27 @@ hb:
       pinned_posts_position: list
 {{< /bs/config-toggle >}}
 
-* Some banner for info, warning, etc:
+* Some [Alert banner](https://hugomods.com/bootstrap/alert/) - *primary, secondary, success, danger, warning, info, light, dark* options:
 
-```md
-\{\{< bs/alert info >\}\}
-\{\{< markdownify >\}\}
-This is the old version of this blog. But last update of hugo version did not work well so I decided to move on to the hbstack theme. I keep this article since it was the first one of this blog. 
-\{\{< /markdownify >\}\}
-\{\{< /bs/alert >\}\}
+```markdown
+{{</* bs/alert info */>}}
+{{</* markdownify */>}}
+Create a *info* **banner** to inform readers about this syntax and with markdown inside.
+{{</* /markdownify */>}}
+{{</* /bs/alert */>}}
 ```
 
 give this effect:
 
 {{< bs/alert info >}}
 {{< markdownify >}}
-Example of informational banner
+Create a *info* **banner** to inform readers about this syntax and with markdown inside.
 {{< /markdownify >}}
 {{< /bs/alert >}}
 
-Refere to this [doc](https://bootstrap.hugomods.com/docs/collapse/) for all the examples.
+* The [collapse shortcode](https://bootstrap.hugomods.com/docs/collapse/) - show and hidde content: 
 
-The list of all [shortcodes](https://hbstack.dev/docs/content/shortcodes/)
+* The [Clearfix](https://hugomods.com/bootstrap/clearfix/) - Quickly and easily clear floated content within a container 
 
 ## Images
 
@@ -359,7 +361,7 @@ The first image of the images parameter, usually used for static and external im
 
 The page image’s resources that naming in pattern `feature*`, such as `feature.png`, `featured-xx.jpg`. The featured image resource will be resized in smaller size, to save user’s and server’s bandwidth.
 
-* Image used in article goes in `static/<article name>/image.jpg`
+* Image used in article goes in `static/<article-filename>/image.jpg`
 
 ## Deployment
 
@@ -367,7 +369,7 @@ On this side as well, there is improvment since a new docker images with all dep
 
 But the github workflows deployment in `.github/workflows/gh-pages.yaml` with a *build* job and a "deploy" job which trigger when I push on main.
 
-## Bonuses
+## What’s next?
 
 At this stage, what could you do more: 
 
@@ -382,4 +384,4 @@ At this stage, what could you do more:
 
 * Write your docs with Obsidian: [Here](https://github.com/orgs/hbstack/discussions/92) are some elements about how to set it correctly.
 
-* Dig into [shortcode](https://hbstack.dev/docs/content/shortcodes/)
+* Dive into [shortcodes](https://mozebaltyk.github.io/posts/howto-write-hugo-shortcode) and write some custom.

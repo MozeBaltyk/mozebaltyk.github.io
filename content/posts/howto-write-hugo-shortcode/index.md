@@ -1,0 +1,210 @@
+---
+title: "How to Write a Hugo Shortcode"
+description: "Hugo Shortcodes are reusable snippets to insert dynamic or complex content."
+date: 2026-01-16T17:53:54+01:00
+draft: false
+noindex: false
+featured: true
+pinned: false
+comment: true
+toc: true
+reward: true
+carousel: false
+series:
+  - Posts
+categories:
+  - Tutorials
+tags:
+  - Hugo
+  - Blog
+images:
+  - ./howto-write-hugo-shortcode/carousel.avif
+authors:
+  - mozebaltyk
+sidebar: false
+---
+
+## Introduction
+
+Shortcodes make it easy to reuse the same logic or markup across your content. They help keep Markdown files readable while allowing you to insert dynamic or configurable elements when needed.
+
+You should consider writing a shortcode when:
+
+- You need to reuse the same component in multiple places
+- You want to centralize or share data across different content files
+- You need to encapsulate complex or verbose HTML
+- You want to ensure consistent presentation across posts
+- You need to embed third-party content (videos, tweets, code snippets, etc.)
+- You want to separate content from layout and styling concerns
+- You need conditional rendering based on parameters or context
+- You want to provide simple, author-friendly building blocks instead of raw HTML
+
+## The Basics
+
+To call a shortcode in your post, use its filename (without `.html`).
+
+- Use `{{%/* */%}}` when the shortcode output contains Markdown that must be rendered
+- Use `{{</* */>}}` when the shortcode outputs HTML only (preferred for performance)
+
+Examples:
+
+- `{{%/* parameters params.yaml */%}}`      # Markdown-aware
+- `{{</* parameters "params.yaml" */>}}`    # HTML-only
+- `{{%/* hugo/parameters params.yaml */%}}` # will look for `./layouts/shortcodes/hugo/parameters.html`
+
+{{< bs/alert warning >}}
+When documenting Hugo shortcodes, you must escape them using `{{</* /* … */ */>}}`, otherwise Hugo will try to execute them at build time.
+{{< /bs/alert >}}
+
+In this [posts](https://mozebaltyk.github.io/posts/howto-my-new-blog/#shortcodes), we already saw that we can use shortcode provided by the theme's modules, but let's write some customs.
+
+## Some use cases
+
+### Split code from the articles
+
+On this blog, I often include large code blocks. Instead of embedding them directly in Markdown, it’s often cleaner to keep them next to the article - for example in a `code/` or `codes/` folder - and include them using a dedicated shortcode.
+
+This approach makes the article easier to read and allows *code snippets* to be reused or updated independently of the content. Separating code from content keeps articles readable while letting code evolve independently. You can achieve this with a `code-snippet` shortcode.     
+
+* Shortcode location: `./layouts/shortcodes/code-snippet.html`     
+
+* Content structure example:
+
+```css
+content/
+└─ posts/
+   └─ my-article/
+      ├─ index.md
+      ├─ codes/
+      │  └─ example.conf
+```
+
+* The code: 
+
+```go
+{{- $name := printf "{code/%s,codes/%s}" ($.Get 0) ($.Get 0) }}
+{{- $res := .Page.Resources.GetMatch $name }}
+
+{{- with $res }}
+  {{- /* 1. Explicit language argument */ -}}
+  {{- $lang := $.Get 1 | default "" }}
+
+  {{- /* 2. Fallback to file extension */ -}}
+  {{- if not $lang }}
+    {{- $lang = replaceRE "^.*\\." "" .Name | lower }}
+  {{- end }}
+
+  {{- /* 3. Final fallback */ -}}
+  {{- if not $lang }}
+    {{- $lang = "txt" }}
+  {{- end }}
+
+  {{- highlight .Content $lang "" }}
+{{- else }}
+  {{- warnf "code snippet not found: %s" $name }}
+{{- end }}
+```
+
+* The usage: `{{</* code-snippet example.txt ini*/>}}`       
+      
+* The result: {{< code-snippet example.txt ini>}}  
+         
+{{< bs/alert warning >}}
+{{< markdownify >}}
+In the folder `code` do not put file with an `.html` extension, otherwise Hugo will try to build it.
+{{< /markdownify >}}
+{{< /bs/alert >}}
+
+### Generate a Table from a yaml
+
+You can generate a table from a configuration file using a shortcode. This is especially useful when you need to apply custom styling or effects, or when the dataset is large.
+
+Instead of maintaining a long Markdown table, you can store the data in a `a-long-list-of-stuffs.yaml` file, which is easier to read and update over time.
+
+So let do a *shortcode* which:   
+✔ Generate a valid Markdown table   
+✔ Auto-generates headers   
+✔ Makes URLs clickable    
+✔ Renders Markdown / HTML when present   
+✔ Supports YAML / JSON / TOML inputs   
+
+* The code in `./layouts/shortcodes/table-snippet.html`:
+
+```go 
+{{- $res := .Page.Resources.GetMatch (.Get 0) }}
+{{- if not $res }}
+  {{- errorf "table-snippet: file not found: %s" (.Get 0) }}
+{{- end }}
+
+{{- $data := $res | transform.Unmarshal }}
+
+{{- /* Optional column order from shortcode */ -}}
+{{- $headers := slice }}
+{{- with .Get 1 }}
+  {{- $headers = split . "," }}
+{{- end }}
+
+{{- /* Fallback: auto-detect keys if no order provided */ -}}
+{{- if eq (len $headers) 0 }}
+  {{- range $data }}
+    {{- range $k, $_ := . }}
+      {{- if not (in $headers $k) }}
+        {{- $headers = $headers | append $k }}
+      {{- end }}
+    {{- end }}
+  {{- end }}
+{{- end }}
+
+<table class="table table-bordered table-hover table-striped">
+  <thead>
+    <tr>
+      {{- range $headers }}
+        <th>{{ . }}</th>
+      {{- end }}
+    </tr>
+  </thead>
+  <tbody>
+    {{- range $data }}
+      {{- $row := . }}
+      <tr>
+        {{- range $headers }}
+          {{- $val := index $row . | default "" }}
+          <td>{{ printf "%v" $val | markdownify }}</td>
+        {{- end }}
+      </tr>
+    {{- end }}
+  </tbody>
+</table>
+```
+
+* The usage: `{{</* table-snippet list.yaml "name,description" */>}}`  
+
+* The result: {{< table-snippet list.yaml "name,description" >}}
+
+NB: here I generate HTML output, so the right syntax to use it, is `{{</* */>}}`
+
+## Some ideas for future shortcodes
+
+Here are a few additional shortcode ideas that would fit well in an IT-focused blog:
+
+* **Diff viewer** — render configuration or code changes in a readable diff format
+
+* **Badges** — display states such as `Active`, `Disabled`, or `Deprecated` with custom styles
+
+* **Timelines** — visualize chronological steps, migrations, or project history
+
+## Summary
+
+Hugo shortcodes allow you to::
+
+📄 Keeps Markdown clean and readable
+
+🔁 Makes data reusable across multiple posts
+
+🧩 Separates content from presentation
+
+🛠 Makes large among of data easy to maintain
+
+⚠️ Fails loudly if the file is missing
+
+Well-designed shortcodes turn repetitive documentation patterns into reusable, expressive building blocks.

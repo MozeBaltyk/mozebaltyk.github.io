@@ -1,5 +1,5 @@
 ---
-title: "🎺 How to Create Custom Widget"
+title: "🎺 How to Create a Custom Widget"
 description: "How to create a custom sidebar widget in a Hugo static website."
 date: 2026-01-13T15:09:09+01:00
 draft: false
@@ -10,13 +10,13 @@ comment: true
 toc: true
 reward: true
 carousel: true
-series: 
-  - Tutorials
-categories:
+series:
   - Posts
+categories:
+  - Tutorials
 tags:
-  - Migration
   - Hugo
+  - Blog
 images:
   - ./howto-create-custom-widget/carousel.jpg
 authors:
@@ -67,48 +67,7 @@ To keep the page clean, we embed the data as hidden HTML elements using
 page is loaded in the browser. A loop which use `site.Data.sidebar.<filename>` 
 to include the data in the website.   
 
-```html
-<div class="hb-module text-center">
-  <aside class="hb-sidebar">
-
-    <section class="hb-sidebar-box random-citation js-random-citation">
-      <h5 id="citation-title"></h5>
-
-      <blockquote id="citation-content"></blockquote>
-
-      <!-- Hidden category data -->
-      <div class="citation-data" hidden>
-
-        <!-- Quotes -->
-        <div class="citation-category" data-category="quote" data-title="💬 Quote">
-          {{ range site.Data.sidebar.quotes }}
-            <div
-              data-text="{{ .text }}"
-              data-author="{{ .author }}">
-            </div>
-          {{ end }}
-        </div>
-
-        <!-- Jokes -->
-        <div class="citation-category" data-category="joke" data-title="😂 IT Joke">
-          {{ range site.Data.sidebar.jokes }}
-            <div data-text="{{ . }}"></div>
-          {{ end }}
-        </div>
-
-        <!-- Wisdom -->
-        <div class="citation-category" data-category="wisdom" data-title="🧠 Tech Wisdom">
-          {{ range site.Data.sidebar.wisdom }}
-            <div data-text="{{ . }}"></div>
-          {{ end }}
-        </div>
-
-      </div>
-    </section>
-
-  </aside>
-</div>
-```
+{{< code-snippet hb-blog-sidebar.txt html >}}
 
 ## Typescript or Javascript
 
@@ -129,46 +88,7 @@ it can be compiled and injected into the page.
 
 Let's take the Example below written in `.\assets\hb\modules\custom\js\index.ts`:
 
-```ts
-console.log("✅ Random citation script loaded");
-
-// Random citation (no dependencies)
-document.addEventListener("DOMContentLoaded", () => {
-  const container = document.querySelector<HTMLElement>(".js-random-citation");
-  if (!container) return;
-
-  const categories = container.querySelectorAll<HTMLElement>(
-    ".citation-category"
-  );
-  if (!categories.length) return;
-
-  // 1️⃣ Pick a random category
-  const category =
-    categories[Math.floor(Math.random() * categories.length)];
-
-  const title = container.querySelector<HTMLElement>("#citation-title");
-  const blockquote = container.querySelector<HTMLElement>("#citation-content");
-
-  if (!title || !blockquote) return;
-
-  title.textContent = category.dataset.title ?? "";
-
-  // 2️⃣ Pick a random item inside the category
-  const items = category.querySelectorAll<HTMLElement>("div");
-  if (!items.length) return;
-
-  const chosen = items[Math.floor(Math.random() * items.length)];
-
-  const text = chosen.dataset.text ?? "";
-  const author = chosen.dataset.author;
-
-  blockquote.innerHTML = `
-    “${text}”
-    ${author ? `<footer>— ${author}</footer>` : ""}
-  `;
-});
-// End of random citation
-```
+{{< code-snippet index.ts >}}
 
 ## How to use it 
 

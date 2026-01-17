@@ -1,0 +1,40 @@
+<div class="hb-module text-center">
+  <aside class="hb-sidebar">
+
+    <section class="hb-sidebar-box random-citation js-random-citation">
+      <h5 id="citation-title"></h5>
+
+      <blockquote id="citation-content"></blockquote>
+
+      <!-- Hidden category data -->
+      <div class="citation-data" hidden>
+
+        <!-- Quotes -->
+        <div class="citation-category" data-category="quote" data-title="💬 Quote">
+          {{ range site.Data.sidebar.quotes }}
+            <div
+              data-text="{{ .text }}"
+              data-author="{{ .author }}">
+            </div>
+          {{ end }}
+        </div>
+
+        <!-- Jokes -->
+        <div class="citation-category" data-category="joke" data-title="😂 IT Joke">
+          {{ range site.Data.sidebar.jokes }}
+            <div data-text="{{ . }}"></div>
+          {{ end }}
+        </div>
+
+        <!-- Wisdom -->
+        <div class="citation-category" data-category="wisdom" data-title="🧠 Tech Wisdom">
+          {{ range site.Data.sidebar.wisdom }}
+            <div data-text="{{ . }}"></div>
+          {{ end }}
+        </div>
+
+      </div>
+    </section>
+
+  </aside>
+</div>

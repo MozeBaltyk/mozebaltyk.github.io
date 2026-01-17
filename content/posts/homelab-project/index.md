@@ -4,23 +4,24 @@ description: "A journey to my homelab..."
 date: 2025-06-01T03:48:10+02:00
 noindex: false
 featured: true
-draft: false
+draft: true
 comment: true
 toc: true
 reward: true
 pinned: false
-carousel: true
+carousel: false
 series:
-  - Homelab 
+  - Posts 
 categories:
-  - Posts
+  - Homelab 
 tags:
   - Hardware
   - Devops
   - Homelab
 authors:
   - mozebaltyk
-images: [./homelab-project/carousel.webp]
+images: 
+  - ./homelab-project/carousel.avif
 sidebar: false
 ---
 
@@ -44,7 +45,6 @@ Let's study three possible setup with a rough estimation about costs:
 |                  | NUC (e.g., Intel NUC 11)          | $400              |
 |                  | 2x HDD - 2TB                      | $200 ($100 each)  |
 |                  | Total                             | **$900**          |
-|------------------|-----------------------------------|-------------------|
 | Raspberry Pi     | 3x Raspberry Pi 5 - 16Gb RAM      | $450 ($150 each)  |
 |                  | 3x Hat GeeekPi P33 M.2 NVME + POE | $120 ($40 each)   |
 |                  | 3x NVME M2 500GB                  | $120 ($40 each)   |
@@ -52,7 +52,6 @@ Let's study three possible setup with a rough estimation about costs:
 |                  | Switch POE - 1Gb / 8 ports        | $50               |
 |                  | Others (Case, cables, etc )       | $40               |
 |                  | Total                             | **$820**          |
-|------------------|-----------------------------------|-------------------|
 | 3 mini PCs       | 3 x Mini PC (e.g., HP mini G4 i5) | $420 ($140 each)  |
 |                  | 3 x 32GB RAM                      | $150 ($50 each)   |
 |                  | 3 x NVME 500GB                    | $120 ($40 each)   |
@@ -103,3 +102,7 @@ OKD/Openshift also have is homelab but not on bare-metal, mostly KVM or Proxmox 
 About the gitops methods to autodeploy, this could be a nice inspiration: [hivenetes/bootstrapper](https://github.com/hivenetes/k8s-bootstrapper/)
 
 Let's see where I will arrive with those projects... 
+
+## What it can be for ?
+
+## Roadmap

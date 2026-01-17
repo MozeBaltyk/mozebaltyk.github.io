@@ -11,9 +11,9 @@ reward: true
 pinned: false
 carousel: true
 series:
-  - Devops
-categories:
   - Posts
+categories:
+  - Devops
 tags:
   - Command-liner
   - Scripting
