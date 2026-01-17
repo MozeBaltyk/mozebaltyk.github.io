@@ -12,9 +12,9 @@ menu:
         name: code-square
         color: "#6610f2"
 series:
-  - Devops
-categories:
   - Projects
+categories:
+  - Devops
 tags:
   - OpenSources
 sidebar: false
