@@ -13,9 +13,9 @@ nav_icon:
   color: yellow
 # comments: false
 series:
-  - Hacking
-categories:
   - Docs
+categories:
+  - Hacking
 tags:
   - Network
   - Hacking
