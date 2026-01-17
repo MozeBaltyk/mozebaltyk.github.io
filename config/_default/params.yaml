@@ -50,9 +50,9 @@ hb:
   footer:
     # see https://hbstack.dev/en/docs/modules/socials/.
     socials:
-      _color: true # when false, remove the color of social icons.
-      github: MozeBaltyk/mozebaltyk.github.io
-      rss: true
+      #_color: true # when false, remove the color of social icons.
+      #github: MozeBaltyk/mozebaltyk.github.io
+      #rss: true
   blog:
     list_cols_md: 2
     list_cols_lg: 3
