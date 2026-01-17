@@ -3,9 +3,9 @@ date: 2023-08-01T21:00:00+08:00
 title: S3 blockstorage
 navWeight: 800 # Upper weight gets higher precedence, optional.
 series:
-  - Devops
-categories:
   - Docs
+categories:
+  - Devops
 tags:
   - Cloud
   - Storage

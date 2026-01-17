@@ -10,9 +10,9 @@ pinned: false
 nav_weight: 1
 # comments: false
 series:
-  - Hacking
-categories:
   - Docs
+categories:
+  - Hacking
 tags:
   - Network
   - Hacking

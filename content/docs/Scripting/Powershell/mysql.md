@@ -3,14 +3,13 @@ date: 2023-08-01T21:00:00+08:00
 title: Mysql
 navWeight: 90 # Upper weight gets higher precedence, optional.
 series:
-  - SysAdmin
-categories:
   - Docs
+categories:
+  - DBA
 tags:
   - Scripting
   - Powershell
   - MySQL
-  - db
 ---
 
 ## Example

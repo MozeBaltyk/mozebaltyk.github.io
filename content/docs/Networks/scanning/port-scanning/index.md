@@ -10,9 +10,9 @@ nav_weight: 2
 toc: true
 # comments: false
 series:
-  - Hacking
-categories:
   - Docs
+categories:
+  - Hacking
 tags:
   - Network
   - Hacking

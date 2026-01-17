@@ -7,9 +7,9 @@ nav_icon:
   name: git
   color: grey
 series:
-  - Devops
-categories:
   - Docs
+categories:
+  - Devops
 tags:
   - Git
 ---

@@ -7,9 +7,9 @@ nav_icon:
   name: cup-hot
   color: grey
 series:
-  - Devops
-categories:
   - Docs
+categories:
+  - Devops
 tags:
   - Git
   - Repository

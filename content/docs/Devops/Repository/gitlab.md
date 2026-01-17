@@ -7,9 +7,9 @@ nav_icon:
   name: gitlab
   color: grey
 series:
-  - Devops
-categories:
   - Docs
+categories:
+  - Devops
 tags:
   - Git
   - Repository

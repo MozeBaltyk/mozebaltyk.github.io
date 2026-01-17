@@ -3,9 +3,9 @@ date: 2023-08-01T21:00:00+08:00
 title: Oracle Basics
 navWeight: 100 # Upper weight gets higher precedence, optional.
 series:
-  - DBA
-categories:
   - Docs
+categories:
+  - DBA
 tags:
   - Oracle
 ---
