@@ -96,16 +96,16 @@ hb:
           weight: 1 # the weight of this taxonomy, lower gets higher priority.
           count: false # override the global count setting.
           limit: 5 # override the global limit setting.
-        categories:
+        series:
           disable: false
           weight: 2
-        series:
+        categories:
           disable: false
           weight: 3
         tags:
           disable: false
           weight: 4
-          limit: 25
+          limit: 30
           # title: Popular Tags # override the title.
     paginate: 12 # paginate.
     # addon from https://hbstack.dev/modules/blog/overview/
