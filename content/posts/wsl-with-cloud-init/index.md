@@ -1,5 +1,5 @@
 ---
-title: "WSL with Cloud Init"
+title: "🏯 WSL with Cloud Init"
 description: "Is it possible to set WSL with Cloud-Init ?"
 date: 2026-01-18T12:40:43+01:00
 draft: true

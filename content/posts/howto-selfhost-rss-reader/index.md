@@ -1,5 +1,5 @@
 ---
-title: "How to Selfhost a RSS Reader"
+title: "📻 How to Selfhost a RSS Reader"
 description: "Launch a RSS Reader to follow blogs that you like"
 date: 2026-01-18T16:00:00+01:00
 draft: true

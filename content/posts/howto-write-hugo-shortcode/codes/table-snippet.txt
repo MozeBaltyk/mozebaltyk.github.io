@@ -1,0 +1,44 @@
+{{- $res := .Page.Resources.GetMatch (.Get 0) }}
+{{- if not $res }}
+  {{- errorf "table-snippet: file not found: %s" (.Get 0) }}
+{{- end }}
+
+{{- $data := $res | transform.Unmarshal }}
+
+{{- /* Optional column order from shortcode */ -}}
+{{- $headers := slice }}
+{{- with .Get 1 }}
+  {{- $headers = split . "," }}
+{{- end }}
+
+{{- /* Fallback: auto-detect keys if no order provided */ -}}
+{{- if eq (len $headers) 0 }}
+  {{- range $data }}
+    {{- range $k, $_ := . }}
+      {{- if not (in $headers $k) }}
+        {{- $headers = $headers | append $k }}
+      {{- end }}
+    {{- end }}
+  {{- end }}
+{{- end }}
+
+<table class="table table-bordered table-hover table-striped">
+  <thead>
+    <tr>
+      {{- range $headers }}
+        <th>{{ . }}</th>
+      {{- end }}
+    </tr>
+  </thead>
+  <tbody>
+    {{- range $data }}
+      {{- $row := . }}
+      <tr>
+        {{- range $headers }}
+          {{- $val := index $row . | default "" }}
+          <td>{{ printf "%v" $val | markdownify }}</td>
+        {{- end }}
+      </tr>
+    {{- end }}
+  </tbody>
+</table>

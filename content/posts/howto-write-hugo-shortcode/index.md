@@ -1,5 +1,5 @@
 ---
-title: "How to Write a Hugo Shortcode"
+title: "✨ How to Write a Hugo Shortcode"
 description: "Hugo Shortcodes are reusable snippets to insert dynamic or complex content."
 date: 2026-01-16T17:53:54+01:00
 draft: false
@@ -82,29 +82,7 @@ content/
 
 * The code: 
 
-```go
-{{- $name := printf "{code/%s,codes/%s}" ($.Get 0) ($.Get 0) }}
-{{- $res := .Page.Resources.GetMatch $name }}
-
-{{- with $res }}
-  {{- /* 1. Explicit language argument */ -}}
-  {{- $lang := $.Get 1 | default "" }}
-
-  {{- /* 2. Fallback to file extension */ -}}
-  {{- if not $lang }}
-    {{- $lang = replaceRE "^.*\\." "" .Name | lower }}
-  {{- end }}
-
-  {{- /* 3. Final fallback */ -}}
-  {{- if not $lang }}
-    {{- $lang = "txt" }}
-  {{- end }}
-
-  {{- highlight .Content $lang "" }}
-{{- else }}
-  {{- warnf "code snippet not found: %s" $name }}
-{{- end }}
-```
+{{< code-snippet code-snippet.txt go>}} 
 
 * The usage: 
 
@@ -141,52 +119,7 @@ So let do a *shortcode* which:
 
 * The code in `./layouts/shortcodes/table-snippet.html`:
 
-```go 
-{{- $res := .Page.Resources.GetMatch (.Get 0) }}
-{{- if not $res }}
-  {{- errorf "table-snippet: file not found: %s" (.Get 0) }}
-{{- end }}
-
-{{- $data := $res | transform.Unmarshal }}
-
-{{- /* Optional column order from shortcode */ -}}
-{{- $headers := slice }}
-{{- with .Get 1 }}
-  {{- $headers = split . "," }}
-{{- end }}
-
-{{- /* Fallback: auto-detect keys if no order provided */ -}}
-{{- if eq (len $headers) 0 }}
-  {{- range $data }}
-    {{- range $k, $_ := . }}
-      {{- if not (in $headers $k) }}
-        {{- $headers = $headers | append $k }}
-      {{- end }}
-    {{- end }}
-  {{- end }}
-{{- end }}
-
-<table class="table table-bordered table-hover table-striped">
-  <thead>
-    <tr>
-      {{- range $headers }}
-        <th>{{ . }}</th>
-      {{- end }}
-    </tr>
-  </thead>
-  <tbody>
-    {{- range $data }}
-      {{- $row := . }}
-      <tr>
-        {{- range $headers }}
-          {{- $val := index $row . | default "" }}
-          <td>{{ printf "%v" $val | markdownify }}</td>
-        {{- end }}
-      </tr>
-    {{- end }}
-  </tbody>
-</table>
-```
+{{< code-snippet table-snippet.txt go>}} 
 
 * The usage: `{{</* table-snippet list "name,description" */>}}`  
 
