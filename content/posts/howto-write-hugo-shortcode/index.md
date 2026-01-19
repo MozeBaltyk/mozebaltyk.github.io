@@ -127,21 +127,21 @@ So let do a *shortcode* which:
 
 NB: here I generate HTML output, so the right syntax to use it, is `{{</* */>}}` and not `{{%/* */%}}` which is *markdown-aware*.
 
-By then, I improved the *table-snippet* shortcode with:
-✔ Uses positional parameters only
-✔ Looks in *page bundle* first, then *data/*
-✔ Handles nested path  *rss/my-super-list*
-✔ Optional sorting arguments
-✔ Optional filtering boolean arguments
+By then, I improved the *table-snippet* shortcode with:   
+✔ Uses positional parameters only   
+✔ Looks in the folder `./page/table` first, then `./data`   
+✔ Handles nested path  *rss/my-super-list*   
+✔ Optional sorting arguments   
+✔ Optional filtering boolean arguments   
 
-* The usage now: `{{</* table-snippet DATA_FILE COLUMNS SORT FILTER */>}}`  
+* The usage now: `{{</* table-snippet DATA_FILE COLUMNS SORT FILTER */>}}`   
 
-* Usage Example: `{{</* table-snippet rss/list "name,description,url" name active */>}}`
+* Usage Example: `{{</* table-snippet rss/list "name,description,url" name active */>}}`   
 
-NB about Hugo: 
-- Page bundle (local to the article/table or article/tables) = Scoped to the page
-- Global data directory (data/) = Reusable across the site
-- Hugo behavior is *format-agnostic configuration*, it matches all config files (`.yaml, .yml, .json, .toml` all work)
+NB about Hugo:   
+- Page bundle (local to the `article/table` or `article/tables`) = Scoped to the page   
+- Global data directory (`data/`) = Reusable across the site   
+- Hugo behavior is *format-agnostic configuration*, it matches all config files (`.yaml, .yml, .json, .toml` all work)   
 
 ## Some ideas for future shortcodes
 
