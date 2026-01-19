@@ -1,0 +1,25 @@
+
+- Title: WST
+  Logo: '<img src="logos/logo_WST.png" width="36" alt="WST logo"/>'
+  Description: A menu to deploy my workstation on WSL
+  References: https://github.com/MozeBaltyk/wst
+  Active: true
+
+- Title: Rkub
+  Logo: '<img src="logos/logo_rkub.png" width="36" alt="Rkub logo"/>'
+  Description: Ansible Collection to deploy a RKE2 cluster with Rancher, Longhorn and Neuvector in Airgap mode
+  References: https://github.com/MozeBaltyk/Rkub
+  Active: true
+
+- Title: Okub
+  Logo: '<img src="logos/logo_okub.png" width="36" alt="Okub logo"/>'
+  Description: Collection to deploy OKD on diverse providers
+  References: https://github.com/MozeBaltyk/Okub
+  Active: true
+
+- Title: UpOnLAN
+  Logo: '<img src="logos/logo_uponlan.png" width="36" alt="UpOnLAN logo"/>'
+  Description: A Wake-on-lan, Pxeboot server and a webapp in container.
+  References: https://github.com/MozeBaltyk/UpOnLAN
+  Active: true
+

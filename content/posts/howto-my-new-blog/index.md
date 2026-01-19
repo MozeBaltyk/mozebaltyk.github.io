@@ -19,7 +19,7 @@ tags:
   - Git
   - Blog
 images:
-  - ./howto-my-new-blog/carousel.jpg
+  - ./carousel/howto-my-new-blog.jpg
 authors:
   - mozebaltyk
 sidebar: false
@@ -31,7 +31,6 @@ I used to have a blog, but it was running on a theme that was becoming less and 
 
 Starting fresh felt like the right decision — not just technically, but also as an opportunity to refactor and polish my blog.
 
-
 ## On The Value of Blogging.
 
 This blog exists as a place to think slowly.
@@ -40,18 +39,16 @@ Most technical work is ephemeral: incidents fade, decisions are forgotten,
 and lessons learned are rarely written down. Blogging is my way of pushing
 back against that.
 
-Writing forces clarity. It turns intuition into explanation and highlights
-what I don’t yet understand. The goal is not completeness or authority, but
-honesty.
-
-There is no schedule and no algorithm to please. Some posts may be rough,
-others precise. If these notes help someone else along the way, that’s a
-bonus — but not the objective.
+I just want to write my thoughs and continue them later on. There is no schedule. 
+Some posts may be rough or unfinish. If these notes help someone else along the way, 
+that’s a bonus — but not the objective.
 
 ## The Tech choice 
 
-For this new iteration of my blog, I chose **Hugo** with the
-**HBStack theme cards**, deployed on **GitHub Pages**.
+For this new iteration of my blog, I stay on **Hugo** with the
+**HBStack theme cards**, deployed on **GitHub Pages**. 
+
+It's an old and eproved receipe.
 
 ### Why Hugo?
 
@@ -65,6 +62,7 @@ For me, Hugo offers:
 - No runtime dependencies
 - A simple content workflow
 - Long-term stability
+- Some Fun in customization (with widget or shortcode)
 
 ### Why HBStack and its themes?
 
@@ -93,7 +91,7 @@ Combined with Hugo, it allows me to:
 - Deploy automatically via GitHub Actions
 - Avoid server maintenance entirely
 
-## Start from scratch 
+## Start from Scratch 
 
 It's always better. Even though, I had already a blog, I started from scratch and imported the `content` and `assests` in the new blog to avoid all the assles. 
 
@@ -133,6 +131,52 @@ npm ci
 npm run dev
 ```
 
+## Hugo - some Keys Concepts 
+
+First - Hugo behavior is *format-agnostic configuration*, it matches all config files (`.yaml, .yml, .json, .toml` all work from `./data` or `./config`)
+
+Second - In Hugo, everything is a page. 
+
+Third - Folder names under `content/` define sections. Each section can have its own templates.
+
+🔑 Front Matter is the page metadata which strongly influences rendering and behavior.
+
+```md
+---
+title: "My Post"
+date: 2026-01-01
+draft: false
+tags: ["hugo", "static-site"]
+---
+```
+
+🔑 Hugo Pipes:
+- Asset processing (SCSS → CSS)
+- Minification, fingerprinting
+- JS bundling
+- Cache-friendly builds
+
+## Hugo Structure
+
+```txt
+├── archetypes          # Front matter templates used by `hugo new`
+├── assets              # Source files processed by Hugo Pipes (SCSS, JS, images)
+├── config              # Site configuration (baseURL, params, menus, languages)
+├── content             # Markdown content; structure defines URLs
+│   ├── _index.en.md    # Section list page
+│   ├── categories
+│   ├── docs
+│   └── posts
+├── data                # Global data files (YAML/TOML/JSON) accessible in templates
+├── layouts             # HTML templates
+│   ├── _default        # Fallback templates (single, list, baseof)
+│   ├── partials        # Reusable HTML components
+│   └── shortcodes      # Template logic callable from Markdown
+├── public              # Generated static site (build output)
+└── static              # Static files copied directly to public/
+```
+
+
 ## Tweak the config
 
 * The basics
@@ -171,7 +215,7 @@ main:
         color: "#fd7e14"
 ```
 
-then you can defined the children like `./Categories/_index.en.md` with :
+then you can defined the children like `./content/categories/_index.en.md` with :
 
 ```md
 ---
@@ -331,6 +375,56 @@ hb:
       pinned_posts_position: list
 {{< /bs/config-toggle >}}
 
+* Simple toggle
+
+```markdown
+{{</* bs/toggle name=sdk style=pills */>}}
+
+  {{</* bs/toggle-item JS */>}}
+    {{</* highlight js */>}}
+    console.log('hello world');
+    {{</* /highlight */>}}
+  {{</* /bs/toggle-item */>}}
+
+  {{</* bs/toggle-item PHP */>}}
+    {{</* highlight php */>}}
+    echo 'hello world';
+    {{</* /highlight */>}}
+  {{</* /bs/toggle-item */>}}
+  
+  {{</* bs/toggle-item Go */>}}
+    {{</* highlight go */>}}
+    fmt.Println("hello world")
+    {{</* /highlight */>}}
+  {{</* /bs/toggle-item */>}}
+
+{{</* /bs/toggle */>}}
+```
+
+The result:
+
+{{< bs/toggle name=sdk style=pills >}}
+
+  {{< bs/toggle-item JS >}}
+    {{< highlight js >}}
+    console.log('hello world');
+    {{< /highlight >}}
+  {{< /bs/toggle-item >}}
+
+  {{< bs/toggle-item PHP >}}
+    {{< highlight php >}}
+    echo 'hello world';
+    {{< /highlight >}}
+  {{< /bs/toggle-item >}}
+  
+  {{< bs/toggle-item Go >}}
+    {{< highlight go >}}
+    fmt.Println("hello world")
+    {{< /highlight >}}
+  {{< /bs/toggle-item >}}
+
+{{< /bs/toggle >}}
+
 * Some [Alert banner](https://hugomods.com/bootstrap/alert/) - *primary, secondary, success, danger, warning, info, light, dark* options:
 
 ```markdown
@@ -348,6 +442,8 @@ give this effect:
 Create a *info* **banner** to inform readers about this syntax and with markdown inside.
 {{< /markdownify >}}
 {{< /bs/alert >}}
+
+Some other which could be usefull: 
 
 * The [collapse shortcode](https://bootstrap.hugomods.com/docs/collapse/) - show and hidde content: 
 

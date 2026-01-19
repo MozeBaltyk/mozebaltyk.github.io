@@ -3,9 +3,9 @@ date: 2023-08-01T21:00:00+08:00
 title: 🐋 KVM
 navWeight: 60 # Upper weight gets higher precedence, optional.
 series:
-  - SysAdmin
-categories:
   - Docs
+categories:
+  - SysAdmin
 tags:
   - Virtualisation
   - KVM

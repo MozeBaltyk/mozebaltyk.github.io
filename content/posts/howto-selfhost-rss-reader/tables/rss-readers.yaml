@@ -1,0 +1,39 @@
+- name: Miniflux
+  ram: "~20–30 MB"
+  cpu: "Very low"
+  lightweight: "⭐⭐⭐⭐"
+  extensible: "⭐⭐"
+  selfhost: "⭐⭐⭐⭐"
+  best_for: "Speed & simplicity"
+
+- name: FreshRSS
+  ram: "~60–100 MB"
+  cpu: "Low"
+  lightweight: "⭐⭐⭐"
+  extensible: "⭐⭐⭐"
+  selfhost: "⭐⭐⭐"
+  best_for: "Balanced features"
+
+- name: Tiny Tiny RSS
+  ram: "~150–300 MB"
+  cpu: "Medium"
+  lightweight: "⭐⭐"
+  extensible: "⭐⭐⭐⭐"
+  selfhost: "⭐⭐"
+  best_for: "Power users"
+
+- name: CommaFeed
+  ram: "~200+ MB"
+  cpu: "Medium"
+  lightweight: "⭐⭐⭐"
+  extensible: "⭐"
+  selfhost: "⭐⭐⭐"
+  best_for: "Google Reader–like UI"
+
+- name: RSS-Hub
+  ram: "~100–200 MB"
+  cpu: "Medium"
+  lightweight: "—"
+  extensible: "⭐⭐⭐⭐"
+  selfhost: "⭐⭐"
+  best_for: "Creating custom feeds"

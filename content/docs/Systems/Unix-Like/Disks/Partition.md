@@ -3,9 +3,9 @@ date: 2023-08-30T21:00:00+08:00
 title: 🗿 Partition
 navWeight: 500 # Upper weight gets higher precedence, optional.
 series:
-  - SysAdmin
-categories:
   - Docs
+categories:
+  - SysAdmin
 tags:
   - Systems
   - Unix-Like

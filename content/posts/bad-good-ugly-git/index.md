@@ -19,7 +19,7 @@ tags:
 authors:
   - mozebaltyk
 images: 
-  - "./bad-good-ugly-git/carousel.jpg"
+  - ./carousel/bad-good-ugly-git.jpg
 sidebar: false
 ---
 

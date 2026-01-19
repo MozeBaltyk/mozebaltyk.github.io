@@ -20,7 +20,8 @@ tags:
   - Blog
 authors:
   - mozebaltyk
-images: [./howto-create-this-blog/carousel.webp]
+images: 
+  - ./carousel/howto-create-this-blog.webp
 sidebar: false
 ---
 
@@ -78,7 +79,7 @@ So I went through *[Hugo-theme-bootstrap](https://github.com/razonyang/hugo-them
 
 Here a quick over view of what this theme have to offer:
 
-![Center](./howto-create-this-blog/HBS-list-feat.PNG#center)
+![Center](./posts/howto-create-this-blog/HBS-list-feat.PNG#center)
 
 ## Let's Practice
 

@@ -18,7 +18,8 @@ tags:
   - Devops
 authors:
   - mozebaltyk
-images: [./own-your-state/carousel.webp]
+images: 
+  - ./carousel/own-your-state.webp
 sidebar: false
 ---
 

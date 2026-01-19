@@ -11992,10 +11992,6 @@ textarea.form-control-lg {
   font-family: Agbalumo, sans-serif;
 }
 
-[data-bs-theme=dark] .background-color {
-  background-color: rgba(80, 80, 80, 0);
-}
-
 /*! purgecss end ignore */
 body {
   background: center/cover no-repeat url("/images/background_hu_91b61002a726b542.webp");

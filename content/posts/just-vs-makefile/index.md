@@ -19,7 +19,8 @@ tags:
   - Scripting
 authors:
   - mozebaltyk
-images: [./MakefileVsJustfile/carousel.webp]
+images: 
+  - ./carousel/MakefileVsJustfile.webp
 sidebar: false
 ---
 

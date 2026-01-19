@@ -21,7 +21,7 @@ tags:
 authors:
   - mozebaltyk
 images: 
-  - ./homelab-project/carousel.avif
+  - ./carousel/homelab-project.avif
 sidebar: false
 ---
 

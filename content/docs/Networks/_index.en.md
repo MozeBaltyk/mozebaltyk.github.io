@@ -13,19 +13,9 @@ nav_icon:
   color: "#0ee2cdff"
 # comments: false
 series:
-  - Network
-categories:
   - Docs
+categories:
+  - Network
 tags:
 #  - 
-images:
-#  - 
-# menu:
-#   main:
-#     weight: 100
-#     params:
-#       icon:
-#         vendor: bs
-#         name: book
-#         color: '#0ee2cdff'
 ---

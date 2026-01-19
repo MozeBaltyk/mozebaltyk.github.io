@@ -18,7 +18,7 @@ tags:
   - Hugo
   - Blog
 images:
-  - ./howto-create-custom-widget/carousel.jpg
+  - ./carousel/howto-create-custom-widget.jpg
 authors:
   - mozebaltyk
 sidebar: false
@@ -115,7 +115,7 @@ The result is a sidebar widget that displays a different citation each
 time a page is loaded, creating the impression of randomness while
 remaining fully static.
 
-![Random citation widget](./howto-create-custom-widget/result_widget.png#center)
+![Random citation widget](./posts/howto-create-custom-widget/result_widget.png#center)
 
 ## Troubleshooting
 

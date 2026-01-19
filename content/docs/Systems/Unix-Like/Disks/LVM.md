@@ -3,9 +3,9 @@ date: 2023-08-28T21:00:00+08:00
 title: 🧐 LVM
 navWeight: 520 # Upper weight gets higher precedence, optional.
 series:
-  - SysAdmin
-categories:
   - Docs
+categories:
+  - SysAdmin
 tags:
   - Systems
   - Unix-Like

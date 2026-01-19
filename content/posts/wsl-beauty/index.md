@@ -21,7 +21,8 @@ tags:
   - Workstation
 authors:
   - mozebaltyk
-images: [./wsl-beauty/carousel.webp]
+images: 
+  - ./carousel/wsl-beauty.webp
 sidebar: false
 ---
 

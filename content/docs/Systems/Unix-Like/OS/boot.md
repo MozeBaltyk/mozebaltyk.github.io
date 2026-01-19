@@ -3,9 +3,9 @@ date: 2024-10-01T21:00:00+08:00
 title:  👢 Boot
 navWeight: 50 # Upper weight gets higher precedence, optional.
 series:
-  - SysAdmin
-categories:
   - Docs
+categories:
+  - SysAdmin
 tags:
   - Systems
   - Unix-Like

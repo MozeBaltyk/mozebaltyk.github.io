@@ -1,51 +1,158 @@
-{{- /*
-  Shortcode: table-snippet
-  Description: Renders a table from a data file (YAML, JSON, TOML) in page resources.
-  Usage: {{< table-snippet "datafile.yaml" "Column1,Column2,Column3" >}}
-  The second parameter is optional and specifies the order of columns.
-*/ -}}
-{{- $res := .Page.Resources.GetMatch (.Get 0) }}
-{{- if not $res }}
-  {{- errorf "table-snippet: file not found: %s" (.Get 0) }}
-{{- end }}
+{{/* -----------------------------------------------------------
+table-snippet (positional parameters only)
 
-{{- $data := $res | transform.Unmarshal }}
+Usage:
+table-snippet FILE [COLUMNS] [SORT] [FILTER]
 
-{{- /* Optional column order from shortcode */ -}}
-{{- $headers := slice }}
-{{- with .Get 1 }}
-  {{- $headers = split . "," }}
-{{- end }}
+Examples:
+table-snippet blogs.yaml
+table-snippet blogs.yaml "name,description,url"
+table-snippet blogs.yaml "name,url" name
+table-snippet blogs.yaml "name,url" name "active"
+------------------------------------------------------------ */}}
 
-{{- /* Fallback: auto-detect keys if no order provided */ -}}
-{{- if eq (len $headers) 0 }}
-  {{- range $data }}
-    {{- range $k, $_ := . }}
-      {{- if not (in $headers $k) }}
-        {{- $headers = $headers | append $k }}
-      {{- end }}
-    {{- end }}
+{{/* ---------- Arguments ---------- */}}
+{{- $file := .Get 0 -}}
+{{- $cols := slice -}}
+{{- if ge (len .Params) 2 -}}
+  {{- $cols = split (.Get 1) "," -}}
+{{- end -}}
+
+{{- $sortKey := "" -}}
+{{- if ge (len .Params) 3 -}}
+  {{- $sortKey = .Get 2 -}}
+{{- end -}}
+
+{{- $filterKey := "" -}}
+{{- if ge (len .Params) 4 -}}
+  {{- $filterKey = .Get 3 -}}
+{{- end -}}
+
+{{/* ---------- Load data ---------- */}}
+{{- $data := slice -}}
+{{- $found := false -}}
+
+{{/* ---------- 1. Page bundle resources ---------- */}}
+{{- $patterns := slice -}}
+
+{{- if strings.Contains $file "." -}}
+  {{- $patterns = slice
+      (printf "table/%s" $file)
+      (printf "tables/%s" $file)
+      $file
+  -}}
+{{- else -}}
+  {{- $patterns = slice
+      (printf "table/%s.*" $file)
+      (printf "tables/%s.*" $file)
+      (printf "%s.*" $file)
+  -}}
+{{- end -}}
+
+{{- range $patterns -}}
+  {{- if not $found -}}
+    {{- with $.Page.Resources.GetMatch . -}}
+      {{- $data = . | transform.Unmarshal -}}
+      {{- $found = true -}}
+    {{- end -}}
+  {{- end -}}
+{{- end -}}
+
+{{/* 2. Fallback to data/ */}}
+{{- if not $found -}}
+  {{- $cursor := site.Data -}}
+  {{- $ok := true -}}
+
+  {{- range $k := split $file "/" -}}
+    {{- if and (reflect.IsMap $cursor) (isset $cursor $k) -}}
+      {{- $cursor = index $cursor $k -}}
+    {{- else -}}
+      {{- $ok = false -}}
+    {{- end -}}
+  {{- end -}}
+
+  {{- if and $ok (reflect.IsSlice $cursor) -}}
+    {{- $data = $cursor -}}
+    {{- $found = true -}}
+  {{- end -}}
+{{- end -}}
+
+{{- if not $found -}}
+  {{- errorf "table-snippet: data source '%s' not found or not a list" $file -}}
+{{- end -}}
+
+{{/* ---------- Schema validation ---------- */}}
+
+{{- if eq (len $data) 0 -}}
+  {{- errorf "table-snippet: empty dataset in %s" $file -}}
+{{- end -}}
+
+{{- if not (reflect.IsMap (index $data 0)) -}}
+  {{- errorf "table-snippet: each row must be a map in %s" $file -}}
+{{- end -}}
+
+{{/* ---------- Columns ---------- */}}
+{{- $columns := slice -}}
+
+{{- if gt (len $cols) 0 -}}
+  {{- $columns = $cols -}}
+{{- else -}}
+  {{- range $k, $_ := index $data 0 -}}
+    {{- $columns = $columns | append $k -}}
+  {{- end -}}
+{{- end -}}
+
+{{/* Validate columns */}}
+{{- range $columns }}
+  {{- if not (isset (index $data 0) .) }}
+    {{- errorf "table-snippet: column '%s' not found in data %s" . $file -}}
   {{- end }}
 {{- end }}
 
+{{/* ---------- Filtering (truthy key) ---------- */}}
+{{- if $filterKey -}}
+  {{- $filtered := slice -}}
+  {{- range $data -}}
+    {{- if and (isset . $filterKey) (eq (index . $filterKey) true) -}}
+      {{- $filtered = $filtered | append . -}}
+    {{- end -}}
+  {{- end -}}
+  {{- $data = $filtered -}}
+{{- end -}}
+
+{{/* ---------- Sorting ---------- */}}
+{{- if ne $sortKey "" }}
+  {{- if not (isset (index $data 0) $sortKey) }}
+    {{- errorf "table-snippet: sort key '%s' not found in data" $sortKey -}}
+  {{- end }}
+  {{- $data = sort $data $sortKey -}}
+{{- end }}
+
+{{/* ---------- Render table ---------- */}}
 <table class="table table-bordered table-hover table-striped">
   <thead>
     <tr>
-      {{- range $headers }}
+      {{- range $columns }}
         <th>{{ . }}</th>
       {{- end }}
     </tr>
   </thead>
   <tbody>
-    {{- range $data }}
-      {{- $row := . }}
+    {{- range $row := $data }}
       <tr>
-        {{- range $headers }}
-          {{- $val := index $row . | default "" }}
-          <td>{{ printf "%v" $val | markdownify }}</td>
+        {{- range $columns }}
+          <td>
+            {{- with index $row . }}
+              {{- $val := printf "%v" . -}}
+              {{- if or (strings.HasPrefix $val "http://") (strings.HasPrefix $val "https://") }}
+                <a href="{{ $val }}" target="_blank" rel="noopener noreferrer">Link</a>
+              {{- else }}
+                {{- $val | markdownify -}}
+              {{- end }}
+            {{- end }}
+          </td>
         {{- end }}
       </tr>
     {{- end }}
   </tbody>
 </table>
-{{- /* End of table-snippet.html */ -}}

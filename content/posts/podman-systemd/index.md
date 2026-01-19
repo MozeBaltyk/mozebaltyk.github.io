@@ -21,7 +21,8 @@ tags:
   - Repository
 authors:
   - mozebaltyk
-images: [./podman-systemd/carousel.jpg]
+images: 
+  - ./carousel/podman-systemd.jpg
 sidebar: false
 ---
 

@@ -3,9 +3,9 @@ date: 2023-08-01T21:00:00+08:00
 title: Install
 navWeight: 60 # Upper weight gets higher precedence, optional.
 series:
-  - SysAdmin
-categories:
   - Docs
+categories:
+  - SysAdmin
 tags:
   - Virtualisation
   - Oracle
@@ -88,7 +88,7 @@ dnf repolist
 
 * Then on *Virtmanager console* > *Administration* > *Hosts* > *add a host* 
 
-![VirtManager Add Host](./OLVM/virtmanager-add-hosts.png#center)
+![VirtManager Add Host](./docs/OLVM/virtmanager-add-hosts.png#center)
 
 
 * Take and copy the **SSH publickey** from above windows to the secondary hosts:
@@ -103,7 +103,7 @@ vi /root/.ssh/authorized_keys
 
 * Choose deploy engine in *Hosted Engine*:
 
-![Deploy Engine](./OLVM/deploy-engine.png#center)
+![Deploy Engine](./docs/OLVM/deploy-engine.png#center)
 
 * Then click **OK** to start install 
 

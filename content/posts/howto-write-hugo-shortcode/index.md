@@ -17,8 +17,9 @@ categories:
 tags:
   - Hugo
   - Blog
+  - Golang
 images:
-  - ./howto-write-hugo-shortcode/carousel.avif
+  - ./carousel/howto-write-hugo-shortcode.avif
 authors:
   - mozebaltyk
 sidebar: false
@@ -105,13 +106,23 @@ content/
 {{- end }}
 ```
 
-* The usage: `{{</* code-snippet example.txt ini*/>}}`       
+* The usage: 
+
+Language is taken from the file extension
+```go
+{{</* code-snippet example.txt*/>}} 
+```
+
+Or you can declare the language
+```go
+{{</* code-snippet example.txt ini*/>}}
+```       
       
 * The result: {{< code-snippet example.txt ini>}}  
          
 {{< bs/alert warning >}}
 {{< markdownify >}}
-In the folder `code` do not put file with an `.html` extension, otherwise Hugo will try to build it.
+One exception: In the folder `code` do not put file with an `.html` extension, otherwise Hugo will try to build it.
 {{< /markdownify >}}
 {{< /bs/alert >}}
 
@@ -122,7 +133,7 @@ You can generate a table from a configuration file using a shortcode. This is es
 Instead of maintaining a long Markdown table, you can store the data in a `a-long-list-of-stuffs.yaml` file, which is easier to read and update over time.
 
 So let do a *shortcode* which:   
-✔ Generate a valid Markdown table   
+✔ Generate a valid table   
 ✔ Auto-generates headers   
 ✔ Makes URLs clickable    
 ✔ Renders Markdown / HTML when present   
@@ -177,11 +188,27 @@ So let do a *shortcode* which:
 </table>
 ```
 
-* The usage: `{{</* table-snippet list.yaml "name,description" */>}}`  
+* The usage: `{{</* table-snippet list "name,description" */>}}`  
 
-* The result: {{< table-snippet list.yaml "name,description" >}}
+* The result: {{< table-snippet list "name,description" >}}
 
-NB: here I generate HTML output, so the right syntax to use it, is `{{</* */>}}`
+NB: here I generate HTML output, so the right syntax to use it, is `{{</* */>}}` and not `{{%/* */%}}` which is *markdown-aware*.
+
+By then, I improved the *table-snippet* shortcode with:
+✔ Uses positional parameters only
+✔ Looks in *page bundle* first, then *data/*
+✔ Handles nested path  *rss/my-super-list*
+✔ Optional sorting arguments
+✔ Optional filtering boolean arguments
+
+* The usage now: `{{</* table-snippet DATA_FILE COLUMNS SORT FILTER */>}}`  
+
+* Usage Example: `{{</* table-snippet rss/list "name,description,url" name active */>}}`
+
+NB about Hugo: 
+- Page bundle (local to the article/table or article/tables) = Scoped to the page
+- Global data directory (data/) = Reusable across the site
+- Hugo behavior is *format-agnostic configuration*, it matches all config files (`.yaml, .yml, .json, .toml` all work)
 
 ## Some ideas for future shortcodes
 
@@ -195,16 +222,22 @@ Here are a few additional shortcode ideas that would fit well in an IT-focused b
 
 ## Summary
 
-Hugo shortcodes allow you to::
+Hugo shortcodes act as a *"controller"*. It allows you to:
 
 📄 Keeps Markdown clean and readable
 
-🔁 Makes data reusable across multiple posts
+🔁 Makes data reusable across multiple posts. (Loads data *page* or *data/*)
 
 🧩 Separates content from presentation
 
 🛠 Makes large among of data easy to maintain
 
-⚠️ Fails loudly if the file is missing
+⚠️ Handles errors, Fails loudly if the file is missing
 
 Well-designed shortcodes turn repetitive documentation patterns into reusable, expressive building blocks.
+
+By contrast, *partials* are used for reusable rendering logic:
+
+- Receive normalized data
+- Output HTML
+- Apply formatting rules

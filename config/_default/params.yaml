@@ -72,7 +72,7 @@ hb:
       # see https://hbstack.dev/modules/blog/sidebar/profile/
       profile:
         title: Bałtyk Blog
-        description: "A simple IT blog trying to make sense of it all. Thoughts, discoveries, and documentation from a SysAdmin and DevOps guy — learned by breaking, fixing, and sometimes finding elegant solutions."
+        description: "Notes from a SysAdmin & DevOps journey."
         avatar_size: 100
         avatar: "images/avatar.png"
         #company: COMPANY
