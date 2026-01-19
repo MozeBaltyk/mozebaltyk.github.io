@@ -24,6 +24,10 @@ outputs:
     - RSS
     - SearchIndex    # required by search module.
     - WebAppManifest # required by PWA module to make your site installable.
+  # default outputs for other kinds of pages (avoid produce RSS unecessarily).
+  section: ['html']
+  taxonomy: ['html']
+  term: ['html']
 
 taxonomies:
   authors: authors       # multiple authors.
@@ -74,3 +78,13 @@ security:
       - ^HUGO
       - CI$
       - PWD
+
+# RSS feed settings
+services:
+  RSS:
+    limit: 10
+
+outputFormats:
+  RSS:
+    mediatype: "application/rss"
+    baseName: "feed"

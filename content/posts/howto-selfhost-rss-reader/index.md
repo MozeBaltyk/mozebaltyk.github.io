@@ -130,6 +130,140 @@ Below, Open-source RSS readers worth considering.
 
 **Best for**: Users who want a full-featured RSS platform with advanced capabilities.
 
+
+## How to choose ?
+
+{{< table-snippet rss-readers "name,ram,cpu,lightweight,extensible,selfhost,best_for" >}}
+
+## FreshRSS - The Chosen one
+
+I hesitate between *FreshRSS* and *Tiny Tiny RSS*, But the first one seems more user friendly and largely supported.
+
+* The quick run - to test it on the fly:
+
+```sh
+podman run -d --restart unless-stopped --log-opt max-size=10m \
+  -p 8080:80 \
+  -e TZ=Europe/Paris \
+  -e 'CRON_MIN=1,31' \
+  -v freshrss_data:/var/www/FreshRSS/data \
+  -v freshrss_extensions:/var/www/FreshRSS/extensions \
+  --name freshrss \
+  docker.io/freshrss/freshrss
+```
+
+
+* In [FreshRSS Docker doc](https://github.com/FreshRSS/FreshRSS/blob/edge/Docker/README.md):
+
+```yaml
+FRESHRSS_INSTALL: automatically pass arguments to command line cli/do-install.php (for advanced users; see example in Docker Compose section). Only executed at the very first run (so far), so if you make any change, you need to delete your freshrss service, freshrss_data volume, before running again.
+FRESHRSS_USER: automatically pass arguments to command line cli/create-user.php (for advanced users; see example in Docker Compose section). Only executed at the very first run (so far), so if you make any change, you need to delete your freshrss service, freshrss_data volume, before running again.
+```
+     
+So let's convert it as *systemd* services...     
+
+* Create an env file `~/.config/freshrss/freshrss.env`
+
+{{< code-snippet freshrss.env >}}
+
+* Create service file for our Standalone App in `$HOME/.config/containers/systemd/freshrss-app.service`    
+
+{{< code-snippet freshrss-app.service ini>}}
+
+* and `freshrss-net.service`
+
+{{< code-snippet freshrss-net.service ini>}}
+
+* Validate the service and start it:
+
+```bash
+systemd-analyze --user verify freshrss-app.service
+systemctl --user daemon-reload
+systemctl --user start freshrss-app
+journalctl --user -u freshrss-app -f
+```
+
+{{< bs/alert warning >}}
+{{< markdownify >}}
+If you change any of these:
+- FRESHRSS_INSTALL
+- FRESHRSS_USER
+- admin passwords
+- base URL
+    
+Volume need to be deleted and freshrss-app restarted.   
+{{< /markdownify >}}
+{{< /bs/alert >}}
+
+```bash
+# Stop and remove
+systemctl --user stop freshrss-app
+podman stop freshrss-app
+podman rm -f freshrss-app
+# Remove volumes
+podman volume rm freshrss_data freshrss_extensions
+# Checks
+podman volume ls
+# Restart
+systemctl --user restart freshrss-app
+```
+
+## List of blogs that I would like to follow
+
+{{< table-snippet "rss/blogs" "name,description,url" "name" "active">}}
+
+## Bonuses
+
+### Customize Your Hugo Blog RSS feed  
+
+* Some RSS config in `.config/hugo.yaml`
+
+```yaml
+# Limit the number of articles in your RSS feed
+services:
+  RSS:
+    limit: 10
+
+# Change the default index.xml to feed.xml
+outputFormats:
+  RSS:
+    mediatype: "application/rss"
+    baseName: "feed"    
+
+outputs:
+  home:
+    - HTML
+    - Offline        # required by PWA module for displaying the offline pages.
+    - RSS
+    - SearchIndex    # required by search module.
+    - WebAppManifest # required by PWA module to make your site installable.
+  # default outputs for other kinds of pages (avoid produce RSS unecessarily).
+  section: ['html']
+  taxonomy: ['html']
+  term: ['html']
+```
+
+To customize the XML of your RSS feed, you need to override the default template. For this, create a file named `layouts/_default/rss.xml` with the [default Hugo rss.xml](https://github.com/gohugoio/hugo/blob/master/tpl/tplimpl/embedded/templates/rss.xml), then adapt.    
+
+For example in my case - display just type "page" (not the Categories, Authors, etc ) and only "posts" section, then I diplay the full content with my Github avatar as front image:
+
+```xml
+    {{- range where (where .Site.Pages ".Section" "posts") "Kind" "page" }}
+    <item>
+      <title>{{ .Title }}</title>
+      <link>{{ .Permalink }}</link>
+      <pubDate>{{ .PublishDate.Format "Mon, 02 Jan 2006 15:04:05 -0700" | safeHTML }}</pubDate>
+      {{- with $authorEmail }}<author>{{ . }}{{ with $authorName }} ({{ . }}){{ end }}</author>{{ end }}
+      <guid>{{ .Permalink }}</guid>
+      {{- $content := safeHTML (.Content | html) -}}
+      <description>
+        {{ "<" | html }}img src="https://avatars.githubusercontent.com/u/35733045?v=4" alt="Featured image for {{ .Title }}" {{ "/>" | html}}
+        {{ $content }}
+      </description>
+    </item>
+    {{- end }}
+```
+
 ### 🛸 RSS-Hub (feeder + aggregator)
 
 **Description**: A powerful aggregator for creating RSS feeds from sites that don’t offer them.
@@ -144,12 +278,8 @@ Below, Open-source RSS readers worth considering.
 
 **Best for**: When feeds are missing or poor and you need custom sources.
 
-## How to choose ?
-
-{{< table-snippet rss-readers "name,ram,cpu,lightweight,extensible,selfhost,best_for" >}}
-
-
-## List of blogs that I would like to follow
-
-{{< table-snippet "rss/blogs" "name,description,url" "name" "active">}}
-
+## Sources
+- FreshRSS [deploy with docker](https://github.com/FreshRSS/FreshRSS/tree/edge/Docker)
+- FreshRSS [Doc](https://freshrss.github.io/FreshRSS/en/)
+- Korben on [RSS topic](https://korben.info/rsshub-rss-flux-sites-aaron-swartz.html)
+- Nice RSS optimization from [Romain Blog](https://blog.laromierre.com/posts/how-to-customize-and-optimize-your-hugo-rss-feed/)

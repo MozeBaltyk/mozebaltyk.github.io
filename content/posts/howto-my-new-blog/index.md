@@ -131,6 +131,16 @@ npm ci
 npm run dev
 ```
 
+## Update Hugo modules
+
+```bash
+hugo mod get -u ./... && hugo mod tidy
+
+npm update
+
+npm ci
+```
+
 ## Hugo - some Keys Concepts 
 
 First - Hugo behavior is *format-agnostic configuration*, it matches all config files (`.yaml, .yml, .json, .toml` all work from `./data` or `./config`)

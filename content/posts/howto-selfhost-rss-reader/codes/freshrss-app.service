@@ -1,0 +1,48 @@
+# $HOME/.config/containers/systemd/freshrss-app.service
+[Unit]
+Description=FreshRSS (Podman container)
+Wants=network-online.target
+After=network-online.target
+RequiresMountsFor=/var/lib/containers/storage
+
+# If you manage the network via systemd
+Requires=freshrss-net.service
+After=freshrss-net.service
+
+[Service]
+Environment=PODMAN_SYSTEMD_UNIT=%n
+Restart=on-failure
+RestartSec=5
+TimeoutStartSec=120
+TimeoutStopSec=70
+
+Type=notify
+NotifyAccess=all
+
+EnvironmentFile=%h/.config/freshrss/freshrss.env
+
+ExecStart=/usr/bin/podman run \
+  --name freshrss-app \
+  --replace \
+  --detach \
+  --sdnotify=conmon \
+  --env FRESHRSS_INSTALL \
+  --env FRESHRSS_USER \
+  -v freshrss_data:/var/www/FreshRSS/data \
+  -v freshrss_extensions:/var/www/FreshRSS/extensions \
+  --network freshrss-net \
+  --publish 8080:80 \
+  --label io.containers.autoupdate=registry \
+  docker.io/freshrss/freshrss
+
+ExecStop=/usr/bin/podman stop \
+  --ignore \
+  --time 10 \
+  freshrss-app
+
+ExecStopPost=/usr/bin/podman rm \
+  --ignore \
+  freshrss-app
+
+[Install]
+WantedBy=multi-user.target

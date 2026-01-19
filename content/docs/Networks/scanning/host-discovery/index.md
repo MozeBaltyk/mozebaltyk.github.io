@@ -29,7 +29,6 @@ images:
 #         color: '#e24d0e'
 meta:
   reading_time: false
-
 ---
 
 ## IPv4 Discovery

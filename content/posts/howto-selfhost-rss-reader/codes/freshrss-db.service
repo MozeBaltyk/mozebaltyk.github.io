@@ -1,0 +1,50 @@
+[Unit]
+Description=FreshRSS Database (MariaDB, Podman)
+Wants=network-online.target
+After=network-online.target
+RequiresMountsFor=/var/lib/containers/storage
+
+# If you manage the network via systemd
+Requires=freshrss-net.service
+After=freshrss-net.service
+
+[Service]
+Environment=PODMAN_SYSTEMD_UNIT=%n
+Restart=on-failure
+RestartSec=5
+TimeoutStartSec=120
+TimeoutStopSec=70
+
+Type=notify
+NotifyAccess=all
+
+# Ensure network exists (safe if already created or not)
+ExecStartPre=/bin/sh -c '/usr/bin/podman network exists gitea-net || /usr/bin/podman network create gitea-net'
+
+ExecStart=/usr/bin/podman run \
+  --name gitea-db \
+  --replace \
+  --detach \
+  --sdnotify=conmon \
+  --network gitea-net \
+  --env MYSQL_ROOT_PASSWORD=strong-root-password \
+  --env MYSQL_DATABASE=gitea \
+  --env MYSQL_USER=gitea \
+  --env MYSQL_PASSWORD=password \
+  --volume gitea-db-volume:/var/lib/mysql:Z \
+  --health-cmd='mysqladmin ping -h 127.0.0.1 --silent' \
+  --health-interval=5s \
+  --health-retries=10 \
+  docker.io/library/mariadb:11
+
+ExecStop=/usr/bin/podman stop \
+  --ignore \
+  --time 10 \
+  gitea-db
+
+ExecStopPost=/usr/bin/podman rm \
+  --ignore \
+  gitea-db
+
+[Install]
+WantedBy=multi-user.target

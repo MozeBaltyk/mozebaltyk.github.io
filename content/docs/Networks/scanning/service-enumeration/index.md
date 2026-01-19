@@ -16,15 +16,6 @@ tags:
   - Network
   - Hacking
 images:
-#  - 
-# menu:
-#   main:
-#     weight: 100
-#     params:
-#       icon:
-#         vendor: bs
-#         name: book
-#         color: '#e24d0e'
 meta:
   reading_time: false
 ---

@@ -8,5 +8,5 @@ menu:
         vendor: bs
         name: book
         color: "#0d6efd"
-      description: Docs oriented SysAdmin and Devops 
+      description: Docs oriented SysAdmin and Devops
 ---

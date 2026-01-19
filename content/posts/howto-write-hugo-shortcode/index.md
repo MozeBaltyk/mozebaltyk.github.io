@@ -121,11 +121,11 @@ So let do a *shortcode* which:
 
 {{< code-snippet table-snippet.txt go>}} 
 
-* The usage: `{{</* table-snippet list "name,description" */>}}`  
+* The usage: `{{</* table-snippet list "name,description" */>}}`    
 
-* The result: {{< table-snippet list "name,description" >}}
+* The result: {{< table-snippet list "name,description" >}}    
 
-NB: here I generate HTML output, so the right syntax to use it, is `{{</* */>}}` and not `{{%/* */%}}` which is *markdown-aware*.
+NB: I have generated HTML output, so the right syntax to use it, is `{{</* */>}}` and not `{{%/* */%}}` which is *markdown-aware*.
 
 By then, I improved the *table-snippet* shortcode with:   
 ✔ Uses positional parameters only   

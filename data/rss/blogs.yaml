@@ -28,3 +28,12 @@
   url: https://harrycresswell.com/
   description: A blog about Hugo and static site generation.
   active: true
+- name: Korben
+  url: https://korben.info/
+  description: A French blog about technology, hacking, and software.
+  active: true
+
+- name: Buildt With Caffeine
+  url: https://blog.builtwithcaffeine.cloud/
+  description: A blog about DevOps and Hugo blogs.
+  active: true

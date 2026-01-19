@@ -12,7 +12,7 @@ require (
 	github.com/hbstack/background-image v0.2.1 // indirect
 	github.com/hbstack/base v0.6.2 // indirect
 	github.com/hbstack/bigger-picture v0.10.1 // indirect
-	github.com/hbstack/blog v0.42.1 // indirect
+	github.com/hbstack/blog v0.42.2 // indirect
 	github.com/hbstack/blog/modules/breadcrumb v0.1.23 // indirect
 	github.com/hbstack/blog/modules/content-panel v0.1.21 // indirect
 	github.com/hbstack/blog/modules/featured-image v0.2.21 // indirect
@@ -48,12 +48,11 @@ require (
 	github.com/hbstack/google-fonts v0.1.1 // indirect
 	github.com/hbstack/hb v0.16.2 // indirect
 	github.com/hbstack/header v0.16.7 // indirect
-	github.com/hbstack/header/modules/banner v0.7.2 // indirect
 	github.com/hbstack/header/modules/language-picker v0.2.0 // indirect
 	github.com/hbstack/header/modules/news v0.3.1 // indirect
 	github.com/hbstack/header/modules/search v0.1.38 // indirect
 	github.com/hbstack/header/modules/socials v0.2.2 // indirect
-	github.com/hbstack/header/modules/theme-toggle v0.5.2 // indirect
+	github.com/hbstack/header/modules/theme-toggle v0.5.3 // indirect
 	github.com/hbstack/heading-sign v0.2.0 // indirect
 	github.com/hbstack/mermaid v0.2.2 // indirect
 	github.com/hbstack/meta/recommended v0.2.10 // indirect
@@ -69,7 +68,6 @@ require (
 	github.com/hbstack/social-share-buttons v0.6.0 // indirect
 	github.com/hbstack/socials v0.19.0 // indirect
 	github.com/hbstack/syntax-highlighting v0.2.1 // indirect
-	github.com/hbstack/syntax-highlighting/styles/github-dark v0.1.2 // indirect
 	github.com/hbstack/syntax-highlighting/styles/gruvbox v0.1.2 // indirect
 	github.com/hbstack/syntax-highlighting/styles/monokai v0.1.2 // indirect
 	github.com/hbstack/theme-cards v0.1.1 // indirect
@@ -83,7 +81,7 @@ require (
 	github.com/hugomods/fuse-js v0.1.0 // indirect
 	github.com/hugomods/giscus v0.1.1 // indirect
 	github.com/hugomods/gravatar v0.2.1 // indirect
-	github.com/hugomods/hugopress v0.5.0 // indirect
+	github.com/hugomods/hugopress v0.5.2 // indirect
 	github.com/hugomods/i18n-js v0.2.1 // indirect
 	github.com/hugomods/icons v0.6.6 // indirect
 	github.com/hugomods/icons/vendors/bootstrap v0.5.11 // indirect

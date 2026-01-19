@@ -29,11 +29,3 @@
   extensible: "⭐"
   selfhost: "⭐⭐⭐"
   best_for: "Google Reader–like UI"
-
-- name: RSS-Hub
-  ram: "~100–200 MB"
-  cpu: "Medium"
-  lightweight: "—"
-  extensible: "⭐⭐⭐⭐"
-  selfhost: "⭐⭐"
-  best_for: "Creating custom feeds"

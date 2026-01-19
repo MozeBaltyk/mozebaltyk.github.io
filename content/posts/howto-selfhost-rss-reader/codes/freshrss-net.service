@@ -1,0 +1,17 @@
+[Unit]
+Description=Podman network freshrss-net
+Wants=network-online.target
+After=network-online.target
+
+[Service]
+Type=oneshot
+RemainAfterExit=yes
+
+# Create network
+ExecStart=/usr/bin/podman network create freshrss-net
+
+# Optional: remove network on stop (only if you really want ownership)
+ExecStop=/usr/bin/podman network rm freshrss-net
+
+[Install]
+WantedBy=multi-user.target
