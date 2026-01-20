@@ -1,7 +1,7 @@
 ---
 title: "📻 How to Selfhost a RSS Reader"
 description: "Launch a RSS Reader to follow blogs that you like"
-date: 2026-01-18T16:00:00+01:00
+date: 2026-01-21T16:00:00+01:00
 draft: true
 noindex: false
 featured: true
@@ -17,6 +17,7 @@ categories:
 tags:
   - Blog
   - OpenSources
+  - RSS
 images:
   - ./carousel/howto-selfhost-rss-reader.jpg
 authors:
@@ -152,7 +153,6 @@ podman run -d --restart unless-stopped --log-opt max-size=10m \
   docker.io/freshrss/freshrss
 ```
 
-
 * In [FreshRSS Docker doc](https://github.com/FreshRSS/FreshRSS/blob/edge/Docker/README.md):
 
 ```yaml
@@ -214,57 +214,9 @@ systemctl --user restart freshrss-app
 
 ## Bonuses
 
-### Customize Your Hugo Blog RSS feed  
+* [Polish and customize RSS feed](https://mozebaltyk.github.io/posts/howto-customize-feed-rss/) 
 
-* Some RSS config in `.config/hugo.yaml`
-
-```yaml
-# Limit the number of articles in your RSS feed
-services:
-  RSS:
-    limit: 10
-
-# Change the default index.xml to feed.xml
-outputFormats:
-  RSS:
-    mediatype: "application/rss"
-    baseName: "feed"    
-
-outputs:
-  home:
-    - HTML
-    - Offline        # required by PWA module for displaying the offline pages.
-    - RSS
-    - SearchIndex    # required by search module.
-    - WebAppManifest # required by PWA module to make your site installable.
-  # default outputs for other kinds of pages (avoid produce RSS unecessarily).
-  section: ['html']
-  taxonomy: ['html']
-  term: ['html']
-```
-
-To customize the XML of your RSS feed, you need to override the default template. For this, create a file named `layouts/_default/rss.xml` with the [default Hugo rss.xml](https://github.com/gohugoio/hugo/blob/master/tpl/tplimpl/embedded/templates/rss.xml), then adapt.    
-
-For example in my case - display just type "page" (not the Categories, Authors, etc ) and only "posts" section, then I diplay the full content with my Github avatar as front image:
-
-```xml
-    {{- range where (where .Site.Pages ".Section" "posts") "Kind" "page" }}
-    <item>
-      <title>{{ .Title }}</title>
-      <link>{{ .Permalink }}</link>
-      <pubDate>{{ .PublishDate.Format "Mon, 02 Jan 2006 15:04:05 -0700" | safeHTML }}</pubDate>
-      {{- with $authorEmail }}<author>{{ . }}{{ with $authorName }} ({{ . }}){{ end }}</author>{{ end }}
-      <guid>{{ .Permalink }}</guid>
-      {{- $content := safeHTML (.Content | html) -}}
-      <description>
-        {{ "<" | html }}img src="https://avatars.githubusercontent.com/u/35733045?v=4" alt="Featured image for {{ .Title }}" {{ "/>" | html}}
-        {{ $content }}
-      </description>
-    </item>
-    {{- end }}
-```
-
-### 🛸 RSS-Hub (feeder + aggregator)
+* 🛸 RSS-Hub (feeder + aggregator)
 
 **Description**: A powerful aggregator for creating RSS feeds from sites that don’t offer them.
 

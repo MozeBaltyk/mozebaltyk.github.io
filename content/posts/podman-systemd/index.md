@@ -33,7 +33,7 @@ It's nice to run everything on k8s, but as Yaakov was underling it in [his blog]
 > My personal experience on Azure Kubernetes Service was that I immediately lost a massive chunk of RAM to their Kubernetes implementation, and it used about 7–10% idle CPU on worker nodes.  
 > Even with a single-instance MicroK8s on a small VPS, I observed an idle CPU load hovering around 12% on a 2× vCPU x86_64 box.  
 > K3s, which is supposed to be leaner, still shows about 6% constant CPU consumption on a 2× vCPU Ampere A1 machine.  
-> — [Yaakov Blog](https://blog.yaakov.online/replacing-kubernetes-with-systemd/), Feb 04, 2024
+> <small>— [Yaakov Blog](https://blog.yaakov.online/replacing-kubernetes-with-systemd/), Feb 04, 2024</small>
 
 Podman brings several important advantages:  
 

@@ -19,7 +19,7 @@ tags:
   - OpenSources
   - Linux
 images:
-  - carousel/my-workstation.avif
+  - ./carousel/my-workstation.avif
 authors:
   - mozebaltyk
 sidebar: false
@@ -33,6 +33,7 @@ A bundle with:
 - Extras packages from OS repositories
 - Extras packages from some other repos
 - Some dotfiles
+- Some services (program running in background)
 
 ## The possibilites 
 

@@ -24,7 +24,7 @@ categories:
 tags:
   - Migration
 images:
-#  - images/...
+#  - ./carousel/...
 authors:
   - mozebaltyk
 sidebar: false

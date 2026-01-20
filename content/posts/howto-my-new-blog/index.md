@@ -1,6 +1,6 @@
 ---
 title: "🔭 My New Blog"
-description: "Sometime in life, you need to upgrade..."
+description: "Sometimes in life, you need to upgrade. This article walks through the new version of my blog and the discoveries that came with it."
 date: 2026-01-10T00:35:41+01:00
 draft: false
 noindex: false

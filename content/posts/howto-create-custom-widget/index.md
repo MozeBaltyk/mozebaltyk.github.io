@@ -1,5 +1,5 @@
 ---
-title: "🎺 How to Create a Custom Widget"
+title: "🎺 How to Create a Widget for Hugo."
 description: "How to create a custom sidebar widget in a Hugo static website."
 date: 2026-01-13T15:09:09+01:00
 draft: false
@@ -17,6 +17,7 @@ categories:
 tags:
   - Hugo
   - Blog
+  - JS
 images:
   - ./carousel/howto-create-custom-widget.jpg
 authors:
