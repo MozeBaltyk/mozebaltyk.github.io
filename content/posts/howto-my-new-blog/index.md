@@ -491,3 +491,5 @@ At this stage, what could you do more:
 * Write your docs with Obsidian: [Here](https://github.com/orgs/hbstack/discussions/92) are some elements about how to set it correctly.
 
 * Dive into [shortcodes](https://mozebaltyk.github.io/posts/howto-write-hugo-shortcode) and write some custom.
+
+* Polish and customize [RSS feed](https://mozebaltyk.github.io/posts/howto-customize-feed-rss/) 

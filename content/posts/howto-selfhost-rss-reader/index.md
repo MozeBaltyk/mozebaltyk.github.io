@@ -1,6 +1,6 @@
 ---
 title: "📻 How to Selfhost a RSS Reader"
-description: "Launch a RSS Reader to follow blogs that you like"
+description: "Launch and host RSS Reader to follow blogs that you like"
 date: 2026-01-21T16:00:00+01:00
 draft: true
 noindex: false
@@ -234,4 +234,3 @@ systemctl --user restart freshrss-app
 - FreshRSS [deploy with docker](https://github.com/FreshRSS/FreshRSS/tree/edge/Docker)
 - FreshRSS [Doc](https://freshrss.github.io/FreshRSS/en/)
 - Korben on [RSS topic](https://korben.info/rsshub-rss-flux-sites-aaron-swartz.html)
-- Nice RSS optimization from [Romain Blog](https://blog.laromierre.com/posts/how-to-customize-and-optimize-your-hugo-rss-feed/)

@@ -15,32 +15,41 @@ series:
 categories:
   - Tutorials
 tags:
-  - Migration
+  - Blog
+  - Hugo
+  - RSS
 images:
-#  - images/...
+  - ./carousel/howto-customize-feed-rss.avif
 authors:
   - mozebaltyk
 sidebar: false
 ---
 
-## Some reflexions 
+## Some human reflections
 
-About the current internet, Full of Ads, scams and proselectism. 
+The current internet is full of ads, scams, and proselytism. This phenomenon even has a name: **“enshittification”**, a term coined by Cory Doctorow.
 
-At internet beginning, There were pasionate people willing to share knowledge and common works. 
+At the beginning of the internet, there were passionate people willing to share knowledge and collaborate on common projects. The web felt more human, more normal.
 
-I feel that RSS is underestimated and could be a niche to keep away from the bloated internet. 
+Today, attention has become a resource to be extracted. Platforms are optimized for engagement, not understanding. Content is buried under advertising, dark patterns, and algorithmic noise.
 
-## Let's get back to RSS feed. 
+In this context, I feel that RSS is underestimated — and that it could be a niche, or even a refuge, from this bloated, advertising-driven internet.
 
-I feel that RSS is underestimated and could be reappropriated by the communities. 
+## Let’s get back to RSS feeds
 
-- Be more selective 
-- Focus on Homemade Blogs (not big corpo which try to exploit your attention)
-- Avoid scrolling endlessly
-- Focus on topics which really get interested to.
+RSS feels outdated to many, yet it remains one of the most elegant tools the web has ever produced. It is simple, decentralized, and user-controlled.
 
-In two words, reappropriate internet.
+I believe RSS could be reclaimed by communities. Here are a few arguments:
+
+* **Selective consumption**: you choose the topics that genuinely interest you.
+* **Homemade blogs first**: not big corporations trying to monetize your attention.
+* **No endless scrolling**: you read what’s new, then you stop.
+* **Peer-to-peer knowledge**: direct connections between writers and readers.
+* **Simple user experience**: no FOMO, no forced continuity, no social-proof mechanics.
+
+RSS doesn’t try to hook you. It doesn’t rank, recommend, or manipulate. It simply delivers content you explicitly asked for.
+
+So let’s take care of our feeds — and maybe, by doing so, take care of the web a little too.
 
 ## Config customization
 
@@ -98,4 +107,13 @@ For example in my case - display just type "page" (not the Categories, Authors, 
     {{- end }}
 ```
 
-## Check and Validate  
+Nice RSS optimization from [Romain Blog](https://blog.laromierre.com/posts/how-to-customize-and-optimize-your-hugo-rss-feed/) which also remember some basic facts: 
+
+> Beyond standard feed readers, a clean RSS feed is the backbone of automated newsletters. 
+> Tools like **Mailchimp**, **ConvertKit**, or **MailerLite** have features called *“RSS-to-Email”*.
+
+## Check and Validate
+
+* Validate with [W3C Feed Validation Service](https://validator.w3.org/feed/).
+
+* Check with RSS reader like *FeedDesk* for Windows or *FreshRSS* for Linux users. 
