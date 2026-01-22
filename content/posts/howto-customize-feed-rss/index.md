@@ -117,3 +117,5 @@ Nice RSS optimization from [Romain Blog](https://blog.laromierre.com/posts/how-t
 * Validate with [W3C Feed Validation Service](https://validator.w3.org/feed/).
 
 * Check with RSS reader like *FeedDesk* for Windows or *FreshRSS* for Linux users. 
+
+* Find RSS feed from a blog [here](https://www.rsslookup.com/)

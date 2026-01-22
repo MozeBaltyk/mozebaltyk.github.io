@@ -1,5 +1,5 @@
 .hugo_build.lock
 hugo_stats.json
-package-json.lock
+package-lock.json
 public/
 node_modules/
