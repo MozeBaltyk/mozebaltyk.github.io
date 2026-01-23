@@ -18,6 +18,14 @@
   - Homelab
   - Hacking
   - Tutorials
+
+New Category Structure proposed by Opencode:
+- Infrastructure & Cloud - Terraform, Kubernetes, cloud platforms
+- Development & Workflow - Git workflows, CI/CD, development tools  
+- Systems & Workstations - WSL, workstation configuration, system admin
+- Homelab & Self-Hosting - Hardware, self-hosted solutions, RSS readers
+- Blog & Web - Hugo customization, web development, shortcode
+
 * **Tags**: 
 
 ## Importants links for this blogs
