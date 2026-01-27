@@ -1,5 +1,5 @@
 ---
-title: "Customize RSS Feed in Hugo"
+title: "🔔 Customize RSS Feed in Hugo"
 description: "How to Customize in an Hugo Blogs the RSS feed and why it matters!"
 date: 2026-01-20T11:15:28+01:00
 draft: false
@@ -115,15 +115,15 @@ Nice RSS optimization from [Romain Blog](https://blog.laromierre.com/posts/how-t
 
 ## Check and Validate
 
-* Validate with [W3C Feed Validation Service](https://validator.w3.org/feed/).
+* Validate RSS feed with [W3C Feed Validation Service](https://validator.w3.org/feed/).
 
-* Check with RSS reader like *FeedDesk* for Windows or *FreshRSS* for Linux users. 
+* Check with a RSS reader like *FeedDesk* for Windows or *FreshRSS* for Linux users the final output. 
 
 * Find RSS feed from a blog [here](https://www.rsslookup.com/)
 
 ## Bonus
 
-Here is the bonus, a python script to convert a *yaml* file to *OPML* file that I can import it in my *feedDesk*.
+🐍 Here is the bonus, a python script to convert a *yaml* file to *OPML* file that I can import it in my *feedDesk*.
 
 {{< code-snippet yaml-to-opml.py>}}
 

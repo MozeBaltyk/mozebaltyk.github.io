@@ -131,16 +131,6 @@ npm ci
 npm run dev
 ```
 
-## Update Hugo modules
-
-```bash
-hugo mod get -u ./... && hugo mod tidy
-
-npm update
-
-npm ci
-```
-
 ## Hugo - some Keys Concepts 
 
 First - Hugo behavior is *format-agnostic configuration*, it matches all config files (`.yaml, .yml, .json, .toml` all work from `./data` or `./config`)
@@ -477,6 +467,16 @@ the *blockquote-alerts* module allow those below effects (instead of using short
 > The `TITLE` is required when using the `QUESTION` type, it also can be used to customize title.
 
 Each module have its own doc page and provides different customization effects on your blogs. 
+
+### Update Hugo modules
+
+```bash
+hugo mod get -u ./... && hugo mod tidy
+
+npm update
+
+npm ci
+```
 
 ## Images
 

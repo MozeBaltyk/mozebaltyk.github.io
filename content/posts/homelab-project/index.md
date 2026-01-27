@@ -25,11 +25,8 @@ images:
 sidebar: false
 ---
 
-{{< bs/alert warning >}}
-{{< markdownify >}}
-I wrote this article before the short supply on RAM due to AI high demands! 
-{{< /markdownify >}}
-{{< /bs/alert >}}
+> [!IMPORTANT]
+> I wrote this article before the RAM shortage due to high AI demand. 
 
 Let expose the problem, I need a homelab, of course on budget. My wife won't let me spend 5000$ in hardware just for house heating. First talk with my friend: "Ah you need a good NAS and a NUC!".
 Ok, so the NAS have no CPU power but the NUC have it, the NUC does not have enough disks space but the NAS have it. What about playing with cluster technologies ? "Oh, then install proxmox!", Yep. but what the purpose to do virtualisation when there is no redondancy ?
