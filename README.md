@@ -77,29 +77,6 @@ podman rmi $(podman images --filter=reference='*test*' -q)
 podman image prune -a -f
 ```
 
-## Code blocks
-
-* Toogle of config files (toml/yaml/json):
-
-```md
-{{< bs/config-toggle "params" >}}
-hb:
-  blog:
-    home:
-      pinned_posts_position: list
-{{< /bs/config-toggle >}}
-```
-
-* Some banner for info, warning, etc:
-
-```md
-{{< bs/alert info >}}
-{{< markdownify >}}
-This is the old version of this blog. But last update of hugo version did not work well so I decided to move on to the hbstack theme. I keep this article since it was the first one of this blog. 
-{{< /markdownify >}}
-{{< /bs/alert >}}
-```
-
 ## Some good examples with this theme
 
 | Website | source code |
