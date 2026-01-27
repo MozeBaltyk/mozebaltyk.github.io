@@ -100,7 +100,13 @@ For example in my case - display just type "page" (not the Categories, Authors, 
       <guid>{{ .Permalink }}</guid>
       {{- $content := safeHTML (.Content | html) -}}
       <description>
-        {{ "<" | html }}img src="https://avatars.githubusercontent.com/u/35733045?v=4" alt="Featured image for {{ .Title }}" {{ "/>" | html}}
+        {{- with index .Params.images 0 }}
+          {{- $imageURL := printf "%s%s" $.Site.BaseURL . | absURL }}
+          {{ "<" | html }}img src="{{ $imageURL }}" 
+            alt="Featured image for {{ $.Title }}" 
+            width="600" height="400" 
+          {{ "/>" | html }}
+        {{- end }}
         {{ $content }}
       </description>
     </item>
