@@ -1,0 +1,57 @@
+project:
+  name: my-github-project
+  description: >
+    Short description of what this project does
+    and what problem it solves.
+
+  repository:
+    language: python
+    framework: fastapi
+    package_manager: poetry
+
+goals:
+  - Build a REST API for user authentication
+  - Use JWT tokens
+  - Follow clean architecture principles
+
+# These rules must be followed when generating new code
+constraints:
+  - Python >= 3.11
+  - No external auth providers
+  - Keep dependencies minimal
+
+code_style:
+  formatting:
+    tool: black
+    line_length: 88
+  linting:
+    tool: ruff
+  typing: strict
+
+architecture:
+  pattern: clean-architecture
+  layers:
+    - api
+    - domain
+    - application
+    - infrastructure
+
+directories:
+  api: "HTTP routes and controllers"
+  domain: "Business logic and entities"
+  application: "Use cases and services"
+  infrastructure: "Database and external services"
+
+ai_instructions:
+  role: senior_backend_engineer
+  expectations:
+    - Write production-ready code
+    - Prefer clarity over cleverness
+    - Add docstrings and type hints
+    - Include basic tests when relevant
+
+tasks:
+  - id: setup-project
+    description: Initialize project structure and tooling
+  - id: auth
+    description: Implement user authentication flow

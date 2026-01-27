@@ -1,0 +1,145 @@
+game:
+  name: my-game-name
+  genre: 
+    - strategy 
+    - educational 
+    - family
+  type: 
+    - card-only
+    - solo 
+    - party-games
+    - board-and-card
+  notes:
+    - Optional board used only as a play aid
+  description: >
+    Short description of what this board game is about,
+    including its theme, context, and core experience.
+
+# who is playing the game ?
+players:
+  min: 2
+  max: 4
+  recommended_age: 10+
+  average_playtime_minutes: 45
+
+# why the game exists ?
+goals:
+  player_objective: >
+    What players are trying to achieve to win the game.
+  educational_objective: >
+    What players should learn or practice while playing.
+
+# hard design limits that must be followed!
+constraints:
+  - Rules must be easy to understand within 10 minutes
+  - Gameplay should remain engaging for all players
+  - The game should reinforce the educational theme
+  - No player elimination before the end of the game
+
+# how the game looks and feels ?
+components:
+  board:
+    enabled: true
+    type: grid
+    size: 8x8
+  pieces:
+    - type: player_tokens
+      count_per_player: 4
+    - type: resource_tokens
+      total_count: 30
+  cards:
+    - name: action_cards
+      count: 40
+    - name: event_cards
+      count: 20
+  dice:
+    count: 1
+    sides: 6
+
+board_style:
+  theme: fantasy
+  colors:
+    primary: "#FF5733"
+    secondary: "#33C1FF"
+  visual_tone: colorful and readable
+
+# how it flows during play ?
+core_loop:
+  - draw
+  - choose action
+  - resolve effects
+  - update game state
+
+game_structure:
+  turn_structure:
+    - draw phase
+    - action phase
+    - resolution phase
+    - end phase
+
+  actions:
+    - move
+    - collect resources
+    - play a card
+    - interact with another player
+
+  rounds:
+    max_rounds: 10
+    scaling_rules: >
+      Difficulty or tension increases as rounds progress.
+
+player_interactions:
+  - trading
+  - competition for shared resources
+  - optional cooperation
+
+# Win and Loss conditions
+win_conditions:
+  primary: >
+    Condition that immediately ends the game and declares a winner.
+  secondary:
+    - highest score after final round
+    - tie-breaker: most remaining resources
+
+loss_conditions:
+  - none (game always ends by win condition)
+
+balance_rules:
+  catch_up_mechanics: true
+  randomness_level: medium
+  player_agency: high
+
+ai_instructions:
+  role: board_game_designer
+  tone: clear and friendly
+  do:
+    - Write rules step-by-step
+    - Explain concepts with examples
+    - Keep terminology consistent
+  avoid:
+    - Overly complex mechanics
+    - Ambiguous rule wording
+    - Hidden rules or exceptions
+
+tasks:
+  - id: define-core-mechanic
+    description: Define the main gameplay loop and player actions
+  - id: design-components
+    description: Finalize board, cards, and pieces
+  - id: write-rulebook
+    description: Write a complete, beginner-friendly rulebook
+  - id: playtesting
+    description: Run playtests and identify balance issues
+  - id: iteration
+    description: Adjust rules and components based on feedback
+  - id: finalize-design
+    description: Prepare final version of game for production
+
+# AI profiles
+ai_profiles:
+  chatgpt:
+    focus: clarity and structure
+  claude:
+    focus: thematic depth and balance
+  copilot:
+    focus: concise rule summaries
