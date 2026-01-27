@@ -54,10 +54,13 @@
       <guid>{{ .Permalink }}</guid>
       {{- $content := safeHTML (.Content | html) -}}
       <description>
-        {{ "<" | html }}img src="https://avatars.githubusercontent.com/u/35733045?v=4"
-          alt="Featured image for {{ .Title }}"
-          width="120" height="120"
-        {{ "/>" | html }}
+        {{- with index .Params.images 0 }}
+          {{- $imageURL := printf "%s%s" $.Site.BaseURL . | absURL }}
+          {{ "<" | html }}img src="{{ $imageURL }}" 
+            alt="Featured image for {{ $.Title }}" 
+            width="600" height="400" 
+          {{ "/>" | html }}
+        {{- end }}
         {{ $content }}
       </description>
     </item>
