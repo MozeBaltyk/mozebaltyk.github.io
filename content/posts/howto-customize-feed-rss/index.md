@@ -2,7 +2,7 @@
 title: "Customize RSS Feed in Hugo"
 description: "How to Customize in an Hugo Blogs the RSS feed and why it matters!"
 date: 2026-01-20T11:15:28+01:00
-draft: true
+draft: false
 noindex: false
 featured: true
 pinned: false
@@ -123,6 +123,22 @@ Nice RSS optimization from [Romain Blog](https://blog.laromierre.com/posts/how-t
 
 ## Bonus
 
-Here is the bonus. I have create a python script to convert a yaml file to OPML file that I can import it in my *feedDesk*.
+Here is the bonus, a python script to convert a *yaml* file to *OPML* file that I can import it in my *feedDesk*.
 
 {{< code-snippet yaml-to-opml.py>}}
+
+It takes a *yaml* file with this structure: 
+
+```yaml
+# Name; URL; description; feed; active (true/false)
+- name: Bałtyk Blog
+  url: https://mozebaltyk.github.io/
+  feed: https://mozebaltyk.github.io/feed.xml
+  description: My personal blog about sysadmin and devops topics.
+  active: false
+- name: While True Do
+  url: https://blog.while-true-do.io/
+  feed: https://blog.while-true-do.io/rss/
+  description: A blog about programming, technology, and software development.
+  active: true
+```
