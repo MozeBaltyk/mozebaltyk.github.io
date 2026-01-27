@@ -1,38 +1,52 @@
 # A list of blogs that I would like to follow with RSS
-# Name; URL; description; 
+# Name; URL; description; feed; active (true/false)
+- name: Bałtyk Blog
+  url: https://mozebaltyk.github.io/
+  feed: https://mozebaltyk.github.io/feed.xml
+  description: My personal blog about sysadmin and devops topics.
+  active: false
 - name: While True Do
   url: https://blog.while-true-do.io/
+  feed: https://blog.while-true-do.io/rss/
   description: A blog about programming, technology, and software development.
   active: true
 - name: Yaakov Online
   url: https://blog.yaakov.online
+  feed: https://blog.yaakov.online/rss/
   description: A personal blog covering technology, programming, and self-hosting.
   active: true
 - name: Alex Ellis
-  url: https://www.alexellis.io/blog/
+  url: https://www.alexellis.io
+  feed:
   description: Insights and tutorials on cloud-native technologies and serverless computing.
   active: true
 - name: N90
   url: https://n9o.xyz/
+  feed: https://n9o.xyz/index.xml
   description: A blog about containers and IA agents.
   active: true
 - name: Root&Beer
   url: https://rootandbeer.com/
+  feed: https://rootandbeer.com/index.xml
   description: A blog about hacking and cybersecurity.
   active: true
 - name: Utba Zafar
   url: https://utbazafar.com/
+  feed: https://utbazafar.com/feed.xml
   description: A blog about homelab and self-hosting.
   active: true
 - name: Harry Cresswell
   url: https://harrycresswell.com/
+  feed: https://harrycresswell.com/feed.xml
   description: A blog about Hugo and static site generation.
   active: true
 - name: Korben
   url: https://korben.info/
+  feed: https://korben.info/feed
   description: A French blog about technology, hacking, and software.
   active: true
 - name: Buildt With Caffeine
   url: https://blog.builtwithcaffeine.cloud/
+  feed: https://blog.builtwithcaffeine.cloud/rss.xml
   description: A blog about DevOps and Hugo blogs.
   active: true
