@@ -457,7 +457,26 @@ Some other which could be usefull:
 
 * The [collapse shortcode](https://bootstrap.hugomods.com/docs/collapse/) - show and hidde content: 
 
-* The [Clearfix](https://hugomods.com/bootstrap/clearfix/) - Quickly and easily clear floated content within a container 
+* The [Clearfix](https://hugomods.com/bootstrap/clearfix/) - Quickly and easily clear floated content within a container
+
+## Modules
+
+A simple example, add modules inside `config/_default/module.yaml`, for instance `github.com/hbstack/blockquote-alerts`
+
+the *blockquote-alerts* module allow those below effects (instead of using shortcode):
+
+> [!IMPORTANT]
+> The `TYPE` is required 
+> TYPE = "NOTE" | "TIP" | "IMPORTANT" | "WARNING" | "CAUTION" | "QUESTION"
+> SIGN = "+" | "-"
+
+> [!NOTE]+
+> The `SIGN` is optional, which is used to indicate whether the alert is foldable, the `+` sign expands the alert by default.
+
+> [!QUESTION]+ Is the TITLE required?
+> The `TITLE` is required when using the `QUESTION` type, it also can be used to customize title.
+
+Each module have its own doc page and provides different customization effects on your blogs. 
 
 ## Images
 
