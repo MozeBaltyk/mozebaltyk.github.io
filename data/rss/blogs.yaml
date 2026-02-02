@@ -50,3 +50,8 @@
   feed: https://blog.builtwithcaffeine.cloud/rss.xml
   description: A blog about DevOps and Hugo blogs.
   active: true
+- name: Butler's Log
+  url: https://blog.gitbutler.com/
+  feed: https://blog.gitbutler.com/rss
+  description: A blog about Git, DevOps, and the GitButler software.
+  active: true
