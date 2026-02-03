@@ -104,8 +104,6 @@ sudo podman run --privileged -d --restart=unless-stopped -p 80:80 -p 443:443 ran
 sudo podman ps 
 sudo podman logs 74533d50d991  2>&1 | grep "Bootstrap Password:"
 ```
-<<<<<<< HEAD
-=======
 
 ## Check Certificates 
 
@@ -125,4 +123,3 @@ for crt in *.crt; do printf '%s: %s\n' "$(date --date="$(openssl x509 -enddate -
 # Check CA issuer
 for i in $(find . -maxdepth 1 -type f -name "*.crt"); do  openssl x509 -in ${i} -noout -issuer; done
 ```
->>>>>>> ef1214ec03ba0c42d44b7726b9081bb9aa63b5ba
