@@ -14,6 +14,18 @@ tags:
 *K3D* equal k3s in a container. a tools to create *single-* and *multi-node* k3s clusters.
 Our favorite use case, is with `podman` and *rootless*. So there is some customization upstream to do. 
 
+One downside I’ve found with *k3d* is that the Kubernetes version it uses is behind the current *k3s* release. 
+
+## Install 
+
+```bash
+curl -s https://raw.githubusercontent.com/k3d-io/k3d/main/install.sh | bash
+
+k3d completion zsh > "$ZSH/completions/_k3d"
+```
+
+## Tweaks for podman and rootless 
+
 * The issue:
 
 ```bash
@@ -21,7 +33,6 @@ k3d cluster create test
 
 ERRO[0000] Failed to get nodes for cluster 'test': docker failed to get containers with labels 'map[k3d.cluster:test]': failed to list containers: permission denied while trying to connect to the Docker daemon socket at unix:///var/run/docker.sock: Get "http://%2Fvar%2Frun%2Fdocker.sock/v1.46/containers/json?all=1&filters=%7B%22label%22%3A%7B%22app%3Dk3d%22%3Atrue%2C%22k3d.cluster%3Dtest%22%3Atrue%7D%7D": dial unix /var/run/docker.sock: connect: permission denied
 ```
-
 
 * The solution:
 
@@ -65,6 +76,55 @@ k3d registry create --default-network podman mycluster-registry
 
 k3d cluster create --registry-use mycluster-registry mycluster
 ```
+
+## Admins
+
+> [!IMPORTANT]
+> Pay attention to always export those variables if you use *k3d* with *podman* and *rootless*
+>       
+> `XDG_RUNTIME_DIR=${XDG_RUNTIME_DIR:-/run/user/$(id -u)}`      
+> `export DOCKER_HOST=unix://$XDG_RUNTIME_DIR/podman/podman.sock`   
+> `export DOCKER_SOCK=$XDG_RUNTIME_DIR/podman/podman.sock`    
+>        
+
+```bash
+k3d cluster list
+k3d node list
+k3d registry list
+```
+
+* Create a `config.yaml`
+
+```yaml
+apiVersion: k3d.io/v1alpha5
+kind: Simple
+image: rancher/k3s:v1.29.3+k3s1
+
+metadata:
+  name: mycluster
+
+servers: 1
+agents: 1
+
+options:
+  k3s:
+    extraArgs:
+      - arg: "--disable=traefik"
+        nodeFilters:
+          - server:*
+      - arg: "--disable=servicelb"
+        nodeFilters:
+          - server:*
+
+registries:
+  use:
+    - mycluster-registry
+```
+
+```bash
+k3d cluster create --config config.yaml
+```
+
 
 ## Sources 
 
