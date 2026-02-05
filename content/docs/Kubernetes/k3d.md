@@ -24,6 +24,12 @@ curl -s https://raw.githubusercontent.com/k3d-io/k3d/main/install.sh | bash
 k3d completion zsh > "$ZSH/completions/_k3d"
 ```
 
+or with arkade:
+
+```bash
+arkade get k3d
+```
+
 ## Tweaks for podman and rootless 
 
 * The issue:
@@ -98,10 +104,10 @@ k3d registry list
 ```yaml
 apiVersion: k3d.io/v1alpha5
 kind: Simple
-image: rancher/k3s:v1.29.3+k3s1
-
 metadata:
-  name: mycluster
+  name: MyCluster
+
+network: k3d
 
 servers: 1
 agents: 1
@@ -115,17 +121,48 @@ options:
       - arg: "--disable=servicelb"
         nodeFilters:
           - server:*
+      # REQUIRED for rootless Podman — SERVER and AGENT
+      - arg: "--kubelet-arg=feature-gates=KubeletInUserNamespace=true"
+        nodeFilters:
+          - server:*
+          - agent:*
+      - arg: "--kubelet-arg=fail-swap-on=false"
+        nodeFilters:
+          - server:*
+          - agent:*
+  k3d:
+    wait: true
+    timeout: "60s"
+    disableLoadbalancer: true
 
 registries:
   use:
     - mycluster-registry
 ```
 
+* Launch it
+
 ```bash
 k3d cluster create --config config.yaml
 ```
 
+* cleanup
+
+```bash
+k3d cluster delete --config config.yaml
+k3d registry delete  mycluster-registry
+
+# Should be clean
+podman ps -a
+podman network ls
+podman volume ls
+```
+
 
 ## Sources 
+
+[Official doc for podman](https://k3d.io/v5.8.3/usage/advanced/podman/#podman-network)
+
+[Official doc for config](https://k3d.io/v5.8.3/usage/configfile/#all-options-example)
 
 [About local registry](https://thoughtexpo.com/k3d-images/)
