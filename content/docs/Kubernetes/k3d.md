@@ -16,6 +16,12 @@ Our favorite use case, is with `podman` and *rootless*. So there is some customi
 
 One downside I’ve found with *k3d* is that the Kubernetes version it uses is behind the current *k3s* release. 
 
+**Note** for ARM PC: 
+```BASH
+sudo apt install qemu-user-static
+podman run --rm --privileged multiarch/qemu-user-static --reset -p yes
+``` 
+
 ## Install 
 
 ```bash
@@ -73,14 +79,45 @@ systemctl daemon-reload
 ```bash
 podman network create k3d
 podman network inspect k3d -f '{{ .DNSEnabled }}'
-true
 ```
 
 * Create a local registry using the *podman network*
-```bash
-k3d registry create --default-network podman mycluster-registry
 
-k3d cluster create --registry-use mycluster-registry mycluster
+```bash
+k3d registry create mycluster-registry --default-network k3d --port 5000
+
+# Output
+# You can now use the registry like this (example):
+# 1. create a new cluster that uses this registry
+k3d cluster create --registry-use k3d-mycluster-registry:5000
+
+# 2. tag an existing local image to be pushed to the registry
+docker tag nginx:latest k3d-mycluster-registry:5000/mynginx:v0.1
+
+# 3. push that image to the registry
+docker push k3d-mycluster-registry:5000/mynginx:v0.1
+
+# 4. run a pod that uses this image
+kubectl run mynginx --image k3d-mycluster-registry:5000/mynginx:v0.1
+```
+
+* *podman* does not appreciate http... but let do an execption: `sudo vi ~/.config/containers/registries.conf`.   
+  Add and restart with `systemctl --user restart podman`
+
+```toml
+[[registry]]
+location = "localhost:5000"
+insecure = true
+```
+
+* Push some image and Check registry at :
+- **http://localhost:5000/v2/_catalog**  
+- **http://k3d-mycluster-registry.localhost:5000/v2/_catalog** 
+
+* For a Quick cluster:
+
+```BASH
+k3d cluster create --registry-use k3d-mycluster-registry:5000 mycluster
 ```
 
 ## Admins
@@ -97,6 +134,7 @@ k3d cluster create --registry-use mycluster-registry mycluster
 k3d cluster list
 k3d node list
 k3d registry list
+podman ps --format "table {{.Names}}\t{{.Image}}\t{{.Ports}}"
 ```
 
 * Create a `config.yaml`
@@ -137,20 +175,40 @@ options:
 
 registries:
   use:
-    - mycluster-registry
+    - k3d-mycluster-registry:5000
+```
+
+* create a `registry.yaml`:
+
+```yaml
+mirrors:
+  "localhost:5000":
+    endpoint:
+      - http://k3d-mycluster-registry:5000
 ```
 
 * Launch it
 
 ```bash
-k3d cluster create --config config.yaml
+k3d cluster create --config config.yaml --registry-config registry.yaml
 ```
 
-* cleanup
+* Restart k3d : 
+
+```BASH
+# Restart registry
+podman start k3d-mycluster-registry
+podman ps -f name=k3d-mycluster-registry
+
+# Restart K3d
+k3d cluster start mycluster
+```
+
+* Cleanup
 
 ```bash
 k3d cluster delete --config config.yaml
-k3d registry delete  mycluster-registry
+k3d registry delete k3d-mycluster-registry
 
 # Should be clean
 podman ps -a
