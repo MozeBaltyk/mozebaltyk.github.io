@@ -25,15 +25,14 @@ podman run --rm --privileged multiarch/qemu-user-static --reset -p yes
 ## Install 
 
 ```bash
+# Manual way
 curl -s https://raw.githubusercontent.com/k3d-io/k3d/main/install.sh | bash
 
-k3d completion zsh > "$ZSH/completions/_k3d"
-```
-
-or with arkade:
-
-```bash
+# or with arkade:
 arkade get k3d
+
+# Auto-completion
+k3d completion zsh > "$ZSH/completions/_k3d"
 ```
 
 ## Tweaks for podman and rootless 
@@ -49,6 +48,14 @@ ERRO[0000] Failed to get nodes for cluster 'test': docker failed to get containe
 * The solution:
 
 ```bash
+# TODO 
+loginctl enable-linger $(whoami)
+
+# Either reload terminal or do below: 
+export XDG_RUNTIME_DIR=/tmp/run-$(id -u)
+mkdir -p $XDG_RUNTIME_DIR
+chmod 700 $XDG_RUNTIME_DIR
+
 sudo mkdir -p /etc/containers/containers.conf.d
 sudo sh -c "echo 'service_timeout=0' > /etc/containers/containers.conf.d/timeout.conf"
 
@@ -67,11 +74,11 @@ systemctl --user enable --now podman.socket
 
 ```bash
 sudo mkdir -p /etc/systemd/system/user@.service.d
-cat > /etc/systemd/system/user@.service.d/delegate.conf <<EOF
-[Service]
-Delegate=cpu cpuset io memory pids
-EOF
-systemctl daemon-reload
+
+echo -e "[Service]\nDelegate=cpu cpuset io memory pids" | \
+sudo tee /etc/systemd/system/user@.service.d/delegate.conf > /dev/null
+
+sudo systemctl daemon-reload
 ```
 
 * The default *podman network* has dns disabled. To allow k3d cluster nodes to communicate with dns, so a new network must be created.
@@ -87,6 +94,7 @@ podman network inspect k3d -f '{{ .DNSEnabled }}'
 k3d registry create mycluster-registry --default-network k3d --port 5000
 
 # Output
+
 # You can now use the registry like this (example):
 # 1. create a new cluster that uses this registry
 k3d cluster create --registry-use k3d-mycluster-registry:5000
@@ -115,7 +123,6 @@ insecure = true
 - **http://k3d-mycluster-registry.localhost:5000/v2/_catalog** 
 
 * For a Quick cluster:
-
 ```BASH
 k3d cluster create --registry-use k3d-mycluster-registry:5000 mycluster
 ```
@@ -123,12 +130,13 @@ k3d cluster create --registry-use k3d-mycluster-registry:5000 mycluster
 ## Admins
 
 > [!IMPORTANT]
-> Pay attention to always export those variables if you use *k3d* with *podman* and *rootless*
+> Pay attention to always export those variables if you use *k3d* with *podman the rootless way*.
+> Can be added to `~/.zshrc`
 >       
 > `XDG_RUNTIME_DIR=${XDG_RUNTIME_DIR:-/run/user/$(id -u)}`      
 > `export DOCKER_HOST=unix://$XDG_RUNTIME_DIR/podman/podman.sock`   
 > `export DOCKER_SOCK=$XDG_RUNTIME_DIR/podman/podman.sock`    
->        
+>    
 
 ```bash
 k3d cluster list
@@ -178,7 +186,7 @@ registries:
     - k3d-mycluster-registry:5000
 ```
 
-* create a `registry.yaml`:
+* Create a `registry.yaml`:
 
 ```yaml
 mirrors:
