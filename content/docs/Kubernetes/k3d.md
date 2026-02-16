@@ -92,21 +92,6 @@ podman network inspect k3d -f '{{ .DNSEnabled }}'
 
 ```bash
 k3d registry create mycluster-registry --default-network k3d --port 5000
-
-# Output
-
-# You can now use the registry like this (example):
-# 1. create a new cluster that uses this registry
-k3d cluster create --registry-use k3d-mycluster-registry:5000
-
-# 2. tag an existing local image to be pushed to the registry
-docker tag nginx:latest k3d-mycluster-registry:5000/mynginx:v0.1
-
-# 3. push that image to the registry
-docker push k3d-mycluster-registry:5000/mynginx:v0.1
-
-# 4. run a pod that uses this image
-kubectl run mynginx --image k3d-mycluster-registry:5000/mynginx:v0.1
 ```
 
 * *podman* does not appreciate http... but let do an execption: `sudo vi ~/.config/containers/registries.conf`.   
@@ -122,9 +107,18 @@ insecure = true
 - **http://localhost:5000/v2/_catalog**  
 - **http://k3d-mycluster-registry.localhost:5000/v2/_catalog** 
 
-* For a Quick cluster:
+
+* For a Quick cluster use the registry and network created before:
+
 ```BASH
-k3d cluster create --registry-use k3d-mycluster-registry:5000 mycluster
+# args REQUIRED for rootless Podman — SERVER and AGENT
+k3d cluster create mycluster \
+  --registry-use k3d-mycluster-registry:5000 \
+  --network k3d \
+  --k3s-arg "--kubelet-arg=feature-gates=KubeletInUserNamespace=true@server:*" \
+  --k3s-arg "--kubelet-arg=feature-gates=KubeletInUserNamespace=true@agent:*" \
+  --k3s-arg "--kubelet-arg=fail-swap-on=false@server:*" \
+  --k3s-arg "--kubelet-arg=fail-swap-on=false@agent:*"
 ```
 
 ## Admins
