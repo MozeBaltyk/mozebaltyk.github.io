@@ -225,7 +225,7 @@ curl -s http://localhost:5000/v2/_catalog \
     curl -s http://localhost:5000/v2/$repo/tags/list | jq
   done 
 
-# Delete an image 
+# Delete an image and clean garbage collector
 repo="backstage-backend"; tag="local"; \
 digest=$(curl -sI \
   -H "Accept: application/vnd.oci.image.manifest.v1+json" \
@@ -233,6 +233,9 @@ digest=$(curl -sI \
   | awk -F': ' '/Docker-Content-Digest/ {print $2}' | tr -d '\r'); \
 echo "Deleting $digest"; \
 curl -v -X DELETE http://localhost:5000/v2/$repo/manifests/$digest
+podman exec -it k3d-mycluster-registry registry garbage-collect /etc/docker/registry/config.yml
+# then restart registry to make it effective
+podman stop k3d-mycluster-registry && podman start k3d-mycluster-registry
 ```
 
 * Cleanup
