@@ -91,7 +91,7 @@ podman network inspect k3d -f '{{ .DNSEnabled }}'
 * Create a local registry using the *podman network*
 
 ```bash
-k3d registry create mycluster-registry --default-network k3d --port 5000
+k3d registry create mycluster-registry --default-network k3d --port 5000 --delete-enabled
 ```
 
 * *podman* does not appreciate http... but let do an execption: `sudo vi ~/.config/containers/registries.conf`.   
@@ -195,7 +195,7 @@ mirrors:
 k3d cluster create --config config.yaml --registry-config registry.yaml
 ```
 
-* Restart k3d : 
+* Restart k3d :
 
 ```BASH
 # Restart registry
@@ -204,6 +204,35 @@ podman ps -f name=k3d-mycluster-registry
 
 # Restart K3d
 k3d cluster start mycluster
+```
+
+* Manage image in your local registry :
+
+```BASH
+arkade get regctl
+regctl completion zsh > "$ZSH/completions/_regctl"
+regctl registry set --tls disabled localhost:5000
+regctl repo ls localhost:5000
+
+# check if REGISTRY_STORAGE_DELETE_ENABLED=true
+podman inspect k3d-mycluster-registry --format '{{range .Config.Env}}{{println .}}{{end}}'
+
+# List images and tags 
+curl -s http://localhost:5000/v2/_catalog \
+| jq -r '.repositories[]' \
+| while read repo; do
+    echo "Repository: $repo"
+    curl -s http://localhost:5000/v2/$repo/tags/list | jq
+  done 
+
+# Delete an image 
+repo="backstage-backend"; tag="local"; \
+digest=$(curl -sI \
+  -H "Accept: application/vnd.oci.image.manifest.v1+json" \
+  http://localhost:5000/v2/$repo/manifests/$tag \
+  | awk -F': ' '/Docker-Content-Digest/ {print $2}' | tr -d '\r'); \
+echo "Deleting $digest"; \
+curl -v -X DELETE http://localhost:5000/v2/$repo/manifests/$digest
 ```
 
 * Cleanup
