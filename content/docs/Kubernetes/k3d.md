@@ -136,7 +136,7 @@ k3d cluster create mycluster \
 > `export DOCKER_SOCK=$XDG_RUNTIME_DIR/podman/podman.sock`    
 >    
 
-## Verify
+## K3D Verify and List
 
 ```bash
 k3d cluster list
@@ -215,7 +215,9 @@ podman ps -f name=k3d-mycluster-registry
 k3d cluster start mycluster
 ```
 
-## Manage image in your local registry :
+## Manage Registry
+
+* Check registry:
 
 ```BASH
 # Not super usefull but ...
@@ -226,16 +228,22 @@ regctl repo ls localhost:5000
 
 # check if REGISTRY_STORAGE_DELETE_ENABLED=true
 podman inspect k3d-mycluster-registry --format '{{range .Config.Env}}{{println .}}{{end}}'
+```
 
-# List images and tags 
+* List images and tags 
+
+```BASH
 curl -s http://localhost:5000/v2/_catalog \
 | jq -r '.repositories[]' \
 | while read repo; do
     echo "Repository: $repo"
     curl -s http://localhost:5000/v2/$repo/tags/list | jq
   done 
+```
 
-# Delete an image and clean garbage collector
+* Delete an image and clean garbage collector
+
+```BASH
 repo="backstage-backend"; tag="local"; \
 digest=$(curl -sI \
   -H "Accept: application/vnd.oci.image.manifest.v1+json" \
