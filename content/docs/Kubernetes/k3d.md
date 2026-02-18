@@ -81,12 +81,16 @@ sudo tee /etc/systemd/system/user@.service.d/delegate.conf > /dev/null
 sudo systemctl daemon-reload
 ```
 
+## Create Podman Network
+
 * The default *podman network* has dns disabled. To allow k3d cluster nodes to communicate with dns, so a new network must be created.
 
 ```bash
 podman network create k3d
 podman network inspect k3d -f '{{ .DNSEnabled }}'
 ```
+
+## Create local registry
 
 * Create a local registry using the *podman network*
 
@@ -108,6 +112,8 @@ insecure = true
 - **http://k3d-mycluster-registry.localhost:5000/v2/_catalog** 
 
 
+## Quickstart k3d cluster
+
 * For a Quick cluster use the registry and network created before:
 
 ```BASH
@@ -121,8 +127,6 @@ k3d cluster create mycluster \
   --k3s-arg "--kubelet-arg=fail-swap-on=false@agent:*"
 ```
 
-## Admins
-
 > [!IMPORTANT]
 > Pay attention to always export those variables if you use *k3d* with *podman the rootless way*.
 > Can be added to `~/.zshrc`
@@ -132,12 +136,17 @@ k3d cluster create mycluster \
 > `export DOCKER_SOCK=$XDG_RUNTIME_DIR/podman/podman.sock`    
 >    
 
+## Verify
+
 ```bash
 k3d cluster list
 k3d node list
 k3d registry list
 podman ps --format "table {{.Names}}\t{{.Image}}\t{{.Ports}}"
 ```
+
+
+## K3D use config.yaml
 
 * Create a `config.yaml`
 
@@ -195,7 +204,7 @@ mirrors:
 k3d cluster create --config config.yaml --registry-config registry.yaml
 ```
 
-* Restart k3d :
+## Restart K3D
 
 ```BASH
 # Restart registry
