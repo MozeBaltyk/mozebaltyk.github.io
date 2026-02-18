@@ -206,9 +206,10 @@ podman ps -f name=k3d-mycluster-registry
 k3d cluster start mycluster
 ```
 
-* Manage image in your local registry :
+## Manage image in your local registry :
 
 ```BASH
+# Not super usefull but ...
 arkade get regctl
 regctl completion zsh > "$ZSH/completions/_regctl"
 regctl registry set --tls disabled localhost:5000
@@ -238,7 +239,7 @@ podman exec -it k3d-mycluster-registry registry garbage-collect /etc/docker/regi
 podman stop k3d-mycluster-registry && podman start k3d-mycluster-registry
 ```
 
-* Cleanup
+## Cleanup
 
 ```bash
 k3d cluster delete --config config.yaml
