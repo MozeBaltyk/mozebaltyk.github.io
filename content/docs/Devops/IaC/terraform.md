@@ -18,7 +18,7 @@ tags:
 dirs -c
 for DIR in $(find ./examples -type d); do
    pushd $DIR
-   terraform init
+   terraform init -backend=false
    terraform fmt -check
    terraform validate
    popd
@@ -53,6 +53,37 @@ terraform apply terraform.tfplan
 
 ```bash
 ssh root@$(terraform output -json ip_address_workers | jq -r '.[0]') -i .key
+```
+
+## Troubleshoot some terraform
+
+* Check the schema of a Resource (for example `libvirt_domain` from provider `multani/libvirt` )
+```BASH
+terraform providers schema -json| jq '.provider_schemas["registry.terraform.io/multani/libvirt"].resource_schemas["libvirt_domain"].block.attributes | keys'
+[
+  "arch",
+  "autostart",
+  "cloudinit",
+  "cmdline",
+  "coreos_ignition",
+  "cpu",
+  "description",
+  "disk",
+  "id",
+...
+]
+```
+
+* Then check what is expected:
+```BASH
+terraform providers schema -json| jq '.provider_schemas["registry.terraform.io/multani/libvirt"].resource_schemas["libvirt_domain"].block.attributes.cpu'
+["libvirt_domain"].block.attributes.cpu'
+{
+  "type": [
+    "map",
+    "string"
+  ],
+  "description_kind": "plain",
 ```
 
 ## Work with yaml in terraform

@@ -11,11 +11,15 @@ tags:
   - KVM
 ---
 
+## Prerequisites
+
+
+
 ### install KVM on RHEL 
 
 ```bash
 # pre-checks hardware for intel CPU
-grep -e 'vmx' /proc/cpuinfo 
+egrep -c '(vmx|svm)' /proc/cpuinfo 
 lscpu | grep Virtualization
 lsmod | grep kvm
 
@@ -39,8 +43,17 @@ sudo systemctl status libvirtd
 
 ```BASH
 sudo apt update && sudo apt upgrade -y
-sudo apt install qemu-kvm libvirt-daemon-system libvirt-clients bridge-utils -y
-sudo usermod -aG libvirt $USER
+sudo apt install qemu-kvm libvirt-daemon-system libvirt-clients libvirt-daemon virtinst -y
+sudo usermod -aG libvirt $(whoami)
+sudo usermod -aG kvm $(whoami)
+
+# Helper
+sudo apt install bridge-utils cpu-checker -y
+
+# Start libvirt
+sudo systemctl start libvirtd
+sudo systemctl enable libvirtd
+sudo systemctl status libvirtd
 ```
 
 * Bonus point:
@@ -51,4 +64,5 @@ sudo systemctl enable --now cockpit.socket
 systemctl status cockpit.socket
 ```
 
-Then manage your VMs from cockpit: https://localhost:9090 which could be an alternative to `virt-manager`
+Then manage your VMs from cockpit: https://localhost:9090 which could be an good alternative to `virt-manager`.
+
