@@ -1,0 +1,330 @@
+request:
+  purpose: Recommend mini-PC host candidates for a home homelab node
+  country: PL
+  currency: EUR
+  host_role: general_purpose
+  form_factors:
+  - mini_pc
+  budget:
+    per_unit:
+      min: null
+      max: 470
+      currency: EUR
+  output:
+    number_of_options: 3
+    ranking_method: best_value
+    include_alternatives: true
+  purchase_preferences:
+    condition: new | open-box | used
+    allow_barebone: true
+    allow_aliexpress: false
+    allow_chinese_brands: false
+    preferred_sources:
+    - Amazon.pl
+    - Amazon.de
+    - Minisforum EU
+    - GMKtec EU
+    - Beelink EU
+    - Morele
+    - x-kom
+  requirements:
+    cpu:
+      min_cores: 8
+      min_threads: null
+      min_passmark: null
+    memory:
+      min_ram_gb: 32
+      max_ram_gb: null
+      type: DDR5
+    storage:
+      min_drive_bays: null
+      min_nvme_slots: 2
+      min_sata_ports: null
+    networking:
+      min_ethernet_ports: 1
+      wifi_required: false
+      min_ethernet_speed: 2.5G | 10G
+      sfp_plus_required: false
+    gpu_expansion:
+      required: false
+      slot_type: any
+      external_gpu_ok: true
+      preferred: true
+      full_height_required: false
+      full_length_required: false
+    platform:
+      proxmox_ready: true
+      kubernetes_ready: true
+      docker_ready: true
+      ecc_required: false
+      quicksync_required: false
+    power_noise:
+      max_idle_watts: null
+      noise_priority: medium
+  workloads:
+  - Proxmox cluster
+  - Docker containers
+  - Kubernetes lab
+  nice_to_have:
+  - OCuLink or USB4 external GPU option
+  - Dual 2.5G Ethernet
+  - Two M.2 NVMe slots
+  deal_breakers:
+  - AliExpress-only sourcing
+  - Less than 32 GB RAM per node
+  - Fewer than two M.2 NVMe slots
+answer:
+  metadata:
+    options_requested: 3
+    options_returned: 3
+    ranking_method: best_value
+    last_reviewed: '2026-06-17'
+    pricing_basis: 3-node cluster total; estimated_total = unitary_price * request.cluster.node_count
+    pricing_confidence: medium
+    constraint_note: PL/EU sourcing only, AliExpress excluded. Unitary price includes barebone mini PC plus 32 GB DDR5 and 1 TB NVMe when sold barebone.
+  summary:
+    recommended_option: GMKtec K8 Plus, Ryzen 7 8845HS
+    rationale: The corrected request allows Chinese brands and barebone purchases but excludes AliExpress, so EU-retail GMKtec, Minisforum, and Beelink systems are the best current fit. GMKtec ranks first on price, dual 2.5G networking, two M.2 slots, and OCuLink/USB4 expansion potential. Minisforum remains included as requested and is a strong higher-end option near the budget ceiling.
+  options:
+  - rank: 1
+    model: GMKtec K8 Plus, Ryzen 7 8845HS
+    vendor: GMKtec
+    condition: new | open-box
+    sold_as: barebone_plus_addons
+    estimated_total:
+      amount: 1230
+      currency: EUR
+    unitary_price:
+      amount: 410
+      currency: EUR
+    price_includes:
+    - Barebone mini PC
+    - 32 GB DDR5 SO-DIMM RAM add-on
+    - 1 TB NVMe SSD add-on
+    hardware:
+      cpu:
+        model: AMD Ryzen 7 8845HS
+        cores: 8
+        threads: 16
+        tdp_watts: 45
+      memory:
+        included_gb: 32
+        max_gb: 96
+        type: DDR5 SO-DIMM
+      storage:
+        included_gb: 1000
+        drive_bays: 0
+        nvme_slots: 2
+        sata_ports: 0
+      networking:
+        ethernet_ports: 2
+        ethernet_speed: 2.5G
+        wifi: false
+      expansion:
+        usb_ports: 5
+        pcie_slots: 0
+        external_gpu: OCuLink or USB4 eGPU path possible; verify exact K8 Plus SKU
+        gpu_slot: none; external OCuLink/USB4 only if exact SKU supports it
+      power:
+        idle_watts: 9
+        max_watts: 90
+    homelab:
+      proxmox_support: true
+      vmware_support: false
+      docker_ready: true
+      kubernetes_ready: true
+      quicksync_support: false
+      ecc_support: false
+      noise_level: low
+      vm_capacity: medium | high
+    requirement_match:
+      score: 0.95
+      meets:
+      - Within the 800-1400 EUR total cluster budget
+      - 8-core DDR5 mini PC with 32 GB RAM and 1 TB NVMe included in the estimate
+      - Two M.2 NVMe slots
+      - Dual 2.5G Ethernet
+      - EU/PL purchase path without AliExpress
+      partially_meets:
+      - OCuLink and USB4 port availability can vary by exact listing
+      does_not_meet: []
+    pros:
+    - Best value of the shortlist
+    - Dual NICs and two NVMe slots suit clustered homelab use
+    - Good eGPU expansion path for a mini PC
+    cons:
+    - Smaller warranty and firmware ecosystem than business PCs
+    - No ECC memory support
+    purchase_sources:
+    - GMKtec EU
+    - Amazon.pl
+    - Amazon.de
+    - EU-stock marketplace sellers
+    notes:
+    - Target about 410 EUR per node complete with 32 GB DDR5 and 1 TB NVMe.
+  - rank: 2
+    model: Minisforum UM890 Pro, Ryzen 9 8945HS
+    vendor: Minisforum
+    condition: new | open-box
+    sold_as: barebone_plus_addons
+    estimated_total:
+      amount: 1380
+      currency: EUR
+    unitary_price:
+      amount: 460
+      currency: EUR
+    price_includes:
+    - Barebone mini PC
+    - 32 GB DDR5 SO-DIMM RAM add-on
+    - 1 TB NVMe SSD add-on
+    hardware:
+      cpu:
+        model: AMD Ryzen 9 8945HS
+        cores: 8
+        threads: 16
+        tdp_watts: 45
+      memory:
+        included_gb: 32
+        max_gb: 96
+        type: DDR5 SO-DIMM
+      storage:
+        included_gb: 1000
+        drive_bays: 0
+        nvme_slots: 2
+        sata_ports: 0
+      networking:
+        ethernet_ports: 2
+        ethernet_speed: 2.5G
+        wifi: false
+      expansion:
+        usb_ports: 6
+        pcie_slots: 0
+        external_gpu: OCuLink plus USB4 eGPU path on matching SKUs
+        gpu_slot: none; external OCuLink/USB4 only on matching SKUs
+      power:
+        idle_watts: 9
+        max_watts: 100
+    homelab:
+      proxmox_support: true
+      vmware_support: false
+      docker_ready: true
+      kubernetes_ready: true
+      quicksync_support: false
+      ecc_support: false
+      noise_level: low
+      vm_capacity: medium | high
+    requirement_match:
+      score: 0.92
+      meets:
+      - Within the 800-1400 EUR total cluster budget
+      - Minisforum included with 32 GB DDR5 and 1 TB NVMe in the estimate
+      - Two M.2 NVMe slots
+      - Dual 2.5G Ethernet
+      - EU/PL purchase path without AliExpress
+      partially_meets:
+      - Close to the budget ceiling after RAM and SSD add-ons
+      - Verify OCuLink on the exact SKU
+      does_not_meet: []
+    pros:
+    - Fastest CPU option in the shortlist
+    - Strong storage and networking for the size
+    - Official Minisforum EU sourcing path
+    cons:
+    - Less price headroom than GMKtec or Beelink
+    - No ECC memory support
+    purchase_sources:
+    - Minisforum EU
+    - Amazon.pl
+    - Amazon.de
+    - x-kom or Morele if the exact SKU is stocked
+    notes:
+    - Target about 460 EUR per complete node after adding RAM and SSD.
+  - rank: 3
+    model: Beelink SER8, Ryzen 7 8745HS
+    vendor: Beelink
+    condition: new | open-box
+    sold_as: barebone_plus_addons
+    estimated_total:
+      amount: 1200
+      currency: EUR
+    unitary_price:
+      amount: 400
+      currency: EUR
+    price_includes:
+    - Barebone mini PC
+    - 32 GB DDR5 SO-DIMM RAM add-on
+    - 1 TB NVMe SSD add-on
+    hardware:
+      cpu:
+        model: AMD Ryzen 7 8745HS
+        cores: 8
+        threads: 16
+        tdp_watts: 45
+      memory:
+        included_gb: 32
+        max_gb: 96
+        type: DDR5 SO-DIMM
+      storage:
+        included_gb: 1000
+        drive_bays: 0
+        nvme_slots: 2
+        sata_ports: 0
+      networking:
+        ethernet_ports: 1
+        ethernet_speed: 2.5G
+        wifi: false
+      expansion:
+        usb_ports: 6
+        pcie_slots: 0
+        external_gpu: USB4 eGPU possible; no OCuLink
+        gpu_slot: none; external GPU only if exact SKU supports OCuLink/USB4
+      power:
+        idle_watts: 8
+        max_watts: 100
+    homelab:
+      proxmox_support: true
+      vmware_support: false
+      docker_ready: true
+      kubernetes_ready: true
+      quicksync_support: false
+      ecc_support: false
+      noise_level: low
+      vm_capacity: medium | high
+    requirement_match:
+      score: 0.88
+      meets:
+      - Within the 800-1400 EUR total cluster budget
+      - 32 GB DDR5 and 1 TB NVMe included in the estimate
+      - Two M.2 NVMe slots
+      - 2.5G Ethernet
+      - EU/PL purchase path without AliExpress
+      partially_meets:
+      - Only one Ethernet port
+      - USB4 eGPU only; no OCuLink
+      does_not_meet: []
+    pros:
+    - Lowest estimated complete node price
+    - Quiet and efficient
+    - Meets RAM, NVMe, and CPU requirements
+    cons:
+    - Single 2.5G NIC
+    - No OCuLink
+    purchase_sources:
+    - Beelink EU
+    - Amazon.pl
+    - Amazon.de
+    - EU-stock marketplace sellers
+    notes:
+    - Choose this when price matters more than dual NICs or OCuLink.
+  comparison:
+    cheapest_option: Beelink SER8, Ryzen 7 8745HS
+    best_value_option: GMKtec K8 Plus, Ryzen 7 8845HS
+    lowest_power_option: Beelink SER8, Ryzen 7 8745HS
+    highest_performance_option: Minisforum UM890 Pro, Ryzen 9 8945HS
+    most_expandable_option: GMKtec K8 Plus, Ryzen 7 8845HS
+    quietest_option: Beelink SER8, Ryzen 7 8745HS
+  important_considerations:
+  - 'Budget is interpreted as total cluster budget: estimated_total = unitary_price * 3.'
+  - Avoid AliExpress-only listings; prefer Amazon.pl, Amazon.de, vendor EU stores, Morele, or x-kom.
+  - Verify exact SKU port layout for OCuLink, USB4, and the second M.2 slot before buying three matched nodes.
+  - Barebone estimates include 32 GB DDR5 SO-DIMM and 1 TB NVMe per node.

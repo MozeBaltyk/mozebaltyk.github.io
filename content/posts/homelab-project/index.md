@@ -50,7 +50,7 @@ Let's study three possible setup with a rough estimation about costs:
 |                  | Others (Case, cables, etc )       | $40               |
 |                  | Total                             | **$820**          |
 | 3 mini PCs       | 3 x Mini PC (e.g., HP mini G4 i5) | $420 ($140 each)  |
-|                  | 3 x 32GB RAM                      | $150 ($50 each)   |
+|                  | 3 x 32GB RAM DDR4                 | $150 ($50 each)   |
 |                  | 3 x NVME 500GB                    | $120 ($40 each)   |
 |                  | Switch - 1Gb / 8 ports            | $30               |
 |                  | Others (Case, cables, etc )       | $40               |
@@ -92,7 +92,7 @@ Forth options would be with real servers bare-metal, if you have access to cheap
 ## What would I install on it...
 
 A kubernetes of course but which one k3s, rke2, OKD... for now, it's hard to say. My first though was k3s since there is so many example already out there, well documented like [Picluster](https://picluster.ricsanfre.com/docs/home/),
-[Khue's Homelab](https://homelab.khuedoan.com/) or [rpi4cluster](https://rpi4cluster.com/). K3s is lightweight but what I see usually is that you add stuff on it like *cilium*, *ingress-nginx*, etc. at the end, they were building a *rke2*... That's why I went directly to *rke2* with an Ansible Collection to deploy it with some customizations. The project named [Rkub](https://github.com/MozeBaltyk/Rkub).
+[Khue's Homelab](https://homelab.khuedoan.com/) or [rpi4cluster](https://rpi4cluster.com/). K3s is lightweight but what I see usually is that you add stuff on it like *cilium*, *ingress-nginx*, etc. at the end, they were building a *rke2*... That's why I went directly to *rke2* with an Ansible Collection to deploy it with some customizations through the project named [Rkub](https://github.com/MozeBaltyk/Rkub).
 
 OKD/Openshift also have is homelab but not on bare-metal, mostly KVM or Proxmox like this [one](https://github.com/amrut-asm/homelab) or this [one](https://github.com/sawa2d2/k8s-on-kvm). So in parallel, I also started a Terraform project to deploy OKD, named [Okub](https://github.com/MozeBaltyk/Okub).
 
@@ -100,6 +100,24 @@ About the gitops methods to autodeploy, this could be a nice inspiration: [hiven
 
 Let's see where I will arrive with those projects... 
 
-## What it can be for ?
+## The Goal
+
 
 ## Roadmap
+
+
+## Sources 
+
+### Code
+* [Khue's Homelab](https://homelab.khuedoan.com/)
+* [Khue's Cloudlab](https://github.com/khuedoan/cloudlab)
+* [OneDrop](https://github.com/onedr0p/home-ops)
+* [rpi4cluster](https://rpi4cluster.com/)
+* [Picluster](https://picluster.ricsanfre.com/docs/home/)
+* [Angelnu](https://github.com/angelnu/k8s-gitops)
+* [Amrut](https://github.com/amrut-asm/homelab)
+* [sawa2d2](https://github.com/sawa2d2/k8s-on-kvm)
+* [hivenetes/bootstrapper](https://github.com/hivenetes/k8s-bootstrapper/)
+
+### Hardware
+* [Jakub Homelab](https://www.linkedin.com/pulse/building-multi-node-homelab-economy-jakub-hovorka-trepe/)

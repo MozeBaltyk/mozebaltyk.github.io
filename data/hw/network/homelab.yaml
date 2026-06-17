@@ -1,0 +1,360 @@
+request:
+  purpose: Recommend a quiet home homelab switch/network package
+  country: PL
+  currency: EUR
+  budget:
+    total:
+      min: 200
+      max: 800
+      currency: EUR
+    includes:
+    - Switch
+    - Patch cables
+    - Optional DACs, optics, or SFP+ RJ45 modules
+    - Optional router/firewall if needed
+  output:
+    number_of_options: 3
+    ranking_method: best_value
+  requirements:
+    ports:
+      min_rj45_2_5g: 5
+      preferred_rj45_2_5g: 8
+      min_rj45_10g: 0
+      min_sfp_plus_10g: 2
+      spare_ports_desired: true
+    speeds:
+      minimum_access_speed: 2.5G
+      preferred_uplink_speed: 10G SFP+
+    management:
+      managed_switch: preferred
+      vlan_support: preferred
+      lacp: preferred
+      monitoring: preferred
+    environment:
+      placement: home
+      fanless_required: true
+      quiet_required: true
+      poe_required: false
+  purchase_preferences:
+    allow_used_enterprise: true
+    allow_aliexpress: false
+    preferred_sources:
+    - Amazon.pl
+    - Amazon.de
+    - Allegro
+    - EU network retailers
+    - eBay.de
+answer:
+  metadata:
+    options_requested: 3
+    options_returned: 3
+    last_reviewed: '2026-06-17'
+    pricing_confidence: medium
+    pricing_basis: PL/EU street-price estimates; verify exact SKU, fan/noise behavior, firmware features, warranty, and return terms before purchase
+    source_policy:
+      allowed:
+      - Amazon.pl
+      - Amazon.de
+      - Allegro
+      - EU network retailers
+      excluded:
+      - AliExpress
+  summary:
+    recommended_option: option_2_managed_2_5g_with_10g_sfp_plus
+    rationale: For a consistent 3-node home homelab with one optional extra GPU-capable node, the best default is an 8-port fanless managed 2.5G switch with 2x 10G SFP+ uplinks. It gives every base node 2.5G today, leaves ports for the optional GPU node and router/uplink, supports VLANs for lab segmentation, and leaves clean 10G growth for a NAS or workstation.
+    budget_target:
+      practical_minimum:
+        amount: 200
+        currency: EUR
+        note: Enough for an unmanaged 2.5G switch and cables.
+      recommended:
+        min: 350
+        max: 600
+        currency: EUR
+        note: Managed 2.5G plus 10G SFP+ headroom, cables, and at least one DAC or optic allowance.
+      upper_planning_limit:
+        amount: 800
+        currency: EUR
+        note: Allows better managed switch, DACs/transceivers, and optional router/firewall work.
+  options:
+  - id: option_1_unmanaged_budget_2_5g
+    rank: 3
+    type: Unmanaged budget 2.5G
+    best_for: Lowest-cost quiet network when VLANs and 10G are not needed yet
+    example_models:
+    - TP-Link TL-SG108-M2
+    - TP-Link TL-SG105-M2
+    - QNAP QSW-1105-5T
+    - Zyxel MG-108 or similar unmanaged 2.5G switch
+    estimated_budget:
+      switch:
+        min: 90
+        max: 190
+        currency: EUR
+      cables:
+        min: 20
+        max: 50
+        currency: EUR
+      total:
+        min: 110
+        max: 240
+        currency: EUR
+    ports:
+      access: 5-8x 2.5G RJ45 depending on model
+      uplinks: None dedicated; all ports are flat access ports
+    management:
+      managed: false
+      vlans: false
+      lacp: false
+      monitoring: No useful switch-side visibility
+    noise: Fanless/silent on typical models
+    power: Roughly 10-25 W depending on port count and link activity
+    pros:
+    - Cheapest reliable path to 2.5G for three nodes.
+    - Fanless and simple for home placement.
+    - No configuration complexity.
+    - 8-port models leave ports for router, NAS, desktop, or Wi-Fi AP.
+    cons:
+    - No VLANs for lab, storage, management, guest, or IoT segmentation.
+    - No LACP, port mirroring, SNMP, or useful monitoring.
+    - No 10G SFP+ path for NAS/workstation/MS-01.
+    - May need replacement once the lab needs segmentation.
+    compatibility_notes:
+    - Works with standard 2.5G RJ45 ports on tower/workstation, mini-PC, SFF, and optional GPU nodes.
+    - Use Cat5e for short runs if already available, but buy Cat6 or Cat6a for new patch cables.
+    - Not ideal if Proxmox, Kubernetes, storage, IoT, and management networks should be separated.
+    router_firewall:
+      required: false
+      note: Can connect behind the existing ISP router. Add a dedicated firewall later if VLANs or multi-WAN are needed.
+    sources:
+    - Amazon.pl
+    - Amazon.de
+    - Allegro
+  - id: option_2_managed_2_5g_with_10g_sfp_plus
+    rank: 1
+    type: Managed 8-port 2.5G with 10G SFP+ uplinks
+    best_for: Default 3-node plus optional GPU-node home homelab network
+    example_models:
+    - MikroTik CRS310-8G+2S+IN
+    - QNAP QSW-M2108-2S
+    - Zyxel XMG1915-class 8x 2.5G plus 10G SFP+ model
+    - TP-Link Omada or JetStream 8x 2.5G plus 10G SFP+ model, only if noise is verified
+    estimated_budget:
+      switch:
+        min: 250
+        max: 500
+        currency: EUR
+      cat6a_patch_cables:
+        min: 25
+        max: 60
+        currency: EUR
+      sfp_plus_dac_or_optics:
+        min: 25
+        max: 150
+        currency: EUR
+      total:
+        min: 300
+        max: 700
+        currency: EUR
+    ports:
+      access: Typically 8x 2.5G RJ45
+      uplinks: Typically 2x 10G SFP+
+    management:
+      managed: true
+      vlans: true
+      lacp: Usually supported; verify exact model
+      monitoring: Model-dependent; prefer SNMP, port counters, and web/CLI management
+    noise: Prefer fanless models; verify exact revision before buying
+    power: Roughly 15-40 W before hot RJ45 SFP+ modules
+    pros:
+    - Best balance of cost, silence, VLANs, 2.5G node ports, and 10G growth.
+    - 8x 2.5G covers three nodes, router/firewall, NAS, workstation, AP, and spare ports.
+    - 10G SFP+ uplinks are useful for NAS, workstation, MS-01, or future aggregation.
+    - VLANs make Proxmox, Kubernetes, storage, management, guest, and IoT networks practical.
+    cons:
+    - Costs much more than unmanaged 2.5G.
+    - 10G SFP+ cables, DACs, optics, or RJ45 modules are extra.
+    - Some managed switches with PoE or high port density have fans; avoid unless noise is verified.
+    - MikroTik RouterOS/SwitchOS is powerful but less beginner-friendly than simple web-managed switches.
+    compatibility_notes:
+    - Use RJ45 2.5G ports for the three homelab nodes.
+    - Use SFP+ DAC cables for short 10G links to a NAS, workstation, or MS-01 when both sides have SFP+.
+    - Avoid 10GBase-T SFP+ RJ45 modules unless necessary; they run hot and compatibility varies.
+    - If connecting to an existing 1G ISP router, use one 2.5G switch port as the uplink and keep SFP+ for local high-speed devices.
+    router_firewall:
+      required: false
+      recommended_when:
+      - You want VLAN routing between lab, management, IoT, guest, and LAN networks.
+      - The ISP router cannot handle VLANs.
+      - You want pfSense, OPNsense, OpenWrt, or MikroTik routing experiments.
+      example_approach:
+      - Use existing ISP router for internet initially.
+      - Later add a small 2.5G firewall appliance or one homelab node with a dedicated NIC path.
+      - Keep switching and routing separate unless intentionally building a router lab.
+    sources:
+    - Amazon.de
+    - Amazon.pl
+    - Allegro
+    - Senetic
+    - Getic
+    - EU network retailers
+  - id: option_3_used_enterprise_or_mikrotik_10g
+    rank: 2
+    type: Used enterprise or MikroTik 10G SFP+ option
+    best_for: Homelab moving toward SFP+ NAS/workstation/MS-01 links rather than mostly RJ45 2.5G
+    example_models:
+    - MikroTik CRS309-1G-8S+IN
+    - MikroTik CRS317-1G-16S+RM, only if fan noise is acceptable
+    - Used Brocade ICX, Dell, Aruba, or HPE SFP+ switch, only after checking noise, firmware, licensing, and power
+    estimated_budget:
+      switch:
+        min: 180
+        max: 450
+        currency: EUR
+      dac_cables:
+        min: 30
+        max: 120
+        currency: EUR
+      sfp_plus_optics_or_rj45_modules:
+        min: 60
+        max: 300
+        currency: EUR
+      optional_small_2_5g_switch_for_rj45_nodes:
+        min: 90
+        max: 190
+        currency: EUR
+      total:
+        min: 300
+        max: 800
+        currency: EUR
+    ports:
+      access: Mostly 10G SFP+; RJ45 2.5G usually needs modules or a second 2.5G switch
+      uplinks: 8-16x 10G SFP+ depending on model
+    management:
+      managed: true
+      vlans: true
+      lacp: true
+      monitoring: Usually strong, especially on enterprise gear
+    noise: MikroTik CRS309 is fanless; many enterprise switches and CRS317-class devices are not living-room silent
+    power: Roughly 20-100 W depending on model, optics, and fan platform
+    pros:
+    - Best bandwidth per euro when devices already have SFP+.
+    - Excellent for NAS, workstation, MS-01, Ceph replication, and storage experiments.
+    - Strong VLAN, LACP, trunking, and monitoring capabilities.
+    - Used pricing can be attractive on Allegro or eBay.de.
+    cons:
+    - Not the cleanest fit for three ordinary RJ45 2.5G nodes.
+    - 10G RJ45 SFP+ modules add heat, cost, and compatibility risk.
+    - Enterprise units can be loud, deep, power-hungry, or firmware-sensitive.
+    - May require a separate 2.5G RJ45 access switch, increasing complexity.
+    compatibility_notes:
+    - Choose this if the hosts have SFP+ now or will soon, for example Minisforum MS-01 or a NAS/workstation with SFP+ NIC.
+    - For mini-PCs with only 2.5G RJ45, option 2 is usually cleaner.
+    - Prefer passive DAC cables for short same-rack SFP+ links.
+    - Before buying used enterprise gear, verify fan noise, power draw, license state, firmware availability, console access, and seller return policy.
+    router_firewall:
+      required: false
+      note: A 10G switch does not replace a firewall unless intentionally using a routing-capable platform and accepting its limitations. Keep internet routing on ISP router, OPNsense/pfSense, OpenWrt, or MikroTik router as a separate decision.
+    sources:
+    - Allegro
+    - eBay.de
+    - EU used network equipment sellers
+    - Getic for MikroTik
+    - Amazon.de for new MikroTik listings
+  recommended_bill_of_materials:
+    option: option_2_managed_2_5g_with_10g_sfp_plus
+    items:
+    - item: Managed fanless switch
+      quantity: 1
+      target: 8x 2.5G RJ45 plus 2x 10G SFP+
+      estimated_price:
+        min: 250
+        max: 500
+        currency: EUR
+    - item: Short Cat6a patch cables
+      quantity: 4
+      target: Three nodes plus router/firewall uplink; 0.3m to 1m if in same rack/shelf
+      estimated_price:
+        min: 20
+        max: 45
+        currency: EUR
+    - item: Spare Cat6a patch cables
+      quantity: 2
+      target: NAS, workstation, AP, testing, or replacement
+      estimated_price:
+        min: 10
+        max: 25
+        currency: EUR
+    - item: 10G SFP+ DAC cable
+      quantity: 1
+      target: Future NAS, workstation, or MS-01 within the same rack/shelf
+      estimated_price:
+        min: 20
+        max: 50
+        currency: EUR
+    - item: Optional second 10G SFP+ DAC or optics pair
+      quantity: 1
+      target: Second 10G endpoint or longer fiber run
+      estimated_price:
+        min: 30
+        max: 120
+        currency: EUR
+    - item: Optional router/firewall
+      quantity: 0
+      target: Only needed if existing ISP router cannot handle desired VLAN/routing setup
+      estimated_price:
+        min: 120
+        max: 350
+        currency: EUR
+  vlan_design_starter:
+    note: Only applies to managed options.
+    vlans:
+    - id: 10
+      name: management
+      purpose: Switch, Proxmox hosts, IPMI-like services if any
+    - id: 20
+      name: lan
+      purpose: Normal trusted home devices
+    - id: 30
+      name: lab
+      purpose: VMs, Kubernetes nodes, test services
+    - id: 40
+      name: storage
+      purpose: NAS, backup, Ceph, NFS, iSCSI experiments
+    - id: 50
+      name: iot_guest
+      purpose: Optional isolated devices if firewall/router supports it
+  future_expansion:
+    near_term:
+    - Use three 2.5G ports for the homelab nodes.
+    - Use one 2.5G port for ISP router or firewall uplink.
+    - Keep at least two 2.5G ports free for NAS, workstation, access point, or test device.
+    medium_term:
+    - Use SFP+ DAC for a NAS or MS-01 with SFP+.
+    - Add VLANs once a capable router/firewall is available.
+    - Add monitoring via SNMP or switch metrics if supported.
+    avoid:
+    - Buying a 5-port unmanaged switch if the goal is an expandable 3-node lab.
+    - Relying on hot 10GBase-T SFP+ RJ45 modules for many ports.
+    - Fan-cooled enterprise switches in a living space without checking exact model noise.
+  final_recommendation:
+    choose: option_2_managed_2_5g_with_10g_sfp_plus
+    reason: 'It matches the actual 3-node requirement best: quiet home use, 2.5G to every node, preferred 8-port layout, VLAN support for a real lab, and 10G SFP+ growth without forcing SFP+ on every host today.'
+    buy_unmanaged_only_if: The network will stay flat, quiet, cheap, and simple for a long time.
+    buy_10g_sfp_plus_used_only_if: The NAS/workstation/MS-01 path is definite and most high-speed devices will use SFP+ DAC or fiber.
+  implementation_checklist:
+  - Confirm each node has 2.5G RJ45 and whether any node has SFP+.
+  - Decide whether VLANs are required now; if yes, skip unmanaged switches.
+  - Pick an 8-port fanless managed 2.5G switch with 2x SFP+ unless budget forces option 1.
+  - Verify exact switch SKU, fanless status, VLAN support, LACP needs, SNMP needs, warranty, and return terms.
+  - Buy Cat6a patch cables for all node and router links.
+  - Use SFP+ DAC for same-rack 10G links where possible.
+  - Use fiber optics for longer 10G runs; avoid RJ45 SFP+ modules unless necessary.
+  - Connect existing ISP router first if it is sufficient.
+  - Add OPNsense, pfSense, OpenWrt, or MikroTik router/firewall later if VLAN routing is needed.
+  - Label switch ports, cables, and node NICs.
+  - Configure management IP, admin password, firmware update policy, and backup of switch configuration.
+  - Create VLANs only after confirming router/firewall support.
+  - Test link speed on every node and verify 2.5G negotiation.
+  - Run iperf3 between nodes before deploying storage or cluster workloads.
+  - Measure switch temperature and noise after all links are active.

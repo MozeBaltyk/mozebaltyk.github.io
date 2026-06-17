@@ -1,0 +1,60 @@
+request:
+  purpose: "Contract to follow when making research"
+  country: "PL"
+  currency: "EUR"
+  placement: "home"
+
+  budget:
+    total:
+      min: null
+      max: null
+
+  size:
+    rack_type: "10 inch | 19 inch"
+
+  output:
+    number_of_options: null
+    requested_features:
+      - ""
+
+answer:
+  metadata:
+    last_reviewed: "YYYY-MM-DD"
+    pricing_confidence: "low | medium | high"
+
+  summary:
+    recommended_option: ""
+    rationale: ""
+
+  options:
+    - rank: 1
+      model: ""
+      estimated_total_price: null
+
+      bill_of_materials:
+        - type: "rack | accessory"
+          name: ""
+          quantity: 1
+          price: null
+          product_url: ""
+          required_for:
+            - ""
+
+      notes:
+        - ""
+
+  recommendation_notes:
+    - ""
+
+capabilities:
+  web_search_required: true
+
+rules:
+  product_url:
+    direct_product_page_only: true
+
+  fallback:
+    if_web_search_unavailable:
+      omit_product_urls: true
+      mark_research_incomplete: true
+

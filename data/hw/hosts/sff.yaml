@@ -1,0 +1,336 @@
+request:
+  purpose: Recommend SFF host candidates for a home homelab node
+  country: PL
+  currency: EUR
+  host_role: general_purpose
+  form_factors:
+  - sff
+  budget:
+    per_unit:
+      min: 135
+      max: 470
+      currency: EUR
+  output:
+    number_of_options: 3
+    ranking_method: best_value
+    include_alternatives: true
+  purchase_preferences:
+    condition: used | refurbished
+    allow_barebone: false
+    allow_aliexpress: false
+    allow_chinese_brands: true
+    preferred_sources:
+    - AMSO
+    - Poleasingowe.pl
+    - Allegro
+    - OLX
+    - eBay.de
+    - eBay.pl
+    - EU IT refurbishers
+  requirements:
+    cpu:
+      min_cores: 8
+      min_threads: null
+      min_passmark: null
+    memory:
+      min_ram_gb: 96
+      max_ram_gb: null
+      type: DDR5
+    storage:
+      min_drive_bays: 2
+      min_nvme_slots: null
+      min_sata_ports: null
+    networking:
+      min_ethernet_ports: 1
+      wifi_required: false
+      min_ethernet_speed: 2.5G | 10G
+      sfp_plus_required: false
+    gpu_expansion:
+      required: true
+      slot_type: pcie_x16
+      external_gpu_ok: false
+      preferred: false
+      full_height_required: false
+      full_length_required: false
+    platform:
+      proxmox_ready: true
+      kubernetes_ready: true
+      docker_ready: true
+      ecc_required: false
+      quicksync_required: false
+    power_noise:
+      max_idle_watts: null
+      noise_priority: medium
+  workloads:
+  - Proxmox cluster
+  - Docker containers
+  - Kubernetes lab
+  nice_to_have:
+  - Secondary PCIe slot for 2.5G or 10G NIC
+  - Low-profile GPU slot remains free
+  - Quiet refurbished business desktop
+  deal_breakers:
+  - No practical 2.5G or 10G networking path
+  - No low-profile PCIe x16 slot
+  - Less than 32 GB RAM per node
+answer:
+  metadata:
+    options_requested: 3
+    options_returned: 3
+    ranking_method: best_value
+    last_reviewed: '2026-06-17'
+    pricing_basis: 3-node cluster total; estimated_total = unitary_price * request.cluster.node_count
+    pricing_confidence: medium
+    constraint_note: Unitary price includes a complete used/refurbished DDR5 SFF PC plus a low-profile PCIe 2.5G NIC. The NIC must use a secondary PCIe slot so the low-profile x16 slot remains available for GPU expansion.
+  summary:
+    recommended_option: Lenovo ThinkCentre M90s Gen 4 SFF, Core i5-13500 plus low-profile 2.5G NIC
+    rationale: Used/refurbished DDR5 SFF systems are tight inside a 1400 EUR total cluster budget. The Lenovo M90s Gen 4 is the best value when available from Polish or EU refurbishers because it combines a strong i5-13500, 32 GB DDR5, practical internal storage, and a secondary PCIe slot path for the required 2.5G NIC while preserving the low-profile x16 slot. This SFF category is not the right default for RTX 4090/5090-class OpenShift AI work; use tower/workstation nodes for full-size GPUs.
+    ai_gpu_note: Classic SFF business desktops are useful CPU nodes or low-profile GPU experiment boxes, but they are not suitable for full-length multi-slot RTX 4090/5090 cards because of chassis size, PSU, power connector, and airflow limits.
+  options:
+  - rank: 1
+    model: Lenovo ThinkCentre M90s Gen 4 SFF, Core i5-13500
+    vendor: Lenovo
+    condition: used | refurbished
+    sold_as: complete PC
+    estimated_total:
+      amount: 1335
+      currency: EUR
+    unitary_price:
+      amount: 445
+      currency: EUR
+    price_includes:
+    - Complete refurbished SFF PC with 32 GB DDR5 and SSD
+    - Low-profile PCIe 2.5G NIC
+    hardware:
+      cpu:
+        model: Intel Core i5-13500
+        cores: 14
+        threads: 20
+        tdp_watts: 65
+      memory:
+        included_gb: 32
+        max_gb: 128
+        type: DDR5 UDIMM
+      storage:
+        included_gb: 512
+        drive_bays: 2
+        nvme_slots: 1
+        sata_ports: 3
+      networking:
+        ethernet_ports: 1
+        ethernet_speed: 2.5G
+        wifi: false
+      expansion:
+        usb_ports: 10
+        pcie_slots: 2
+        gpu_slot: low-profile PCIe x16 slot must remain free for GPU expansion
+        networking_upgrade: Install included low-profile 2.5G NIC in a secondary PCIe slot
+        external_gpu: not supported; internal low-profile PCIe only
+      power:
+        idle_watts: 18
+        max_watts: 200
+    homelab:
+      proxmox_support: true
+      vmware_support: false
+      docker_ready: true
+      kubernetes_ready: true
+      quicksync_support: true
+      ecc_support: false
+      noise_level: low
+      vm_capacity: medium
+    requirement_match:
+      score: 0.92
+      meets:
+      - Within the 400-1400 EUR total cluster budget
+      - Complete PC, not barebone
+      - 32 GB DDR5 per node
+      - Low-profile PCIe x16 GPU slot
+      - 2.5G networking path included in unit price
+      partially_meets:
+      - Confirm exact DDR5 MTM and secondary PCIe slot before buying
+      does_not_meet: []
+    pros:
+    - Best value strict SFF option
+    - Strong CPU density for Proxmox and containers
+    - Quiet business desktop platform
+    cons:
+    - Usually needs add-in NIC for 2.5G
+    - Slot layout and brackets vary by listing
+    purchase_sources:
+    - AMSO
+    - Poleasingowe.pl
+    - Allegro
+    - eBay.de
+    - EU IT refurbishers
+    notes:
+    - Target about 420 EUR for the PC plus about 25 EUR for the low-profile NIC.
+  - rank: 2
+    model: Dell OptiPlex Plus 7010 SFF, Core i5-13500
+    vendor: Dell
+    condition: used | refurbished
+    sold_as: complete PC
+    estimated_total:
+      amount: 1365
+      currency: EUR
+    unitary_price:
+      amount: 455
+      currency: EUR
+    price_includes:
+    - Complete refurbished SFF PC with 32 GB DDR5 and SSD
+    - Low-profile PCIe 2.5G NIC
+    hardware:
+      cpu:
+        model: Intel Core i5-13500
+        cores: 14
+        threads: 20
+        tdp_watts: 65
+      memory:
+        included_gb: 32
+        max_gb: 128
+        type: DDR5 UDIMM
+      storage:
+        included_gb: 512
+        drive_bays: 2
+        nvme_slots: 1
+        sata_ports: 3
+      networking:
+        ethernet_ports: 1
+        ethernet_speed: 2.5G
+        wifi: false
+      expansion:
+        usb_ports: 10
+        pcie_slots: 2
+        gpu_slot: low-profile PCIe x16 slot must remain free for GPU expansion
+        networking_upgrade: Install included low-profile 2.5G NIC in a secondary PCIe slot
+        external_gpu: not supported; internal low-profile PCIe only
+      power:
+        idle_watts: 18
+        max_watts: 200
+    homelab:
+      proxmox_support: true
+      vmware_support: false
+      docker_ready: true
+      kubernetes_ready: true
+      quicksync_support: true
+      ecc_support: false
+      noise_level: low
+      vm_capacity: medium
+    requirement_match:
+      score: 0.88
+      meets:
+      - Within the 400-1400 EUR total cluster budget
+      - Complete PC, not barebone
+      - 32 GB DDR5 per node
+      - Low-profile PCIe x16 GPU slot
+      - 2.5G networking path included in unit price
+      partially_meets:
+      - Use the newer OptiPlex Plus 7010 SFF, not the old 2012 OptiPlex 7010
+      - Confirm a secondary PCIe slot remains usable for the NIC
+      does_not_meet: []
+    pros:
+    - Good Dell documentation and parts availability
+    - Strong i5-13500 performance
+    - Common EU refurb platform
+    cons:
+    - Name collision with old OptiPlex 7010 listings
+    - NIC can conflict with GPU requirement if the smaller PCIe slot is unavailable
+    purchase_sources:
+    - AMSO
+    - Poleasingowe.pl
+    - Allegro
+    - eBay.pl
+    - eBay.de
+    notes:
+    - Confirm chassis, PSU, riser/bracket, and PCIe slot layout before buying three units.
+  - rank: 3
+    model: HP Elite SFF 800 G9, Core i7-12700
+    vendor: HP
+    condition: used | refurbished
+    sold_as: complete PC
+    estimated_total:
+      amount: 1395
+      currency: EUR
+    unitary_price:
+      amount: 465
+      currency: EUR
+    price_includes:
+    - Complete refurbished SFF PC with 32 GB DDR5 and SSD
+    - Low-profile PCIe 2.5G NIC
+    hardware:
+      cpu:
+        model: Intel Core i7-12700
+        cores: 12
+        threads: 20
+        tdp_watts: 65
+      memory:
+        included_gb: 32
+        max_gb: 128
+        type: DDR5 UDIMM
+      storage:
+        included_gb: 512
+        drive_bays: 2
+        nvme_slots: 2
+        sata_ports: 3
+      networking:
+        ethernet_ports: 1
+        ethernet_speed: 2.5G
+        wifi: false
+      expansion:
+        usb_ports: 10
+        pcie_slots: 2
+        gpu_slot: low-profile PCIe x16 slot must remain free for GPU expansion
+        networking_upgrade: Install included low-profile 2.5G NIC in a secondary PCIe slot where available
+        external_gpu: not supported; internal low-profile PCIe only
+      power:
+        idle_watts: 18
+        max_watts: 210
+    homelab:
+      proxmox_support: true
+      vmware_support: false
+      docker_ready: true
+      kubernetes_ready: true
+      quicksync_support: true
+      ecc_support: false
+      noise_level: low
+      vm_capacity: medium
+    requirement_match:
+      score: 0.86
+      meets:
+      - Within the 400-1400 EUR total cluster budget
+      - Complete PC, not barebone
+      - 32 GB DDR5 per node
+      - Low-profile PCIe x16 GPU slot
+      - 2.5G networking path included in unit price
+      partially_meets:
+      - Very close to budget ceiling
+      - Confirm NIC placement does not consume the x16 GPU slot
+      does_not_meet: []
+    pros:
+    - Good HP service documentation
+    - Two NVMe slots on many configurations
+    - Reliable corporate platform
+    cons:
+    - Least price headroom
+    - Default networking is usually 1G
+    purchase_sources:
+    - AMSO
+    - Poleasingowe.pl
+    - Allegro
+    - eBay.de
+    - EU IT refurbishers
+    notes:
+    - Prefer listings already configured with 32 GB DDR5 and SSD.
+  comparison:
+    cheapest_option: Lenovo ThinkCentre M90s Gen 4 SFF, Core i5-13500
+    best_value_option: Lenovo ThinkCentre M90s Gen 4 SFF, Core i5-13500
+    lowest_power_option: Lenovo ThinkCentre M90s Gen 4 SFF, Core i5-13500
+    highest_performance_option: Lenovo ThinkCentre M90s Gen 4 SFF, Core i5-13500
+    most_expandable_option: HP Elite SFF 800 G9, Core i7-12700
+    quietest_option: Lenovo ThinkCentre M90s Gen 4 SFF, Core i5-13500
+  important_considerations:
+  - 'Budget is interpreted as total cluster budget: estimated_total = unitary_price * 3.'
+  - The low-profile x16 slot is required for GPU expansion and must not be consumed by the networking upgrade.
+  - Reject listings without a practical secondary PCIe slot for the NIC.
+  - Most SFF business desktops ship with 1G Ethernet, so 2.5G/10G usually requires a PCIe NIC.
+  - DDR5 refurb pricing varies sharply; confirm exact generation, memory type, caddies, brackets, and PSU.
+  - Do not treat classic SFF desktops as the default for the revised AI/LLM lab if full-size RTX 4090/5090 support is required; choose tower/workstation nodes instead.

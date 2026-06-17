@@ -1,0 +1,124 @@
+request:
+  purpose: "Rack recommendation for home homelab"
+  country: "PL"
+  currency: "EUR"
+  placement: "home"
+
+  budget:
+    total:
+      min: 150
+      max: 1000
+
+  size:
+    rack_type: "10 inch"
+
+  output:
+    number_of_options: 3
+    requested_features:
+      - "8U"
+
+answer:
+  metadata:
+    last_reviewed: "2026-06-17"
+    pricing_confidence: "medium"
+
+  summary:
+    recommended_option: "10-inch 8U network rack"
+    rationale: "The request asks for an 8U rack in 10-inch size. A 10-inch 8U rack is best suited for compact network gear, a small switch, router/firewall, patching, and light accessories. Larger SFF/tower compute nodes and heavy UPS units should stay outside the 10-inch rack."
+
+  options:
+    - rank: 1
+      model: "10-inch 8U network rack cabinet"
+      estimated_total_price: "150-350 EUR"
+
+      bill_of_materials:
+        - type: "rack"
+          name: "10-inch 8U network rack cabinet"
+          quantity: 1
+          price: "100-250 EUR"
+          product_url: ""
+          required_for:
+            - "8U 10-inch rack enclosure"
+        - type: "accessory"
+          name: "10-inch shelf"
+          quantity: 1
+          price: "20-60 EUR"
+          product_url: ""
+          required_for:
+            - "placing non-rackmount compact devices"
+        - type: "accessory"
+          name: "10-inch power strip or compact PDU"
+          quantity: 1
+          price: "30-80 EUR"
+          product_url: ""
+          required_for:
+            - "rack power distribution"
+
+      notes:
+        - "Best match for requested 10-inch 8U size."
+        - "Use for compact switch, router/firewall appliance, patching, and light accessories."
+        - "Research incomplete: direct product URLs are omitted because verified web search is unavailable; search/category pages are not acceptable under the contract."
+
+    - rank: 2
+      model: "10-inch 8U wall-mounted rack cabinet"
+      estimated_total_price: "170-400 EUR"
+
+      bill_of_materials:
+        - type: "rack"
+          name: "10-inch 8U wall-mounted rack cabinet"
+          quantity: 1
+          price: "120-300 EUR"
+          product_url: ""
+          required_for:
+            - "8U 10-inch wall-mounted rack"
+        - type: "accessory"
+          name: "10-inch shelf"
+          quantity: 1
+          price: "20-60 EUR"
+          product_url: ""
+          required_for:
+            - "placing non-rackmount compact devices"
+        - type: "accessory"
+          name: "Cable management or brush panel"
+          quantity: 1
+          price: "20-40 EUR"
+          product_url: ""
+          required_for:
+            - "cable organization"
+
+      notes:
+        - "Good if the rack should be fixed to a wall or kept visually tidy."
+        - "Check wall load, door swing, rear cable access, and usable depth."
+        - "Keep UPS outside the rack due weight and depth."
+        - "Research incomplete: direct product URLs are omitted because verified web search is unavailable; search/category pages are not acceptable under the contract."
+
+    - rank: 3
+      model: "10-inch 8U desktop mini rack"
+      estimated_total_price: "150-350 EUR"
+
+      bill_of_materials:
+        - type: "rack"
+          name: "10-inch 8U desktop mini rack"
+          quantity: 1
+          price: "120-300 EUR"
+          product_url: ""
+          required_for:
+            - "8U 10-inch desktop rack"
+        - type: "accessory"
+          name: "10-inch shelf"
+          quantity: 1
+          price: "20-60 EUR"
+          product_url: ""
+          required_for:
+            - "placing compact devices"
+
+      notes:
+        - "Best for desk or shelf placement instead of wall mounting."
+        - "Works for compact mini-PC or network-only layouts."
+        - "Not suitable for tower/SFF nodes or large UPS devices."
+        - "Research incomplete: direct product URLs are omitted because verified web search is unavailable; search/category pages are not acceptable under the contract."
+
+  recommendation_notes:
+    - "Choose a 10-inch 8U rack only for compact network gear, router/firewall, patching, and small accessories."
+    - "Use 19-inch instead if full-size switches, SFF/tower nodes, rack UPS, or broad accessory availability are required."
+    - "The contract requires direct product pages; product URLs are intentionally blank until verified direct product pages are available."

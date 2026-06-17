@@ -1,0 +1,354 @@
+request:
+  purpose: Recommend used/refurbished server host candidates for a home homelab node
+  country: PL
+  currency: EUR
+  host_role: storage | virtualization
+  form_factors:
+  - tower
+  - rackmount
+  budget:
+    per_unit:
+      min: 335
+      max: 835
+      currency: EUR
+  output:
+    number_of_options: 3
+    ranking_method: best_value
+    include_alternatives: true
+  purchase_preferences:
+    condition: used | refurbished
+    allow_barebone: false
+    allow_aliexpress: false
+    allow_chinese_brands: true
+    preferred_sources:
+    - AMSO
+    - Poleasingowe.pl
+    - Allegro
+    - OLX
+    - eBay.de
+    - eBay.pl
+    - EU IT refurbishers
+  requirements:
+    cpu:
+      min_cores: 8
+      min_threads: null
+      min_passmark: null
+    memory:
+      min_ram_gb: 32
+      max_ram_gb: null
+      type: DDR4 ECC | DDR5 ECC
+    storage:
+      min_drive_bays: 2
+      min_nvme_slots: null
+      min_sata_ports: null
+    networking:
+      min_ethernet_ports: 1
+      wifi_required: false
+      min_ethernet_speed: 2.5G | 10G
+      sfp_plus_required: false
+    gpu_expansion:
+      required: false
+      slot_type: any
+      external_gpu_ok: false
+      preferred: true
+      full_height_required: false
+      full_length_required: false
+    platform:
+      proxmox_ready: true
+      kubernetes_ready: true
+      docker_ready: true
+      ecc_required: false
+      quicksync_required: false
+    power_noise:
+      max_idle_watts: null
+      noise_priority: medium
+  workloads:
+  - Proxmox cluster
+  - Docker containers
+  - Kubernetes lab
+  - Shared storage / NAS-style services
+  - General VM workloads
+  nice_to_have:
+  - 10G SFP+ networking or inexpensive PCIe 10G upgrade path
+  - ECC memory
+  - Hot-swap drive bays
+  - IPMI/iDRAC/iLO remote management
+  - Spare PCIe slot after networking upgrade
+  deal_breakers:
+  - Barebone systems without CPU/RAM
+  - AliExpress-only sourcing
+  - Less than 32 GB RAM per node
+  - Fewer than 2 internal drive bays
+  - No practical path to 2.5G or 10G networking
+answer:
+  metadata:
+    options_requested: 3
+    options_returned: 3
+    ranking_method: best_value
+    last_reviewed: '2026-06-17'
+    pricing_basis: 3-node cluster total; estimated_total = unitary_price * request.cluster.node_count
+    pricing_confidence: medium
+    constraint_note: Used/refurbished PL/EU server shortlist. Prices assume complete systems with CPU, 64 GB ECC RAM, drive bays, and included or budgeted 10G SFP+/PCIe networking path.
+  summary:
+    recommended_option: Dell PowerEdge R640, dual Xeon Silver 4110/4114 class
+    rationale: The Dell PowerEdge R640 is the best value if rackmount noise and power draw are acceptable. It is common in EU refurb channels, fits the 2500 EUR total cluster budget with 64 GB DDR4 ECC per node, has 8+ SFF bays, iDRAC, and a practical 10G SFP+ upgrade or included NIC path. Tower servers are quieter but cost more.
+  options:
+  - rank: 1
+    model: Dell PowerEdge R640, dual Xeon Silver 4110/4114 class
+    vendor: Dell
+    condition: used | refurbished
+    sold_as: complete server
+    estimated_total:
+      amount: 1950
+      currency: EUR
+    unitary_price:
+      amount: 650
+      currency: EUR
+    price_includes:
+    - Complete 1U rack server with CPUs
+    - 64 GB DDR4 ECC RAM
+    - 8+ SFF drive bays
+    - Included or budgeted 10G SFP+ NIC
+    hardware:
+      cpu:
+        model: 2x Intel Xeon Silver 4110/4114 class
+        cores: 16
+        threads: 32
+        tdp_watts: 170
+      memory:
+        included_gb: 64
+        max_gb: 1024
+        type: DDR4 ECC RDIMM
+      storage:
+        included_gb: 0
+        drive_bays: 8
+        nvme_slots: null
+        sata_ports: null
+      networking:
+        ethernet_ports: 2
+        ethernet_speed: 10G SFP+
+        wifi: false
+      expansion:
+        usb_ports: 3
+        pcie_slots: 2
+        management: iDRAC
+        gpu_slot: limited 1U PCIe expansion; GPU only for specific low-power use cases
+        external_gpu: not practical; use internal riser only for supported low-power cards
+      power:
+        idle_watts: 90
+        max_watts: 450
+    homelab:
+      proxmox_support: true
+      vmware_support: false
+      docker_ready: true
+      kubernetes_ready: true
+      quicksync_support: false
+      ecc_support: true
+      noise_level: high
+      vm_capacity: large
+    requirement_match:
+      score: 0.94
+      meets:
+      - Within the 1000-2500 EUR total cluster budget
+      - Complete server with CPU and RAM
+      - At least 8 CPU cores and 64 GB ECC RAM per node
+      - 8+ internal drive bays
+      - 10G SFP+ path
+      - iDRAC remote management
+      partially_meets:
+      - Noise and power draw are high for living-space homelabs
+      - Rails, caddies, disks, and HBA mode vary by listing
+      does_not_meet: []
+    pros:
+    - Best value for dense VM and storage lab workloads
+    - Common refurb availability and good documentation
+    - Strong remote management
+    cons:
+    - Very loud compared with mini PCs or towers
+    - Higher idle power
+    - 1U expansion limits GPU practicality
+    purchase_sources:
+    - Allegro
+    - eBay.de
+    - eBay.pl
+    - EU IT refurbishers
+    notes:
+    - Choose this when rack noise is acceptable and iDRAC plus dense storage matter.
+  - rank: 2
+    model: HPE ProLiant DL360 Gen10, dual Xeon Silver 4110 class
+    vendor: HPE
+    condition: used | refurbished
+    sold_as: complete server
+    estimated_total:
+      amount: 1800
+      currency: EUR
+    unitary_price:
+      amount: 600
+      currency: EUR
+    price_includes:
+    - Complete 1U rack server with CPUs
+    - 64 GB DDR4 ECC RAM
+    - 8 SFF drive bays
+    - Included or budgeted 10G FLR/PCIe networking path
+    hardware:
+      cpu:
+        model: 2x Intel Xeon Silver 4110 class
+        cores: 16
+        threads: 32
+        tdp_watts: 170
+      memory:
+        included_gb: 64
+        max_gb: 1024
+        type: DDR4 ECC RDIMM
+      storage:
+        included_gb: 0
+        drive_bays: 8
+        nvme_slots: null
+        sata_ports: null
+      networking:
+        ethernet_ports: 2
+        ethernet_speed: 10G SFP+
+        wifi: false
+      expansion:
+        usb_ports: 3
+        pcie_slots: 2
+        management: iLO
+        gpu_slot: limited 1U PCIe expansion; not ideal for GPU workloads
+        external_gpu: not practical; use internal riser only for supported low-power cards
+      power:
+        idle_watts: 90
+        max_watts: 450
+    homelab:
+      proxmox_support: true
+      vmware_support: false
+      docker_ready: true
+      kubernetes_ready: true
+      quicksync_support: false
+      ecc_support: true
+      noise_level: high
+      vm_capacity: large
+    requirement_match:
+      score: 0.9
+      meets:
+      - Within the 1000-2500 EUR total cluster budget
+      - Complete server with CPU and RAM
+      - At least 8 CPU cores and 64 GB ECC RAM per node
+      - 8 SFF drive bays
+      - 10G FLR or PCIe NIC path
+      - iLO remote management
+      partially_meets:
+      - Cheapest/value option but noisy
+      - HPE firmware, Smart Array mode, and iLO licensing need listing-specific checks
+      does_not_meet: []
+    pros:
+    - Lowest estimated total of the server shortlist
+    - Common Gen10 refurb availability
+    - Good platform for Proxmox, containers, and storage labs
+    cons:
+    - Loud 1U acoustics
+    - HPE licensing and firmware access can be inconvenient
+    - RAID/HBA behavior must be verified
+    purchase_sources:
+    - Allegro
+    - eBay.de
+    - eBay.pl
+    - EU IT refurbishers
+    notes:
+    - Prefer listings with iLO, caddies, and a 10G FLR or PCIe NIC already included.
+  - rank: 3
+    model: Dell PowerEdge T440 / HPE ML350 Gen10 tower
+    vendor: Dell | HPE
+    condition: used | refurbished
+    sold_as: complete server
+    estimated_total:
+      amount: 2250
+      currency: EUR
+    unitary_price:
+      amount: 750
+      currency: EUR
+    price_includes:
+    - Complete tower server with CPU
+    - 64 GB DDR4 ECC RAM
+    - 8 drive bays where configured
+    - Budgeted PCIe 10G NIC path
+    hardware:
+      cpu:
+        model: Intel Xeon Silver 4110/4114 class or similar
+        cores: 8
+        threads: 16
+        tdp_watts: 85
+      memory:
+        included_gb: 64
+        max_gb: 768
+        type: DDR4 ECC RDIMM
+      storage:
+        included_gb: 0
+        drive_bays: 8
+        nvme_slots: null
+        sata_ports: null
+      networking:
+        ethernet_ports: 1
+        ethernet_speed: 10G SFP+ via PCIe upgrade
+        wifi: false
+      expansion:
+        usb_ports: 6
+        pcie_slots: 4
+        management: iDRAC or iLO depending on model
+        gpu_slot: better PCIe and acoustic fit than 1U rack servers
+        external_gpu: not typical; prefer internal PCIe if chassis, riser, and PSU support it
+      power:
+        idle_watts: 70
+        max_watts: 500
+    homelab:
+      proxmox_support: true
+      vmware_support: false
+      docker_ready: true
+      kubernetes_ready: true
+      quicksync_support: false
+      ecc_support: true
+      noise_level: medium
+      vm_capacity: large
+    requirement_match:
+      score: 0.86
+      meets:
+      - Within the 1000-2500 EUR total cluster budget
+      - Complete tower server with CPU and RAM
+      - At least 8 CPU cores and 64 GB ECC RAM per node
+      - 8 drive bays on the target configuration
+      - Practical PCIe 10G upgrade path
+      - Remote management through iDRAC or iLO
+      partially_meets:
+      - Exact model and drive bay configuration must be checked carefully
+      - More expensive than rackmount options
+      does_not_meet: []
+    pros:
+    - Quieter than 1U rack servers
+    - More practical PCIe expansion and GPU path
+    - Good fit for storage-heavy homelab nodes
+    cons:
+    - Higher purchase price
+    - Larger footprint
+    - Availability of three matched units is less predictable
+    purchase_sources:
+    - Allegro
+    - OLX
+    - eBay.de
+    - EU IT refurbishers
+    notes:
+    - Use this option when acoustic comfort matters more than lowest cost.
+  comparison:
+    cheapest_option: HPE ProLiant DL360 Gen10, dual Xeon Silver 4110 class
+    best_value_option: Dell PowerEdge R640, dual Xeon Silver 4110/4114 class
+    lowest_power_option: Dell PowerEdge T440 / HPE ML350 Gen10 tower
+    highest_performance_option: Dell PowerEdge R640, dual Xeon Silver 4110/4114 class
+    most_expandable_option: Dell PowerEdge T440 / HPE ML350 Gen10 tower
+    quietest_option: Dell PowerEdge T440 / HPE ML350 Gen10 tower
+  important_considerations:
+  - 'Budget is interpreted as total cluster budget: estimated_total = unitary_price * 3.'
+  - Rack servers are loud and should not be assumed suitable for bedrooms or living rooms.
+  - Idle power can dominate running cost; three rack servers may idle around 250-350 W combined.
+  - For Proxmox and ZFS, verify RAID controller HBA/JBOD mode before buying.
+  - Check whether drive caddies, blanks, rails, power supplies, and bezels are included.
+  - Verify 10G NICs or OCP/FLR modules are included, or budget compatible PCIe adapters.
+  - Remote management features can require iDRAC/iLO licensing; confirm license state per listing.
+  - Used servers often ship without disks; storage media is not included unless explicitly stated.

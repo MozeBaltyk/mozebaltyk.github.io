@@ -1,0 +1,65 @@
+request:
+  purpose: "Network equipment research"
+  country: "PL"
+  currency: "EUR"
+
+  budget:
+    min: null
+    max: null
+
+  requirements:
+    ports:
+      rj45_2_5g: null
+      rj45_10g: null
+      sfp_plus_10g: null
+
+    features:
+      managed: null
+      vlan: null
+      lacp: null
+      poe: null
+      fanless: null
+
+    placement: "home | office | rack"
+
+  output:
+    number_of_options: 3
+
+  purchasing:
+    allow_used: true
+    allow_aliexpress: false
+
+answer:
+  metadata:
+    last_reviewed: "YYYY-MM-DD"
+    pricing_confidence: "low | medium | high"
+
+  summary:
+    recommended_option: ""
+    rationale: ""
+
+  options:
+    - rank: 1
+      model: ""
+      estimated_total_price: null
+
+      bill_of_materials:
+        - type: "switch | router | transceiver | dac | cable | accessory"
+          name: ""
+          quantity: 1
+          price: null
+          product_url: ""
+
+      notes:
+        - ""
+
+  recommendation_notes:
+    - ""
+
+rules:
+  pricing:
+    use_typical_market_price: true
+    exact_listing_not_required: true
+
+  recommendation:
+    include_all_required_components: true

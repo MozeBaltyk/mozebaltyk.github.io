@@ -1,0 +1,330 @@
+request:
+  purpose: Recommend SBC host candidates for a home homelab node
+  country: PL
+  currency: EUR
+  host_role: sbc
+  form_factors:
+  - sbc
+  budget:
+    per_unit:
+      min: 100
+      max: 300
+      currency: EUR
+  output:
+    number_of_options: 3
+    ranking_method: best_value
+    include_alternatives: true
+  purchase_preferences:
+    condition: new
+    allow_barebone: true
+    allow_aliexpress: false
+    allow_chinese_brands: true
+    preferred_sources:
+    - Amazon.pl
+    - Amazon.de
+    - Botland
+    - Kamami
+    - BerryBase
+    - Allnet EU
+  requirements:
+    cpu:
+      min_cores: 8
+      min_threads: null
+      min_passmark: null
+    memory:
+      min_ram_gb: 32
+      max_ram_gb: null
+      type: null
+    storage:
+      min_drive_bays: null
+      min_nvme_slots: 1
+      min_sata_ports: null
+    networking:
+      min_ethernet_ports: 1
+      wifi_required: false
+      min_ethernet_speed: 1G | 2.5G
+      sfp_plus_required: false
+    gpu_expansion:
+      required: false
+      slot_type: none
+      external_gpu_ok: false
+      preferred: false
+      full_height_required: false
+      full_length_required: false
+    platform:
+      proxmox_ready: false
+      kubernetes_ready: true
+      docker_ready: true
+      ecc_required: false
+      quicksync_required: false
+    power_noise:
+      max_idle_watts: null
+      noise_priority: medium
+  workloads:
+  - Docker containers
+  - Lightweight Kubernetes lab
+  - ARM Linux services
+  nice_to_have:
+  - 32 GB soldered RAM
+  - 2.5G Ethernet
+  - NVMe plus eMMC or microSD secondary storage
+  deal_breakers:
+  - AliExpress-only sourcing
+  - Less than 8 CPU cores
+  - Less than 32 GB RAM per node unless marked as alternative
+answer:
+  metadata:
+    options_requested: 3
+    options_returned: 3
+    ranking_method: best_value
+    last_reviewed: '2026-06-17'
+    pricing_basis: 3-node cluster total; estimated_total = unitary_price * request.cluster.node_count
+    pricing_confidence: medium
+    constraint_note: PL/EU sourcing only, AliExpress excluded. RAM type is unconstrained, so soldered LPDDR is acceptable. SBC boards are treated as barebone nodes; storage estimates assume modest NVMe plus microSD/eMMC where needed.
+  summary:
+    recommended_option: Orange Pi 5 Plus 32GB
+    rationale: The corrected request is ARM/container oriented rather than Proxmox oriented. RK3588-class 32 GB boards remain the best fit because they provide 8 cores, soldered 32 GB RAM, NVMe, low power draw, and 1G/2.5G networking within the 900 EUR total cluster budget when sourced from Amazon.pl, Amazon.de, or EU specialist sellers instead of AliExpress.
+  options:
+  - rank: 1
+    model: Orange Pi 5 Plus 32GB with NVMe and microSD/eMMC storage
+    vendor: Orange Pi
+    condition: new
+    sold_as: barebone SBC board
+    estimated_total:
+      amount: 687
+      currency: EUR
+    unitary_price:
+      amount: 229
+      currency: EUR
+    price_includes:
+    - 32 GB SBC board
+    - Modest NVMe SSD and microSD/eMMC boot media allowance
+    hardware:
+      cpu:
+        model: Rockchip RK3588
+        cores: 8
+        threads: 8
+        tdp_watts: 10
+      memory:
+        included_gb: 32
+        max_gb: 32
+        type: LPDDR4X
+      storage:
+        included_gb: 256
+        drive_bays: 0
+        nvme_slots: 1
+        sata_ports: 0
+      networking:
+        ethernet_ports: 2
+        ethernet_speed: 2.5G
+        wifi: false
+      expansion:
+        usb_ports: 5
+        pcie_slots: 0
+        external_gpu: not supported by request
+        gpu_slot: none
+      power:
+        idle_watts: 5
+        max_watts: 25
+    homelab:
+      proxmox_support: false
+      vmware_support: false
+      docker_ready: true
+      kubernetes_ready: true
+      quicksync_support: false
+      ecc_support: false
+      noise_level: silent | low
+      vm_capacity: small
+    requirement_match:
+      score: 0.9
+      meets:
+      - Within the 300-900 EUR total cluster budget
+      - 8 CPU cores per node
+      - 32 GB soldered RAM per node
+      - One NVMe slot
+      - Dual 2.5G Ethernet
+      - Docker and lightweight Kubernetes ready
+      partially_meets:
+      - Second storage device is microSD/eMMC-class, not a drive bay
+      - EU availability and exact accessory bundle must be checked
+      does_not_meet: []
+    pros:
+    - Best networking of the SBC shortlist
+    - Strong RK3588 CPU for ARM containers
+    - Low power and compact
+    cons:
+    - ARM ecosystem is less convenient than x86 for general virtualization
+    - Board, case, cooling, PSU, and storage may be separate purchases
+    purchase_sources:
+    - Amazon.pl
+    - Amazon.de
+    - Botland or Kamami if stocked
+    - EU-stock marketplace sellers
+    notes:
+    - Avoid AliExpress-only listings even if the board price is lower.
+  - rank: 2
+    model: Orange Pi 5 Max 32GB with NVMe and microSD/eMMC storage
+    vendor: Orange Pi
+    condition: new
+    sold_as: barebone SBC board
+    estimated_total:
+      amount: 657
+      currency: EUR
+    unitary_price:
+      amount: 219
+      currency: EUR
+    price_includes:
+    - 32 GB SBC board
+    - Modest NVMe SSD and microSD/eMMC boot media allowance
+    hardware:
+      cpu:
+        model: Rockchip RK3588
+        cores: 8
+        threads: 8
+        tdp_watts: 10
+      memory:
+        included_gb: 32
+        max_gb: 32
+        type: LPDDR5
+      storage:
+        included_gb: 256
+        drive_bays: 0
+        nvme_slots: 1
+        sata_ports: 0
+      networking:
+        ethernet_ports: 1
+        ethernet_speed: 2.5G
+        wifi: false
+      expansion:
+        usb_ports: 4
+        pcie_slots: 0
+        external_gpu: not supported by request
+        gpu_slot: none
+      power:
+        idle_watts: 5
+        max_watts: 25
+    homelab:
+      proxmox_support: false
+      vmware_support: false
+      docker_ready: true
+      kubernetes_ready: true
+      quicksync_support: false
+      ecc_support: false
+      noise_level: silent | low
+      vm_capacity: small
+    requirement_match:
+      score: 0.86
+      meets:
+      - Within the 300-900 EUR total cluster budget
+      - 8 CPU cores per node
+      - 32 GB soldered RAM per node
+      - One NVMe slot
+      - 2.5G Ethernet
+      - Docker and lightweight Kubernetes ready
+      partially_meets:
+      - Only one Ethernet port
+      - 32 GB EU-stock availability can fluctuate
+      does_not_meet: []
+    pros:
+    - Cheapest strict 32 GB RK3588-class option when EU-stock pricing is available
+    - Good CPU and memory fit for ARM services
+    - 2.5G Ethernet and NVMe support
+    cons:
+    - Single NIC
+    - Less mature ecosystem than some Radxa boards
+    purchase_sources:
+    - Amazon.pl
+    - Amazon.de
+    - EU-stock marketplace sellers
+    notes:
+    - Keep only if sourced new from EU/Amazon channels, not AliExpress-only.
+  - rank: 3
+    model: Radxa ROCK 5B 32GB with NVMe and eMMC/microSD storage
+    vendor: Radxa
+    condition: new
+    sold_as: barebone SBC board
+    estimated_total:
+      amount: 720
+      currency: EUR
+    unitary_price:
+      amount: 240
+      currency: EUR
+    price_includes:
+    - 32 GB SBC board
+    - Modest NVMe SSD and microSD/eMMC boot media allowance
+    hardware:
+      cpu:
+        model: Rockchip RK3588
+        cores: 8
+        threads: 8
+        tdp_watts: 10
+      memory:
+        included_gb: 32
+        max_gb: 32
+        type: LPDDR4X
+      storage:
+        included_gb: 256
+        drive_bays: 0
+        nvme_slots: 1
+        sata_ports: 0
+      networking:
+        ethernet_ports: 1
+        ethernet_speed: 2.5G
+        wifi: false
+      expansion:
+        usb_ports: 4
+        pcie_slots: 0
+        external_gpu: not supported by request
+        gpu_slot: none
+      power:
+        idle_watts: 5
+        max_watts: 25
+    homelab:
+      proxmox_support: false
+      vmware_support: false
+      docker_ready: true
+      kubernetes_ready: true
+      quicksync_support: false
+      ecc_support: false
+      noise_level: silent | low
+      vm_capacity: small
+    requirement_match:
+      score: 0.82
+      meets:
+      - Within the 300-900 EUR total cluster budget
+      - 8 CPU cores per node
+      - 32 GB soldered RAM per node
+      - One NVMe slot
+      - 2.5G Ethernet
+      - Docker and lightweight Kubernetes ready
+      partially_meets:
+      - Usually more expensive than Orange Pi at EU prices
+      - Single NIC
+      does_not_meet: []
+    pros:
+    - Good RK3588 software community
+    - Available through EU specialist retailers
+    - Strong fallback when Orange Pi sourcing is unclear
+    cons:
+    - Higher price than Orange Pi options
+    - ARM limitations remain for VM-heavy workloads
+    purchase_sources:
+    - Allnet EU
+    - BerryBase
+    - Amazon.de
+    - Amazon.pl
+    notes:
+    - Use as the ecosystem/community fallback within the 900 EUR cluster budget.
+  comparison:
+    cheapest_option: Orange Pi 5 Max 32GB with NVMe and microSD/eMMC storage
+    best_value_option: Orange Pi 5 Plus 32GB
+    lowest_power_option: Orange Pi 5 Max 32GB with NVMe and microSD/eMMC storage
+    highest_performance_option: Orange Pi 5 Plus 32GB
+    most_expandable_option: Orange Pi 5 Plus 32GB
+    quietest_option: Orange Pi 5 Max 32GB with NVMe and microSD/eMMC storage
+  important_considerations:
+  - 'Budget is interpreted as total cluster budget: estimated_total = unitary_price * 3.'
+  - AliExpress-only sourcing is rejected; use Amazon.pl, Amazon.de, Botland, Kamami, BerryBase, Allnet EU, or EU-stock sellers.
+  - 'SBC storage is connector-based: NVMe plus microSD or eMMC, not hot-swap bays.'
+  - ARM SBCs are best for Docker, Kubernetes, and Linux services, not Proxmox or VMware clusters.
+  - Case, cooling, PSU, and storage accessories can change the real delivered price.

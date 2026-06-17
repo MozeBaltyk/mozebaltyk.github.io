@@ -1,0 +1,480 @@
+request:
+  purpose: "Top-level consistent 3-node homelab hardware proposal with possibility to add 1 extra-node with GPU capability"
+  country: "PL"
+  currency: "EUR"
+  node_count: 3
+  optional_extra_nodes: 1
+  topology: "3 consistent base nodes plus optional extra GPU-capable node"
+
+  scope:
+    - "Host candidates"
+    - "Networking"
+    - "Rack and physical setup"
+    - "Extra costs outside host budgets"
+    - "Alternatives and implementation checklist"
+
+  source_files:
+    summary: "data/hw/summary.yaml"
+    hosts:
+      - "data/hw/hosts/mini-pc.yaml"
+      - "data/hw/hosts/minisforum.yaml"
+      - "data/hw/hosts/workstation.yaml"
+      - "data/hw/hosts/sff.yaml"
+      - "data/hw/hosts/sbc.yaml"
+      - "data/hw/hosts/servers.yaml"
+    network: "data/hw/network/homelab.yaml"
+    rack_physical: "data/hw/racks/homelab.yaml"
+
+  workloads:
+    - "Virtualization"
+    - "Kubernetes or OpenShift/OKD"
+    - "Docker containers"
+    - "General home services"
+    - "Storage and networking experiments"
+    - "Optional AI/LLM/GPU workloads on the extra GPU-capable node"
+
+  requirements:
+    hard:
+      node_count: 3
+      country: "PL"
+      currency: "EUR"
+      ali_express_allowed: false
+      home_suitable: true
+      minimum_per_node:
+        cpu_cores: 8
+        cpu_family: "AMD Ryzen preferred"
+        ram_gb: 96
+        ram_target_gb: 128
+        storage_devices: 2
+        ethernet_speed: "2.5G"
+        matched_nodes_required: true
+      optional_extra_gpu_node:
+        enabled: true
+        count: 1
+        cpu_cores: 8
+        ram_gb: 128
+        gpu_expansion: "Internal full-length PCIe x16 full-height/full-length GPU path"
+        gpu_target: "RTX 4090-class first; RTX 5090-class only after software validation"
+      workloads:
+        - "Kubernetes or OpenShift/OKD"
+        - "Virtualization"
+
+    soft:
+      low_noise: true
+      low_idle_power: false
+      compact_form_factor: false
+      managed_networking: true
+      vlan_support: true
+      two_nvme_slots_per_node: true
+      dual_ethernet_per_node: false
+      gpu_expansion_possible: true
+      internal_gpu_path_preferred_on_all_nodes: false
+      optional_extra_gpu_node_supported: true
+      oculink_required_on_all_nodes: false
+      easy_eu_sourcing: true
+      matched_nodes_preferred: true
+      matched_nodes_required: true
+
+    tradeoffs:
+      accept_used_hardware: true
+      accept_chinese_brands: true
+      accept_barebone_nodes: true
+      accept_arm_sbc_for_container_only_lab: true
+      avoid_rack_servers_in_living_space: true
+
+  budget_model:
+    interpretation: "Host budgets separate the consistent 3-node base cluster from the optional fourth GPU-capable node and GPU package. Base host totals exclude switch, cables, UPS, rack/shelf, long-term storage or backup contingency, and RTX 4090/5090 GPUs unless explicitly listed."
+    preferred_total_build_range:
+      min: 6500
+      max: 12000
+      currency: "EUR"
+    minimum_viable_total_estimate:
+      amount: 6650
+      currency: "EUR"
+    notes:
+      - "Prices are PL/EU street-price estimates."
+      - "AliExpress-only sourcing is excluded."
+      - "Exact motherboard, case, PSU, RAM/storage bundle, BIOS support, warranty, and return terms must be verified before buying or building three matched base nodes."
+      - "The optional fourth GPU node must additionally verify GPU clearance, PSU cabling, cooling, and driver/operator support."
+
+answer:
+  metadata:
+    last_reviewed: "2026-06-17"
+    pricing_confidence: "medium"
+    source_files:
+      - "data/hw/summary.yaml"
+      - "data/hw/hosts/*.yaml"
+      - "data/hw/network/homelab.yaml"
+      - "data/hw/racks/homelab.yaml"
+
+  requirement_evaluation:
+    hard_requirements:
+      status: "met_by_recommended_build"
+      notes:
+        - "The recommended custom AM5 Ryzen tower build provides three matched general-purpose nodes in PL/EUR planning, excludes AliExpress-only sourcing, and is suitable for home placement if tower size, airflow, and noise are acceptable."
+        - "Each base node targets at least 8 cores, 96-128 GB RAM, two M.2 NVMe storage positions, and 2.5G Ethernet."
+        - "The topology leaves a clean path to add one extra GPU-capable tower/workstation node with internal full-length PCIe x16 GPU support."
+    soft_requirements:
+      status: "mostly_met_by_recommended_build"
+      met:
+        - "Low noise"
+        - "Two NVMe slots per node"
+        - "EU sourcing options"
+        - "Matched nodes are realistic if building from one shared parts list"
+        - "Optional fourth GPU-capable node is straightforward with the same tower/workstation platform family"
+      partially_met:
+        - "Managed networking and VLAN support depend on choosing the recommended managed 2.5G switch, not just the host nodes."
+        - "Noise and low idle power are weaker than mini-PC options because tower nodes use desktop-class parts."
+        - "RTX 4090/5090 support is isolated to the optional GPU node and depends on GPU clearance, PSU/cabling, cooling, NVIDIA driver, CUDA/container toolkit, and Kubernetes/OpenShift GPU Operator compatibility."
+      not_met:
+        - "ECC memory"
+        - "Enterprise remote management such as IPMI, iDRAC, or iLO"
+    tradeoff_assessment:
+      accepted:
+        - "Custom-built towers are accepted to keep the three base nodes consistent."
+        - "Used/refurbished workstation alternatives are acceptable only if three identical units are available and verified."
+      avoided:
+        - "Rackmount servers are not recommended for living-space placement due to noise and power."
+        - "ARM SBCs are kept as an alternative for container-focused labs, not the default Proxmox recommendation."
+
+  host_candidates:
+    recommended:
+      category: "tower_workstation"
+      model: "Custom AM5 Ryzen 9 7900 general-purpose tower, 128 GB DDR5, 2 TB NVMe"
+      estimated_cluster_total:
+        amount: 4800
+        currency: "EUR"
+      unitary_price:
+        amount: 1600
+        currency: "EUR"
+      per_node:
+        cpu: "AMD Ryzen 9 7900-class, 12 cores / 24 threads"
+        memory: "128 GB DDR5 UDIMM target; 96 GB acceptable minimum"
+        storage: "2 TB NVMe planning target, at least 2x M.2 slots"
+        networking: "2.5G Ethernet minimum; optional 10G PCIe NIC"
+        gpu_expansion: "Not required on base nodes; optional fourth node should use internal full-length PCIe x16 full-height/full-length GPU path"
+        idle_watts: 45
+        noise: "low | medium depending on case fans"
+      rationale: "Best current fit for the revised goal: three consistent AM5 tower nodes provide a strong general-purpose homelab baseline, while the same platform family can add one fourth GPU-capable node with internal PCIe x16 for AI/LLM work."
+
+    alternatives:
+      - category: "minisforum"
+        model: "Minisforum UM890 Pro, Ryzen 9 8945HS, OCuLink-capable SKU"
+        estimated_cluster_total:
+          amount: 2850
+          currency: "EUR"
+        best_when: "Compactness, low idle power, and OCuLink experimentation matter more than internal RTX 4090/5090 GPU reliability."
+      - category: "minisforum"
+        model: "Minisforum MS-01, Core i5-12600H"
+        estimated_cluster_total:
+          amount: 1890
+          currency: "EUR"
+        best_when: "10G SFP+, internal low-profile PCIe, and storage flexibility matter more than the required full-size internal GPU AI-lab baseline."
+      - category: "mini-pc"
+        model: "GMKtec K8 Plus, Ryzen 7 8845HS"
+        estimated_cluster_total:
+          amount: 1230
+          currency: "EUR"
+        best_when: "Budget quiet homelab is more important than the consistent internal GPU/OpenShift AI requirement."
+      - category: "sff"
+        model: "Lenovo ThinkCentre M90s Gen 4 SFF, Core i5-13500 plus low-profile 2.5G NIC"
+        estimated_cluster_total:
+          amount: 1335
+          currency: "EUR"
+        best_when: "Refurbished business desktop value and low-profile PCIe expansion are preferred."
+      - category: "sbc"
+        model: "Orange Pi 5 Plus 32GB"
+        estimated_cluster_total:
+          amount: 687
+          currency: "EUR"
+        best_when: "Lowest power ARM Docker or lightweight Kubernetes lab is enough."
+      - category: "servers"
+        model: "Dell PowerEdge R640, dual Xeon Silver 4110/4114 class"
+        estimated_cluster_total:
+          amount: 1950
+          currency: "EUR"
+        best_when: "ECC, remote management, drive bays, and VM density outweigh noise and power cost."
+
+  networking:
+    recommended_option:
+      type: "managed 8-port 2.5G switch with 2x 10G SFP+ uplinks"
+      example_models:
+        - "MikroTik CRS310-8G+2S+IN"
+        - "QNAP QSW-M2108-2S"
+        - "Zyxel XMG1915-class 8x 2.5G plus 10G SFP+ model"
+        - "TP-Link Omada or JetStream 8x 2.5G plus 10G SFP+ model, only if noise is verified"
+      estimated_price:
+        min: 250
+        max: 500
+        currency: "EUR"
+      estimated_network_package:
+        min: 300
+        max: 700
+        currency: "EUR"
+      recommended_planning_target:
+        min: 350
+        max: 600
+        currency: "EUR"
+      ports: "8x 2.5G RJ45 plus 2x 10G SFP+ typical"
+      rationale: "Best balance for three base 2.5G nodes, VLANs, growth, and one optional extra GPU/workstation node or NAS uplink."
+    fallback:
+      type: "unmanaged fanless 2.5G switch"
+      estimated_price:
+        min: 90
+        max: 190
+        currency: "EUR"
+      estimated_network_package:
+        min: 110
+        max: 240
+        currency: "EUR"
+      use_when: "VLANs, LACP, and monitoring are not needed."
+    notes:
+      - "Budget separately for DACs, optics, or SFP+ modules if using 10G."
+      - "Prefer fanless or verified-quiet models for home placement."
+
+  rack_physical:
+    recommended_option:
+      type: "ventilated tower shelf, under-desk tower layout, or 19-inch open frame rack with shelves"
+      estimated_price:
+        min: 250
+        max: 1000
+        currency: "EUR"
+      best_for:
+        - "tower_workstation"
+        - "3-node homelab plus optional GPU node"
+        - "full-size RTX 4090/5090-class GPU airflow"
+      rationale: "Use stable ventilated placement for three tower/workstation base nodes and leave space for one optional GPU-capable tower. Prefer an under-desk layout, strong ventilated shelving, or a 19-inch open frame with shelves; keep front/rear/top airflow clear and avoid compact 10-inch racks for tower nodes."
+    requirements:
+      - "Verify each case has clearance for the selected RTX 4090/5090-class GPU length, width, power connector bend radius, and airflow path."
+      - "Do not place towers in enclosed furniture without a clear intake/exhaust path."
+      - "Keep UPS on the floor or bottom shelf due size and weight."
+      - "Use a safe PDU/power strip layout sized for three base towers, switch, router, and one optional GPU node."
+      - "Use labeled Cat6a patch cables and leave service slack behind each tower."
+    alternatives:
+      - type: "ventilated shelf or desk setup"
+        estimated_price:
+          min: 100
+          max: 400
+          currency: "EUR"
+        best_when: "Three tower nodes can sit safely with clear front/rear airflow and easy cable access."
+      - type: "19-inch open frame rack"
+        estimated_price:
+          min: 180
+          max: 600
+          currency: "EUR"
+        best_when: "Towers, SFF PCs, larger switches, rack UPS, or 19-inch shelves are used and floor footprint is acceptable."
+      - type: "small enclosed or acoustic rack"
+        estimated_price:
+          min: 400
+          max: 1000
+          currency: "EUR"
+        best_when: "Visible-room tidiness or moderate acoustic control is worth the cost and cooling complexity."
+  extra_costs:
+    gpu_package:
+      typical_range:
+        min: 1800
+        max: 4200
+        currency: "EUR"
+      note: "One RTX 4090/5090-class internal GPU path. Node PSUs/cases are already sized for GPU readiness; this line is primarily the GPU and any cabling/support accessories."
+    switch:
+      typical_range:
+        min: 90
+        max: 500
+        currency: "EUR"
+    cables_transceivers:
+      typical_range:
+        min: 20
+        max: 300
+        currency: "EUR"
+    ups:
+      typical_range:
+        min: 120
+        max: 450
+        currency: "EUR"
+    rack_or_shelf:
+      typical_range:
+        min: 50
+        max: 1000
+        currency: "EUR"
+    storage_backup_contingency:
+      typical_range:
+        min: 150
+        max: 1000
+        currency: "EUR"
+
+  final_recommended_home_build:
+    name: "Consistent 3-node tower homelab with optional fourth GPU node"
+    host_nodes:
+      quantity: 3
+      model: "Custom AM5 Ryzen 9 7900 general-purpose tower"
+      per_node_memory: "128 GB DDR5 target; 96 GB acceptable minimum"
+      per_node_storage: "2 TB NVMe planning target"
+      networking: "2.5G Ethernet minimum; optional 10G PCIe NIC"
+      gpu_expansion: "Not required on base nodes; optional fourth node provides full GPU capability"
+      estimated_total:
+        amount: 4800
+        currency: "EUR"
+    optional_gpu_node:
+      quantity: 1
+      model: "Custom AM5 Ryzen GPU-capable tower/workstation node"
+      estimated_node_price:
+        min: 1800
+        max: 2400
+        currency: "EUR"
+      gpu_slot_type: "internal full-length PCIe x16, full-height, multi-slot GPU clearance"
+      initial_attachment: "Install one RTX 4090-class GPU in the optional fourth node first; keep RTX 5090-class hardware experimental until software support is validated."
+      preferred_gpu: "RTX 4090 24GB as the safer initial Kubernetes/OpenShift GPU Operator target"
+      experimental_gpu: "RTX 5090-class card only after driver, CUDA, container toolkit, and Kubernetes/OpenShift GPU Operator support are validated"
+      estimated_package:
+        min: 1800
+        max: 4200
+        currency: "EUR"
+      caveats:
+        - "Verify GPU length, width, slot thickness, airflow path, and safe 12VHPWR/12V-2x6 cable bend radius before buying cases."
+        - "The optional GPU node can use a stronger PSU/case than the three base nodes while staying in the same platform family."
+    network:
+      type: "Managed fanless 2.5G switch with optional 10G SFP+ uplinks"
+      target_budget:
+        min: 350
+        max: 600
+        currency: "EUR"
+    physical:
+      type: "Ventilated tower shelf, under-desk tower layout, or 19-inch open frame with shelves"
+      target_budget:
+        min: 300
+        max: 1000
+        currency: "EUR"
+    ups:
+      target_budget:
+        min: 350
+        max: 650
+        currency: "EUR"
+      sizing_note: "Size by measured wall power and desired runtime, including the active GPU node; do not size only from PSU labels."
+    storage_backup:
+      target_budget:
+        min: 250
+        max: 600
+        currency: "EUR"
+      note: "Reserve separately for NAS disks, backup disks, replacement SSDs, and spares."
+
+  alternatives:
+    lowest_power:
+      build: "Orange Pi 5 Plus 32GB SBC cluster"
+      tradeoff: "Excellent power/noise, but not suitable for the requested x86 virtualization/Kubernetes baseline or optional internal GPU node."
+    compact_ai_lab:
+      build: "Minisforum UM890 Pro OCuLink cluster"
+      tradeoff: "Compact, low-idle, and OCuLink-capable, but less robust for RTX 4090/5090 than an optional internal PCIe GPU tower."
+    networking_storage_expandability:
+      build: "Minisforum MS-01 cluster"
+      tradeoff: "10G SFP+, low-profile PCIe, and storage flexibility, but not Ryzen and not OCuLink-capable for the requested AI profile."
+    budget_homelab:
+      build: "GMKtec K8 Plus cluster"
+      tradeoff: "Quiet and much cheaper for the 3-node baseline, but needs a separate GPU-capable fourth node for AI/LLM expansion."
+    refurbished_value:
+      build: "Lenovo ThinkCentre M90s Gen 4 SFF cluster"
+      tradeoff: "Good CPU value, but classic SFF business desktops are not suitable for full-size RTX 4090/5090-class GPUs."
+    vm_storage_density:
+      build: "Dell PowerEdge R640 server cluster"
+      tradeoff: "Best ECC, drive bays, and remote management, but high noise and power."
+
+  budget_rollup:
+    base_3_node_cluster:
+      host_nodes: 4800
+      total:
+        amount: 4800
+        currency: "EUR"
+      note: "Three consistent general-purpose tower nodes only; excludes network, UPS, rack/shelf, backup, optional GPU node, and GPU."
+    base_3_node_with_network_physical:
+      host_nodes: 4800
+      switch: 350
+      cables_transceivers: 100
+      ups: 500
+      rack_or_shelf: 400
+      storage_backup_contingency: 500
+      total:
+        amount: 6650
+        currency: "EUR"
+      note: "Recommended practical 3-node base cluster with network, UPS, physical placement, and storage/backup contingency."
+    optional_gpu_node_addon:
+      gpu_node: 2200
+      gpu_package: 2400
+      additional_ups_physical_contingency: 600
+      total:
+        amount: 5200
+        currency: "EUR"
+      note: "Optional fourth GPU-capable node plus one RTX 4090-class internal GPU package and added power/physical allowance."
+    optional_gpu_package_only:
+      gpu_package: 2400
+      total:
+        amount: 2400
+        currency: "EUR"
+      note: "One RTX 4090-class GPU package only; assumes a GPU-capable node already exists."
+    recommended:
+      host_nodes: 4800
+      switch: 350
+      cables_transceivers: 100
+      ups: 500
+      rack_or_shelf: 400
+      storage_backup_contingency: 500
+      optional_gpu_node: 2200
+      gpu_package: 2400
+      additional_gpu_node_infra: 600
+      total:
+        amount: 11850
+        currency: "EUR"
+      note: "Full 3+1 path: three consistent base nodes, one optional GPU-capable node, RTX 4090-class GPU, and practical infrastructure."
+    high_end_ai_5090:
+      host_nodes: 4800
+      optional_gpu_node: 2400
+      gpu_package: 3500
+      switch: 350
+      cables_transceivers: 150
+      ups: 900
+      rack_or_shelf: 800
+      storage_backup_contingency: 600
+      total:
+        amount: 13500
+        currency: "EUR"
+      note: "High-end 3+1 RTX 5090-class planning path; treat as experimental until software support and power/thermal details are validated."
+
+  power_noise_notes:
+    expected_recommended_idle:
+      hosts_only_watts: 135
+      with_switch_estimate_watts:
+        min: 155
+        max: 220
+      with_internal_gpu_active_estimate_watts:
+        min: 350
+        max: 900
+      note: "Actual idle and load depend on BIOS settings, SSDs, network links, workload, switch model, GPU power limit, and model-serving workload."
+    guidance:
+      - "Three base tower nodes consume more idle power than mini PCs; the optional GPU node dominates power, heat, and noise only when added."
+      - "SBCs are quietest and lowest power but weaker for VM-heavy x86 labs."
+      - "Used rack servers should be isolated from living spaces."
+      - "Measure wall power after deployment and use that value for UPS sizing and energy-cost estimates."
+
+  implementation_checklist:
+    - "Confirm final workload priority: virtualization, Kubernetes/OpenShift, containers, storage, networking, or optional AI/LLM expansion."
+    - "Select one consistent base-node tower/workstation parts list; default to AM5 Ryzen 9 7900-class only if the motherboard, case, and RAM configuration are stable."
+    - "Verify motherboard IOMMU behavior, 2.5G NIC, two M.2 slots, 128 GB RAM support, BIOS options, warranty, and return terms for the three base nodes."
+    - "Buy or build one node first if return terms allow, validate thermals, noise, BIOS, OpenShift/OKD or Linux install, RAM stability, and NIC behavior."
+    - "For the optional fourth node, validate RTX 4090-class GPU fit, PSU/cabling, NVIDIA drivers, container toolkit, and Kubernetes/OpenShift GPU Operator before committing to RTX 5090-class hardware."
+    - "Buy remaining two base nodes only after validation."
+    - "Install RAM and NVMe consistently across all nodes."
+    - "Update BIOS/firmware where safe and document versions."
+    - "Configure managed switch VLANs, management network, and uplinks."
+    - "Label every node, power brick, network cable, and switch port."
+    - "Verify tower dimensions, front/rear/top airflow, GPU exhaust path, shelf depth, and cable bend clearance before buying furniture or rack shelves."
+    - "Arrange towers with clearance, accessible ports, labeled power, and no enclosed hot-air recirculation."
+    - "Install UPS and configure graceful shutdown for hosts; add capacity when the optional GPU node is installed."
+    - "Measure idle and load power at the wall."
+    - "Deploy virtualization/Kubernetes/OpenShift, storage layout, backups, and monitoring; add NVIDIA GPU Operator only when the optional GPU node is installed."
+    - "Test node failure, UPS runtime, restore process, and network segmentation."
+
+  assumptions:
+    - "The desired build is for home placement in Poland using EUR budgeting."
+    - "Three nodes are required."
+    - "The default workload is a general-purpose 3-node homelab; AI/LLM GPU workloads are optional on a fourth node."
+    - "Host prices include stated RAM/storage allowances but not full network, UPS, rack/shelf, or backup storage."
+    - "Base host prices exclude the optional fourth GPU-capable node and RTX 4090/5090 GPU unless listed in a GPU budget rollup."
+    - "Consistency across the three base nodes is more important than compactness or the lowest possible host cost."

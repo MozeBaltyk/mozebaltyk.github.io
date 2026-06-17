@@ -1,0 +1,86 @@
+request:
+  purpose: "Contract to follow when making research for hosts"
+  country: ""
+  currency: ""
+
+  role: "general | storage | gpu | firewall | sbc | workstation"
+
+  budget:
+    min: null
+    max: null
+
+  form_factors:
+    - "mini_pc"
+    - "sbc"
+    - "sff"
+    - "tower"
+    - "rackmount"
+
+  requirements:
+    cpu_cores: null
+    ram_gb: null
+    nvme_slots: null
+    sata_ports: null
+
+    networking:
+      ethernet_ports: null
+      ethernet_speed: null
+      sfp_plus: false
+
+    gpu:
+      required: false
+      expansion: "none | pcie | oculink | thunderbolt | usb4 | any"
+
+    max_idle_watts: null
+
+  output:
+    number_of_options: 3
+
+  purchasing:
+    condition: "new | used | refurbished | either"
+    allow_barebone: false
+    allow_aliexpress: false
+
+answer:
+  metadata:
+    last_reviewed: "YYYY-MM-DD"
+    pricing_confidence: "low | medium | high"
+
+  summary:
+    recommended_option: ""
+    rationale: ""
+
+  options:
+    - rank: 1
+      model: ""
+      condition: ""
+
+      estimated_market_price:
+        amount: null
+        currency: ""
+
+      bill_of_materials:
+        - type: "host | memory | storage | nic | gpu | accessory"
+          name: ""
+          quantity: 1
+          estimated_price: null
+
+      requirement_match:
+        meets:
+          - ""
+        does_not_meet:
+          - ""
+
+      notes:
+        - ""
+
+  recommendation_notes:
+    - ""
+
+rules:
+  pricing:
+    use_typical_market_price: true
+    exact_listing_not_required: true
+
+  recommendation:
+    include_all_required_components: true

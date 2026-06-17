@@ -1,0 +1,200 @@
+metadata:
+  country: "PL"
+  currency: "EUR"
+  last_reviewed: "2026-06-17"
+  purpose: "Top-level consistent 3-node homelab hardware proposal with possibility to add 1 extra-node with GPU capability"
+
+default_recommendation:
+  category: "tower_workstation"
+  option: "Custom AM5 Ryzen 9 7900 general-purpose tower, 128 GB DDR5, 2 TB NVMe"
+  rationale: "Best default for the revised goal because it gives three consistent general-purpose homelab nodes first, while preserving a clean path to add one fourth GPU-capable tower/workstation node later."
+  upgrade_path: "Add one extra internal-PCIe GPU node with RTX 4090-class GPU first; treat RTX 5090-class hardware as a higher-risk path until driver, CUDA, container toolkit, and Kubernetes/OpenShift GPU Operator support are validated."
+
+host_category_budgets:
+  tower_workstation:
+    recommended_option: "Custom AM5 Ryzen 9 7900 general-purpose tower, 128 GB DDR5, 2 TB NVMe"
+    estimated_cluster_total:
+      min: 4800
+      max: 6600
+      currency: "EUR"
+    fit: "Best default for three consistent general-purpose homelab nodes, with the same platform family able to add one optional internal-GPU tower node."
+  mini-pc:
+    recommended_option: "GMKtec K8 Plus, Ryzen 7 8845HS"
+    estimated_cluster_total:
+      amount: 1230
+      currency: "EUR"
+    fit: "Budget quiet homelab fallback; no longer the default when a consistent 3-node tower baseline and optional internal-GPU fourth node are desired."
+  minisforum:
+    recommended_option: "Minisforum UM890 Pro, Ryzen 9 8945HS, OCuLink-capable SKU, 96 GB RAM"
+    estimated_cluster_total:
+      min: 2550
+      max: 3150
+      currency: "EUR"
+    fit: "Best compact OCuLink/eGPU alternative; no longer the default once compactness is not required and internal GPU reliability matters more."
+  sff:
+    recommended_option: "Lenovo ThinkCentre M90s Gen 4 SFF, Core i5-13500 plus low-profile 2.5G NIC"
+    estimated_cluster_total:
+      amount: 1335
+      currency: "EUR"
+    fit: "Good refurbished x86 CPU-node value, but classic SFF business desktops are not suitable for full-size RTX 4090/5090-class GPUs."
+  sbc:
+    recommended_option: "Orange Pi 5 Plus 32GB"
+    estimated_cluster_total:
+      amount: 687
+      currency: "EUR"
+    fit: "Lowest-power container/Kubernetes lab, not the best VM or Proxmox platform."
+  servers:
+    recommended_option: "Dell PowerEdge R640, dual Xeon Silver 4110/4114 class"
+    estimated_cluster_total:
+      amount: 1950
+      currency: "EUR"
+    fit: "Best for ECC, remote management, drive bays, and VM density when noise and power are acceptable."
+
+extra_costs_not_in_host_budgets:
+  optional_gpu_node:
+    typical_range:
+      min: 1800
+      max: 2400
+      currency: "EUR"
+    note: "One extra GPU-capable tower/workstation node before GPU; use full-length PCIe x16 slot, strong airflow case, and 1000-1200W ATX 3.0/3.1 PSU."
+  gpu_package:
+    typical_range:
+      min: 1800
+      max: 4200
+      currency: "EUR"
+    note: "One RTX 4090/5090-class internal GPU package for the optional fourth node; verify power cabling and airflow."
+
+hardware_summary:
+  tower_workstation:
+    cpu:
+      model: "AMD Ryzen 9 7900-class"
+      cores: 12
+      threads: 24
+    ram:
+      minimum_gb: 96
+      target_gb: 128
+      type: "DDR5 UDIMM"
+    gpu:
+      slot_type: "pcie_x16_full_height_full_length_on_optional_gpu_node"
+      capability: "Best path for optional fourth RTX 4090/5090-class GPU node."
+  mini-pc:
+    cpu:
+      model: "AMD Ryzen 7 8845HS-class"
+      cores: 8
+      threads: 16
+    ram:
+      minimum_gb: 32
+      target_gb: 32
+      type: "DDR5 SO-DIMM"
+    gpu:
+      slot_type: "none_or_vendor_specific_external_only"
+      capability: "Budget base cluster only; use separate GPU node for serious LLM work."
+  minisforum:
+    cpu:
+      model: "AMD Ryzen 9 8945HS-class for UM890 Pro; Intel Core i5-12600H for MS-01 alternative"
+      cores: "8 Ryzen / 12 Intel hybrid"
+      threads: "16 Ryzen / 16 Intel hybrid"
+    ram:
+      minimum_gb: 96
+      target_gb: 96
+      type: "DDR5 SO-DIMM"
+    gpu:
+      slot_type: "oculink_or_usb4_external_gpu_on_matching_skus"
+      capability: "Compact eGPU alternative, not the default optional GPU-node path."
+  sff:
+    cpu:
+      model: "Intel Core i5-13500-class"
+      cores: 14
+      threads: 20
+    ram:
+      minimum_gb: 32
+      target_gb: 96
+      type: "DDR5 UDIMM"
+    gpu:
+      slot_type: "pcie_x16_low_profile"
+      capability: "Low-profile cards only; not suitable for RTX 4090/5090."
+  sbc:
+    cpu:
+      model: "ARM SBC-class"
+      cores: 8
+      threads: 8
+    ram:
+      minimum_gb: 16
+      target_gb: 32
+      type: "LPDDR or soldered RAM depending on board"
+    gpu:
+      slot_type: "none"
+      capability: "No practical discrete GPU path."
+  servers:
+    cpu:
+      model: "Dual Xeon Silver 4110/4114-class"
+      cores: "16-20 total typical"
+      threads: "32-40 total typical"
+    ram:
+      minimum_gb: 64
+      target_gb: 128
+      type: "DDR4 ECC RDIMM"
+    gpu:
+      slot_type: "model_dependent_pcie_riser_often_limited_in_1u"
+      capability: "Enterprise expandability, but noise/power usually poor for home living spaces."
+
+topology:
+  base_nodes: 3
+  optional_extra_nodes: 1
+  optional_extra_node_role: "gpu_worker"
+  note: "Budget and recommendation separate the consistent 3-node base cluster from the optional fourth GPU-capable node and GPU package."
+  switch:
+    typical_range:
+      min: 90
+      max: 500
+      currency: "EUR"
+    note: "Budget 90-190 EUR for unmanaged 2.5G, or 250-500 EUR for the recommended managed 8x 2.5G plus 2x 10G SFP+ switch; the full network package with cables/DAC allowance is typically 300-700 EUR."
+  cables_transceivers:
+    typical_range:
+      min: 20
+      max: 300
+      currency: "EUR"
+    note: "Short Cat6a patch cables are inexpensive; 10G SFP+ DACs, optics, or RJ45 modules can materially change total cost."
+  ups:
+    typical_range:
+      min: 300
+      max: 800
+      currency: "EUR"
+    note: "Size UPS by measured wall power and desired runtime, including the external GPU/ATX PSU path when the AI expansion is installed."
+  rack_or_shelf:
+    typical_range:
+      min: 50
+      max: 1000
+      currency: "EUR"
+    note: "Use ventilated tower placement, strong shelving, or a 19-inch open frame with shelves for the default tower build; compact 10-inch racks only fit mini-PC alternatives."
+  storage_backup_contingency:
+    typical_range:
+      min: 150
+      max: 1000
+      currency: "EUR"
+    note: "Host budgets often include boot/storage allowances only; reserve separate money for NAS disks, backup disks, replacement SSDs, and spares."
+
+comparison:
+  lowest_power: "sbc"
+  quietest: "sbc"
+  best_vm_platform: "servers"
+  best_container_platform: "tower_workstation"
+  best_storage_expandability: "servers"
+  best_overall_home_choice: "tower_workstation"
+  best_ai_lab_choice: "tower_workstation optional fourth GPU node"
+  best_internal_gpu_choice: "tower_workstation optional fourth GPU node"
+  best_oculink_choice: "minisforum"
+  best_compact_choice: "minisforum"
+  best_budget_choice: "mini-pc"
+  best_networking_storage_minisforum_alternative: "Minisforum MS-01 when OCuLink is not required"
+  avoid_for_living_space: "1U rackmount servers unless isolated in a utility room, garage, basement, or acoustic enclosure"
+
+practical_warnings:
+  - "Power cost matters: three tower nodes idle higher than mini PCs, and the optional GPU node can dominate power, heat, and noise. Measure wall power after deployment."
+  - "Noise is placement-critical: rackmount servers and small high-RPM fans are poor bedroom or living-room choices."
+  - "Used hardware value is listing-specific; check caddies, rails, PSUs, NICs, management licenses, BIOS locks, SMART data, and return terms."
+  - "AliExpress is excluded in the host recommendations; cheaper AliExpress-only prices should not be mixed into these budgets."
+  - "Verify the shared parts list before building three matched nodes because motherboard slot layout, RAM support, NVMe count, PSU cabling, case airflow, and NIC options determine upgrade safety."
+  - "Host budgets do not include the full network package, UPS, rack/shelf accessories, long-term backup/storage contingency, optional fourth GPU node, or RTX GPU unless explicitly listed."
+  - "128 GB per node is the target for the tower/workstation default; 96 GB per node is an acceptable lower-cost minimum."
+  - "OCuLink eGPU remains useful for compact alternatives, but internal desktop PCIe x16 is preferred for the optional GPU-capable node."

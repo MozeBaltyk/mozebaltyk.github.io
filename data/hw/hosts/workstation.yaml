@@ -1,0 +1,281 @@
+request:
+  purpose: Recommend tower/workstation host candidates for a home homelab node and optional GPU-capable expansion node
+  country: PL
+  currency: EUR
+  host_role: general_purpose | gpu
+  form_factors:
+  - tower
+  - workstation_tower
+  budget:
+    per_unit:
+      min: 1600
+      max: 2200
+      currency: EUR
+  output:
+    number_of_options: 3
+    ranking_method: best_value_for_consistent_internal_gpu_ai_lab
+    include_alternatives: true
+  purchase_preferences:
+    condition: new | custom-build | used workstation
+    allow_barebone: true
+    allow_aliexpress: false
+    allow_chinese_brands: true
+    preferred_sources:
+    - x-kom
+    - Morele
+    - Komputronik
+    - Amazon.pl
+    - Amazon.de
+    - Allegro
+    - EU workstation refurbishers
+  requirements:
+    consistency:
+      matched_nodes_required: true
+      identical_board_psu_case_preferred: true
+      note: The three base nodes should use the same platform, RAM layout, storage layout, and chassis airflow pattern. The optional fourth node may share the same platform but adds GPU-grade PSU, case clearance, and GPU.
+    cpu:
+      min_cores: 8
+      preferred_cores: 12
+      preferred_family: AMD Ryzen AM5
+      alternatives_allowed:
+      - Intel workstation
+      - AMD Threadripper / Threadripper Pro workstation
+    memory:
+      min_ram_gb: 96
+      target_ram_gb: 128
+      type: DDR5 UDIMM or ECC UDIMM/RDIMM depending on platform
+    storage:
+      min_drive_bays: 2
+      per_node_target: 2 TB NVMe baseline; second NVMe slot kept for expansion, cache, or local storage
+      min_nvme_slots: 2
+    networking:
+      min_ethernet_ports: 1
+      wifi_required: false
+      min_ethernet_speed: 2.5G minimum; 10G PCIe NIC optional
+      sfp_plus_required: false
+    gpu_expansion:
+      required: false
+      slot_type: internal full-length PCIe x16
+      full_height_required: true
+      multi_slot_required: true
+      external_gpu_ok: false
+      psu_required: 1000-1200W ATX 3.0/3.1 class on the optional GPU node; base nodes may use smaller PSUs if they will never host the GPU
+      note: Internal PCIe GPU support is preferred for the optional GPU node; the base 3-node cluster can stay general-purpose.
+      preferred: true
+    platform:
+      proxmox_ready: true
+      kubernetes_ready: true
+      docker_ready: true
+      ecc_required: false
+      quicksync_required: false
+    power_noise:
+      max_idle_watts: null
+      noise_priority: medium
+  workloads:
+  - Virtualization
+  - Kubernetes or OpenShift/OKD
+  - Docker containers and general homelab services
+  - Storage and networking experiments
+  - Optional AI/LLM/GPU workloads on the extra GPU-capable node
+  nice_to_have: []
+  deal_breakers: []
+answer:
+  metadata:
+    options_requested: 3
+    options_returned: 3
+    ranking_method: best_value_for_consistent_internal_gpu_ai_lab
+    last_reviewed: '2026-06-17'
+    pricing_basis: estimated_total = unitary_price * request.cluster.node_count; GPU is excluded unless explicitly listed
+    pricing_confidence: medium
+    constraint_note: Default target is three identical general-purpose tower/workstation nodes with one optional extra GPU-capable node. Host totals exclude RTX 4090/5090 GPUs, switch, UPS, rack/shelf, backup storage, and installation labor unless explicitly listed.
+  summary:
+    recommended_option: Custom AM5 Ryzen 9 7900 GPU-ready tower, 128 GB DDR5, 2 TB NVMe
+    rationale: For a general-purpose consistent 3-node homelab with an optional fourth GPU node, an AM5 tower/workstation platform is the best default because it offers repeatable base nodes, high RAM capacity, good virtualization support, and a clean internal PCIe x16 path for the optional GPU-capable expansion node.
+    gpu_note: Add one fourth GPU-capable node with RTX 4090-class GPU first; RTX 5090-class hardware should wait for driver, CUDA, and Kubernetes/OpenShift GPU Operator validation.
+  options:
+  - rank: 1
+    model: Custom AM5 Ryzen 9 7900 GPU-ready tower
+    vendor: custom-build
+    condition: new
+    sold_as: parts_build_or_integrator_build
+    estimated_total:
+      amount: 5550
+      currency: EUR
+    unitary_price:
+      amount: 1850
+      currency: EUR
+    price_includes:
+    - AMD Ryzen 9 7900 or similar 12-core AM5 CPU
+    - B650/X670 motherboard with good IOMMU/virtualization support
+    - 128 GB DDR5 UDIMM
+    - 2 TB NVMe SSD
+    - Airflow ATX/mATX case with full-length multi-slot GPU clearance
+    - 1000-1200W ATX 3.0/3.1 PSU with safe 12VHPWR/12V-2x6 support
+    - 2.5G onboard networking
+    hardware:
+      cpu:
+        model: AMD Ryzen 9 7900-class
+        cores: 12
+        threads: 24
+        tdp_watts: 65
+      memory:
+        included_gb: 128
+        type: DDR5 UDIMM
+      storage:
+        included_gb: 2000
+        nvme_slots: 2
+        drive_bays: 2
+      networking:
+        ethernet_ports: 1
+        ethernet_speed: 2.5G
+      expansion:
+        gpu_slot: internal full-length PCIe x16, multi-slot GPU clearance required
+        pcie_notes: Prefer motherboard layout that leaves at least one usable slot for future 10G NIC if a large GPU is installed.
+        external_gpu: not needed; internal PCIe preferred
+        pcie_slots: 2+ / motherboard-dependent
+      power:
+        idle_watts: 45
+        max_watts_without_gpu: 180
+        gpu_ready_psu_watts: 1000-1200
+    requirement_match:
+      score: 0.97
+      meets:
+      - Three consistent nodes are practical to build from the same part list.
+      - 128 GB RAM target per node.
+      - Internal full-length PCIe GPU support on every node.
+      - Best fit for RTX 4090/5090-class GPU reliability among non-server options.
+      - Good OpenShift/OKD and OpenShift AI lab fit.
+      partially_meets:
+      - Larger, louder, and higher idle power than mini PCs.
+      - ECC depends on exact CPU, motherboard, and memory support.
+      does_not_meet: []
+    pros:
+    - Best balance for a home AI lab once compactness is not required.
+    - Internal PCIe avoids OCuLink/eGPU dock and cable complexity.
+    - PSU and airflow can be sized correctly for high-end GPUs.
+    cons:
+    - Higher cost, size, and idle power than Minisforum/mini-PC nodes.
+    - Requires parts selection or system-integrator build discipline to keep all three nodes identical.
+  - rank: 2
+    model: Custom AM5 Ryzen 7 7700 / Ryzen 9 7900 value GPU-ready tower
+    vendor: custom-build
+    condition: new | mixed new/open-box
+    sold_as: parts_build_or_integrator_build
+    estimated_total:
+      amount: 4800
+      currency: EUR
+    unitary_price:
+      amount: 1600
+      currency: EUR
+    price_includes:
+    - AMD Ryzen 7 7700 or discounted Ryzen 9 7900-class CPU
+    - B650 motherboard
+    - 96-128 GB DDR5 UDIMM depending on pricing
+    - 2 TB NVMe SSD
+    - Airflow case with full-length GPU clearance
+    - 1000W ATX 3.0/3.1 PSU
+    hardware:
+      cpu:
+        model: AMD Ryzen 7 7700 / Ryzen 9 7900-class
+        cores: 8-12
+        threads: 16-24
+        tdp_watts: 65-120
+      memory:
+        included_gb: 96
+        target_gb: 128
+        type: DDR5 UDIMM
+      storage:
+        included_gb: 2000
+        nvme_slots: 2
+      networking:
+        ethernet_ports: 1
+        ethernet_speed: 2.5G
+      expansion:
+        gpu_slot: internal full-length PCIe x16, multi-slot GPU clearance required
+        external_gpu: not needed; internal PCIe preferred
+        pcie_slots: 2+ / motherboard-dependent
+      power:
+        idle_watts: 40
+        max_watts_without_gpu: 170
+        gpu_ready_psu_watts: '1000'
+    requirement_match:
+      score: 0.91
+      meets:
+      - Lowest practical new-build path for three consistent tower nodes with optional GPU-node platform reuse.
+      - Internal GPU path on the optional fourth node when this platform is reused.
+      - Meets 96 GB RAM minimum if configured accordingly.
+      partially_meets:
+      - 128 GB per node may exceed the lower unitary estimate depending on DDR5 pricing.
+      - Fewer CPU cores than the recommended Ryzen 9 configuration if Ryzen 7 is selected.
+      does_not_meet: []
+    pros:
+    - Better value if budget pressure is high.
+    - Still avoids eGPU/OCuLink complexity.
+    cons:
+    - Less CPU headroom than the recommended Ryzen 9 build.
+    - Requires careful pricing to keep 128 GB and GPU-ready PSU/case within target.
+  - rank: 3
+    model: Used/refurbished workstation tower, GPU-ready class
+    vendor: Dell Precision / HP Z / Lenovo ThinkStation
+    condition: used | refurbished
+    sold_as: complete workstation
+    estimated_total:
+      amount: 6600
+      currency: EUR
+    unitary_price:
+      amount: 2200
+      currency: EUR
+    price_includes:
+    - Workstation tower with 12+ core CPU class where possible
+    - 128 GB RAM target
+    - 2 TB NVMe or SSD allowance
+    - High-wattage PSU if available
+    hardware:
+      cpu:
+        model: Threadripper Pro / Xeon W / Core workstation class
+        cores: 12+ preferred
+        threads: 24+ preferred
+      memory:
+        included_gb: 128
+        type: ECC or non-ECC depending on platform
+      storage:
+        included_gb: 2000
+        nvme_slots: model-dependent
+      networking:
+        ethernet_ports: 1
+        ethernet_speed: 1G-2.5G typical; add 2.5G/10G NIC if needed
+      expansion:
+        gpu_slot: verify full-length multi-slot GPU clearance and PSU connectors before buying
+        external_gpu: not needed; internal PCIe preferred
+        pcie_slots: model-dependent
+      power:
+        idle_watts: 80
+        max_watts_without_gpu: 300
+        gpu_ready_psu_watts: model-dependent; verify 1000W+ and PCIe 5 power path
+    requirement_match:
+      score: 0.82
+      meets:
+      - Can provide workstation-class RAM capacity and PCIe slots.
+      - Good option if a matched lot is available.
+      partially_meets:
+      - Consistency depends on finding three identical listings.
+      - PSU connectors, BIOS locks, fan noise, and GPU clearance are listing-specific.
+      does_not_meet: []
+    pros:
+    - Potentially strong PCIe, ECC, and serviceability.
+    - Can be good value when a matched batch appears.
+    cons:
+    - Higher risk than new identical custom builds.
+    - Can be louder, older, and less power-efficient.
+  comparison:
+    best_value_option: Custom AM5 Ryzen 9 7900 GPU-ready tower
+    lowest_cost_gpu_ready_option: Custom AM5 Ryzen 7 7700 / Ryzen 9 7900 value GPU-ready tower
+    most_enterprise_like_option: Used/refurbished workstation tower, GPU-ready class
+    best_internal_gpu_option: Custom AM5 Ryzen 9 7900 GPU-ready tower
+    best_for_rtx_4090_5090: Custom AM5 Ryzen 9 7900 GPU-ready tower
+  important_considerations:
+  - This category is the preferred default when the goal is three consistent nodes rather than three compact nodes.
+  - Use internal PCIe x16 for RTX 4090/5090-class GPUs instead of OCuLink when size is acceptable.
+  - Build all three nodes with the same GPU-capable PSU and airflow case even if only one GPU is installed initially.
+  - Verify GPU length, width, power connector clearance, motherboard slot layout, and 10G NIC expansion before buying parts.
+  - RTX 4090 is the safer initial target; RTX 5090-class hardware should wait for validated driver, CUDA, and OpenShift/NVIDIA GPU Operator support.
