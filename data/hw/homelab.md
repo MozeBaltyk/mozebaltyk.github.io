@@ -2,10 +2,11 @@
 |----------|----------|----------|----------|----------|----------|----------|
 | CPU | i7-9700T | i5-10500T | i7-14700 | i9-13900H | Ryzen 9 7900 | Ryzen 9 9955HX |
 | Cores / Threads | 8 / 8 | 6 / 12 | 20 / 28 | 14 / 20 | 12 / 24 | 16 / 32 |
+| CPU TDP | 35W | 35W | 65W | 45W (up to ~65W turbo) | 65W | 55W (up to ~75W turbo) |
 | Max RAM | 64 GB | 64 GB | 96–128 GB* | 96 GB* | 96 GB | 96 GB |
 | RAM Type / Speed | DDR4-2666 | DDR4-2933 | DDR5-5600 | DDR5-5200 | DDR5-5200 | DDR5-5600 |
 | NVMe Slots | 2 | 2 | 2 | 3 | 4 | 3 |
-| NVMe Generation | PCIe 3.0 x4 | PCIe 3.0 x4 | PCIe 4.0 x4 | PCIe 4.0 x4 | 4× PCIe 4.0 (mixed lane widths) | PCIe 4.0 x4 |
+| NVMe Generation | PCIe 3.0 x4 | PCIe 3.0 x4 | PCIe 4.0 x4 | PCIe 4.0 x4 | PCIe 4.0 | PCIe 4.0 x4 |
 | SATA Support | Yes (2.5") | Yes (2.5") | Usually No | No | No | No |
 | PCIe Slot | No | No | No | PCIe 4.0 x8 (x16 physical) | No | PCIe 4.0 x8 (x16 physical) |
 | Low Profile GPU | No | No | No | Yes | No | Yes |
