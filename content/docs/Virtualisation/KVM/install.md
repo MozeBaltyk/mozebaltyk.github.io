@@ -47,6 +47,10 @@ sudo apt install qemu-kvm libvirt-daemon-system libvirt-clients libvirt-daemon v
 sudo usermod -aG libvirt $(whoami)
 sudo usermod -aG kvm $(whoami)
 
+# Config
+sudo sed -i 's/^#dynamic_ownership = 1/dynamic_ownership = 1/' /etc/libvirt/qemu.conf
+sudo systemctl restart libvirtd
+
 # Helper
 sudo apt install bridge-utils cpu-checker -y
 
