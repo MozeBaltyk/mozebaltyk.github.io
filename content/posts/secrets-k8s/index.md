@@ -287,23 +287,11 @@ This is another reason `age` is nice: the model is boring and easy to reason abo
 
 You will often find a more advanced config like this:
 
-- `keys:` defines reusable recipient lists
-- `&name` and `*name` are YAML anchors and aliases, just a DRY way to reuse the same values
-- `creation_rules:` says which files match which policy
-- `input_type: yaml` or `env` tells `sops` how to parse the file
-- `encrypted_regex: ^(data|stringData)$` means only those Kubernetes fields are encrypted
-- `stores.yaml.indent: 2` is only output formatting
-
-So the long version is not a different mechanism. It is just the same policy written in a more reusable way for teams with many keys and file types.
-
-Here is an example: 
-
 ```yaml
 ---
-# This example uses YAML anchors which allows reuse of multiple keys
-# without having to repeat yourself.
-# Also see https://github.com/Mic92/dotfiles/blob/master/nixos/.sops.yaml
-# for a more complex example.
+# This example uses YAML anchors which allows reuse of multiple keys 
+#without having to repeat yourself.
+
 keys:
   age:
     - &ci_age_key age1wdapsm2nw9pr0nmak892gqwat44uhay7d7z5fqtwgsmm6ecatggsfql3yx
@@ -326,6 +314,15 @@ stores:
   yaml:
     indent: 2
 ```
+
+- `keys:` defines reusable recipient lists
+- `&name` and `*name` are YAML anchors and aliases, just a DRY way to reuse the same values
+- `creation_rules:` says which files match which policy
+- `input_type: yaml` or `env` tells `sops` how to parse the file
+- `encrypted_regex: ^(data|stringData)$` means only those Kubernetes fields are encrypted
+- `stores.yaml.indent: 2` is only output formatting
+
+So the long version is not a different mechanism. It is just the same policy written in a more reusable way for teams with many keys and file types.
 
 ## `ksops`: `sops` for Kustomize workflows
 
@@ -416,10 +413,6 @@ In a GitOps setup, the same idea applies, but the controller needs a plugin or s
 In short: `sops` solves encrypted files, `ksops` plugs that idea into a Kustomize-based deployment process.
 
 ## Using Vault when the source of truth is external
-
-Sometimes the right answer is: *do not store the real secret in Git or in Helm at all.*
-
-That is where Vault becomes interesting.
 
 With Vault, Kubernetes workloads can fetch secrets at runtime, and in some cases they can fetch **dynamic** secrets with a lease and automatic expiration. This is far better than hardcoding one long-lived password into every environment.
 
