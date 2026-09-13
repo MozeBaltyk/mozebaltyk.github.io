@@ -213,8 +213,15 @@ if the ssh pub key is set on Github and define your `~/.ssh/config` like:
  ~/.ssh/config
 Host github.com
   HostName github.com
-  User MozeBaltyk
+  User git
   IdentityFile ~/.ssh/ed25519
+```
+
+test it: 
+
+```bash
+➜  ~ ssh -T github.com
+Hi MozeBaltyk! You've successfully authenticated, but GitHub does not provide shell access.
 ```
 
 Then in `.git/config` of your project set remote orgin using `git` protocol as below:
@@ -227,8 +234,6 @@ Then in `.git/config` of your project set remote orgin using `git` protocol as b
 In fact, it's often forgotten, this model is available on a bare linux host. Everyone can use git with a local ssh server.
 
 One word on the choice of the protocol. It may sound obvious, but SSH usually goes through port 22. Some companies will block outgoing connections to port 22, so in this sense HTTPS is more standard and easier to use through corporate networks. GitHub does not allow password authentication for Git operations over HTTPS anymore, but you can use a **Personal Access Token** instead. The question then becomes how and where to securely store this token.
-
-
 
 ## The CLI providers tools, gh or glab
 
