@@ -208,6 +208,8 @@ container-gitea-db.service                                                    en
 podman-network-gitea-net.service                                              enabled         enabled
 ```
 
+You get do the same exercice with **Forgejo**...
+
 ## Why not *Docker Compose* or *Kubernetes*?
 
 Why not *docker-compose*, which does roughly the same thing?

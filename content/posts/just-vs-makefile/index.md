@@ -30,26 +30,26 @@ Makefile VS Justfile
 
 ## The cool stuffs with Makefile
 
-Nothing to say, it's POSIX so it eveywhere almost by default since 1976 (47 years). So that's the reference, either you do better or worst than Make.   
+Nothing to say, it's POSIX, so it's almost everywhere by default since 1976. So that's the reference: either you do better or worse than Make.
 
-I can list few points:  
+I can list a few points:
 
-* Cool that it exists and you should have went through.
+* Cool that it exists, and you should have gone through it.
 
-* Make is “task runner” and “build tool” since it's capable to not run a target if a dependencies is up-to-date when justfile is just "task runner". 
-  But on the other hand, `Just` just want to be a "task runner"...
+* Make is a “task runner” and a “build tool”, since it's capable of not running a target if its dependencies are up-to-date, while justfile is just a "task runner".
+  But on the other hand, `Just` just wants to be a "task runner"...
 
 ## The cool stuffs with Justfile
 
-Here a list of what justfile can do natively but not makefile:
+Here is a list of what justfile can do natively but Makefile cannot:
 
-* `just --choose` - will let you choose in interactif mode among the recipes.
+* `just --choose` - will let you choose among the recipes in interactive mode.
 
-* Define your work dir `just --justfile ~/.user.justfile --working-directory ~` (I am not convince that you can do it with Makefile) 
+* Define your working dir: `just --justfile ~/.user.justfile --working-directory ~` (I am not convinced that you can do it with Makefile).
 
-* Code Precheck is highly appreciate. 
+* Code precheck is highly appreciated.
 
-```bash 
+```bash
 bash: line 1: repository: unbound variable
 error: Backtick failed with exit code 127
   |
@@ -57,7 +57,21 @@ error: Backtick failed with exit code 127
   |               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 ```
 
-* Automaticly document the recipes if a commented line is set just before the recipe, so when you execute `just --list`, you get: 
+* That's a big one, the Shebang recipes. A recipe can effectively be a Bash/Python/Node/etc. script without maintaining separate little script files.
+
+```makefile
+# Python directly inside your justfile
+hello name:
+    #!/usr/bin/env python3
+    import sys
+
+    name = "{{name}}"
+    print(f"Hello {name}!")
+```
+
+No `scripts/hello.py`, no wrapper, everything stays in your `justfile`.
+
+* Automatically document the recipes if a commented line is set just before the recipe, so when you execute `just --list`, you get:
 
 ```text
 Available recipes:
@@ -65,8 +79,8 @@ Available recipes:
     test                        # Test
 ```
 
-* Possibility to make a hidden recipe for documentation, the default recipes (or even to complete this doc). 
-Imagines that you need to create a custom PHONY with a beautifull sed to do the same in makefile... 
+* Possibility to make a hidden recipe for documentation, the default recipe (or even to complete this doc).
+  Imagine that you need to create a custom PHONY with a beautiful `sed` to do the same in Makefile...
 
 ```makefile
 _help:
@@ -75,9 +89,9 @@ _help:
     @printf "Some Extra infos"
 ```
 
-* hidden recipes from documentation 
+* Hidden recipes from documentation.
 
-* Possibility to create aliases for all the recipes automaticly: 
+* Possibility to create aliases for all the recipes automatically:
 
 ```bash
 for recipe in `just -f ~/.justfile --summary`; do
@@ -85,16 +99,16 @@ for recipe in `just -f ~/.justfile --summary`; do
 done
 ```
 
-* Possibility to list in different order :
+* Possibility to list in different orders:
 
 ```bash
-just --list               # sorted in an alphanumeric order  
+just --list               # sorted in alphanumeric order  
 just --list --unsorted    # sorted in the order given in the justfile
 ```
 
-* Parameterization in makefile will look like `make something -e CHOICE=test`, in justfile `just something test` since inside an justfile, you can define arguments to your recipes.
+* Parameterization in Makefile will look like `make something -e CHOICE=test`; in justfile, `just something test`, since inside a justfile you can define arguments for your recipes.
 
-* Autocompletion on your recipes
+* Autocompletion for your recipes:
 
 ```bash
 $ just
@@ -109,22 +123,45 @@ release    -- Args: PROJECT *VERSION   # Release collection on your repository t
 role       -- Args: GROUP PROJECT ROLE # Create a new ansible role inside an existing collection.
 ```
 
-* Syntax Check. Will point to error in your `justfile` code. 
+* Syntax check. It will point to errors in your `justfile` code.
 
-* Recipes can be written in arbitrary languages, like Python, NodeJS, bash.
+* Recipes can be written in arbitrary languages, like Python, NodeJS, or Bash.
 
-* just a "task runner" and all the points listed above are going to this purpose.
+* Just is a "task runner", and all the points listed above are going toward this purpose.
 
-* use tag `[private]` to make the recepies unvisible from the list
+* Use the `[private]` attribute to make recipes invisible from the list.
 
+* Group of receipes with tag `[group('Development')]`, here an example on how it render: 
 
-## The Justfile's limitation
+```bash
+➜  Colt git:(main) just
+Available recipes:
+    [Development]
+    compile           # Build the binary.
+    test              # Run the default Colt suite and lightweight repository checks.
+    test-unit         # Fast unit lane: parsers, config, command generation, API mapping. No network.
+    test-integration  # GITEA_PORT/FORGEJO_PORT (defaults 13000/13001), COLT_IT_KEEP=1 to debug.
+    test-bdd          # Run every active deterministic BDD scenario (local fixtures only).
+    test-bdd-blackbox # Build and smoke-test the real Colt binary in a sandbox.
+    bdd-coverage      # Explicitly regenerate deterministic requirement-to-scenario coverage.
+    check-tools       # the image with a read-only workspace and no Kubernetes credential mount.
+
+    [Execution Environment]
+    build             # Build the Execution Environment container image.
+    push              # Push the Execution Environment image to the private registry.
+    deploy            # Deploy the toolkit via the Helm chart (podman play kube).
+    destroy           # Tear down the deployed toolkit pod.
+    redeploy          # Destroy then redeploy.
+    connect           # Launch the EE toolkit container and drop into an interactive shell.
+```
+
+## The Justfile's limitations
 
 ### The exported variables
 
-One limitation that I got with justfile is that you can not pass a variable which does not exist. Imagine, you want to set a default behavior but allow your user to define another bebavior. The code below does not work but if you define the var `export repository=gitlab.com`. But the point here is to allow the user to not define the variable... But this come from RUST safety paradigm. 
+One limitation that I got with justfile is that you cannot pass a variable that does not exist. Imagine you want to set a default behavior but allow your user to define another behavior. The code below does not work unless you define the var with `export repository=gitlab.com`. But the point here is to allow the user to not define the variable... This comes from Rust's safety paradigm.
 
-```bash 
+```bash
 bash: line 1: repository: unbound variable
 error: Backtick failed with exit code 127
   |
@@ -135,15 +172,15 @@ error: Backtick failed with exit code 127
 REPOSITORY := env_var('REPOSITORY')
 ```
 
-Ok, so what I wrote above is not true anymore. This was before, I found [this](https://just.systems/man/en/chapter_37.html):
+Ok, so what I wrote above is not true anymore. This was before I found [this](https://just.systems/man/en/chapter_37.html):
 
 ```bash
-REPOSITORY    :=  env_var_or_default('REPOSITORY', "github.com") 
+REPOSITORY := env_var_or_default('REPOSITORY', "github.com") 
 ```
 
-### Variables in backtick
+### Variables in backticks
 
-Another limitation, again with variable, cannot use variable define before in backtick. This below will generate an error because 
+Another limitation, again with variables: you cannot use a variable defined before in a backtick. This below will generate an error:
 
 ```bash
 set shell := ["bash", "-uc"]
@@ -159,12 +196,11 @@ test:
     echo {{TEST2}}
 ```
 
-But limitations listed above seems to come from RUST paradigm for safety and performance.
-
+But the limitations listed above seem to come from Rust's paradigm for safety and performance.
 
 ## Makefile Limitations
 
-The documentation of all the PHONY need a PHONY for it. We should look like this: 
+The documentation of all the PHONYs needs a PHONY for it. It should look like this:
 
 ```makefile
 .PHONY: prerequis
@@ -217,19 +253,18 @@ show-help:
         | cat
 ```
 
-## Conlcusion
+## Conclusion
 
-As you can see, the list is long and you end up with a beautifull tool which allow you to organize your tasks linked between them, autodocumented, and quite safe.
-It tries to avoid the complexity and idiosyncrasie of `Makefile`. In some way, `Makefile` code is nested with your shell and diving into an existing long script can become tedious. 
-By the way, one project I did with justfile, [AnsiColt](https://github.com/MozeBaltyk/AnsiColt).
+As you can see, the list is long and you end up with a beautiful tool that allows you to organize your tasks linked between them, auto-documented, and quite safe.
+
+It tries to avoid the complexity and idiosyncrasies of `Makefile`. In some way, `Makefile` code is nested with your shell, and diving into an existing long script can become tedious.
 
 ## Other tips
-
 
 * Create a CLI:
 
 ```shell
-alias acme='just --justfile ~/acme/cli/justfile'"
+alias acme='just --justfile ~/acme/cli/justfile'
 ```
 
 ```makefile
@@ -243,10 +278,10 @@ alias acme='just --justfile ~/acme/cli/justfile'"
   echo "OS: {{os()}}"
 ```
 
-* Use tags in justfile
+* Use tags in justfile:
 
 ```makefile
-[private] # make the reciepe invisible during list
+[private] # make the recipe invisible during list
 @default:
   just --list
 
@@ -294,14 +329,35 @@ scale-jpg path:
   import PIL.Image
 ```
 
+## Bonus Point
 
-## source
+usually I base my project on a [template](https://github.com/MozeBaltyk/project-template) using this justfile: 
+
+```bash
+➜  project-template git:(main) just
+Available recipes:
+    [Development]
+    compile     # Build the binary. [This is just an example]
+    test        # Run check the developer/support environment.
+    test-bdd    # Run every active deterministic BDD scenario (local fixtures only).
+    check-tools # the image with a read-only workspace and no Kubernetes credential mount.
+
+    [Execution Environment]
+    build       # Build the Execution Environment container image.
+    push        # Push the Execution Environment image to the private registry.
+    deploy      # Deploy the toolkit via the Helm chart (podman play kube).
+    destroy     # Tear down the deployed toolkit pod.
+    redeploy    # Destroy then redeploy.
+    connect     # Launch the EE toolkit container and drop into an interactive shell.
+```
+
+## Sources
 
 [Some Memo](https://cheatography.com/linux-china/cheat-sheets/justfile/)
 
-[The Offical doc](https://just.systems/man/en/)
+[The Official doc](https://just.systems/man/en/)
 
-[Github Casey/just](https://github.com/casey/just)
+[GitHub Casey/just](https://github.com/casey/just)
 
 [Create some spell](https://dany98.hashnode.dev/just-harness-command-line-spells)
 
