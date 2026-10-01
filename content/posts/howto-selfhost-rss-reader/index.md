@@ -1,5 +1,5 @@
 ---
-title: "📻 How to Selfhost a RSS Reader"
+title: "📻 Building My Self-Hosted RSS Reader"
 description: "Launch and host RSS Reader to follow blogs that you like"
 date: 2026-01-21T16:00:00+01:00
 draft: true
@@ -31,29 +31,70 @@ In the IT world, staying up to date is not optional — it is part of the job.
 
 New tools appear constantly, security issues are discovered, best practices evolve, and architectural patterns come and go. Missing important information can quickly lead to outdated knowledge or poor technical decisions.
 
-This ongoing process of monitoring, reading, and learning is often referred to in French as *veille technologique*. In English, we might simply call it **keeping up with technology** or **technology monitoring**.
+This ongoing process of monitoring, reading, and learning is often referred to in French as *veille technologique*. In English, we might simply call it **keeping up with technology** or **technology Watch**. It also make the job intresting. 
 
 Despite being one of the oldest formats on the web, RSS remains one of my favorite ways to do this.
 
-Technical blogs are still an excellent source of knowledge. They are often written by practitioners, focused on real-world problems, and provide much more depth than a short social media post.
+Technical blogs are still an excellent source of knowledge. They are often written by practitioners, focused on real-world problems, and provide much more depth than a short social media post. RSS flux connect you through those small private blogs to real life IT passionate.
 
-Unfortunately, today's web is increasingly filled with aggressive advertising, clickbait headlines, tracking, recommendation algorithms, and automatically generated content optimized for engagement rather than usefulness.
+Unfortunately, today's web is increasingly filled with aggressive advertising, clickbait headlines, tracking, recommendation algorithms, and automatically generated content optimized for engagement rather than usefulness. That's a good reason for me to get back to the old school RSS. 
 
-Finding high-quality information is becoming harder.
+Relying exclusively on centralized platforms also means giving up control over what you see, how it is sorted, and when it appears. And no *Medium*, I do not need another paied subscription.
 
-Relying exclusively on centralized platforms also means giving up control over what you see, how it is sorted, and when it appears.
-
-RSS takes the opposite approach:
-
-**you choose the sources.**
-
-There is no recommendation algorithm deciding what deserves your attention. You subscribe to the blogs and authors you trust, and their articles arrive in your reader.
+What I like with RSS, **you choose the sources.** There is no recommendation algorithm deciding what deserves your attention. You subscribe to the blogs and authors you trust, and their articles arrive in your reader. That's the old good internet. 
 
 This post is therefore not about writing or publishing content.
 
 It is about **reading it**.
 
 More specifically, it is about taking back control of my information flow by self-hosting an RSS reader and building a curated, distraction-free environment around the blogs and authors I want to follow.
+
+## Why self-host an RSS reader?
+
+Before deploying anything, there is a legitimate question to ask:
+
+**Why self-host an RSS reader at all?**
+
+A desktop RSS application would be much simpler. Install it, import an OPML file, and start reading. If I only wanted to follow a few blogs from a single workstation, that would probably be enough. Option are not missing **MyReader**, **Fluent Reader**, **FeedDesk**,...  
+
+But my goal is slightly different.
+
+I do not only want an application for reading RSS feeds. I want a small, personal **RSS service**.
+
+By hosting the aggregator myself, the feed collection and its state become independent from any particular workstation or client.
+
+The server can continue polling feeds while my laptop is turned off, and the same collection can be accessed from a browser, a phone, or potentially a dedicated desktop client.
+
+It also gives me one centralized place for:
+
+- Feed subscriptions
+- Read and unread state
+- Categories and filters
+- Retention
+- Backups
+- API access
+- Future integrations such as RSSHub
+- Create IA workflow to sort or alert you
+
+This also separates the **RSS backend** from the **reading interface**.
+
+Today I may use the FreshRSS web interface. Tomorrow I might prefer a desktop or mobile client connected to the same backend.
+
+That separation is important to me.
+
+I want the list of sources to remain mine, preferably exportable through standards such as OPML and also tracked independently in Git.
+
+The reader itself should be replaceable.
+
+So the question is not really:
+
+**Desktop app or self-hosted reader?**
+
+It is:
+
+**Do I want one local RSS application, or do I want a centralized RSS service that several applications can consume?**
+
+For my use case, the second option is more interesting as addon to my homelab.
 
 ## Which RSS reader?
 
@@ -168,13 +209,15 @@ It is to find the one that best matches my own requirements.
 In my case, I want something that is:
 
 - Open source
-- Easy to self-host
+- Actively maintained
 - Lightweight
-- Web-based
-- Mobile-friendly
-- Mature and actively maintained
-- Easy to back up
-- Easy to redeploy
+- Easy to deploy and upgrade
+- Easy to back up and restore
+- OPML import/export
+- API support
+- Compatible with external mobile/desktop clients
+- Filtering and organization capabilities
+- Minimal dependency on a particular ecosystem
 
 ## FreshRSS — the chosen one
 

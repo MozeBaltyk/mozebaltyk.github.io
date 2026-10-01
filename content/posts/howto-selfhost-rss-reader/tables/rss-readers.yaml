@@ -4,7 +4,7 @@
   lightweight: "⭐⭐⭐⭐"
   extensible: "⭐⭐"
   selfhost: "⭐⭐⭐⭐"
-  best_for: "Speed & simplicity"
+  best_for: "The obvious minimalist alternative"
 
 - name: FreshRSS
   ram: "~60–100 MB"
@@ -12,7 +12,7 @@
   lightweight: "⭐⭐⭐"
   extensible: "⭐⭐⭐"
   selfhost: "⭐⭐⭐"
-  best_for: "Balanced features"
+  best_for: "Probably the clearest general-purpose self-hosted candidate"
 
 - name: Tiny Tiny RSS
   ram: "~150–300 MB"
@@ -20,7 +20,7 @@
   lightweight: "⭐⭐"
   extensible: "⭐⭐⭐⭐"
   selfhost: "⭐⭐"
-  best_for: "Power users"
+  best_for: "Historically important; original project retired, community fork now continues it"
 
 - name: CommaFeed
   ram: "~200+ MB"
@@ -28,4 +28,12 @@
   lightweight: "⭐⭐⭐"
   extensible: "⭐"
   selfhost: "⭐⭐⭐"
-  best_for: "Google Reader–like UI"
+  best_for: "Mature and interesting, especially for Google Reader-style UX"
+
+- name: NewsBlur
+  ram: "~2 GB+"
+  cpu: "Medium to high"
+  lightweight: "⭐"
+  extensible: "⭐⭐⭐⭐"
+  selfhost: "⭐⭐"
+  best_for: "A full-featured RSS platform with advanced filtering, search, native apps, and automation"
