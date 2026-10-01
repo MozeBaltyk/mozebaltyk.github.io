@@ -1,4 +1,3 @@
-```markdown
 ---
 title: "📻 Building My Self-Hosted RSS Reader"
 description: "Launch and host an RSS reader to follow the blogs you care about"
@@ -651,6 +650,3 @@ Sometimes, old and boring technology is exactly what we need.
 - [Podman Quadlet documentation](https://docs.podman.io/en/latest/markdown/podman-systemd.unit.5.html)
 - [Korben — RSS topics](https://korben.info/rsshub-rss-flux-sites-aaron-swartz.html)
 - [Korben — RSS is Life](https://korben.info/en/rss-feeds-are-life.html)
-```
-
-I kept your core deployment section intact, but made the comparison section more coherent with the article’s actual objective: **FreshRSS is the selected backend, not just one item in a generic RSS catalogue.**
