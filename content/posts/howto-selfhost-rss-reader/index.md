@@ -1,8 +1,9 @@
+```markdown
 ---
 title: "📻 Building My Self-Hosted RSS Reader"
-description: "Launch and host RSS Reader to follow blogs that you like"
-date: 2026-01-21T16:00:00+01:00
-draft: true
+description: "Launch and host an RSS reader to follow the blogs you care about"
+date: 2026-10-01T23:00:00+01:00
+draft: false
 noindex: false
 featured: true
 pinned: false
@@ -31,17 +32,31 @@ In the IT world, staying up to date is not optional — it is part of the job.
 
 New tools appear constantly, security issues are discovered, best practices evolve, and architectural patterns come and go. Missing important information can quickly lead to outdated knowledge or poor technical decisions.
 
-This ongoing process of monitoring, reading, and learning is often referred to in French as *veille technologique*. In English, we might simply call it **keeping up with technology** or **technology Watch**. It also make the job intresting. 
+This ongoing process of monitoring, reading, and learning is often referred to in French as *veille technologique*. In English, we might simply call it **keeping up with technology** or **technology watch**.
+
+It is also one of the things that keeps the job interesting.
 
 Despite being one of the oldest formats on the web, RSS remains one of my favorite ways to do this.
 
-Technical blogs are still an excellent source of knowledge. They are often written by practitioners, focused on real-world problems, and provide much more depth than a short social media post. RSS flux connect you through those small private blogs to real life IT passionate.
+Technical blogs are still an excellent source of knowledge. They are often written by practitioners, focused on real-world problems, and provide much more depth than a short social-media post.
 
-Unfortunately, today's web is increasingly filled with aggressive advertising, clickbait headlines, tracking, recommendation algorithms, and automatically generated content optimized for engagement rather than usefulness. That's a good reason for me to get back to the old school RSS. 
+RSS connects you directly to those smaller blogs and independent authors — often to people who are actually building, operating, breaking, and fixing things.
 
-Relying exclusively on centralized platforms also means giving up control over what you see, how it is sorted, and when it appears. And no *Medium*, I do not need another paied subscription.
+Unfortunately, today's web is increasingly filled with aggressive advertising, clickbait headlines, tracking, recommendation algorithms, and automatically generated content optimized for engagement rather than usefulness.
 
-What I like with RSS, **you choose the sources.** There is no recommendation algorithm deciding what deserves your attention. You subscribe to the blogs and authors you trust, and their articles arrive in your reader. That's the old good internet. 
+That is a good reason for me to go back to good old RSS.
+
+Relying exclusively on centralized platforms also means giving up control over what you see, how it is sorted, and when it appears.
+
+And no, *Medium*, I do not need another paid subscription.
+
+What I like about RSS is simple:
+
+**you choose the sources.**
+
+There is no recommendation algorithm deciding what deserves your attention. You subscribe to the blogs and authors you trust, and their articles arrive in your reader.
+
+That is the good old Internet.
 
 This post is therefore not about writing or publishing content.
 
@@ -55,11 +70,19 @@ Before deploying anything, there is a legitimate question to ask:
 
 **Why self-host an RSS reader at all?**
 
-A desktop RSS application would be much simpler. Install it, import an OPML file, and start reading. If I only wanted to follow a few blogs from a single workstation, that would probably be enough. Option are not missing **MyReader**, **Fluent Reader**, **FeedDesk**,...  
+A desktop RSS application would be much simpler.
+
+Install it, import an OPML file, and start reading.
+
+There is no shortage of options: **MyReader**, **Fluent Reader**, **FeedDesk**, and many others.
+
+If I only wanted to follow a few blogs from a single workstation, that would probably be enough.
 
 But my goal is slightly different.
 
-I do not only want an application for reading RSS feeds. I want a small, personal **RSS service**.
+I do not only want an application for reading RSS feeds.
+
+I want a small, personal **RSS service**.
 
 By hosting the aggregator myself, the feed collection and its state become independent from any particular workstation or client.
 
@@ -74,11 +97,13 @@ It also gives me one centralized place for:
 - Backups
 - API access
 - Future integrations such as RSSHub
-- Create IA workflow to sort or alert you
+- AI-assisted workflows for triage, summarization, or alerts
 
 This also separates the **RSS backend** from the **reading interface**.
 
-Today I may use the FreshRSS web interface. Tomorrow I might prefer a desktop or mobile client connected to the same backend.
+Today I may use the FreshRSS web interface.
+
+Tomorrow I might prefer a desktop or mobile client connected to the same backend.
 
 That separation is important to me.
 
@@ -94,7 +119,7 @@ It is:
 
 **Do I want one local RSS application, or do I want a centralized RSS service that several applications can consume?**
 
-For my use case, the second option is more interesting as addon to my homelab.
+For my use case, the second option is more interesting, especially as an addition to my homelab.
 
 ## Which RSS reader?
 
@@ -104,7 +129,9 @@ Once we decide to self-host an RSS reader, the next question is obvious:
 
 There are many open-source RSS readers available, each with different priorities.
 
-Some focus on simplicity and performance. Others provide extensive filtering, plugins, integrations, or multi-user support.
+Some focus on simplicity and performance.
+
+Others provide extensive filtering, plugins, integrations, advanced search, or multi-user support.
 
 The right choice depends on what matters most to you:
 
@@ -117,6 +144,8 @@ The right choice depends on what matters most to you:
 - Extensibility
 - Ease of deployment
 - Ease of maintenance
+- API support
+- Backup and restore capabilities
 
 Here are a few interesting candidates.
 
@@ -133,7 +162,7 @@ Here are a few interesting candidates.
 - OPML import and export
 - Extensions and themes
 - Mobile-friendly interface
-- Compatible with several mobile applications through its APIs
+- Compatible with several external clients through its APIs
 - Works well with large collections of feeds
 
 **Best for:** Users looking for a mature, flexible, and easy-to-self-host RSS reader.
@@ -147,7 +176,7 @@ Here are a few interesting candidates.
 - Very lightweight
 - Fast
 - Minimal dependencies
-- Clean and distraction-free interface
+- Clean, distraction-free interface
 - Powerful filtering rules
 - Full-text content extraction
 - OPML import and export
@@ -168,13 +197,17 @@ One important consideration is that Miniflux requires PostgreSQL, which means de
 - OPML import and export
 - Keyboard-oriented navigation
 - Clean reading interface
+- Google Reader and Fever API compatibility
+- Container-based deployment
 - Self-hostable
 
-**Best for:** Users looking for an experience similar to the old Google Reader.
+**Best for:** Users looking for a familiar Google Reader-style experience.
 
 ### 🧩 Tiny Tiny RSS
 
-**Description:** A powerful and extensible web-based RSS and Atom reader.
+**Description:** One of the historical reference projects in self-hosted RSS.
+
+The original Tiny Tiny RSS project was retired in 2025, but development continues through a community-maintained fork.
 
 **Pros:**
 
@@ -183,7 +216,7 @@ One important consideration is that Miniflux requires PostgreSQL, which means de
 - Plugin support
 - Themes
 - OPML import and export
-- API
+- API support
 - Full-article extraction
 - Feed organization using folders and subfolders
 - Self-hosted
@@ -191,10 +224,32 @@ One important consideration is that Miniflux requires PostgreSQL, which means de
 **Cons:**
 
 - More complex than some alternatives
-- The officially recommended deployment model is based on containers
-- Can require more administration than simpler readers
+- More administration than lightweight readers
+- The project has gone through a significant maintenance transition
 
-**Best for:** Users looking for a highly configurable RSS platform with advanced capabilities.
+**Best for:** Users interested in a highly configurable and historically important self-hosted RSS platform.
+
+### 🧠 NewsBlur
+
+**Description:** A full-featured open-source RSS platform with advanced filtering, search, training, native clients, and automation capabilities.
+
+**Pros:**
+
+- Advanced feed filtering and training
+- Full-text search
+- Multi-user support
+- Native mobile applications
+- API and automation support
+- Self-hostable
+- Rich organization and reading features
+
+**Cons:**
+
+- Much heavier than FreshRSS or Miniflux
+- Requires several backend services
+- More complex to operate and maintain
+
+**Best for:** Users who want a complete RSS platform rather than a lightweight feed reader.
 
 ## How to choose?
 
@@ -215,15 +270,21 @@ In my case, I want something that is:
 - Easy to back up and restore
 - OPML import/export
 - API support
-- Compatible with external mobile/desktop clients
-- Filtering and organization capabilities
-- Minimal dependency on a particular ecosystem
+- Compatible with external mobile and desktop clients
+- Capable of filtering and organizing feeds
+- Minimally dependent on a particular ecosystem
 
 ## FreshRSS — the chosen one
 
 I hesitated mainly between **FreshRSS** and **Tiny Tiny RSS**.
 
-Both are mature projects with many features, but FreshRSS looks simpler to deploy and maintain for my needs. Its interface is also straightforward, and it has broad support for external clients and integrations.
+NewsBlur is much more feature-rich, but also significantly heavier.
+
+Miniflux is extremely attractive from a performance and simplicity perspective, but I prefer having a little more flexibility around extensions, clients, and the overall user experience.
+
+FreshRSS feels like the best balance for my needs.
+
+It is mature, lightweight enough, easy to deploy, straightforward to maintain, and broadly compatible with external clients and integrations.
 
 So, let's deploy FreshRSS.
 
@@ -440,7 +501,11 @@ Follow the initialization:
 journalctl --user -u freshrss-app.service -f
 ```
 
-The important idea here is that the **container is disposable, while the volume contains the persistent application state**. Currently I deploy FreshRSS on my workstation, but future target would be to deploy it on a homelab kubernetes cluster.  
+The important idea here is that the **container is disposable, while the volume contains the persistent application state**.
+
+For now, I deploy FreshRSS directly on my workstation.
+
+A future target would be to move it to my homelab Kubernetes cluster, where it would become a proper always-on RSS backend.
 
 ## My technology watch
 
@@ -478,17 +543,19 @@ That also fits the philosophy I apply to the rest of my tooling:
 
 **applications can be replaced; configuration should remain reproducible.**
 
-## Other projects to explore
+## Other RSS experiments
 
-RSS readers continue to evolve, so there are a few newer projects I would also like to investigate.
+RSS readers continue to evolve, and some newer projects explore different approaches to ranking, summarization, and local processing.
+
+These are not necessarily direct replacements for FreshRSS, but they are interesting experiments.
 
 ### 🤖 MrRSS
 
 [MrRSS](https://korben.info/en/mrrss-rss-reader-ai-summary-translation.html) is an open-source desktop RSS reader with built-in AI features for summarizing and translating articles.
 
-It is an interesting approach for large technology-watch collections, where quickly deciding which articles deserve a deeper read can become difficult.
+It is interesting for large technology-watch collections, where quickly deciding which articles deserve a deeper read can become difficult.
 
-I still prefer a self-hosted web application for my primary reader, but MrRSS is worth keeping an eye on.
+I still prefer a self-hosted web application for my primary backend, but MrRSS is worth keeping an eye on.
 
 ### 👾 RSSMonster
 
@@ -553,13 +620,15 @@ My goal is not to consume as much information as possible.
 
 It is to build a **small, curated information stream made of sources I deliberately chose**.
 
-FreshRSS provides the reading interface.
+FreshRSS provides the centralized RSS backend and reading interface.
 
 Podman and systemd make the deployment reproducible.
 
 Git stores my curated list of sources.
 
-And tools such as RSSHub can fill the gaps when websites do not expose feeds themselves.
+RSSHub can fill the gaps when websites do not expose feeds themselves.
+
+And desktop or mobile applications can remain replaceable frontends on top of the same service.
 
 The result is a personal technology-watch system that I control from end to end.
 
@@ -567,7 +636,7 @@ No algorithm deciding what I should read.
 
 No dependency on a single centralized platform.
 
-Just websites publishing content, RSS connecting them together, and my own reader deciding what enters my inbox.
+Just websites publishing content, RSS connecting them together, and my own infrastructure deciding what enters my reading queue.
 
 Sometimes, old and boring technology is exactly what we need.
 
@@ -577,6 +646,11 @@ Sometimes, old and boring technology is exactly what we need.
 - [FreshRSS Docker deployment](https://github.com/FreshRSS/FreshRSS/tree/edge/Docker)
 - [Miniflux](https://miniflux.app/)
 - [Tiny Tiny RSS](https://tt-rss.org/)
+- [NewsBlur](https://www.newsblur.com/)
+- [CommaFeed](https://github.com/Athou/commafeed)
 - [Podman Quadlet documentation](https://docs.podman.io/en/latest/markdown/podman-systemd.unit.5.html)
 - [Korben — RSS topics](https://korben.info/rsshub-rss-flux-sites-aaron-swartz.html)
 - [Korben — RSS is Life](https://korben.info/en/rss-feeds-are-life.html)
+```
+
+I kept your core deployment section intact, but made the comparison section more coherent with the article’s actual objective: **FreshRSS is the selected backend, not just one item in a generic RSS catalogue.**
