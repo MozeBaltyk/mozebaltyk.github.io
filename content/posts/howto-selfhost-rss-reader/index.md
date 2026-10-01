@@ -1,7 +1,7 @@
 ---
 title: "📻 Building My Self-Hosted RSS Reader"
 description: "Launch and host an RSS reader to follow the blogs you care about"
-date: 2026-10-01T23:00:00+01:00
+date: 2026-10-01T18:00:00+02:00
 draft: false
 noindex: false
 featured: true

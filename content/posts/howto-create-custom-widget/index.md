@@ -28,28 +28,26 @@ sidebar: false
 ## The context
 
 For my blog, I use [HBStack](https://hbstack.dev/sites/) with the
-[hbcards/theme](https://hbstack.dev/themes/cards/), which relies heavily on Hugo modules.  
-This setup makes configuration easier and provides a clean, modular
-architecture.
+[hbcards/theme](https://hbstack.dev/themes/cards/), which relies heavily on Hugo modules.
+
+This setup makes configuration easier and provides a clean, modular architecture.
 
 One powerful feature of this theme is the availability of **hooks** at
-different levels of the rendering process. These hooks allow us to
+different stages of the rendering process. These hooks allow us to
 customize the blog without modifying the theme itself.
 
 In this article, we will develop a **custom sidebar widget** that
-displays a random citation (quote, joke, or technical wisdom) on each
-page load.
+displays a random citation — a quote, joke, or piece of technical wisdom — each time a page is loaded.
 
-##  Data in Hugo
+## Data in Hugo
 
 At the project root, the `./data` directory is used by **Hugo at build
-time** to populate the `.Site.Data` object.  
-Hugo supports several data formats including JSON, TOML, YAML, and XML.
+time** to populate the `.Site.Data` object.
+
+Hugo supports several data formats, including JSON, TOML, YAML, and XML.
 
 For this exercise, I created three data files, each representing a
-category of citations:  
-
-For our exercice, I have created 3 files gathering 3 categories of citations:
+different category of citations:
 
 ```txt
 data
@@ -60,44 +58,57 @@ data
 ```
 
 Because Hugo generates a **static website**, this data cannot be queried
-dynamically at runtime. Instead, the data must be rendered into the HTML
-during the build process. So we use for this, a hook given by HB theme `layouts\partials\hugopress\modules\hb-custom\hooks\hb-blog-sidebar.html`.
+dynamically at runtime.
+
+Instead, the data must be rendered into the HTML during the build process.
+
+For this, we use a hook provided by the HB theme:
+
+`layouts/partials/hugopress/modules/hb-custom/hooks/hb-blog-sidebar.html`
 
 To keep the page clean, we embed the data as hidden HTML elements using
-`data-*` attributes. JavaScript can then read these attributes once the
-page is loaded in the browser. A loop which use `site.Data.sidebar.<filename>` 
-to include the data in the website.   
+`data-*` attributes.
+
+JavaScript can then read these attributes once the page has been loaded in the browser.
+
+A loop based on `site.Data.sidebar.<filename>` is used to include the
+data in the generated website.
 
 {{< code-snippet hb-blog-sidebar.txt html >}}
 
-## Typescript or Javascript
+## TypeScript or JavaScript?
 
 JavaScript is the language executed by the browser, while TypeScript is a
-**superset of JavaScript** that adds static typing and better tooling.
+**superset of JavaScript** that adds static typing and improved tooling.
 
 In this project, we write our code in TypeScript (`.ts`) because:
-- It catches errors at build time
-- It provides better autocompletion and documentation
+
+- It catches many errors at build time
+- It provides better autocompletion
+- It improves code readability and maintainability
 - It compiles down to plain JavaScript for the browser
 
-Hugo Pipes automatically compiles the TypeScript file into JavaScript,
-so the browser never sees the `.ts` file directly.
+Hugo Pipes can compile the TypeScript file into JavaScript, so the browser
+never sees the `.ts` file directly.
 
 The theme does not automatically include custom JavaScript files.
-Instead, we explicitly register our TypeScript file using a Hugo hook so
-it can be compiled and injected into the page.
 
-Let's take the Example below written in `.\assets\hb\modules\custom\js\index.ts`:
+Instead, we explicitly register our TypeScript file using a Hugo hook so
+that it can be compiled and injected into the page.
+
+Let's take the following example, located at:
+
+`./assets/hb/modules/custom/js/index.ts`
 
 {{< code-snippet index.ts >}}
 
-## How to use it 
+## How to use it
 
 Hugo generates a static website, meaning all processed files are written
 to the `./public` directory, which is then served by a web server.
 
 After compilation, our TypeScript code is bundled into a JavaScript file
-(e.g. `hb.js`) inside the `public` directory.
+inside the `public` directory.
 
 To make the script available on the website, we load it using another
 HBStack hook located at:
@@ -110,20 +121,25 @@ HBStack hook located at:
 <script src="{{ $js.RelPermalink }}" defer></script>
 ```
 
-## The Result
+This ensures that the generated JavaScript is included in the page and
+executed by the browser.
+
+## The result
 
 The result is a sidebar widget that displays a different citation each
-time a page is loaded, creating the impression of randomness while
-remaining fully static.
+time a page is loaded.
+
+The site remains fully static, while the browser randomly selects which
+citation to display at runtime.
 
 ![Random citation widget](./posts/howto-create-custom-widget/result_widget.png#center)
 
 ## Troubleshooting
 
 1. Inspect the page source and search for the
-`random-citation` class to verify that the data are correctly embedded.
+   `random-citation` class to verify that the data is correctly embedded.
 
-2. Add a log at the top of `index.ts`:
+2. Add a log statement at the top of `index.ts`:
 
 ```ts
 console.log("Random citation script loaded");
@@ -132,21 +148,29 @@ console.log("Random citation script loaded");
 Open DevTools → Console and reload the page.
 
 If the message does not appear, the script is not being loaded.
-Verify the `hb-head-end.html` hook and `resources.Get` path.
 
-3. Test DOM access manually
+Verify the `hb-head-end.html` hook and the `resources.Get` path.
 
-In DevTools → Console, run to test data access:
+3. Test DOM access manually.
 
-`document.querySelector(".citation-category div")?.dataset`
+In DevTools → Console, run:
+
+```js
+document.querySelector(".citation-category div")?.dataset
+```
+
+This allows you to verify that the `data-*` attributes are accessible from
+JavaScript.
 
 ## Data flow diagram
 
-The following diagram illustrates how data flows from Hugo to the
-browser and finally into the rendered widget. 
+The following diagram illustrates how data flows from Hugo to the browser
+and finally into the rendered widget.
 
-At no point does JavaScript access Hugo data directly.All data access 
-happens through the DOM via `data-*` attributes that were generated at build time.
+At no point does JavaScript access Hugo data directly.
+
+All data access happens through the DOM via `data-*` attributes that were
+generated at build time.
 
 ```text
  BUILD TIME (Hugo)

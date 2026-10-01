@@ -1,6 +1,6 @@
 ---
-title: 🌌 How to Create this Blog
-description: "The beginning of this blog, the first version."
+title: 🌌 How I Created This Blog
+description: "The beginning of this blog — its first version."
 date: 2023-10-01T02:59:46+02:00
 noindex: false
 featured: false
@@ -14,233 +14,552 @@ series:
   - Posts
 categories:
   - Tutorials
-tags: 
+tags:
   - Hugo
   - Git
   - Blog
 authors:
   - mozebaltyk
-images: 
+images:
   - ./carousel/howto-create-this-blog.webp
 sidebar: false
 ---
 
 {{< bs/alert info >}}
 {{< markdownify >}}
-This is the old version of this blog. But last update of hugo version did not work well so I decided to move on to the hbstack theme. I keep this article since it was the first one of this blog. 
+
+This article describes the **old version of this blog**.
+
+After a Hugo upgrade caused problems with the original theme, I eventually moved to HBStack.
+
+I decided to keep this article because it was the very first post published on this blog and documents how the project originally started.
+
 {{< /markdownify >}}
 {{< /bs/alert >}}
 
-When prospecting about creating my Blog, I went throught the normal questions that probably everyone meet. Why would I loose precious hours of my life doing something that anyway nobody is gonna to read. Here are my thoughts about this non-sens and what I learnt...
+When I first considered creating a blog, I went through the usual questions:
+
+Why would I spend precious hours of my life writing something that perhaps nobody will ever read?
+
+This article contains my thoughts about that question, what I wanted from a blog, and what I learned while building the first version of this site.
 
 <!--more-->
 
-## My Reflexions on the topic
+## My reflections on the topic
 
-In short, here the few questions I went through. Why, Where, Which way, Which Theme ? By the way, you can notice that those questions go from theory to practice.
+In short, I went through a few questions:
 
-### The big question ?
+- Why create a blog?
+- Where should I host it?
+- Which technology should I use?
+- Which theme should I choose?
 
-Why would you like waste your precious time on a blog ? A search on google "Why would you like a blog ?" will lead you to conclusion that´s good for your bisness. You need to be visible on the net to increase you credibility as an expert and so on. Nonetheless, I was recently listening a guy on Youtube who critized blogs. Everybody is doing it. At the end, everybody start it but nobody keep up writing articles. It ends looking as a poor vitrin of yourself, and for good reasons, if you do not fuel your blog with regular new articles. Anyway, this guy end up showing some interesting blogs with unexpected content and remember us that it's still worth it but ask effort. And you, are you bloging ?
+You may notice that these questions gradually move from theory to implementation.
 
-So in my case, first it's an exercice. Due to my IT job, I need to see how does it work. What are the possibilities and technology available for it. Second, I wanted a place with multiple purpose. A place for article about my thoughts and findings like this one but also a place to centralize my documentation. Longtime ago, when I started in IT and did not know what I was doing and I simply took notes in OneNote. I know, I should not do this. I was young and did not know what I was doing... For technical notes, that's not the best. No versioning, no code highlight, and proprietary software. Sharing some notes, also ask extra effort to export in Word document before to be send, the copy paste which in some case trun to image instead of staying plain text, the search engine which is not satisafying, etc. Along the years, my personal notes were growing and it got tedious to keep it ordered.
+## The big question: why create a blog?
 
-Notes tools, even payed one, are not respecting privacy. Funny to see so many youtube videos about Obsidan and Notions and hard to believe they do not steal users' data to feed there advertiser or LLM programs. If I define my needs, I just need a WYSWYG for markdown that I can edit and read in my terminal and an Editor and be able to share if I want, but still be able to move from an hosting solution to another. It need to stay simple and Opensource.
-First I add the idea to move everything in markdown, and put it in an mdBook, but that's would be only a documentation solution. Good for a Wiki, but could be good to write some personal thoughts, so came the blog idea. Let's go for a blog. It's also a way to get open to the 🌏.
+Why would anyone spend their precious time maintaining a blog?
 
-### Where to host my Blog ?
+Searching for "Why should I have a blog?" usually leads to answers related to business:
 
-Of course, I first thought about self hosting on VPS but to much hassle when there is much easier options, like Hubspot or Wordpress. Those are CMS, the job is done for you. Then I do not see the possibility to really move from those. You can export a XML from Wordpress or an HTML in Hubspot to move to another platform and then hassle to understand why it does not fit to the new platform. It's hard to believe, there will be *no vendor locking* behind. So let's be serious and not fall in some trap.
+- Increase your visibility
+- Build credibility
+- Demonstrate expertise
+- Improve your online presence
 
-So Github offer to publish for free your blog with *Github page*. Except that you won't be able to choose your domain (except if you pay for it, of course), one big benefic of doing so, is the Github workflow which will allow you to autodeploy as we will see later. You can always move to another repository or even to some self-hosting. It's always benefic to work in collaboration, that's the how I was all my career learning.  
+Those can all be valid reasons.
 
-You can have One site per GitHub account and organization in this case your blog will be available at *https://{{username}}.github.io* like this one or you can unlimited project sites in this case, you site will be avalaible at *http://{{username}}.github.io/repository*. The last option, could be a good choice for documenting a project with a mdbook include in the project.
+But I also remember watching someone on YouTube criticizing blogs.
 
-### Which tech to pickup ?
+His argument was simple: everybody starts one, but very few people continue writing regularly.
 
-A good companion to *Github pages* are the static site generators. Those static site generators are framework which take articles in markdown then generate a static site. Markdown is a easy language, popular for writing docs and allow easy to customization. One thing that I really appreciate with markdown is how uniform you notes became. *Github pages* + *Hugo* + *Markdown* do the jobs quite effectively with a quick effect. After one hour, this site was already running and presenting good. Tweeking is relatively intuitive, of course you won't be able to create crazzy effect with dynamic data. Keep it simple and stupid.
+As a result, many blogs end up looking like abandoned showcases of their authors.
 
-Working with Hugo is pretty convenient, you draft your article then launch `hugo server -D` so you can see in your browser how looks your blog with all draft articles. Oki but why not Zola or Jekyll... Jekyll is the default choice for a Github Page in ruby but most of the interesting themes are charged. Zola, I found too few themes. So Hugo is popular choice, so plenty of documentations and tutorials.
+And there is some truth in that.
 
-### Which awesome theme to use ?
+A blog only becomes interesting if you keep feeding it with new ideas, experiments, and discoveries.
 
-Looks trivial, but a theme well documented make the difference. Some of the theme have bearly documentation or redirect to hugo pages. Plus somes essantials features, nothing fancy but you would expect :
+But during the same video, he also showed several interesting blogs containing unexpected and personal content.
 
-* A Table of Contents.
-* Multilingual.
-* Local Search.
-* Syntax Highlighting.
-* Possibility to Comments.
-* Font Size Switcher.
-* Responsive.
-* Light/Dark mode
+That was a useful reminder:
 
-So I went through *[Hugo-theme-bootstrap](https://github.com/razonyang/hugo-theme-bootstrap)* which look quite classical but pretty efficient, plenty of widgets which make the blog quite confortable, easy to use and to developp and not too flat.
+**blogging is still worthwhile, but it requires effort.**
 
-Here a quick over view of what this theme have to offer:
+So why am I doing it?
+
+### First: it is an exercise
+
+Because I work in IT, I wanted to understand how blogging platforms work.
+
+What technologies are available?
+
+How do static websites work?
+
+How are they built and deployed?
+
+How much can I customize?
+
+Building the blog itself became part of the learning process.
+
+### Second: I wanted one place for several purposes
+
+I wanted somewhere to publish articles about ideas, experiments, and discoveries.
+
+But I also wanted somewhere to centralize my technical documentation.
+
+A long time ago, when I was starting in IT and had absolutely no idea what I was doing, I simply stored my notes in OneNote.
+
+Yes, I know.
+
+I was young.
+
+For technical documentation, that eventually became frustrating:
+
+- No proper version control
+- Poor code highlighting
+- Proprietary storage
+- Awkward sharing
+- Copy/paste sometimes turning code into images
+- Search that did not always give useful results
+- Increasing difficulty keeping years of notes organized
+
+Over time, my personal documentation kept growing, and maintaining it became tedious.
+
+I wanted something simpler.
+
+My requirements were roughly:
+
+- Markdown
+- Editable from a normal text editor or terminal
+- Version controlled
+- Easy to search
+- Easy to publish when I want to share something
+- Portable between hosting solutions
+- Open source whenever possible
+
+At first, I considered moving everything into Markdown and publishing it with something like mdBook.
+
+That would have worked well for documentation.
+
+But I also wanted to write less formal posts about ideas, experiments, and personal reflections.
+
+That pushed me toward a blog.
+
+So, let's build one.
+
+It is also a way to open the door to the 🌏.
+
+## Where should I host my blog?
+
+My first thought was naturally:
+
+**self-host it.**
+
+A VPS would give me complete control.
+
+But that also means maintaining another server, web service, TLS configuration, backups, updates, monitoring, and so on.
+
+That seemed like unnecessary work for a static blog.
+
+There are easier solutions such as WordPress, HubSpot, and other CMS platforms.
+
+They handle most of the infrastructure for you.
+
+But I was not completely comfortable with the idea of building everything around a platform that could become difficult to leave later.
+
+Yes, content can usually be exported.
+
+But exporting from one CMS and importing into another often means:
+
+- Converting formats
+- Fixing layouts
+- Recovering metadata
+- Rebuilding themes
+- Understanding why something does not render correctly anymore
+
+I wanted to keep **vendor lock-in** as low as possible.
+
+My content should remain simple files that I own.
+
+### GitHub Pages
+
+GitHub provides free static-site hosting through **GitHub Pages**.
+
+One major advantage is that the website can live directly next to its source code.
+
+That means:
+
+```text
+Markdown
+   │
+   ▼
+Git repository
+   │
+   ▼
+GitHub Actions
+   │
+   ▼
+Static website
+```
+
+The entire site remains portable.
+
+If I decide to move away from GitHub later, I still have:
+
+- My Markdown files
+- My configuration
+- My theme
+- My assets
+- My build process
+
+I can rebuild the same website somewhere else.
+
+Another useful aspect is GitHub Actions, which lets us automate the build and deployment process.
+
+GitHub Pages supports account or organization sites such as:
+
+```text
+https://username.github.io
+```
+
+and project sites such as:
+
+```text
+https://username.github.io/repository
+```
+
+The latter can also be useful for project documentation.
+
+## Which technology should I choose?
+
+Static site generators are a natural companion to GitHub Pages.
+
+The idea is straightforward:
+
+```text
+Markdown + templates + configuration
+              │
+              ▼
+      Static site generator
+              │
+              ▼
+          HTML / CSS / JS
+```
+
+The generated files can then be served by almost any web server.
+
+For this first version of the blog, I chose:
+
+- GitHub Pages
+- Hugo
+- Markdown
+
+Markdown was particularly attractive because it keeps the content simple and portable.
+
+One thing I appreciate about Markdown is how consistent documentation becomes.
+
+Instead of thinking constantly about presentation, I can focus on content.
+
+### Why Hugo?
+
+Working with Hugo is convenient.
+
+While writing an article, I can simply run:
+
+```bash
+hugo server -D
+```
+
+and preview the entire website locally, including draft posts.
+
+I also considered other static-site generators.
+
+Jekyll is historically very well integrated with GitHub Pages and uses Ruby.
+
+Zola was another interesting option, but at the time I found fewer themes that matched what I wanted.
+
+Hugo was popular, fast, and had plenty of documentation, tutorials, and themes available.
+
+That was enough for me.
+
+Keep it simple.
+
+## Which theme should I use?
+
+Choosing a theme may sound trivial, but good documentation makes a huge difference.
+
+Some themes look great but provide almost no documentation beyond pointing you back to the Hugo documentation.
+
+I wanted a few basic features:
+
+- Table of contents
+- Multilingual support
+- Local search
+- Syntax highlighting
+- Comments
+- Font-size controls
+- Responsive layout
+- Light and dark modes
+
+Nothing extraordinary.
+
+Just the features I expected from a technical blog.
+
+For the first version, I chose
+[Hugo Theme Bootstrap](https://github.com/razonyang/hugo-theme-bootstrap).
+
+It looked fairly classical, but it was efficient and included many useful widgets.
+
+It was also relatively easy to configure and extend.
+
+Here is a quick overview of what the theme provided:
 
 ![Center](./posts/howto-create-this-blog/HBS-list-feat.PNG#center)
 
-## Let's Practice
+## Let's build it
 
-First, note that's everything what I will describe below have to match with *Hugo-theme-bootstrap* and some slitghly changes could occur with other theme.  
+Everything below describes the setup I used for this **first version** of the blog.
 
-### First the Prerequisites
+The commands and configuration are specific to the version of Hugo Theme Bootstrap I was using at the time, so newer versions or different themes may require changes.
 
-As prerequisites, we need Nodejs, npm, GO, dart SASS, and Hugo extended version as describe [here](https://hbs.razonyang.com/v1/en/docs/getting-started/prerequisites/#build-tools)
+## Prerequisites
 
-This was done on an Ubuntu WSL:
+The original setup required:
+
+- Node.js
+- npm
+- Go
+- Dart Sass
+- Hugo Extended
+
+The installation was done from Ubuntu running under WSL.
 
 ```bash
-# Install nodejs and npm 
+# Install Node.js, npm and Git
 sudo apt install nodejs npm git
 
-# Install GO
+# Install Go
 wget https://go.dev/dl/go1.21.0.linux-amd64.tar.gz
 sudo tar -C /usr/local -xzf go1.21.0.linux-amd64.tar.gz
 export PATH=$PATH:/usr/local/go/bin
 
-# Install DART SASS 
+# Install Dart Sass
 DART_SASS_VERSION="1.66.1"
 curl -LJO https://github.com/sass/dart-sass/releases/download/${DART_SASS_VERSION}/dart-sass-${DART_SASS_VERSION}-linux-x64.tar.gz
 tar -xf dart-sass-${DART_SASS_VERSION}-linux-x64.tar.gz
-sudo cp -r dart-sass/* /usr/local/bin 
+sudo cp -r dart-sass/* /usr/local/bin
 rm -rf dart-sass*
 
-# Install Hugo source (.deb)
+# Install Hugo Extended (.deb)
 HUGO_VERSION="0.117.0"
 curl -LJO https://github.com/gohugoio/hugo/releases/download/v${HUGO_VERSION}/hugo_extended_${HUGO_VERSION}_linux-amd64.deb
 sudo apt install -y ./hugo_extended_${HUGO_VERSION}_linux-amd64.deb
 
-# Install Hugo (RHEL 9)
+# Install Hugo Extended on RHEL 9
 HUGO_VERSION="0.135.0"
 curl -LJO https://github.com/gohugoio/hugo/releases/download/v${HUGO_VERSION}/hugo_extended_${HUGO_VERSION}_linux-amd64.tar.gz
 tar -xzf hugo_extended_${HUGO_VERSION}_linux-amd64.tar.gz
 sudo mv hugo /usr/bin/hugo
 
 hugo version
+```
+
+At the time, my Ubuntu installation reported:
+
+```text
 hugo v0.117.0-b2f0696cad918fb61420a6aff173eb36662b406e+extended linux/amd64 BuildDate=2023-08-07T12:49:48Z VendorInfo=gohugoio
 ```
 
-To be fair, you could also do it with `snap`:
+You could also install some of the tools using Snap:
 
 ```bash
 sudo snap install dart-sass
-
 sudo snap install hugo
 
 which hugo
 /snap/bin/hugo
 
 hugo version
-hugo v0.117.0-b2f0696cad918fb61420a6aff173eb36662b406e+extended linux/amd64 BuildDate=2023-08-07T12:49:48Z VendorInfo=snap:0.117.0
 ```
 
-### Creating the Project
+## Creating the project
 
-Create a blank project in Github and clone it.
+Create an empty GitHub repository and clone it locally.
+
+For this version of the site, the theme was installed as a Git submodule:
 
 ```bash
 cd myblog
+
 git submodule add https://github.com/razonyang/hugo-theme-bootstrap themes/hugo-theme-bootstrap
+
 git clone https://github.com/razonyang/hugo-theme-bootstrap-skeleton /tmp/hbs-skeleton
+
 mkdir config
+
 cp -a /tmp/hbs-skeleton/config/* ./config
 cp -r /tmp/hbs-skeleton/content/* ./content
 cp -r /tmp/hbs-skeleton/archetypes/* ./archetypes
 cp -r /tmp/hbs-skeleton/static/* ./static
 cp -r /tmp/hbs-skeleton/assets/* ./assets
+
 sed -i "s/theme:.*/theme: hugo-theme-bootstrap/g" config/_default/config.yaml
+
 hugo mod npm pack
 npm install
+
 hugo server
 ```
 
-### Few Settings
+At that point, the first version of the blog was already running locally.
 
-The two first to complete `author.yaml` which contain all your social link and `params.yaml` for global settings about appearance and options.
+## A few settings
 
-#### Add a language
+Two important configuration files were:
 
-First, the language need to be listed in `./config/_default/languages.yaml` then create `config.lg.yaml` and if you have a custom menu `menu.lg.yaml`. Then you will have to create in index.lg.md next to your index.md.
+```text
+author.yaml
+params.yaml
+```
 
-```bash
+`author.yaml` contained information about the author and social links.
+
+`params.yaml` controlled global appearance and theme options.
+
+## Add another language
+
+Languages were declared inside:
+
+```text
+./config/_default/languages.yaml
+```
+
+Additional configuration and menu files could then be created for each language.
+
+For example:
+
+```text
 config git:main ❯ tree -L 2
 .
 ├── _default
-│   ├── author.yaml
-│   ├── config.fr.yaml
-│   ├── config.pl.yaml
-│   ├── config.yaml
-│   ├── languages.yaml
-│   ├── menu.en.yaml
-│   ├── menu.fr.yaml
-│   ├── menu.pl.yaml
-│   ├── params.yaml
-│   ├── server.yaml
-│   └── social.yaml
+│   ├── author.yaml
+│   ├── config.fr.yaml
+│   ├── config.pl.yaml
+│   ├── config.yaml
+│   ├── languages.yaml
+│   ├── menu.en.yaml
+│   ├── menu.fr.yaml
+│   ├── menu.pl.yaml
+│   ├── params.yaml
+│   ├── server.yaml
+│   └── social.yaml
 └── production
     ├── config.yaml
     └── params.yaml
 ```
 
-#### A word on giscus
+Translated content could then use files such as:
 
-In config/default/params.yaml, there is a bloc on giscus config, a comments system powered by GitHub Discussions, so the comments left on your articles goes in discussions of your github Pages.  
+```text
+index.md
+index.fr.md
+index.pl.md
+```
 
-So to do so, you will need to:
-* make your repository public.
-* enable [discussions](https://docs.github.com/en/repositories/managing-your-repositorys-settings-and-features/enabling-features-for-your-repository/enabling-or-disabling-github-discussions-for-a-repository) in the project settings.
-* activate [giscus app](https://github.com/apps/giscus) for on your account (you can limit to your blog project)
-* Then, giving the URL of your repository
+## A word about Giscus
 
-After custom config, on my case I left everything by default, you got a block of xml values that you can reuse in the config/default/params.yaml of your Hugo Blog.
+The theme supported **Giscus**, a comment system based on GitHub Discussions.
+
+Comments posted on the blog are stored as discussions in the GitHub repository.
+
+To configure it, I needed to:
+
+- Make the repository public
+- Enable GitHub Discussions
+- Install the [Giscus GitHub App](https://github.com/apps/giscus)
+- Configure the application for the blog repository
+- Provide the repository information in the Hugo configuration
+
+For example:
 
 ```yaml
 # See https://giscus.app
 giscus:
-  repo: "MozeBaltyk/mozebaltyk.github.io" # required.
-  repoId: "R_kgDOKJSCfA" # required.
-  category: "General" # required.
-  categoryId: "DIC_kwDOKJSCfM4CYvA_" # required. 
+  repo: "MozeBaltyk/mozebaltyk.github.io"
+  repoId: "R_kgDOKJSCfA"
+  category: "General"
+  categoryId: "DIC_kwDOKJSCfM4CYvA_"
 ```
 
-On their side, visitors will need a Github account and must authorize the giscus app to post on their behalf using the GitHub OAuth flow.
+Visitors need a GitHub account to post comments through Giscus.
 
-#### Change the Tables of Contents
+## Change the table of contents
 
-Also the table of content take only the title starting from `h2` end to `h3` but no parameter seems to exist to change this in `./config/_default/params.yaml`
+At the time, the table of contents displayed headings from specific levels, and I did not find a theme parameter in `./config/_default/params.yaml` to change all of its behavior directly.
 
-#### Change the code highligthing
+This was one of those small details that required looking beyond the theme's main configuration.
 
-Import the chromastyles in your project:
+## Change syntax highlighting
+
+Hugo can generate Chroma stylesheets.
+
+For example:
 
 ```sh
 hugo gen chromastyles --style=dracula > assets/main/scss/_highlight.scss
 ```
 
-#### Add some extras icons
+That allowed me to customize code highlighting.
 
-You will be able to add icons from **fortawesome** by completing the `./assets/icons/custom.js`, then use those icons in CSS marks.
+## Add extra icons
+
+Additional Font Awesome icons could be imported through:
+
+```text
+./assets/icons/custom.js
+```
+
+For example:
 
 ```js
-import { faBlog, faBook, faFile, faNewspaper, faAnchor, faInfinity, faCode, faBug, faLightbulb, faTerminal, } from '@fortawesome/free-solid-svg-icons';
-// import { faAddressBook } from '@fortawesome/free-regular-svg-icons';
-// import { faAmazon, faGoogle } from '@fortawesome/free-brands-svg-icons';
+import {
+    faBlog,
+    faBook,
+    faFile,
+    faNewspaper,
+    faAnchor,
+    faInfinity,
+    faCode,
+    faBug,
+    faLightbulb,
+    faTerminal,
+} from '@fortawesome/free-solid-svg-icons';
 
 const icons = [
-    faBook, faBlog, faFile, faNewspaper, faAnchor, faInfinity, faCode, faBug, faLightbulb, faTerminal
-    // faAddressBook,
-    // faAmazon, faGoogle,
+    faBook,
+    faBlog,
+    faFile,
+    faNewspaper,
+    faAnchor,
+    faInfinity,
+    faCode,
+    faBug,
+    faLightbulb,
+    faTerminal,
 ];
+
 export default icons;
 ```
 
-### Edit Articles
+Those icons could then be reused by the theme.
 
-Of course, using your vim editor with your favorite customization, you will enjoy better articles writing.
+## Writing articles
 
-Simple way to do an article (one folder by articles):
+Of course, you can write articles with Vim, Neovim, or whichever editor you prefer.
+
+One simple approach is to use one directory per article.
+
+For multilingual content:
 
 ```bash
 hugo new news/new-post/index.md
@@ -248,83 +567,131 @@ hugo new news/new-post/index.fr.md
 hugo new news/new-post/index.pl.md
 ```
 
-Several articles in one folder (one _index.md + several articles):
+Another approach is to organize several articles under a section:
 
 ```bash
 vi docs/Devops/Containers/_index.md
+
 hugo new docs/Devops/Containers/docker.md
 hugo new docs/Devops/Containers/podman.md
 ```
 
-Note that in docs the `_index.md` become a Section in the Menu.
+In Hugo, `_index.md` can define a section.
 
-Please remind that the created posts are generally in draft state. You’ll need to specify the `-D` parameter of the command hugo server for previewing.
-Similarly, you need to change the draft to false or remove draft parameter if you want to publish the article.
+New posts are usually created as drafts.
 
-### images
+To preview drafts:
 
-About images, either you had in `./static/your-articles-name/an-images.webp` and define it in your article's front. The images on front matter are preferred.
+```bash
+hugo server -D
+```
+
+Before publishing, either remove the `draft` parameter or set:
 
 ```yaml
---- 
+draft: false
+```
+
+## Images
+
+There were several ways to manage images.
+
+One approach was to store an image under the static directory and reference it from the front matter.
+
+For example:
+
+```yaml
+---
 title: 📡 The Bad, the Good and the Ugly Git
-[...]
+# [...]
 authors:
   - mozebaltyk
-images: [./bad-good-ugly-git/carousel.webp]
+images:
+  - ./bad-good-ugly-git/carousel.webp
 ---
 ```
 
-Another method is to put it in the article´s folder.
+Another approach was to keep images directly next to the article as page resources.
 
-> Page images resources that match the filename’s patterns: *feature*, *cover* and *thumbnail*. Such as posts/my-page/feature.png, posts/my-page/thumnail.jpg.
->
-> The page images resources will be resized to several smaller versions to suit the users devices for saving the bandwidth.
+The theme could automatically recognize filenames such as:
 
-A parameter exist to make this image appear above the content or not, in `params.yaml` set `featuredImage: true`.
+```text
+feature.*
+cover.*
+thumbnail.*
+```
 
-Then during the writing of the articles, just put the image in the article folder (with a name different from *feature*, *cover* or *thumbnail*) and add it in the article with `![Center](/HBS-list-feat.PNG#center)`
+These resources could then be resized into several versions for different screen sizes.
 
-## Organisation
+Other article images could simply be stored in the article directory and referenced from Markdown:
 
-Taxonomies are classifications of logical relationships between content. Understand the taxonomies, will allow you to organize your blog more efficiently.
+```markdown
+![Center](/HBS-list-feat.PNG#center)
+```
 
-* series
-* categories
-* tags
-* featured
+## Organization
 
-## Publish it
+Hugo taxonomies help classify relationships between pieces of content.
 
-To deploy the blog, I simply use Github Wokflow which build and publish it with Github Pages. Here, you can adopt several strategy for your own deployment.  
+For this blog, the main concepts were:
 
+- Series
+- Categories
+- Tags
+- Featured posts
 
-I started with everytime that I was pushing the code, it deploy. It gave me no time after saving to read again my articles. Then I put it on `workflow_dispatch`, so I manually trigger the workflow to publish it. But the proper way to do, I just push on branch `gh-pages` which is set as the default then merge it with the main so it trigger the publication only when it arrive on the main branch.
+Understanding these early makes the site much easier to organize as the number of articles grows.
 
-In the settings, in the tab branch protection, an option **Lock branch** prevent to directly commit on `main`.
+## Publishing the blog
 
-> From Github documentation:
->
-> Branch is read-only. Users cannot push to the branch.
+For deployment, I used GitHub Actions to build the Hugo website and publish it through GitHub Pages.
 
-And option **Require a pull request before merging** oblige you to review changes.
+My workflow also evolved over time.
 
-> From Github documentation:
->
-> When enabled, all commits must be made to a non-protected branch and submitted via a pull request before they can be merged into a branch that matches this rule.
+Initially, every push triggered a deployment.
 
+That was convenient, but it gave me almost no time to reread an article after committing it.
 
-I will not put all the workflow code, you can get it [here](https://github.com/MozeBaltyk/mozebaltyk.github.io/tree/main/.github/workflows).
+I later experimented with manual deployment using:
 
-Here just a general idea about the two jobs for building and deploying:
+```text
+workflow_dispatch
+```
+
+Eventually, I moved toward a branch-based workflow where publication happens only after changes reach the branch used for production.
+
+Branch protection can also help prevent accidental publication.
+
+For example:
+
+**Lock branch**
+
+prevents direct modifications to a protected branch.
+
+Another useful setting is:
+
+**Require a pull request before merging**
+
+which encourages reviewing changes before publication.
+
+I will not include the entire workflow here.
+
+The current workflow files can be found in the blog repository:
+
+[GitHub workflows](https://github.com/MozeBaltyk/mozebaltyk.github.io/tree/main/.github/workflows)
+
+At a high level, the workflow contained two jobs:
 
 ```yaml
 jobs:
+
   # Build job
   build:
     runs-on: ubuntu-latest
+
     env:
       HUGO_VERSION: 0.117.0
+
     steps:
       - name: Install Hugo CLI
 
@@ -333,7 +700,7 @@ jobs:
       - name: Setup Node
 
       - name: Cache dependencies
-  
+
       - name: Install dependencies
 
       - name: Setup Hugo
@@ -351,17 +718,41 @@ jobs:
     environment:
       name: github-pages
       url: ${{ steps.deployment.outputs.page_url }}
+
     runs-on: ubuntu-latest
     needs: build
+
     steps:
       - name: Deploy to GitHub Pages 🚀
         id: deployment
         uses: actions/deploy-pages@v2
 ```
 
-## Update it
+Conceptually:
 
-Set your `.gitignore`:
+```text
+Markdown / Hugo
+      │
+      ▼
+ Git repository
+      │
+      ▼
+GitHub Actions
+      │
+      ├── Build
+      │
+      ▼
+ Static files
+      │
+      ▼
+ GitHub Pages
+```
+
+## Updating the blog
+
+Some generated files and dependencies should not be stored in Git.
+
+My `.gitignore` included:
 
 ```text
 .hugo_build.lock
@@ -370,29 +761,58 @@ node_modules/
 resources/
 ```
 
-Then update the theme
+The original theme was installed as a Git submodule, so updating it looked like this:
 
 ```bash
 cd themes/hugo-theme-bootstrap
+
 git fetch
 git checkout [version]
+
 cd ../../
+
 hugo mod npm pack
 npm update
-git add themes/hugo-theme-bootstrap package.hugo.json package.json package-lock.json
+
+git add \
+  themes/hugo-theme-bootstrap \
+  package.hugo.json \
+  package.json \
+  package-lock.json
+
 git commit -m 'Bump theme to [version]'
 ```
 
+## Looking back
+
+This setup was the first version of the blog.
+
+It was not perfect, and the theme was eventually replaced, but the important decisions survived:
+
+- Write content in Markdown
+- Keep everything in Git
+- Generate a static website
+- Automate deployment
+- Avoid unnecessary vendor lock-in
+- Keep the content portable
+
+The implementation has changed since then.
+
+The philosophy has not changed very much.
+
+That is probably the most interesting part of looking back at this first version.
+
 ## 💡 Bonus point
 
-For those who read till the end, do not forget to put some funny [markdown emojis](https://github.com/markdown-templates/markdown-emojis) in your markdown !
+For anyone who made it all the way to the end:
+
+do not forget to add a few ridiculous
+[Markdown emojis](https://github.com/markdown-templates/markdown-emojis)
+to your posts. 😄
 
 ## Sources
 
-See also documentation of this [Awesome Hugo theme](https://hbs.razonyang.com/v1/en/docs/getting-started/prerequisites/).
-
-See also [README of this theme](https://github.com/razonyang/hugo-theme-bootstrap-skeleton/blob/main/README.md).
-
-See also [Deployment of this theme](https://hbs.razonyang.com/v1/en/docs/deployment/github-pages/).
-
-See also [Github Pages](https://docs.github.com/en/pages/getting-started-with-github-pages/configuring-a-publishing-source-for-your-github-pages-site#publishing-with-a-custom-github-actions-workflow).
+- [Hugo Theme Bootstrap documentation](https://hbs.razonyang.com/v1/en/docs/getting-started/prerequisites/)
+- [Hugo Theme Bootstrap skeleton](https://github.com/razonyang/hugo-theme-bootstrap-skeleton/blob/main/README.md)
+- [Hugo Theme Bootstrap — GitHub Pages deployment](https://hbs.razonyang.com/v1/en/docs/deployment/github-pages/)
+- [GitHub Pages documentation](https://docs.github.com/en/pages/getting-started-with-github-pages/configuring-a-publishing-source-for-your-github-pages-site#publishing-with-a-custom-github-actions-workflow)

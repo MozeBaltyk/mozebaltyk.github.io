@@ -1,6 +1,6 @@
---- 
+---
 title: 💫 Podman as a service
-description: "Do we really need Kubernetes when you will see what is below..."
+description: "Run rootless Podman containers as persistent systemd services, without introducing Kubernetes."
 date: 2026-01-15T03:48:10+02:00
 draft: false
 noindex: false
@@ -222,7 +222,7 @@ Because even the most basic single-node k3s setup consumes resources. In cloud e
 
 In conclusion, running containers as first-class *systemd* services with Podman offers a pragmatic alternative to Kubernetes for many single-node or small-scale deployments. You get predictable startup behavior, proper dependency management, clean shutdowns, logging, and monitoring — all without the overhead and complexity of a full orchestration platform.
 
-## What’s next?
+## What's next?
 
 At this point in the post, I want to look a bit ahead and suggest some directions that could be explored without going into too much detail.
 

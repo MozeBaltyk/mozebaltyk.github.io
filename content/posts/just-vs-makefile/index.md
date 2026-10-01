@@ -1,6 +1,6 @@
 ---
-title: 👷👮 Makefile VS Justfile
-description: "The two task-runners comparison!"
+title: 👷👮 Makefile vs Justfile
+description: "Comparing two popular task runners"
 date: 2024-10-31T03:48:10+02:00
 noindex: false
 featured: true
@@ -15,39 +15,68 @@ series:
 categories:
   - Devops
 tags:
-  - Command-liner
+  - Command-line
   - Scripting
 authors:
   - mozebaltyk
-images: 
+images:
   - ./carousel/MakefileVsJustfile.webp
 sidebar: false
 ---
 
-Makefile VS Justfile
+Makefile vs Justfile
 
 <!--more-->
 
-## The cool stuffs with Makefile
+## What is great about Make?
 
-Nothing to say, it's POSIX, so it's almost everywhere by default since 1976. So that's the reference: either you do better or worse than Make.
+There is not much to say about Make's availability: it has been around since 1976 and is installed by default on many Unix-like systems.
 
-I can list a few points:
+That makes it the reference point.
 
-* Cool that it exists, and you should have gone through it.
+If you introduce another tool, it should solve a problem that Make does not solve well, or provide a noticeably better developer experience.
 
-* Make is a “task runner” and a “build tool”, since it's capable of not running a target if its dependencies are up-to-date, while justfile is just a "task runner".
-  But on the other hand, `Just` just wants to be a "task runner"...
+A few points are worth mentioning:
 
-## The cool stuffs with Justfile
+- Make is everywhere, and every developer or system administrator should probably have used it at least once.
 
-Here is a list of what justfile can do natively but Makefile cannot:
+- Make is both a **build tool** and a **task runner**.
 
-* `just --choose` - will let you choose among the recipes in interactive mode.
+  It understands dependencies and can decide not to rebuild a target when its dependencies are already up to date.
 
-* Define your working dir: `just --justfile ~/.user.justfile --working-directory ~` (I am not convinced that you can do it with Makefile).
+  `just`, on the other hand, deliberately focuses on being a **task runner**.
 
-* Code precheck is highly appreciated.
+That difference is important.
+
+Make was designed to build files efficiently.
+
+`just` was designed to run commands conveniently.
+
+## What is great about Just?
+
+Here are some features that `just` provides natively and that are either unavailable or more cumbersome to implement with Make.
+
+### Interactive recipe selection
+
+```bash
+just --choose
+```
+
+This lets you choose a recipe interactively.
+
+### Define the working directory
+
+```bash
+just --justfile ~/.user.justfile --working-directory ~
+```
+
+This is particularly useful when using a global or shared `justfile`.
+
+### Early error detection
+
+One thing I appreciate is that `just` catches many mistakes before executing the recipe.
+
+For example:
 
 ```bash
 bash: line 1: repository: unbound variable
@@ -57,7 +86,13 @@ error: Backtick failed with exit code 127
   |               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 ```
 
-* That's a big one, the Shebang recipes. A recipe can effectively be a Bash/Python/Node/etc. script without maintaining separate little script files.
+Getting an explicit error immediately is much better than discovering a problem halfway through a long task.
+
+### Shebang recipes
+
+This is a big one.
+
+A recipe can directly contain a Bash, Python, Node.js, or other script without requiring a separate script file.
 
 ```makefile
 # Python directly inside your justfile
@@ -69,9 +104,15 @@ hello name:
     print(f"Hello {name}!")
 ```
 
-No `scripts/hello.py`, no wrapper, everything stays in your `justfile`.
+No `scripts/hello.py`, no wrapper — everything stays inside the `justfile`.
 
-* Automatically document the recipes if a commented line is set just before the recipe, so when you execute `just --list`, you get:
+For small scripts and project utilities, this is extremely convenient.
+
+### Built-in recipe documentation
+
+If you add a comment before a recipe, `just --list` can display it automatically.
+
+For example:
 
 ```text
 Available recipes:
@@ -79,8 +120,11 @@ Available recipes:
     test                        # Test
 ```
 
-* Possibility to make a hidden recipe for documentation, the default recipe (or even to complete this doc).
-  Imagine that you need to create a custom PHONY with a beautiful `sed` to do the same in Makefile...
+This makes it easy to build a small, self-documenting project CLI.
+
+### Custom help recipes
+
+You can also create your own hidden recipe and use it as the default entry point:
 
 ```makefile
 _help:
@@ -89,9 +133,23 @@ _help:
     @printf "Some Extra infos"
 ```
 
-* Hidden recipes from documentation.
+Doing something similar with Make usually requires additional `.PHONY` targets and custom shell commands.
 
-* Possibility to create aliases for all the recipes automatically:
+### Hidden recipes
+
+Recipes can be hidden from the normal list when they are only implementation details.
+
+The `[private]` attribute is useful for this:
+
+```makefile
+[private]
+some-internal-task:
+    echo "Internal task"
+```
+
+### Generate shell aliases
+
+You can automatically create aliases for all available recipes:
 
 ```bash
 for recipe in `just -f ~/.justfile --summary`; do
@@ -99,16 +157,45 @@ for recipe in `just -f ~/.justfile --summary`; do
 done
 ```
 
-* Possibility to list in different orders:
+This allows a `justfile` to behave almost like a small CLI.
+
+### Recipe ordering
+
+Recipes can be listed alphabetically:
 
 ```bash
-just --list               # sorted in alphanumeric order  
-just --list --unsorted    # sorted in the order given in the justfile
+just --list
 ```
 
-* Parameterization in Makefile will look like `make something -e CHOICE=test`; in justfile, `just something test`, since inside a justfile you can define arguments for your recipes.
+or in the order in which they appear in the file:
 
-* Autocompletion for your recipes:
+```bash
+just --list --unsorted
+```
+
+### Recipe arguments
+
+With Make, passing parameters often looks something like this:
+
+```bash
+make something -e CHOICE=test
+```
+
+With `just`, recipe arguments are explicit:
+
+```bash
+just something test
+```
+
+Inside the `justfile`, the recipe can declare the parameters it expects.
+
+This makes the command-line interface much clearer.
+
+### Recipe autocompletion
+
+`just` can provide completion for available recipes.
+
+For example:
 
 ```bash
 $ just
@@ -117,21 +204,35 @@ build      -- Args: PROJECT NAMESPACE  # Build collection locally.
 clone      -- Args: PROJECT            # Clone a project from repository keeping directory structure for ansible.
 clone_all  -- Args: *GROUP             # Git clone all projects from your repository, or if argument provided only from specific group.
 init       -- Args: PROJECT *GROUP     # Create a new ansible collection on repository.
-install    -- Args: PROJECT *VERSION   # Install a ansible collection. (if PROJECT is an artifact .tar.gz install local)
+install    -- Args: PROJECT *VERSION   # Install an ansible collection. (if PROJECT is an artifact .tar.gz install local)
 local      -- Args: PROJECT NAMESPACE  # Create a new ansible collection on localhost (not on repository like function below).
 release    -- Args: PROJECT *VERSION   # Release collection on your repository to the given version in command or in galaxy.yml.
 role       -- Args: GROUP PROJECT ROLE # Create a new ansible role inside an existing collection.
 ```
 
-* Syntax check. It will point to errors in your `justfile` code.
+For larger projects, this turns the `justfile` into something close to a discoverable internal CLI.
 
-* Recipes can be written in arbitrary languages, like Python, NodeJS, or Bash.
+### Syntax checking
 
-* Just is a "task runner", and all the points listed above are going toward this purpose.
+`just` validates the syntax of the file and points directly to errors.
 
-* Use the `[private]` attribute to make recipes invisible from the list.
+This is especially useful as the number of recipes grows.
 
-* Group of receipes with tag `[group('Development')]`, here an example on how it render: 
+### Recipes in arbitrary languages
+
+Recipes can be implemented in Bash, Python, Node.js, and many other languages.
+
+This is one of the features I find most useful because it avoids creating lots of tiny helper scripts.
+
+### Recipe groups
+
+Recipes can be grouped using attributes such as:
+
+```makefile
+[group('Development')]
+```
+
+For example:
 
 ```bash
 ➜  Colt git:(main) just
@@ -155,11 +256,27 @@ Available recipes:
     connect           # Launch the EE toolkit container and drop into an interactive shell.
 ```
 
-## The Justfile's limitations
+This makes large `justfile`s much easier to navigate.
 
-### The exported variables
+Overall, `just` remains focused on one thing:
 
-One limitation that I got with justfile is that you cannot pass a variable that does not exist. Imagine you want to set a default behavior but allow your user to define another behavior. The code below does not work unless you define the var with `export repository=gitlab.com`. But the point here is to allow the user to not define the variable... This comes from Rust's safety paradigm.
+**being a task runner.**
+
+Most of its features are designed specifically around that goal.
+
+## Justfile limitations
+
+`just` is not perfect.
+
+There are still a few limitations and behaviors worth understanding.
+
+### Environment variables
+
+One limitation I originally encountered involved optional environment variables.
+
+I wanted to define a default behavior while still allowing the user to override it.
+
+My first attempt looked like this:
 
 ```bash
 bash: line 1: repository: unbound variable
@@ -168,26 +285,32 @@ error: Backtick failed with exit code 127
 4 | REPOSITORY := `if [ -n $repository ]; then echo "$repository"; else echo "github.com"; fi`
   |               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-# Get the same error in case the env var is not defined, but still better than above condition.
+# Get the same error if the environment variable is not defined.
 REPOSITORY := env_var('REPOSITORY')
 ```
 
-Ok, so what I wrote above is not true anymore. This was before I found [this](https://just.systems/man/en/chapter_37.html):
+At first, I considered this a limitation.
+
+However, `just` already provides a better solution:
 
 ```bash
-REPOSITORY := env_var_or_default('REPOSITORY', "github.com") 
+REPOSITORY := env_var_or_default('REPOSITORY', "github.com")
 ```
 
-### Variables in backticks
+So this particular problem was mostly caused by my initial approach rather than by `just` itself.
 
-Another limitation, again with variables: you cannot use a variable defined before in a backtick. This below will generate an error:
+### Variables inside backticks
+
+Another limitation concerns variables evaluated inside backtick expressions.
+
+For example:
 
 ```bash
 set shell := ["bash", "-uc"]
 
-REPO       :=  "github.com"
-TEST       :=  "https://" + REPO
-TEST2      :=  `curl https://{{TEST}}`
+REPO       := "github.com"
+TEST       := "https://" + REPO
+TEST2      := `curl https://{{TEST}}`
 
 # Test
 test:
@@ -196,19 +319,27 @@ test:
     echo {{TEST2}}
 ```
 
-But the limitations listed above seem to come from Rust's paradigm for safety and performance.
+Depending on how values are evaluated, this kind of expression can become awkward.
 
-## Makefile Limitations
+In general, I prefer to keep complex runtime logic inside recipes instead of trying to put too much shell logic into top-level variable declarations.
 
-The documentation of all the PHONYs needs a PHONY for it. It should look like this:
+That also makes the `justfile` easier to read.
+
+## Makefile limitations for task running
+
+Make is extremely powerful, but some of its design choices become awkward when the goal is simply to create a project CLI.
+
+One example is documentation.
+
+To generate a convenient help command for `.PHONY` targets, you often end up writing something like this:
 
 ```makefile
 .PHONY: prerequis
-## Install all prerequisites for this Ansible Collections.
+## Install all prerequisites for this Ansible Collection.
 prerequis:
         $(MAKE) -C ./scripts/prerequis all
 
-# keep it at the end of your Makefile
+# Keep this at the end of your Makefile
 .DEFAULT_GOAL := show-help
 
 # Inspired by <http://marmelab.com/blog/2016/02/29/auto-documented-makefile.html>
@@ -253,51 +384,106 @@ show-help:
         | cat
 ```
 
+It works.
+
+But compared with:
+
+```bash
+just --list
+```
+
+the amount of boilerplate is significant.
+
+This illustrates the main difference between the two tools.
+
+Make can absolutely be used as a task runner, but many features that `just` provides directly have to be implemented manually.
+
 ## Conclusion
 
-As you can see, the list is long and you end up with a beautiful tool that allows you to organize your tasks linked between them, auto-documented, and quite safe.
+The list of features is quite long, and the result is a very pleasant tool for organizing project tasks.
 
-It tries to avoid the complexity and idiosyncrasies of `Makefile`. In some way, `Makefile` code is nested with your shell, and diving into an existing long script can become tedious.
+`just` gives you:
+
+- Recipe arguments
+- Built-in documentation
+- Groups
+- Private recipes
+- Shell completion
+- Shebang recipes
+- Syntax validation
+- Multiple scripting languages
+- A clean CLI-oriented syntax
+
+It tries to avoid much of the complexity and many of the historical conventions of Make.
+
+With Make, the Make syntax and the shell syntax are often mixed together, and reading a large existing Makefile can become tedious.
+
+That does not make Make obsolete.
+
+Make is still the better tool when the actual problem is **building files based on dependencies and timestamps**.
+
+But when the goal is simply:
+
+> run a well-defined set of project commands
+
+I now prefer `just`.
 
 ## Other tips
 
-* Create a CLI:
+### Build a small CLI
+
+A global `justfile` can easily become a personal command-line interface:
 
 ```shell
 alias acme='just --justfile ~/acme/cli/justfile'
 ```
+
+With a default recipe:
 
 ```makefile
 [private]
 @default:
   just --list
 
-# Show arch and os name
+# Show architecture and OS name
 @os-info:
   echo "Arch: {{arch()}}"
   echo "OS: {{os()}}"
 ```
 
-* Use tags in justfile:
+You can then use:
+
+```bash
+acme
+acme os-info
+```
+
+instead of maintaining a collection of unrelated shell scripts.
+
+### Use platform-specific recipes
+
+`just` can also provide recipes that differ depending on the operating system.
+
+For example:
 
 ```makefile
-[private] # make the recipe invisible during list
+[private]
 @default:
   just --list
 
-# Show arch and os name
+# Show architecture and OS name
 @os-info:
   echo "Arch: {{arch()}}"
   echo "OS: {{os()}}"
 
 # List systemd services
-[linux] # apply only to linux os
+[linux]
 @list-systemd-services:
   systemctl list-units --type=service
 
 # Get the size of a folder
 [linux]
-[no-cd] # apply from where you are
+[no-cd]
 get-folder-size path:
   du -sh {{path}}
 
@@ -306,9 +492,16 @@ get-folder-size path:
 [no-cd]
 get-folder-size path:
   (Get-ChildItem "{{path}}" -Recurse -Force | Measure-Object -Property Length -Sum).Sum / 1MB
+```
 
-### Script in Python3 ###
-# scale jpg image by 50%
+This makes it possible to expose the same logical task while implementing it differently on Linux and Windows.
+
+### Embed Python directly
+
+Small Python utilities can live directly inside the `justfile`:
+
+```makefile
+# Scale a JPG image by 50%
 [no-cd]
 scale-jpg path:
   #!/usr/bin/env python3
@@ -318,9 +511,14 @@ scale-jpg path:
   factor = 0.5
   image = image.resize((round(image.width * factor), round(image.height * factor)))
   image.save("{{path}}.s50.jpg")
+```
 
-### use Nix to run python3 ###
-# scale jpg image by 50%
+### Use Nix for script dependencies
+
+You can even combine `just` with Nix when a recipe requires additional dependencies:
+
+```makefile
+# Scale a JPG image by 50%
 [no-cd]
 scale-jpg path:
   #! /usr/bin/env nix-shell
@@ -329,9 +527,16 @@ scale-jpg path:
   import PIL.Image
 ```
 
-## Bonus Point
+That is a particularly interesting combination:
 
-usually I base my project on a [template](https://github.com/MozeBaltyk/project-template) using this justfile: 
+`just` defines the task, while Nix provides the execution environment.
+
+## Bonus point
+
+I usually start my projects from my
+[project template](https://github.com/MozeBaltyk/project-template), which already includes a structured `justfile`.
+
+For example:
 
 ```bash
 ➜  project-template git:(main) just
@@ -351,14 +556,29 @@ Available recipes:
     connect     # Launch the EE toolkit container and drop into an interactive shell.
 ```
 
+This is where I find `just` particularly useful.
+
+The `justfile` becomes the common entry point for the project:
+
+```text
+Developer
+    │
+    ▼
+  just
+    │
+    ├── test
+    ├── compile
+    ├── build
+    ├── deploy
+    └── destroy
+```
+
+The underlying tools may change, but the developer interface remains simple and discoverable.
+
 ## Sources
 
-[Some Memo](https://cheatography.com/linux-china/cheat-sheets/justfile/)
-
-[The Official doc](https://just.systems/man/en/)
-
-[GitHub Casey/just](https://github.com/casey/just)
-
-[Create some spell](https://dany98.hashnode.dev/just-harness-command-line-spells)
-
-[Blog](https://blog.chay.dev/create-an-internal-cli/)
+- [Just cheat sheet](https://cheatography.com/linux-china/cheat-sheets/justfile/)
+- [Official Just documentation](https://just.systems/man/en/)
+- [GitHub — casey/just](https://github.com/casey/just)
+- [Create some command-line spells](https://dany98.hashnode.dev/just-harness-command-line-spells)
+- [Creating an internal CLI](https://blog.chay.dev/create-an-internal-cli/)
