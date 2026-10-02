@@ -388,7 +388,7 @@ Create the container definition:
 ~/.config/containers/systemd/freshrss-app.container
 ```
 
-{{< code-snippet freshrss-app.container ini>}}
+{{< code-snippet freshrss-app.service ini>}}
 
 Podman Quadlet will use this file to generate the corresponding:
 
@@ -404,7 +404,7 @@ If a dedicated network is required, create:
 ~/.config/containers/systemd/freshrss-net.network
 ```
 
-{{< code-snippet freshrss-net.network ini>}}
+{{< code-snippet freshrss-net.service ini>}}
 
 The network is then also managed by Podman through systemd.
 

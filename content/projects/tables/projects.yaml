@@ -5,6 +5,12 @@
   References: https://github.com/MozeBaltyk/wst
   Active: true
 
+- Title: Colt
+  Logo: '<img src="logos/logo_colt.png" width="36" alt="Colt logo"/>'
+  Description: One CLI companion for all your Git projects, wherever they live, across their entire lifecycle.
+  References: https://github.com/MozeBaltyk/Colt
+  Active: true
+
 - Title: Rkub
   Logo: '<img src="logos/logo_rkub.png" width="36" alt="Rkub logo"/>'
   Description: Ansible Collection to deploy a RKE2 cluster with Rancher, Longhorn and Neuvector in Airgap mode
@@ -22,4 +28,3 @@
   Description: A Wake-on-lan, Pxeboot server and a webapp in container.
   References: https://github.com/MozeBaltyk/UpOnLAN
   Active: true
-

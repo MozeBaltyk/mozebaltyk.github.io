@@ -525,43 +525,11 @@ GitLab  -> glab
 
 They provide additional operations that do not belong to Git itself: creating repositories, opening pull requests or merge requests, managing issues, releases, CI pipelines, and so on.
 
-## A word on independent projects
-
-Of course, I am not the first one to face the problem of managing repositories spread across different providers.
-
-There are several independent projects trying to add another abstraction layer on top of Git and provider APIs.
-
-[Hyperforge](https://github.com/hypermemetic-ai/hyperforge) takes a declarative approach to multi-forge repository management.
-
-It can manage repositories across GitHub, GitLab, and Codeberg, with the idea of having an origin and eventually mirrors on other forges.
-
-[Coco](https://coco.griffen.codes/docs/getting-started) goes further than repository management.
-
-It provides a Git terminal workstation with AI-assisted commits, reviews, and changelogs, but also abstracts some forge operations.
-
-It detects the remote provider and can use `gh` for GitHub, `glab` for GitLab, or APIs for some other forges.
-
-[Gitfleet](https://github.com/airscripts/gitfleet) tries to provide a provider-neutral CLI for GitHub and GitLab.
-
-Instead of remembering which command belongs to `gh` or `glab`, the idea is to expose a common vocabulary for repositories, issues, pipelines, releases, and other provider operations.
-
-[RepoBee](https://github.com/repobee/repobee) is another interesting project, although it has a more specific use case.
-
-It was designed for teachers and teaching assistants managing a large number of student repositories and supports GitHub, GitLab, and Gitea.
-
-Still, the underlying problem is familiar: performing the same operations across tens or hundreds of repositories without having to manage each one manually.
-
-Those projects have different goals, but they illustrate the same thing: as soon as you start working with several Git providers and a large number of repositories, `git` alone no longer covers the whole workflow.
-
-And this is where things become interesting...
-
-Should we use `git`, `gh`, `glab`, or put yet another abstraction layer on top of all of them?
-
 ## So where is the problem?
 
 As you have seen, we have to deal with several providers, sometimes a large number of repositories, all of them potentially using different protocols and authentication systems.
 
-To manage all this, you have to juggle between the `git` command, which remains the standard, and provider CLIs such as `gh` and `glab` for advanced or provider-specific operations.
+To manage all this, you have to juggle between the `git` command, which remains the standard, and provider CLIs such as `gh`, `glab` or `tea` for advanced or provider-specific operations.
 
 Add to this credential helpers, SSH configurations, several identities, Personal Access Tokens, on-premise GitLab instances, and independent tools designed to manage large numbers of repositories...
 
@@ -577,8 +545,9 @@ But behind this small mistake, there are actually several different questions:
 * **Where is my repository hosted?** → `remote.origin.url`
 * **Which protocol am I using?** → HTTPS or SSH
 * **How does Git authenticate me?** → credential helper, token, or SSH key
-* **How do I interact with provider-specific features?** → `gh`, `glab`, or another provider CLI
+* **How do I interact with provider-specific features?** → `gh`, `glab`, `tea` or another provider CLI
 
 Those concepts are related, but they are not the same thing.
 
 And I think this is exactly why I ended up writing this article from what was, initially, just a simple Git configuration mistake.
+
