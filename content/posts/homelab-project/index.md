@@ -11,7 +11,7 @@ reward: true
 pinned: false
 carousel: false
 series:
-  - Posts 
+  - Homelab Journey 
 categories:
   - Homelab 
 tags:

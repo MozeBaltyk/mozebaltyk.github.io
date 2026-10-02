@@ -11,7 +11,7 @@ toc: true
 reward: true
 carousel: true
 series: 
-  - Posts
+  - Open Source
 categories:
   - Tutorials
 tags:

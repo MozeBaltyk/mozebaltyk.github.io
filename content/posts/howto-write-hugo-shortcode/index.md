@@ -11,7 +11,7 @@ toc: true
 reward: true
 carousel: false
 series:
-  - Posts
+  - Building This Blog
 categories:
   - Tutorials
 tags:

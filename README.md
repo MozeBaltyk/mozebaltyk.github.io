@@ -6,27 +6,42 @@
 
 ## Organisation of this blog
 
-* **Series**:
-  - Docs
-  - Posts
-  - Projects 
+* **Series** (thematic journeys):
+  - Workstation
+  - Homelab Journey
+  - Building This Blog
+  - Building a Tool
+  - Infrastructure
+  - Open Source
+  - Docs *(structural)*
+  - Projects *(structural)*
 * **Categories**:
+  - Devops
   - SysAdmin
   - DBA
-  - Network
-  - Devops
-  - Homelab
-  - Hacking
   - Tutorials
-
-New Category Structure proposed by Opencode:
-- Infrastructure & Cloud - Terraform, Kubernetes, cloud platforms
-- Development & Workflow - Git workflows, CI/CD, development tools  
-- Systems & Workstations - WSL, workstation configuration, system admin
-- Homelab & Self-Hosting - Hardware, self-hosted solutions, RSS readers
-- Blog & Web - Hugo customization, web development, shortcode
-
-* **Tags**: 
+  - Hacking
+  - Network
+  - Homelab
+* **Tags**:
+  - Linux
+  - Kubernetes
+  - Containers
+  - Networking
+  - Storage
+  - Virtualization
+  - Security
+  - Git
+  - IaC
+  - Ansible
+  - Scripting
+  - Shell
+  - Windows / WSL
+  - Homelab
+  - Hugo
+  - Databases
+  - CI/CD
+  - Gitops
 
 ## Importants links for this blogs
 

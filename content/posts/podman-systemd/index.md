@@ -11,7 +11,7 @@ reward: true
 pinned: false
 carousel: true
 series:
-  - Posts
+  - Workstation
 categories:
   - Devops
 tags:
