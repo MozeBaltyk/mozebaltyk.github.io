@@ -7,9 +7,8 @@ series:
 categories:
   - SysAdmin
 tags:
-  - Virtualisation
-  - Oracle
-  - KVM
+  - Virtualization
+  - Databases
 ---
 
 ### Prerequisistes

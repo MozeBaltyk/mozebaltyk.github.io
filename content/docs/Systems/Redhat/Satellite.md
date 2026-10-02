@@ -7,9 +7,8 @@ series:
 categories:
   - SysAdmin
 tags:
-  - Systems
-  - RedHat
-  - Repository
+  - Linux
+  - Git
 ---
 
 # Satellite - Repository

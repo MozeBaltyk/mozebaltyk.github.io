@@ -16,7 +16,6 @@ series:
 categories:
   - Devops
 tags:
-  - OpenSources
 sidebar: false
 ---
 

@@ -7,10 +7,9 @@ series:
 categories:
   - SysAdmin
 tags:
-  - Virtualisation
-  - Oracle
+  - Virtualization
+  - Databases
   - Storage
-  - KVM
 ---
 
 ## General concern 

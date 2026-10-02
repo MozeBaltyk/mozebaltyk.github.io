@@ -8,5 +8,5 @@ categories:
   - Devops
 tags:
   - Kubernetes
-  - Certificate
+  - Security
 ---

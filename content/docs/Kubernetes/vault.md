@@ -8,9 +8,8 @@ categories:
   - Devops
 tags:
   - Kubernetes
-  - Infrastructure
-  - Secrets
-  - Certificate
+  - IaC
+  - Security
 ---
 
 Some time ago, I made a small shell script to handle Vault on a cluster kubernetes. For documentation purpose. 

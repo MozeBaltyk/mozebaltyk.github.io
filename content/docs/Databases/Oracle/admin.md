@@ -7,6 +7,5 @@ series:
 categories:
   - DBA
 tags:
-  - Oracle
-  - Admin
+  - Databases
 ---

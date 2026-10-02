@@ -8,7 +8,7 @@ categories:
   - Devops
 tags:
   - Kubernetes
-  - Infrastructure
+  - IaC
 ---
 
 *K3D* equal k3s in a container. a tools to create *single-* and *multi-node* k3s clusters.

@@ -15,8 +15,6 @@ series:
 categories:
   - SysAdmin
 tags:
-  - Workstation
-  - OpenSources
   - Linux
 images:
   - ./carousel/my-workstation.avif

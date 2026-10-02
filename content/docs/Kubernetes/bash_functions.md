@@ -7,7 +7,6 @@ series:
 categories:
   - Devops
 tags:
-  - Shell
   - Scripting
   - Kubernetes
 ---

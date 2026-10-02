@@ -7,8 +7,7 @@ series:
 categories:
   - SysAdmin
 tags:
-  - Virtualisation
-  - KVM
+  - Virtualization
 ---
 
 ### Basic Checks

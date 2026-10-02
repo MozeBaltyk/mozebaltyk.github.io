@@ -16,8 +16,7 @@ categories:
   - Tutorials
 tags:
   - Hugo
-  - Blog
-  - Golang
+  - Scripting
 images:
   - ./carousel/howto-write-hugo-shortcode.avif
 authors:

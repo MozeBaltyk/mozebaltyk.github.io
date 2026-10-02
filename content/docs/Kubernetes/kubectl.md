@@ -8,7 +8,6 @@ categories:
   - Devops
 tags:
   - Kubernetes
-  - Admin
 ---
 
 ## Connexion to k8s cluster

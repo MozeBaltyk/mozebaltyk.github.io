@@ -16,9 +16,7 @@ categories:
   - Devops
 tags:
   - Containers
-  - Devops
-  - Podman
-  - Repository
+  - Git
 authors:
   - mozebaltyk
 images: 

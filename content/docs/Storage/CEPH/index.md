@@ -7,6 +7,5 @@ series:
 categories:
   - Devops
 tags:
-  - Cloud
   - Storage
 ---

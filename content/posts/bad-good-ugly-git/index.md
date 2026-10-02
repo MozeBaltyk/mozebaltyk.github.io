@@ -16,7 +16,6 @@ categories:
   - Devops
 tags:
   - Git
-  - Devops
 authors:
   - mozebaltyk
 images:

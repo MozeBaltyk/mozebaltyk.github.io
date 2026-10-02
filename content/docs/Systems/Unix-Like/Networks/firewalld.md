@@ -7,9 +7,8 @@ series:
 categories:
   - SysAdmin
 tags:
-  - Systems
-  - Unix-Like
-  - Networks
+  - Linux
+  - Networking
 ---
 
 ### Basic Troubleshooting

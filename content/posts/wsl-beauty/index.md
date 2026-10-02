@@ -15,10 +15,8 @@ series:
 categories:
   - SysAdmin
 tags:
-  - Windows
+  - Windows / WSL
   - Linux
-  - Devops
-  - Workstation
 authors:
   - mozebaltyk
 images:

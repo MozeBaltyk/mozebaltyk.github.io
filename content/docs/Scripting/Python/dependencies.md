@@ -8,8 +8,7 @@ categories:
   - Devops
 tags:
   - Scripting
-  - Python
-  - Repository
+  - Git
 ---
 
 

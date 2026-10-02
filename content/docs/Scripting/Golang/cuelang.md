@@ -8,8 +8,6 @@ categories:
   - Devops
 tags:
   - Scripting
-  - Golang
-  - Data
 ---
 
 

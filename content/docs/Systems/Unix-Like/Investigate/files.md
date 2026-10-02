@@ -7,9 +7,7 @@ series:
 categories:
   - SysAdmin
 tags:
-  - Systems
-  - Unix-Like
-  - Investigate
+  - Linux
 ---
 
 ## Find a process blocking a file 

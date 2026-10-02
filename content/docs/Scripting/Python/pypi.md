@@ -8,7 +8,6 @@ categories:
   - Devops
 tags:
   - Scripting
-  - Python
 ---
 
 ## Pypi Repo for airgap env

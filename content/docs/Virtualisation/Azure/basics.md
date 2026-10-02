@@ -7,8 +7,7 @@ series:
 categories:
   - Devops
 tags:
-  - Cloud
-  - Providers
+  - Virtualization
 ---
 
 ### Create a small infra for kubernetes

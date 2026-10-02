@@ -7,6 +7,5 @@ series:
 categories:
   - Devops
 tags:
-  - Registry
   - Containers
 ---

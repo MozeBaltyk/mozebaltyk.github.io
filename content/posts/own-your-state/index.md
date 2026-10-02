@@ -15,8 +15,7 @@ series:
 categories:
   - Devops
 tags:
-  - Tf
-  - Devops
+  - IaC
   - Storage
 authors:
   - mozebaltyk

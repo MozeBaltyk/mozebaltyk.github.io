@@ -8,8 +8,8 @@ categories:
   - Devops
 tags:
   - Kubernetes
-  - Networks
-  - Infrastructure
+  - Networking
+  - IaC
 ---
 
 ## Troubleshoot DNS

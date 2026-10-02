@@ -7,8 +7,8 @@ series:
 categories:
   - DBA
 tags:
-  - Oracle
-  - Shell
+  - Databases
+  - Scripting
 ---
 
 ## Inside a Shell script

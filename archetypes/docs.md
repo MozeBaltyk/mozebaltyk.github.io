@@ -19,7 +19,7 @@ categories:
 # One of below choices:
 #  - SysAdmin
 #  - DBA
-#  - Networks
+#  - Network
 #  - Devops
 #  - Homelab
 #  - Hacking

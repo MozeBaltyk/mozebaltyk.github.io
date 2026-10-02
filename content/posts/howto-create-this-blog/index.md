@@ -17,7 +17,6 @@ categories:
 tags:
   - Hugo
   - Git
-  - Blog
 authors:
   - mozebaltyk
 images:

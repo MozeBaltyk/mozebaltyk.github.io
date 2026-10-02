@@ -17,7 +17,6 @@ categories:
 tags:
   - Hugo
   - Git
-  - Blog
 images:
   - ./carousel/howto-my-new-blog.jpg
 authors:

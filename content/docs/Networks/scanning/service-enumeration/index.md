@@ -13,8 +13,7 @@ series:
 categories:
   - Hacking
 tags:
-  - Network
-  - Hacking
+  - Networking
 images:
 meta:
   reading_time: false

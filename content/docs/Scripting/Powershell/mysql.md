@@ -8,8 +8,7 @@ categories:
   - DBA
 tags:
   - Scripting
-  - Powershell
-  - MySQL
+  - Databases
 ---
 
 ## Example

@@ -16,8 +16,7 @@ categories:
   - Tutorials
 tags:
   - Hugo
-  - Blog
-  - JS
+  - Scripting
 images:
   - ./carousel/howto-create-custom-widget.jpg
 authors:

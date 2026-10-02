@@ -12,8 +12,7 @@ categories:
   - Devops
 tags:
   - Git
-  - Repository
-  - Registry
+  - Containers
 ---
 
 ## Glab CLI 

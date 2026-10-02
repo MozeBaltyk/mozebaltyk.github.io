@@ -15,8 +15,6 @@ series:
 categories:
   - Homelab 
 tags:
-  - Hardware
-  - Devops
   - Homelab
 authors:
   - mozebaltyk

@@ -16,8 +16,7 @@ categories:
   - Devops
 tags:
   - Containers
-  - Devops
-  - Secrets
+  - Security
   - Kubernetes
 authors:
   - mozebaltyk

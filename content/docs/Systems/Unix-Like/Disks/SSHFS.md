@@ -7,11 +7,9 @@ series:
 categories:
   - SysAdmin
 tags:
-  - Systems
-  - Unix-Like
-  - Disks
-  - Shared-Storage
-  - SSH
+  - Linux
+  - Storage
+  - Networking
 ---
 
 

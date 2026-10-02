@@ -17,8 +17,7 @@ series:
 categories:
   - Hacking
 tags:
-  - Network
-  - Hacking
+  - Networking
 images:
 #  - 
 # menu:

@@ -7,8 +7,7 @@ series:
 categories:
   - Devops
 tags:
-  - Cloud
-  - Providers
+  - Virtualization
 ---
 
 ### Install Client

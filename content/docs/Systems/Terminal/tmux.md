@@ -7,9 +7,8 @@ series:
 categories:
   - SysAdmin
 tags:
-  - Systems
-  - Terminal
-  - Produtivity
+  - Linux
+  - Shell
 ---
 
 

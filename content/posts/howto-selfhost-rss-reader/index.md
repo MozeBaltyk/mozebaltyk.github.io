@@ -15,9 +15,7 @@ series:
 categories:
   - Tutorials
 tags:
-  - Blog
-  - OpenSources
-  - RSS
+  - Hugo
 images:
   - ./carousel/howto-selfhost-rss-reader.jpg
 authors:

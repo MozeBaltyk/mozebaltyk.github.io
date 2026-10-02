@@ -7,9 +7,7 @@ series:
 categories:
   - SysAdmin
 tags:
-  - Systems
-  - RedHat
-  - User-Management
+  - Linux
 ---
 
 ## Troubleshooting 

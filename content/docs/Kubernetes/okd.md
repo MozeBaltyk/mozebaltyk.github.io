@@ -8,7 +8,7 @@ categories:
   - Devops
 tags:
   - Kubernetes
-  - Infrastructure
+  - IaC
 ---
 
 ## Install

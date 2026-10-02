@@ -7,9 +7,7 @@ series:
 categories:
   - SysAdmin
 tags:
-  - Systems
-  - Unix-Like
-  - Boot
+  - Linux
 ---
 
 

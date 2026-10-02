@@ -8,7 +8,6 @@ categories:
   - SysAdmin
 tags:
   - Scripting
-  - Shell
 ---
 
 

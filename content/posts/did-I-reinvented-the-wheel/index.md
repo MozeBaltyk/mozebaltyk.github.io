@@ -1,7 +1,7 @@
 ---
 title: Did I Reinvent the Wheel?
 description: "Follow-up article to \"The Bad, the Good and the Ugly Git\"."
-date: 2026-10-01T12:00:00+02:00
+date: 2026-10-03T12:00:00+02:00
 noindex: false
 featured: true
 draft: true
@@ -16,7 +16,6 @@ categories:
   - Devops
 tags:
   - Git
-  - Devops
 authors:
   - mozebaltyk
 images:
@@ -64,17 +63,7 @@ For Gitea and Forgejo, there is `tea`.
 
 Those tools are very powerful and cover most provider-specific operations.
 
-The problem is that, when working with several providers, you have to remember which command belongs to which ecosystem.
-
-You may end up switching between:
-
-```bash
-gh repo ...
-glab repo ...
-tea repo ...
-```
-
-while still using `git` itself for repository operations.
+The problem is that, when working with several providers, you have to remember which command belongs to which ecosystem. You may end up switching between them. while still using `git` itself for repository operations.
 
 Each tool is good at what it does, but the workflow becomes fragmented.
 

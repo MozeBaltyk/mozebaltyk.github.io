@@ -15,7 +15,6 @@ series:
 categories:
   - Tutorials
 tags:
-  - Opensources
 images:
   - ./carousel/opensources-miracles.jpg
 authors:

@@ -7,8 +7,7 @@ series:
 categories:
   - DBA
 tags:
-  - Oracle
-  - HA
+  - Databases
 ---
 
 ## Grid

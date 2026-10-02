@@ -8,7 +8,6 @@ categories:
   - Devops
 tags:
   - Kubernetes
-  - Admin
 ---
 
 ## Admnistration

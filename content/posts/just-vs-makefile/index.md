@@ -15,7 +15,6 @@ series:
 categories:
   - Devops
 tags:
-  - Command-line
   - Scripting
 authors:
   - mozebaltyk

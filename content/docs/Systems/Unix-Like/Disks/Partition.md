@@ -7,10 +7,8 @@ series:
 categories:
   - SysAdmin
 tags:
-  - Systems
-  - Unix-Like
-  - Disks
-  - Partitions
+  - Linux
+  - Storage
 ---
 
 	

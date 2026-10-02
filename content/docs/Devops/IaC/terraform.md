@@ -8,7 +8,6 @@ categories:
   - Devops
 tags:
   - IaC
-  - Terraform
 ---
 
 

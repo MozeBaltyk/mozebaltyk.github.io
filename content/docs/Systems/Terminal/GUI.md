@@ -7,7 +7,6 @@ series:
 categories:
   - SysAdmin
 tags:
-  - Systems
-  - Terminal
-  - GUI
+  - Linux
+  - Shell
 ---

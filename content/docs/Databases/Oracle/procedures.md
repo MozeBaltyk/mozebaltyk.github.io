@@ -7,7 +7,7 @@ series:
 categories:
   - DBA
 tags:
-  - Oracle
+  - Databases
 ---
 
 ## Basics 

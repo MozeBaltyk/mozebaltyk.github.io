@@ -15,9 +15,7 @@ series:
 categories:
   - Tutorials
 tags:
-  - Blog
   - Hugo
-  - RSS
 images:
   - ./carousel/howto-customize-feed-rss.avif
 authors:
