@@ -9,7 +9,6 @@ comment: true
 toc: true
 reward: true
 pinned: true
-carousel: true
 series:
   - Building a Tool
 categories:

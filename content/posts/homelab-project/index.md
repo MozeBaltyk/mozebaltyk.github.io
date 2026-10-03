@@ -9,7 +9,6 @@ comment: true
 toc: true
 reward: true
 pinned: false
-carousel: false
 series:
   - Homelab Journey 
 categories:

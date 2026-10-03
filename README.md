@@ -51,7 +51,7 @@ We deliberately **limit the number of tags**:
 ### Conventions for new posts & docs
 
 * Pick **one category** by the *type* of content (`Reflection`, `Memo`, `Tutorials` or `Hacking`) and **1–3 tags from the fixed list** — don't invent new tags without updating this document.
-* Assign a **series** only when it's part of a real narrative; otherwise omit it (or use `Docs`/`Posts` for the structural sections).
+* Assign a **series** only when it's part of a real narrative; otherwise omit it entirely.
 * Write in **English**; keep commands in fenced code blocks.
 * Docs live under `content/docs/<Section>/…` and are ordered with `nav_weight` (lower = higher in the nav); posts live under `content/posts/<slug>/`.
 * Use theme **shortcodes** for notes (`{{< bs/alert info >}}`, `{{< bs/alert warning >}}`) rather than plain `>` blockquotes or GitHub `> [!NOTE]` callouts (the latter don't render here).
@@ -94,20 +94,23 @@ Resolution: the bundle `table/`/`tables/` folders first, then `data/` (nested pa
 
 ### Images
 
-* Global images: `static/images/` (referenced as `images/foo.png` — avatar, logo, default thumbnail).
-* Per-article images: the page's `images/` bundle folder, or `static/posts/<slug>/`.
+* Global/theme images (avatar, logo, default thumbnail, favicon): `assets/images/` — referenced as `images/foo.png` in `params.yaml`.
+* Per-article body images: `static/posts/<slug>/`.
+* Featured/carousel images: the post's own `carousel/` bundle folder (see Carousel below).
 
 ### Carousel
 
+The **homepage** carousel shows the *featured* posts, using each post's first `images:` entry as its slide image.
+
 ```yaml
-carousel: true          # enable the image carousel on this post
-featured: true          # mark as featured (surfaced on the homepage)
+featured: true          # make the post appear in the homepage carousel
 images:
-  - ./carousel/my-post.webp
+  - carousel/my-post.webp
 ```
 
-* Carousel images live in `static/carousel/`.
-* Featured posts drive the homepage carousel (tuned via `featured_posts` in `params.yaml`).
+* Carousel images live in the post's own bundle folder `content/posts/<slug>/carousel/`, referenced with a **relative** path (no leading `./` or `/`) so they are picked up as page resources (processed + lazy-loaded).
+* `featured: true` (with an image) is what surfaces the post in the homepage carousel; the number shown is tuned via `featured_posts` in `params.yaml`.
+* The legacy `carousel: true` frontmatter flag is **not read** by the theme — it can be dropped.
 
 ### Hybrid codes — bundle vs shared
 

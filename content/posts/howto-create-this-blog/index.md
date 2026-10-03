@@ -9,7 +9,6 @@ comment: true
 toc: true
 reward: true
 pinned: false
-carousel: true
 series:
   - Building This Blog
 categories:
