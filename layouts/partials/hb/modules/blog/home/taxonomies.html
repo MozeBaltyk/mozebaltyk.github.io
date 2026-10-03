@@ -1,0 +1,25 @@
+{{/* ponytail: replaces the homepage taxonomies stat with the random citation widget. */}}
+<div class="hb-module text-center mb-3">
+  <section class="random-citation js-random-citation">
+    <h5 id="citation-title"></h5>
+    <blockquote id="citation-content"></blockquote>
+
+    <div class="citation-data" hidden>
+      <div class="citation-category" data-category="quote" data-title="💬 Quote">
+        {{ range site.Data.sidebar.quotes }}
+          <div data-text="{{ .text }}" data-author="{{ .author }}"></div>
+        {{ end }}
+      </div>
+      <div class="citation-category" data-category="joke" data-title="😂 IT Joke">
+        {{ range site.Data.sidebar.jokes }}
+          <div data-text="{{ . }}"></div>
+        {{ end }}
+      </div>
+      <div class="citation-category" data-category="wisdom" data-title="🧠 Tech Wisdom">
+        {{ range site.Data.sidebar.wisdom }}
+          <div data-text="{{ . }}"></div>
+        {{ end }}
+      </div>
+    </div>
+  </section>
+</div>

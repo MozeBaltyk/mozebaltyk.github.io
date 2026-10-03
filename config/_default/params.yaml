@@ -115,7 +115,7 @@ hb:
     # post_thumbnail: false # whether to show the thumbnails.
     # post_date_format: ":date_long" # see https://gohugo.io/functions/dateformat/#datetime-formatting-layouts.
     home: # homepage settings.
-      # taxonomies: false # remove the taxonomies stat from the homepage.
+      # taxonomies: false # the stat box is replaced by layouts/partials/hb/modules/blog/home/taxonomies.html (citation widget).
       featured_posts: 6 # the number of the featured posts, 0 means disabled.
       pinned_posts_position: "list"
       main_sections: # leave it empty to include all regular pages.
