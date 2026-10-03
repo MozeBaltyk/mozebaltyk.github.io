@@ -1,7 +1,7 @@
 ---
 date: 2024-08-01T21:00:00+08:00
 title: Clusterware
-navWeight: 50 # Upper weight gets higher precedence, optional.
+nav_weight: 40 # Upper weight gets higher precedence, optional.
 series:
   - Docs
 categories:
@@ -26,17 +26,17 @@ Grid (couche clusterware) -> ASM -> Disk Group
 srvctl config scan
 
 SCAN name: host-env-datad1-scan.domain, Network: 1
-Subnet IPv4: 172.16.228.0/255.255.255.0/ens192, static
+Subnet IPv4: 192.168.228.0/255.255.255.0/ens192, static
 Subnet IPv6:
-SCAN 1 IPv4 VIP: 172.16.228.33
+SCAN 1 IPv4 VIP: 192.168.228.33
 SCAN VIP is enabled.
 SCAN VIP is individually enabled on nodes:
 SCAN VIP is individually disabled on nodes:
-SCAN 2 IPv4 VIP: 172.16.228.35
+SCAN 2 IPv4 VIP: 192.168.228.35
 SCAN VIP is enabled.
 SCAN VIP is individually enabled on nodes:
 SCAN VIP is individually disabled on nodes:
-SCAN 3 IPv4 VIP: 172.16.228.34
+SCAN 3 IPv4 VIP: 192.168.228.34
 SCAN VIP is enabled.
 SCAN VIP is individually enabled on nodes:
 SCAN VIP is individually disabled on nodes:

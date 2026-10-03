@@ -1,7 +1,7 @@
 ---
 date: 2023-08-01T21:00:00+08:00
-title: VIM
-navWeight: 1200 # Upper weight gets higher precedence, optional.
+title: Vim
+nav_weight: 70 # Upper weight gets higher precedence, optional.
 series:
   - Docs
 categories:
@@ -37,31 +37,31 @@ git clone https://github.com/NoahTheDuke/vim-just.git
 
 * trigger a vim tutorial `vimtutor` 
 
-* the most powerfull command:    
-  `.`  :  Repeat the last modification repete toutes les dernieres modif realisees.    
-  `*`  :  Where the cursor is located, keep in memory the word and goes to next one.    
-  `.*` :  together repeat an action on next word.    
+* the most powerful commands:    
+  `.`  :  Repeat the last modification.    
+  `*`  :  Where the cursor is located, keeps the word in memory and goes to the next occurrence.    
+  `.*` :  together, repeat an action on the next word.    
 
-* Encrypt a file with VIM, Pasted from [sources](https://www.generation-linux.fr/index.php?post/2017/08/06/Chiffrer-simplement-un-fichier-texte-avec-Vim) 
+* Encrypt a file with VIM, pasted from [sources](https://www.generation-linux.fr/index.php?post/2017/08/06/Chiffrer-simplement-un-fichier-texte-avec-Vim) 
 
 ```bash
 :setlocal cm=blowfish2
 :X 
->Tapez la cle de chiffrement : 
+>Enter the encryption key:
 :wq
 ```
 
 * aliases - in command mode
-`:ab ue université d'économie`   - create an alias `ue`, then in insert mode everytime you will type `eu + Enter` will write for you `université d'éco`.  
-`:unab ue`                       - remove alias `ue`         
-`:ab rue Mr Dupont rue Dujardin` - ⚠️ Be carefull to the common mistake the alias is in the alias.
+`:ab ue University of Economics`   - creates an alias `ue`, then in insert mode every time you type `ue + Enter` it will write `University of Economics` for you.
+`:unab ue`                       - removes the alias `ue`
+`:ab rue Mr Smith main street`    - ⚠️ Be careful of the common mistake where the alias is contained in the alias.
 
 ## My ~/.vimrc
 
-`vim -u test_vimrc`  : when you want to test first a `vimrc`
+`vim -u test_vimrc`  : when you want to test a `vimrc` first
 
 ```bash
-# Coloration Active et Presentation
+# Active coloring and presentation
 syntax on 
 :colorscheme torte
 # OR :colorscheme elflord
@@ -80,7 +80,7 @@ set nocp
 ```
 
 
-## Setter 
+## Setters 
 
 * Reload inside vim
 
@@ -120,7 +120,7 @@ runtimepath=~/.vim,[...]/usr/share/vim/vimfiles/after,~/.vim/after
 `g~~ `  Toggle case of the current line (same as V~).    
 
 
-* Visual mode `Shift + v `, then `u` to convert to lowercase, or with `U` to convert to uppercase. 
+* Visual mode `Shift + v `, then `u` to convert to lowercase, or `U` to convert to uppercase. 
 
 `U`     : Uppercase the visually-selected text. 
 `gUU`   : Change the current line to uppercase (same as VU).  
@@ -132,203 +132,201 @@ runtimepath=~/.vim,[...]/usr/share/vim/vimfiles/after,~/.vim/after
  
 ##  Usage
 
-* Pour Ouvrir un fichier    
+* To open a file    
 
-`vi +33 plik`      - ouvre le fichier plik à la ligne 33   
-`vi + plik`        - ouvre le fichier à la dernière ligne    
-`vi +/research`    - ouvre le fichier a la première ligne où se trouve research   
-`vi -R plik`       - ouvre seulement en lecture   
-`vi -r plik`       - en cas de panne, récupère le fichier swap   
-`vi plik1 plik2`   - pour ouvrir deux documents (on accède au suivant avec :n normalement)    
+`vi +33 file`      - opens the file at line 33   
+`vi + file`        - opens the file at the last line    
+`vi +/research`    - opens the file at the first line where "research" is found   
+`vi -R file`       - opens read-only   
+`vi -r file`       - after a crash, recovers the swap file   
+`vi file1 file2`   - to open two documents (access the next one with `:n`)    
+     
+`:vs ~/.vimrc`     - open in another window   
+`:sh ~/script.sh`  - run a script    
+     
+`:e [file]`        - edit another file without leaving vi (the benefit is keeping what is in the buffer and navigating between several documents)    
+`:n`               - navigate between the files open in vi (also `ctrl ^`, but it depends on the system)    
+`:x`               - closes all the documents opened with vi    
+`:sp`              - opens a second document on the same screen    
+
+navigate between the two with    
+`ctrl+w w`     - to switch    
+`ctrl+w j`     - to go down  
+`k`            - to go up   
+`_`            - to make the buffer take the whole screen   
+`=`            - to make the buffers equal again   
+	 
+`:sf`              - opens another document in the same window    
+`:read pliku`      - imports everything from "pliku" at the cursor position (:r same effect)   
+`:r /file`         - inserts a file from the cursor position   
+`:r! command`      - inserts the result of a command    
+
+`Ctrl G`           - to see the file information, whether it is modified, etc.   
+
+`Esc + q:`         - gives the command history   
+`Esc + q\`         - gives the search history   
     
-`:vs ~/.vimrc`     - Ouvrir dans une autre fenêtre   
-`:sh ~/script.sh`  - Lancer un script    
-    
-`:e [file]`        - permet d'éditer un autre fichier sans quitter vi. (l'interêt est de garder ce qui est dans l'espace tampon et de naviguer entre plusieurs documents)    
-`:n`               - permet de naviguer entre les fichiers ouverts en vi (aussi ctrl ^ mais ça dépend du système)    
-`:x`               - va fermer tous les documents ouverts avec vi    
-`:sp`              - ouvre un deuxième document sur le même écran    
+* To quit   
 
-on navigue entre les deux avec    
-`ctrl+w w`     - pour changer    
-`ctrl+w j`     - pour monter  
-`k`            - pour descendre   
-`_`            - pour que le buffer prenne tout l'ecran   
-`=`            - pour que les buffers redeviennent egales   
-		 
-`:sf`              - ouvre un autre doc dans la meme fenetre    
-`:read pliku`      - va importer tout ce qui dans pliku à la place du curseur (:r même effet)   
-`:r /fichier`      - insert un fichier a partir de la position du curseur   
-`:r! commande1`    - insert le resultat d'une commande    
-
-`Ctrl G`           - pour voir les infos du fichier, voit si modifier, etc.   
-
-`Esc + q:`         - donne l'historique des commandes   
-`Esc + q\`         - donne l'historique des recherches   
-    
-* Pour Quitter   
-
-`ZZ`              - quitte et enregistre (raccourci)   
-`:w`              - enregistre (w [fichier] enregistre sous le nom donné)   
-`:q!`             - quitte   
-`:e!`             - annule toutes les modifications   
+`ZZ`              - quits and saves (shortcut)   
+`:w`              - saves (w [file] saves under the given name)   
+`:q!`             - quits   
+`:e!`             - discards all modifications   
  
-* Manipuler du Text    
-`:n,mm j`         - déplace de la ligne "n" à "m" à la ligne "j" (avec /expression au lieu de "j", on va déplacer après la ligne où se trouve "expression")   
-`:n,mt j`         - copie de la ligne "n" à "m' à la ligne "j"   
-`:n,mw fichier`   - copie de la ligne "n" à "m" dans fichier   
-`:n,mw>> fichier` - copie de "n" à "m" à la fin de fichier   
-`:'a,'bw fichier` - va copier ce qui a dans le buffer a et b dans fichier   
-   
-* COMMANDE SHELL    
-`:! cmd` - permet de lancer des commandes shell pendant qu'on est dans vi   
-ex : `:!df` ou `:!ls -l` ou `:!cat /etc/passwd > ~/hasla.txt`   
-Rq : `:!` sont collés a la commande qui suit.   
-   
+* Manipulate text    
+`:n,mm j`         - moves from line "n" to "m" to line "j" (with /expression instead of "j", moves after the line containing "expression")   
+`:n,mt j`         - copies from line "n" to "m" to line "j"   
+`:n,mw file`      - copies lines "n" to "m" into file   
+`:n,mw>> file`    - copies "n" to "m" at the end of file   
+`:'a,'bw file`    - copies what is in buffers a and b into file   
+    
+* SHELL COMMAND    
+`:! cmd` - runs shell commands while in vi   
+e.g. `:!df`, `:!ls -l`, or `:!cat /etc/passwd > ~/hasla.txt`   
+Note: `:!` is glued to the command that follows.   
+    
 	   
-* MODE EDITION      
-pour passer en mode edition   
-`i`               - écrire a la place ou se trouve le curseur    
-`I`               - insertion en début de ligne   
-`A`               - insertion en fin de ligne   
-`a`               - écrire juste après le curseur   
-`C`               - Coupe du curseur jusqu'a la fin puis passe en insertion   
-`o`               - ouvre une nouvelle ligne en dessous le curseur   
-`O`               - ouvre une nouvelle ligne au-dessus le curseur    
-`s`               - supprime sous le curseur et passe en mode écriture   
-`S`               - supprime toute la ligne et passe en mode écriture   
-`r`               - passe en mode "replace" juste pour un caractère    
-`R`               - passe en mode "replace" (Rq: si on efface on retrouve les anciens caractères)   
-   
+* INSERT MODE      
+to enter insert mode   
+`i`               - write where the cursor is    
+`I`               - insert at the beginning of the line   
+`A`               - insert at the end of the line   
+`a`               - write just after the cursor   
+`C`               - cuts from the cursor to the end of the line, then enters insert   
+`o`               - opens a new line below the cursor   
+`O`               - opens a new line above the cursor    
+`s`               - deletes under the cursor and enters insert mode   
+`S`               - deletes the whole line and enters insert mode   
+`r`               - enters "replace" mode for a single character    
+`R`               - enters "replace" mode (note: if you erase, you get the old characters back)   
+    
+NOTE: `R` in replace mode, if you erase, you get the old characters back.
 
-* MODE COMMANDE    
+* COMMAND MODE    
 
-	* Se déplacer       
-h(à gauche) j(en bas) k(en haut) l(à droite)    
-On peut combiner avec des chiffres 10k 4l 8h etc.
+	* Move around       
+h(left) j(down) k(up) l(right)    
+Can combine with numbers: 10k 4l 8h etc.
 
-`gg`         - au debut du fichier   
-`G `         - a la fin du fichier      
-`L `         - va à la fin de l'ecran / M - va au milieu / H - va au debut de l'ecran   
-`Z + Enter`  - met le curseur en debut d'ecran / Z.   
-`nL`         - va à la n ligne avant la fin de l'écran / nH - va a n ligne du debut d'écran   
-`nG`         - va à la ligne numero n / 1G - va tout au debut / G - va tout à la fin    
-`+ `         - va au debut de la ligne suivante    
-`- `         - va au debut de la ligne precedente   
-`$ `         - envoie le curseur à la fin de la ligne   
-`( `         - va au debut des phrases     
-`)`          - va à la fin des phrases    
-`0`          - envoie le curseur au debut de la ligne (ou aussi ^ )   
-`w`          - va au mot suivant   
-`b`          - va au mot d'avant (2b: 2 mots avant)   
-`e`          - va à la fin du mot / E - aussi mais tiens pas compte des accents etc.   
-`ctrl+f`     - ecran suivant   
-`ctrl+b`     - ecran precedent   
-`ctrl+d`     - de moitié d'écran a moitie d'ecran vers le bas  
-`ctrl+u`     - de moitié d'écran a moitie d'ecran vers le haut  
-`mx`         - met un repère (invisible) qu'on pourra retrouver avec `x (le curseur sera renvoyé sur cette marque)   
-`Shift+v`    - Met un curser sur la ligne entiere, on selectionne avec la fleche le nombre de ligne puis on peut "d" ou "y" etc.  
-`d\`x`       - efface depuis le repère jusqu'au curseur   
-`y\`x`       - copie depuis le repère jusqu'au curseur   
+`gg`         - to the beginning of the file   
+`G `         - to the end of the file      
+`L `         - to the end of the screen / M - to the middle / H - to the top of the screen   
+`Z + Enter`  - puts the cursor at the top of the screen / Z.   
+`nL`         - to n lines before the end of the screen / nH - to n lines from the top of the screen   
+`nG`         - to line number n / 1G - to the very beginning / G - to the very end    
+`+ `         - to the beginning of the next line    
+`- `         - to the beginning of the previous line   
+`$ `         - sends the cursor to the end of the line   
+`( `         - to the beginning of the sentence     
+`)`          - to the end of the sentence    
+`0`          - sends the cursor to the beginning of the line (or also ^)   
+`w`          - to the next word   
+`b`          - to the previous word (2b: 2 words back)   
+`e`          - to the end of the word / E - also, but does not account for accents.   
+`ctrl+f`     - next screen   
+`ctrl+b`     - previous screen   
+`ctrl+d`     - half a screen down  
+`ctrl+u`     - half a screen up  
+`mx`         - sets a (invisible) mark that can be found with `` `x `` (the cursor is sent back to that mark)   
+`Shift+v`    - puts a cursor on the entire line, select the number of lines with the arrow then "d" or "y" etc.  
+`` d`x ``    - erases from the mark to the cursor   
+`` y`x ``    - copies from the mark to the cursor   
 
-  * effacer
-`x`          - efface sous le caractere
-`dd`         - efface la ligne (d$ même effet mais depuis le curseur) 
-Rq: se combine avec les chiffres et les directions. chiffre + d(ou x) + direction(h,j,k,l,$,0,w,b etc.)
+  * delete
+`x`          - deletes under the character
+`dd`         - deletes the line (d$ same effect but from the cursor) 
+Note: combines with numbers and directions. number + d (or x) + direction (h,j,k,l,$,0,w,b etc.)
 
-`ddp`        - supprime une ligne et la replace en dessous     
-`dd3p`       - colle trois fois la même ligne       
-`5dx`        - efface 5 caractères       
-`3dw`        - efface 3 mots       
-`3dd`        - efface 3 lignes    
-`dG`         - efface du curseur jusqu'à la fin; :.,$d supprime tout du debut jusqu'à la fin
-`n,md`       - efface de la ligne n à m
+`ddp`        - deletes a line and re-inserts it below     
+`dd3p`       - pastes the same line three times       
+`5dx`        - erases 5 characters       
+`3dw`        - erases 3 words       
+`3dd`        - erases 3 lines    
+`dG`         - erases from the cursor to the end; :.,$d deletes everything from the beginning to the end
+`n,md`       - erases from line n to m
 
-Rq: toute suppression est conservé dans le cache pour être recollée.
+Note: any deletion is kept in the buffer for pasting.
 
-`D`          - supprime la ligne d'à partir du curseur 
-`cw`         - efface le mot et passe en mode insertion
-`cc`         - change ligne (efface la ligne et la met dans buffer - p pour paste plus tard) 
+`D`          - deletes the line from the cursor 
+`cw`         - erases the word and enters insert mode
+`cc`         - changes the line (erases the line and puts it in the buffer - p to paste later) 
 `ciW`        - change inside Word 
-`ci\"`       - change inside quote "" 
-`c`          - se combine avec les curseur de déplacement (ex: c$,c0,c2b,etc.)
+`ci"`        - change inside quotes "" 
+`c`          - combines with the movement cursor (e.g. c$, c0, c2b, etc.)
 
-  * remplacer, modifier
-`J`          - joint la ligne d'après avec celle-ci    
-`~`          - change les minuscules en majuscules et inversement   
-`u`          - revient à la précédente modification (undo)   
-`U`          - revient sur toutes les modifications  
+  * replace, modify
+`J`          - joins the next line with this one    
+`~`          - swaps lowercase to uppercase and vice versa   
+`u`          - returns to the previous modification (undo)   
+`U`          - returns over all modifications  
 `Ctrl + r`   - redo   
-Rq: se combine avec les nombres (ex: 3u) 
+Note: combines with numbers (e.g. 3u) 
 
-`p`         - colle après le curseur   
-`P`         - colle avant le curseur  
-`y`         - copie 
-`yy`        - copie la ligne  
-`Y`         - même effet 
-`y$`        - copie du curseur jusqu'à la fin    
-`yw`        - copie le mot; 3yy - copie les 3 lignes;     
-`"`         - permet d'enregistrer dans le buffer (ex: "a3yy copie dans buffer a 3 lignes, on recolle avec "ap)   
+`p`         - pastes after the cursor   
+`P`         - pastes before the cursor  
+`y`         - copy 
+`yy`        - copies the line  
+`Y`         - same effect 
+`y$`        - copies from the cursor to the end    
+`yw`        - copies the word; 3yy - copies 3 lines;     
+`"`         - lets you save into a buffer (e.g. "a3yy copies 3 lines into buffer a, re-paste with "ap)   
 
-  * recherche
-`/mot`      - cherche la chaine de caratere "mot" après le curseur    
-`?mot`      - cherche la chaine de caratere "mot" avant le curseur   
-`*`         - la ou se trouve le curseur, va chercher le meme mot   
-Rq : n pour passer au suivant et N pour revenir en arriere    
+  * search
+`/word`     - searches for the string "word" after the cursor    
+`?word`     - searches for the string "word" before the cursor   
+`*`         - where the cursor is, searches for the same word   
+Note: n to go to the next, N to go back    
 
-
-* MODE DIALOGUE
-Le mode dialogue commence toujours par `:` certaines commandes ne peuvent se lancer qu'en mode dialogue.   
-(ex :3,7d) car nécessité de les visualiser. Il y a également un historique, on peut rechercher les commandes précédentes avec la flèche.   
+* COMMAND-LINE MODE (:)
+Command-line mode always starts with `:`. Some commands can only be run in command-line mode.   
+(e.g. :3,7d) because they need to be visualized. There is also a history; you can search previous commands with the arrow.   
 	
-* Mode et Option  
-`:set`            - donne les modes en cours d'utilisations (ceux lancer par EXINIT et .exrc)   
-`:set showmode`   - voir le mode dans lequel on se trouve.    
-`:set all`        - montre tous les modes possibles de choisir   
-`:set OPTION?`    - montre si l'option est activée ou pas   
-`:set nu`         - permet de mettre le numero des lignes   
-`:set nonu`       - retire cette option (regle general :set no+mode, retire le mode choisi)    
-`:set ignorecase` - ignore les majuscules   
-`:set magic`      - permet les metacaractères   
-`:set list`       - montre la fin des lignes avec un $ et les tabulations avec ^|  
-`:set wrapmargin=n`  (wm=n) - deplace la marge de gauche de la valeur n   
-`:set autowrite`     (aw)   - enregistre automatiquement avant une recherche, un controle, un shell, etc.  
-`:set autoindent`    (ai)   - fournit une indentation automatique lors de l'ecriture.   
-`:set showmatch`     (sm)   - montre les correspondances entre () ou {} et [].    
+* Modes and Options  
+`:set`            - gives the modes in use (those launched by EXINIT and .exrc)   
+`:set showmode`   - see the mode you are in.    
+`:set all`        - shows all possible modes to choose from   
+`:set OPTION?`    - shows whether the option is enabled or not   
+`:set nu`         - displays the line numbers   
+`:set nonu`       - removes this option (general rule: :set no+mode removes the chosen mode)    
+`:set ignorecase` - ignores uppercase   
+`:set magic`      - enables meta-characters   
+`:set list`       - shows the end of lines with a `$` and the tabulations with `^|`  
+`:set wrapmargin=n`  (wm=n) - moves the left margin by value n   
+`:set autowrite`     (aw)   - saves automatically before a search, a check, a shell, etc.  
+`:set autoindent`    (ai)   - provides automatic indentation when writing.   
+`:set showmatch`     (sm)   - shows the matches between () or {} and [].    
 
-Rq : on peut enregistrer toute la configuration vi qu'on veut dans un fichier et faire appel à celui-ci avec   
-":so nom_du fichier" qui mettra en place cette configuration.   
+Note: you can save all the vi configuration into a file and call it with `:so file_name`, which loads that configuration. 
 
-Rq : dans `/etc/virc/.exrc` on parametre le vi de la machine pour lancer des options dès le lancement de vi.  
-Sinon creer un fichier `.exrc` dans le repertoire utilisateur.    
+Note: in `/etc/virc/.exrc` you configure the machine's vi to launch options as soon as vi starts.  
+Otherwise create a `.exrc` file in the user directory.    
  
-* substitutions (l'outil sed dans vi)  
-`:s/stare/nowe/           `  - va rechercher la chaine "stare" et changer la première occurence dans la phrase par "nowe"   
-`:s/stare/nowe/g          `  - g pour qu'il change toutes les occurences dans la phrase  
-`:%s/stare/nowe/g         `  - % pour chercher dans tout le texte  
-`:n,ms/stare/nowe/g       `  - va chercher entre n et m  
-`:s/stare/nowe/gc         `  - c va demander confirmation a chaque changement  
-`:g/wzorzec/s/stare/nowe/g`  - g au dedut rechercher "wzorzec" et effectue les modifs seulement dans les phrases où on a "wzorzec". Rq: avec g au debut % n'est plus nécessaire.   
-`:m                       `  - déplace l'expression choisi   
+* substitutions (the sed tool inside vi)  
+`:s/stare/nowe/           `  - searches for the string "stare" and changes the first occurrence in the sentence to "nowe"   
+`:s/stare/nowe/g          `  - g to change all occurrences in the sentence  
+`:%s/stare/nowe/g         `  - % to search through the whole text  
+`:n,ms/stare/nowe/g       `  - searches between n and m  
+`:s/stare/nowe/gc         `  - c asks for confirmation at each change  
+`:g/wzorzec/s/stare/nowe/g`  - g at the start searches for "wzorzec" and only applies the changes in the sentences containing "wzorzec". Note: with g at the start, % is no longer necessary.   
+`:m                       `  - moves the selected expression   
 
-* Astuce Sed
-`:s                            `  - répète la dernière modification globale   
-`:%&g                          `  - répète la dernière modification globale sur tout le texte   
-`:%s;/home/student;/home/toor;g`  - ";" remplace "/" donc "/" devient un caractère normal.   
-`:g!/ok/s/$/A faire/g          `  - partout où il n'y a pas "ok" dans la phrase mettre à la fin l'expr. "A faire"   
-`:%s/[0-9]$//gc                `  - va supprimer s'il y a un chiffre (entre 0 et 9) en fin de phrase   
-`:g/^[0-9]/m$                  `  - on va déplacer toutes les lignes commençant par un chiffre, à la fin du document   
+* Sed tip
+`:s                            `  - repeats the last global modification   
+`:%&g                          `  - repeats the last global modification on the whole text   
+`:%s;/home/student;/home/toor;g`  - ";" replaces "/", so "/" becomes a normal character.   
+`:g!/ok/s/$/TODO/g          `  - wherever there is no "ok" in the sentence, put "TODO" at the end   
+`:%s/[0-9]$//gc                `  - deletes if there is a digit (between 0 and 9) at the end of the sentence   
+`:g/^[0-9]/m$                  `  - moves all lines starting with a digit to the end of the document   
 
-* Les metacarateres pour le sed de Vi   
-`.`             - équivaut a un caractère (Attention: espace compte comme un caractère)   
-`*`             - n'importe quelle chaine de caractère   
-`^`             - cherche au début de la ligne     
-`$`             - cherche à la fin de la ligne     
-`\<mot`         - cherche au début du mot (ex: "moteur" sera pris)   
-`mot\>`         - cherche à la fin du mot   
-`\`             - annule le metacaractère et est compté comme un caractère normal   
-`[ab]`          - a ou b     
-`\(mot_A\)`     - enregistre ce mot dans le buffer 1 (on a jusqu'à 9) qu'on ressort avec \1  
-`:%s/\(kolwalski\) \(Jan\)/\2 \1/` - va intervertir les deux noms.   
-Peut servir à replacer jusqu'à 9 expressions ou placer du text entre deux expressions, etc.    
-  
+* The meta-characters for vi's sed   
+`.`             - equivalent to a character (careful: space counts as a character)   
+`*`             - any string   
+`^`             - searches at the beginning of the line     
+`$`             - searches at the end of the line     
+`\<word`        - searches at the beginning of the word (e.g. "moteur" will be taken)   
+`word\>`        - searches at the end of the word   
+`\`             - cancels the meta-character and counts it as a normal character   
+`[ab]`          - a or b     
+`\(word_A\)`    - saves this word into buffer 1 (up to 9), retrieved with \1  
+`:%s/\(kolwalski\) \(Jan\)/\2 \1/` - swaps the two names.   
+Can serve to replace up to 9 expressions, or to place text between two expressions, etc.

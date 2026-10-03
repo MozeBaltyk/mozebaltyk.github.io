@@ -89,7 +89,7 @@ hb:
       taxonomies:
         count: true # whether to show the number of posts associated to the item.
         limit: 10 # the maximum number of the item.
-        style: pills # pills, tabs or underline.
+        style: underline # pills, tabs or underline.
         separate: false # whether to separate into mutliple sections.
         authors:
           disable: true # whether to disable this taxonomy.

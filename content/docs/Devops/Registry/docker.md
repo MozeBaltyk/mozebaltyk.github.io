@@ -1,7 +1,7 @@
 ---
 date: 2023-08-01T21:00:00+08:00
 title: 🏭 Docker
-navWeight: 50 # Upper weight gets higher precedence, optional.
+nav_weight: 10 # Upper weight gets higher precedence, optional.
 series:
   - Docs
 categories:
@@ -40,7 +40,7 @@ skopeo copy "--dest-creds=registry-admin:<PWD>" docker://docker.io/goharbor/harb
 
 ## Install a Local private docker registry
 
-* Change Docker Daemon config to allow insecure connexion with your ip
+* Change Docker Daemon config to allow insecure connection with your ip
 
 ```bash
 ip a

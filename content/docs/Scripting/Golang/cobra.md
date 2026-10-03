@@ -1,7 +1,7 @@
 ---
 date: 2023-08-01T21:00:00+08:00
 title: 🐍 Cobra
-navWeight: 90
+nav_weight: 20
 series:
   - Docs
 categories:

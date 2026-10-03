@@ -1,7 +1,7 @@
 ---
 date: 2023-08-28T21:00:00+08:00
 title: 🧐 LVM
-navWeight: 520 # Upper weight gets higher precedence, optional.
+nav_weight: 40 # Upper weight gets higher precedence, optional.
 series:
   - Docs
 categories:
@@ -26,7 +26,7 @@ LVM2 use a new driver, the device-mapper allow the us of disk´s sectors in diff
 	- stripped (stripped on several disks)
 	- error (all I/O are consider in errors)
 	- snapshot (allow snapshot async)
-  - mirror (integrate elements usefull for pvmove commande)
+  - mirror (integrate elements useful for the pvmove command)
 
 * below example show you a striped volume and linear volume
 ```bash

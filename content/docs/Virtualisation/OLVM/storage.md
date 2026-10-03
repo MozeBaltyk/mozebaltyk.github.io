@@ -1,7 +1,7 @@
 ---
 date: 2023-08-01T21:00:00+08:00
 title: 📐 Storage
-navWeight: 60 # Upper weight gets higher precedence, optional.
+nav_weight: 30 # Upper weight gets higher precedence, optional.
 series:
   - Docs
 categories:
@@ -129,7 +129,7 @@ systemctl restart iscsi
 systemctl restart multipathd
 systemctl status multipathd -l
 systemctl status iscsi -l
-iscsiadm -m discovery -t st -p 172.16.12.50:3260
+iscsiadm -m discovery -t st -p 192.168.12.50:3260
 iscsiadm -m node -T iqn.2003-01.com.redhat.iscsi-gw:ceph-igw -l
 iscsiadm -m session
 iscsiadm -m session -P 3

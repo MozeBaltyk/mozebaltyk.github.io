@@ -1,7 +1,7 @@
 ---
 date: 2023-08-29T21:00:00+08:00
 title: 📂 Filesystem
-navWeight: 510 # Upper weight gets higher precedence, optional.
+nav_weight: 20 # Upper weight gets higher precedence, optional.
 series:
   - Docs
 categories:
@@ -14,44 +14,44 @@ tags:
 
 ##  FS Types
 
-`ext4` :  le plus répandu sous GNU/Linux (issu de ext2 et ext3). Il est journalisé, c'est à dire qu'il trace les opérations d'écriture pour garantir l'intégrité des données en cas d'arrêt brutal du disque. De plus, il peut gérer des volumes de taille jusque 1 024 pébioctets et permet la pré-allocation d'une zone contiguë pour un fichier, afin de minimiser la fragmentation. Utilisez ce système de fichiers si vous comptez pouvoir relire des informations depuis votre Mac OS X ou Windows.
+`ext4` :  the most widespread on GNU/Linux (derived from ext2 and ext3). It is journaled, meaning it records write operations to guarantee data integrity in case of an abrupt disk stop. It can also handle volumes up to 1 EiB (1024 PiB), and allows pre-allocating a contiguous area for a file to minimize fragmentation. Use this filesystem if you want to be able to read data back from macOS or Windows.
 
-`ReiserFS` : C'est un système de fichiers journalisé qui a été réimplémenté à partir de zéro et bénéficie de beaucoup d'innovations. Il est plus rapide qu'ext4 pour le traitement de répertoires contenant des milliers de fichiers de petite taille. Il permet l'agrandissement à chaud et la diminution à froid de la taille des partitions
+`ReiserFS` : A journaled filesystem that was reimplemented from scratch and benefits from many innovations. It is faster than ext4 at processing directories containing thousands of small files. It allows online growth and offline shrinking of partition sizes.
 
-`BTRFS` : similaire a ZFS
+`BTRFS` : similar to ZFS.
 
-`Ufs` : pour FreeBSD et Solaris   |  Vxfs : Pour HP-UX  |  JFS : Pour AIX
+`UFS` : for FreeBSD and Solaris   |   `VxFS` : for HP-UX   |   `JFS` : for AIX
 
-## Listages et Verifications FS
+## Listing and Verifying the FS
 
 ```bash
-df -Th    # lister les FS et voir l'espace libre (-T type de FS, -h human Reading)
-mount -a  # Voir les FS montes. (S'appui sur /proc/mounts)
-findmnt   # voir les FS montés de manière plus lisible.
+df -Th    # list the filesystems and see the free space (-T filesystem type, -h human readable)
+mount -a  # see the mounted filesystems (relies on /proc/mounts)
+findmnt   # see the mounted filesystems in a more readable way
 
-fsck      # Check fs (a faire que si le FS est demonte)
+fsck      # check a filesystem (only do it if the filesystem is unmounted)
 fsck -y /dev/mapper/vgdata-etc
 ```
 
 * FS Creation
 
 ```bash
-mkfs -t ext4 /dev/hda3  # pour creer un type de filesystem sur un partition hda = choix du disk / 3 = a la partition.
-mkfs.ext4 /dev/vdb3     # (remplacer ext4 avec ce qu'on veut)
+mkfs -t ext4 /dev/hda3  # to create a filesystem type on a partition. hda = disk choice / 3 = the partition.
+mkfs.ext4 /dev/vdb3     # (replace ext4 with whatever you want)
 
-mount /dev/dsk/sda /mon_fs
+mount /dev/dsk/sda /my_fs
 umount -lf /ec/dev/app 
 
-mount -o remount,ro /usr   #remonter (sans interuption de service) en "Read Only" le FS /usr
-mount -o remount,rw /usr   #remonter (sans interuption de service) en "Read Write" le FS /usr
+mount -o remount,ro /usr   # remount (without service interruption) the /usr filesystem as "Read Only"
+mount -o remount,rw /usr   # remount (without service interruption) the /usr filesystem as "Read Write"
 ```
 
-## Mount Bind
+## Bind Mount
 
 ```bash
-mount --bind /mnt/sshfs/lrancid01ch /data/externes/rancidRANIP  : "mount --bind" pour associer deux repertoires
-	On doit les retrouver dans le mount : mount | grep rancidRANIP
-	/mnt/sshfs/lrancid01ch on /data/externes/rancidRANIP type none (rw,bind)
+mount --bind /mnt/sshfs/rancid-server /data/remote/rancid  : "mount --bind" to associate two directories
+	It should then appear in mount : mount | grep rancid
+	/mnt/sshfs/rancid-server on /data/remote/rancid type none (rw,bind)
 
 
 findmnt | fgrep [
@@ -60,82 +60,83 @@ resize2fs
 xfs_growfs -d /dev/mapper/vgdata-sw_oracle
 
 Configuration
-/etc/mnttab :  config Dynamic
-/etc/fstab :  config Static
-/proc/mounts :  vu par le Kernel
+/etc/mnttab :  dynamic configuration
+/etc/fstab  :  static configuration
+/proc/mounts :  as seen by the kernel
 ```
 
 ## FStab
 
 ```ini
-UUID="aaa-33-212122edwfs"   /mnt/point   ext4  defaults  0  0    # 0=No Backup / 0=no fsck au reboot
-UUID="sss-555-343435346"    /mnt/autre   xfs   defaults  1  1    # 1=backup / 1 FS important pour le systeme
-UUID="444-rrr-345234523"    /mnt/suivant  vfat  defaults  1  2   # 2=fsck - mais le systeme peut demarrer sans. 
-UUID="111-4343-42342"       swap         swap  defaults  0  0    # SWAP 
+UUID="aaa-33-212122edwfs"   /mnt/point   ext4  defaults  0  0    # 0=No backup / 0=no fsck at reboot
+UUID="sss-555-343435346"    /mnt/other   xfs   defaults  1  1    # 1=backup / 1 important filesystem for the system
+UUID="444-rrr-345234523"    /mnt/suivant  vfat  defaults  1  2   # 2=fsck - but the system can boot without
+UUID="111-4343-42342"       swap         swap  defaults  0  0    # SWAP
 ```
 
-/!\ Attention Error in your FSTAB:
+/!\ Beware of errors in your FSTAB:
 
-- When adding a device to fstab, unless you are using LVM or a filesystem that supports snapshots*, use the UUID.
-- use UUID of the disk (except when using LVM)
-- Instead of default use _netdev in the fstab for iscsi
-- Use option 0 0
+- When adding a device to fstab, unless you are using LVM or a snapshot-supporting filesystem*, use the UUID.
+- use the UUID of the disk (except when using LVM).
+- instead of `default`, use `_netdev` in fstab for iSCSI.
+- Use option `0 0`.
 
-## Autofs : Auto mount
+## Autofs : auto-mount
 
-Autofs  : dans fstab ou en manuel, si la connexion internet se perd, alors le montage se stoppe. Autofs monte automatiquent les sshfs. Paquet a installer.
+Autofs : with fstab or a manual mount, if the network connection is lost, the mount stops. Autofs automatically mounts SSHFS. Package to install.
 
 Options
-Autre possibilite, mettre dans le /fstab, a la place de noauto, le parametre _netdev qui indique que c'est un repertoire reseau et qu'il faut attendre la connexion reseau avant de le monter. 
+Another possibility: put the `_netdev` parameter in fstab instead of `noauto`, which indicates that it is a network directory and to wait for the network connection before mounting.
 
-Parametrage Autofs : 
-	- Besoin de s'authentifier automatiquement en ssh en root (contrairement a NFS) donc cle ssh necessaire.
-			§ sudo ssh-keygen -t dsa   :  creation cle publique/privee
-			§ /root/.ssh/id_dsa.pub  sur le client   |    ~/.ssh/authorized_keys   sur le serveur.
-			§ sudo ssh-copy-id -i /root/.ssh/id_dsa.pub <utilisateur>@<ip serveur>  
-						=> pour chaque utilisateur qui aura droit de se connecter au sshfs.
-			§ Desactiver les SSHFS qui seront geres par l'Autofs, dans /fstab (commenter les lignes)
-			§ Recuper l'UID et GUID des utilisateurs  ( cat /etc/passwd | grep benoit )
-			§ Editer le fichier /etc/auto.master   avec  :
+Autofs configuration : 
+	- Need to auto-authenticate over SSH as root (unlike NFS), so an SSH key is required.
+			§ `sudo ssh-keygen -t dsa`   :  create the public/private key.
+			§ `/root/.ssh/id_dsa.pub` on the client   |    `~/.ssh/authorized_keys`  on the server.
+			§ `sudo ssh-copy-id -i /root/.ssh/id_dsa.pub <user>@<server ip>`  
+						=> for each user that will be allowed to connect over SSHFS.
+			§ Disable the SSHFS that will be managed by autofs in fstab (comment out the lines).
+			§ Retrieve the UID and GID of the users  ( `cat /etc/passwd | grep jdoe` ).
+			§ Edit the file `/etc/auto.master`  with  :
 			/mnt   /etc/auto.sshfs  uid=1000,gid=1000, --timeout=30, --ghost
-			(option --ghost permet d'afficher les dossiers meme quand ils ne sont pas montes)
-			§ Puis dans /etc/auto.sshfs :
-			mondossier -fstype=fuse,port=22,rw,allow_other :sshfs\#votrelogin@192.168.0.1\:/media/share
-			(/mnt/mondossier pointera vers la machine 192.168.0.1 sur le répertoire /media/share)
-			§ service autofs restart
-			Si une passphrase a ete definit pour les cles SSH, faire ssh-add qui ajoute les fichiers .ssh/id_rsa et id_dsa dans le ssh-agent et du coup demande la passphrase.
+			(the --ghost option shows the folders even when they are not mounted)
+			§ Then in `/etc/auto.sshfs` :
+			mydir -fstype=fuse,port=22,rw,allow_other :sshfs\#youruser@192.168.0.1\:/media/share
+			(/mnt/mydir will point to machine 192.168.0.1 on the /media/share directory)
+			§ `service autofs restart`
+			If a passphrase has been set for the SSH keys, run `ssh-add`, which adds the `.ssh/id_rsa` and `id_dsa` files to the ssh-agent and then asks for the passphrase.
 
-Rq: Il existe aussi des modes Graphiques : voir fusauto ou encore Xsshfs
+Note: There are also GUI modes: see `fusauto` or `Xsshfs`.
 
-Autre Exemple avec AutoFS
+Another example with AutoFS
 
-Methode Classic dans /etc/fstab :
-$ sudo mount -t cifs //192.168.1.1/partage /mnt/partage/ -o user=utux,vers=3.0
+Classic method in `/etc/fstab` :
+```bash
+$ sudo mount -t cifs //192.168.1.1/share /mnt/share/ -o user=jdoe,vers=3.0
+```
 
-J'aimerai que ce soit automatique. Le problème est que je ne peux pas utiliser le /etc/fstab car au moment où il est exécuté le réseau n'est pas prêt (wifi ou client openvpn). Il existe bien l'option _netdev mais elle n'a jamais fonctionné pour moi. Ce cas d'usage montre bien les limites des montages Linux qui ne sont pas adaptés à la mobilité et aux environnements dynamiques.
+I would like this to be automatic. The problem is that I cannot use `/etc/fstab`, because at the time it is executed the network is not ready (wifi or openvpn client). The `_netdev` option exists, but it has never worked for me. This use case shows well the limits of Linux mounts, which are not adapted to mobility and dynamic environments.
 
-Bonne nouvelle, il existe une alternative: autofs qui s'appuie sur automount. Contrairement à mount, il connecte le partage lorsqu'on y accède (et pas au démarrage) et le déconnecte si on ne l'utilise pas. Il a aussi de nombreuses autres fonctionnalités:
-	• Un système de templates utile quand on a de nombreux partages.
-	• Support de plusieurs protocoles (cifs, nfs, raw...).
-	• Auto-découverte des partages.
-	• Consommation de ressources moindre (déconnecte les partages non utilisés)
-	• Meilleure tolérance aux coupures réseau.
+Good news, there is an alternative: `autofs`, which relies on `automount`. Unlike `mount`, it connects the share when you access it (and not at startup), and disconnects it when unused. It also has many other features:
+	• A template system, useful when you have many shares.
+	• Support for several protocols (cifs, nfs, raw...).
+	• Auto-discovery of shares.
+	• Lower resource consumption (disconnects unused shares).
+	• Better tolerance to network interruptions.
 	
-	- Installation sous Debian / Ubuntu : $ sudo apt install autofs
-	- Créer/éditer le /etc/auto.master:  /mnt	/etc/auto.nas --timeout 300 --browse
-	- Créer/éditer le /etc/auto.nas:   
-	partage -fstype=cifs,credentials=/home/utux/.autofs_creds,user=utux,vers=3.0 ://192.168.1.1/partage
-	- Créer le fichier /home/utux/.autofs_creds :
-			username=utux
-password=secret
-	- Mettre le /home/utux/.autofs_creds en chmod 0600:   $ chmod 0600 /home/utux/.autofs_creds
-	- Mettre le /etc/auto.nas en chmod 0644 :   $ sudo chmod 0644 /etc/auto.nas
-	- Démarrer le service:   $ sudo systemctl start autofs
-	- Tester:   $ ls /mnt/partage
-	- Si cela ne fonctionne pas:
-		$ sudo systemctl stop autofs
-$ sudo automount -f –v
-	- Notez que cela ne fonctionnera pas si le /etc/auto.nas est exécutable:   $ sudo chmod -x /etc/auto.nas
+	- Installation on Debian / Ubuntu : `$ sudo apt install autofs`
+	- Create/edit `/etc/auto.master`:  `/mnt	/etc/auto.nas --timeout 300 --browse`
+	- Create/edit `/etc/auto.nas`:   
+	`share -fstype=cifs,credentials=/home/jdoe/.autofs_creds,user=jdoe,vers=3.0 ://192.168.1.1/share`
+	- Create the file `/home/jdoe/.autofs_creds` :
+			username=jdoe
+			password=secret
+	- Set `/home/jdoe/.autofs_creds` to chmod 0600:   `$ chmod 0600 /home/jdoe/.autofs_creds`
+	- Set `/etc/auto.nas` to chmod 0644 :   `$ sudo chmod 0644 /etc/auto.nas`
+	- Start the service:   `$ sudo systemctl start autofs`
+	- Test:   `$ ls /mnt/share`
+	- If it does not work:
+		`$ sudo systemctl stop autofs`
+		`$ sudo automount -f -v`
+	- Note that this will not work if `/etc/auto.nas` is executable:   `$ sudo chmod -x /etc/auto.nas`
 
-Autofs est génial et solutionne mes problèmes de montage de partages en mobilité.
-
+Autofs is great and solves my share-mounting problems when mobile.

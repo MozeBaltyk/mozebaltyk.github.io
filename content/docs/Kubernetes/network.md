@@ -1,7 +1,7 @@
 ---
 date: 2023-08-01T21:00:00+08:00
 title: 🐙 Network troubleshooting
-navWeight: 50 # Upper weight gets higher precedence, optional.
+nav_weight: 80 # Upper weight gets higher precedence, optional.
 series:
   - Docs
 categories:
@@ -52,7 +52,7 @@ kubectl exec -i -t dnsutils -- nslookup kubernetes.default
 command terminated with exit code 1
 
 kubectl exec -ti dnsutils -- cat /etc/resolv.conf
-search default.svc.cluster.local svc.cluster.local cluster.local psflab.local
+search default.svc.cluster.local svc.cluster.local cluster.local example.local
 nameserver 10.43.0.10
 options ndots:5
 

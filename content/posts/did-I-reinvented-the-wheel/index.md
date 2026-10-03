@@ -1,5 +1,5 @@
 ---
-title: Did I Reinvent the Wheel?
+title: 🚲 Did I Reinvented the Wheel?
 description: "Follow-up article to \"The Bad, the Good and the Ugly Git\"."
 date: 2026-10-03T12:00:00+02:00
 noindex: false
@@ -53,19 +53,11 @@ Over time, the scope naturally became a little larger, with things such as works
 
 ### Provider CLIs: *gh*, *glab*, and *tea*
 
-The obvious tools are the provider-specific CLIs.
+The obvious tools are the provider-specific CLIs. `gh`for Github, `glab` for Gitlab and `tea` for Gitea and Forgejo. Those tools are very powerful and cover most provider-specific operations.
 
-For GitHub, there is `gh`.
+The hassle start when working with several providers, you have to remember which command , which arguments belongs to which ecosystem. You may end up switching between them. while still using `git` itself for repository operations.
 
-For GitLab, there is `glab`.
-
-For Gitea and Forgejo, there is `tea`.
-
-Those tools are very powerful and cover most provider-specific operations.
-
-The problem is that, when working with several providers, you have to remember which command belongs to which ecosystem. You may end up switching between them. while still using `git` itself for repository operations.
-
-Each tool is good at what it does, but the workflow becomes fragmented.
+Each tool is good at what it does, but your workflow becomes fragmented. Add to equation that those tools have there limitations, and you have a good reason to search for a new tool.  
 
 ### The Independent Projects
 
@@ -125,7 +117,7 @@ Gitfleet              │──────────────────�
 Hyperforge            ●──────────────────●──────────────────●
                                          │
 Colt                  ●──────────────────●──────────────────●
-                         + lifecycle / mirroring / self-hosting
+                         + lifecycle / mirroring / self-hosting / Sync
 ```
 
 This is obviously not a complete feature comparison. It is more a way to visualize where each project puts its abstraction layer:

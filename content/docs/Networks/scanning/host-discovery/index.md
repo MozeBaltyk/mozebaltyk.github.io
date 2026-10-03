@@ -7,7 +7,7 @@ noindex: false
 featured: false
 toc: true
 pinned: false
-nav_weight: 1
+nav_weight: 10
 # comments: false
 series:
   - Docs

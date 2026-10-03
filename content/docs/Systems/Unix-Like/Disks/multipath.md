@@ -1,7 +1,7 @@
 ---
 date: 2023-08-29T21:00:00+08:00
 title: 🩺 multipath
-navWeight: 510 # Upper weight gets higher precedence, optional.
+nav_weight: 60 # Upper weight gets higher precedence, optional.
 series:
   - Docs
 categories:
@@ -75,7 +75,11 @@ udevadm info --query=all --name=/dev/mapper/oradataemc1 |  grep -i "DM_UUID"
 ```
 
 ## ALUA 
-⚠️ for DGC (CLARiiON) or VNX storage arrays - special config due to the fact that "path checker" is optimized for Passive Not Ready (PNR) failover mode 1 and not for ALUA failover mode 4.
+{{< bs/alert warning >}}
+{{< markdownify >}}
+For DGC (CLARiiON) or VNX storage arrays, a special config is needed: the "path checker" is optimized for Passive Not Ready (PNR) failover mode 1, **not** for ALUA failover mode 4.
+{{< /markdownify >}}
+{{< /bs/alert >}}
 
 * To check if ALUA is active
 

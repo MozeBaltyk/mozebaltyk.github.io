@@ -1,7 +1,7 @@
 ---
 date: 2023-08-01T21:00:00+08:00
 title: Git
-navWeight: 50 # Upper weight gets higher precedence, optional.
+nav_weight: 10 # Upper weight gets higher precedence, optional.
 nav_icon:
   vendor: bootstrap
   name: git
@@ -84,7 +84,7 @@ git checkout -- filename.yml
 ```bash
 git log
 git log -p <commit_nbr>
-git log --oneline --decorate --graph --all   : Voir en graphes tous les commits 
+git log --oneline --decorate --graph --all   : View all commits as a graph 
 ```
 
 ## Resolve conflict

@@ -1,7 +1,7 @@
 ---
 date: 2023-08-01T21:00:00+08:00
 title: Sessions
-navWeight: 900 # Upper weight gets higher precedence, optional.
+nav_weight: 40 # Upper weight gets higher precedence, optional.
 series:
   - Docs
 categories:
@@ -13,27 +13,27 @@ tags:
 
 ## Register your session
 
-Usefull to keep a track or document and share what have been done.
+Useful to keep a trace, or to document and share what has been done.
 
-`script`     : save all commandes and result in a "typescript" file.        
-`script -a`  : append to an existing "typescript" file (otherwise erase previous one).  
-`exit`       : to stop session. 
+`script`     : save all commands and results in a "typescript" file.        
+`script -a`  : append to an existing "typescript" file (otherwise erase the previous one).  
+`exit`       : to stop the session. 
 
-`asciinema`  :  save the terminal session in video.  
+`asciinema`  :  save the terminal session as a video.  
 
-For RHEL - something like Tlog exists and can be configure and centralised with Rsyslog.
+For RHEL - something like Tlog exists and can be configured and centralised with Rsyslog.
 
 ## Terminal 
 
-`/etc/DIR_COLORS.xterm` define terminal colors
-`dircolors` change colors in the `ls` output
+`/etc/DIR_COLORS.xterm` defines the terminal colors.
+`dircolors` changes the colors in the `ls` output.
 
-Define terminal:
+Define the terminal:
 ```bash
 # Activate vi
 set -o vi
 
-# Desactive vi
+# Deactivate vi
 set +o vi           
 
 # Activate emacs
@@ -42,76 +42,76 @@ set -o emacs
 
 ## Communicate with other sessions
 
-* Send a message to all connected people to the server:
+* Send a message to all people connected to the server:
 
 ```bash
 wall    
 < write your message >   
-Ctrl +d
+Ctrl + d
 ```   
 
 * Send a message to a specific user (ttyp2 or pts/1 or getty): 
 
 ```bash
 write <user> ttyp2   
-<taper son message>  
-Ctrl +d 
+<type your message>  
+Ctrl + d 
 ```    
 
-* Accept message or not on your terminal `mesg <y or n>`. `finger` if there is a `*` mean the user refuse to receive message. 
+* Accept messages or not on your terminal: `mesg <y or n>`. `finger` - if there is a `*`, it means the user refuses to receive messages. 
 
 * by mail
 ```bash
-uuencode test.txt test.txt | mailx -s "test" toto@example.com                           # mail with attach file (mailx > 12.x)
-uuencode test.txt test.txt; mailx -a test.txt -s "test" toto@example.com < /dev/null    # mail with attach file (mailx < 12.x)
+uuencode test.txt test.txt | mailx -s "test" toto@example.com                           # mail with attached file (mailx > 12.x)
+uuencode test.txt test.txt; mailx -a test.txt -s "test" toto@example.com < /dev/null    # mail with attached file (mailx < 12.x)
 ```
 
 ## TTY / STTY
   
-when you are in ksh on some old system nothing is define. So you need to map by yourself:
+when you are on ksh on some old systems, nothing is defined. So you need to map it yourself:
 
 ```bash
-# list all stty possible
+# list all possible stty settings
 stty -a    
 
-# make Backspace touch erase 
-stty erase [la touche backspace] [Enter]   
+# make Backspace erase 
+stty erase [the backspace key] [Enter]   
 
-# everything what you type is not visible
-stty –echo
+# everything you type is not visible
+stty -echo
 
-# get the visibilty back
+# get the visibility back
 stty echo 
 ```
 
-## Les Profiles 
+## Profiles 
 	
 `/etc/profile`     - common to all users.      
-`~/.profile`       - user´s profile execute if .bash_profile does not exist.      
-`/etc/bash.bashrc` or `~/.bashrc ` - interactif non-login Shells. ( when terminal is open or `bash` cmd).     
-`~/.bash_profile`  - executed when login to Shell.      
-`TMOUT=300`        - session TimeOut.    
-`sources .bashrc`  - Reload `.bashrc`.    
+`~/.profile`       - user's profile, executed if `.bash_profile` does not exist.      
+`/etc/bash.bashrc` or `~/.bashrc` - interactive non-login shells (when a terminal is opened or the `bash` command).     
+`~/.bash_profile`  - executed at login to the shell.      
+`TMOUT=300`        - session timeout.    
+`source .bashrc`  - reload `.bashrc`.    
 
-when you want `.bashrc` to trigger all the time, to put in `.bash_profile`:
+when you want `.bashrc` to trigger all the time, put this in `.bash_profile`:
 ```bash
 if [ -f ~/.bashrc ]; then
    source ~/.bashrc
 fi
 ```
 
-## Definition des Alias 
+## Alias definition 
 
 ```bash
 # define an alias
 alias  ll=`ls -lrt`;  
 
-# cumule command
-alias  mon_script=`cd /le/repertoire/de/mon/script; ./mon_script;  cd -`; 
+# chained command
+alias  my_script=`cd /the/dir/of/my/script; ./my_script;  cd -`; 
 
 alias                  # List all aliases ongoing
-type <alias_name>      # give some info on alias
-alias <alias_name>     # give content of an alias
+type <alias_name>      # give some info on an alias
+alias <alias_name>     # give the content of an alias
 unalias <alias_name>   # delete an alias
 ```
 

@@ -1,5 +1,5 @@
 ---
-title: 🚀 The Homelab Journey
+title: 🚀 A journey to my homelab.
 description: "A journey to my homelab..."
 date: 2025-06-01T03:48:10+02:00
 noindex: false

@@ -1,7 +1,7 @@
 ---
 date: 2023-08-01T21:00:00+08:00
 title: 🎲 Kubectl
-navWeight: 50 # Upper weight gets higher precedence, optional.
+nav_weight: 70 # Upper weight gets higher precedence, optional.
 series:
   - Docs
 categories:
@@ -10,7 +10,7 @@ tags:
   - Kubernetes
 ---
 
-## Connexion to k8s cluster
+## Connection to k8s cluster
 
 ### Kubeconfig 
 

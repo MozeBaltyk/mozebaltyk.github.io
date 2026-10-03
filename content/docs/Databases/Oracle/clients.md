@@ -1,7 +1,7 @@
 ---
 date: 2024-08-01T21:00:00+08:00
 title: Oracle Clients
-navWeight: 50 # Upper weight gets higher precedence, optional.
+nav_weight: 30 # Upper weight gets higher precedence, optional.
 series:
   - Docs
 categories:
@@ -112,7 +112,7 @@ XE =
 # vi ${ORACLE_HOME}/client/network/admin/tnsnames.ora
 LOCAL =
   (DESCRIPTION =
-    (ADDRESS = (PROTOCOL= TCP)(Host= 10.0.0.3)(Port= 1521))
+    (ADDRESS = (PROTOCOL= TCP)(Host= 192.168.10.3)(Port= 1521))
     (CONNECT_DATA = (SID = REMOTE))
   )
 
@@ -151,7 +151,7 @@ NB - first result longer since:
 - connect 
 - second 10ms since all cache
 
-## SQLplus Connexion
+## SQLplus Connection
 
 * Connect as root (sysdba) in local
 
@@ -177,7 +177,7 @@ sqlplus 'system/PWD'@sid as sysdba
 * Connect to distante db
 
 ```shell
-sqlplus user/password@'(DESCRIPTION=(ADDRESS_LIST=(ADDRESS=(PROTOCOL=TCP)(HOST=10.0.0.2)(PORT=1521)))(CONNECT_DATA=(SID=REMOTE)))'
+sqlplus user/password@'(DESCRIPTION=(ADDRESS_LIST=(ADDRESS=(PROTOCOL=TCP)(HOST=192.168.10.2)(PORT=1521)))(CONNECT_DATA=(SID=REMOTE)))'
 
 # Service defined in tnsnames.ora (SERVICE_NAME = XE)
 sqlplus login/mdp@service

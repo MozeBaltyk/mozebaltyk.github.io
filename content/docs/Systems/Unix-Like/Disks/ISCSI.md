@@ -1,7 +1,7 @@
 ---
 date: 2023-08-29T21:00:00+08:00
 title: 🧱 ISCSI
-navWeight: 510 # Upper weight gets higher precedence, optional.
+nav_weight: 30 # Upper weight gets higher precedence, optional.
 series:
   - Docs
 categories:
@@ -22,8 +22,8 @@ iscsiadm -m session -P 0  #   get the target name
 iscsiadm -m session -P 3 | grep "Target: iqn\|Attached scsi disk\|Current Portal"
 
 # Discover and mount ISCSI disk 
-iscsiadm -m discovery -t st -p 192.168.40.112
-iscsiadm --mode discovery --type sendtargets --portal 192.168.40.112
+iscsiadm -m discovery -t st -p 192.168.1.112
+iscsiadm --mode discovery --type sendtargets --portal 192.168.1.112
 
 # Login
 iscsiadm -m node -T iqn.1992-04.com.emc:cx.ckm00192201413.b0 -l
@@ -77,7 +77,7 @@ fi
 
 systemctl enable iscsid iscsi && systemctl stop iscsid iscsi && systemctl start iscsid iscsi
 
-iscsiadm --mode discovery --type sendtargets --portal 172.16.239.10
+iscsiadm --mode discovery --type sendtargets --portal 192.168.239.10
 iscsiadm -m node -T iqn.2000-01.com.synology:MY-SYNO.exportdb-${env} -l
 iscsiadm -m session -P 0
 

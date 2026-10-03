@@ -1,7 +1,7 @@
 ---
 date: 2023-08-27T21:00:00+08:00
 title: 🚩 Files
-navWeight: 530 # Upper weight gets higher precedence, optional.
+nav_weight: 30 # Upper weight gets higher precedence, optional.
 series:
   - Docs
 categories:
@@ -45,3 +45,17 @@ kill -9 `lsof -t -u toto` # kill user's processes.  (option -t output only PID).
 find /proc/*/fd -type f -links 0 -exec ls -lrt {} \;
 ```		
  
+## AIX specifics (`fuser`)
+
+```bash
+fuser -d /tmp                 # see the processes using the /tmp directory (AIX)
+fuser -c /your_FS             # all processes with an open file in the filesystem (AIX)
+fuser -cu /dev/vg01/lvol5     # also search with a filesystem or an LV
+```
+
+* `-c` == `-m` ; `-u` also shows the process user.
+* to *kill* the processes: `fuser -kcu`.
+
+## File deleted but space still held
+
+For detecting deleted-but-still-open files (`lsof +L1`) and freeing the held space, see the **Disk Cleanup** page.

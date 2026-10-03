@@ -1,0 +1,16 @@
+# System accounting files (login & process) across Unix variants.
+- Type: current logins
+  Linux: "`/var/run/utmp`"
+  Solaris: "`/var/adm/utmpx`"
+  HP-UX: "`/var/adm/utmp`"
+  AIX: "`/etc/utmp`"
+- Type: login history
+  Linux: "`/var/log/wtmp`"
+  Solaris: "`/var/adm/wtmpx`"
+  HP-UX: "`/var/adm/wtmp`"
+  AIX: "`/var/adm/wtmp`"
+- Type: process accounting
+  Linux: "`/var/log/pacct`"
+  Solaris: "`/var/adm/pacct`"
+  HP-UX: "`/var/adm/pacct`"
+  AIX: "`/var/adm/pacct`"

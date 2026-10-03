@@ -1,0 +1,49 @@
+# SysV runlevels and their meaning across Unix variants.
+- Level: "**0**"
+  Solaris: shutdown
+  "Red Hat": halt
+  "Ubuntu / Debian": halt
+  HP-UX: halt
+  AIX: reserved
+- Level: "**1**"
+  Solaris: single user
+  "Red Hat": single user
+  "Ubuntu / Debian": single user
+  HP-UX: single user
+  AIX: reserved
+- Level: "**2**"
+  Solaris: n/a
+  "Red Hat": multiuser (no networking)
+  "Ubuntu / Debian": multiuser (default)
+  HP-UX: multiuser (networking)
+  AIX: multiuser + NFS
+- Level: "**3**"
+  Solaris: multi-user
+  "Red Hat": multiuser (networking)
+  "Ubuntu / Debian": same as 2
+  HP-UX: multiuser + NFS + CDE GUI (default)
+  AIX: user defined
+- Level: "**4**"
+  Solaris: n/a
+  "Red Hat": unused
+  "Ubuntu / Debian": same as 2
+  HP-UX: multiuser + NFS + VUE GUI
+  AIX: user defined
+- Level: "**5**"
+  Solaris: power off
+  "Red Hat": GUI
+  "Ubuntu / Debian": same as 2
+  HP-UX: n/a
+  AIX: user defined
+- Level: "**6**"
+  Solaris: reboot
+  "Red Hat": reboot
+  "Ubuntu / Debian": reboot
+  HP-UX: n/a
+  AIX: user defined
+- Level: "**7-9**"
+  Solaris: "—"
+  "Red Hat": "—"
+  "Ubuntu / Debian": "—"
+  HP-UX: "—"
+  AIX: user defined

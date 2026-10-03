@@ -2,7 +2,7 @@
 title: Projects
 description: Just a short list of personnal projects, I am currently working on.
 date: 2026-01-01T21:00:00+08:00
-navWeight: 1
+nav_weight: 1
 menu:
   main:
     weight: 7

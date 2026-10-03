@@ -1,7 +1,7 @@
 ---
 date: 2023-08-26T21:00:00+08:00
 title: 🎶 Samba / CIFS
-navWeight: 540 # Upper weight gets higher precedence, optional.
+nav_weight: 90 # Upper weight gets higher precedence, optional.
 series:
   - Docs
 categories:
@@ -40,7 +40,7 @@ passdb backend = tdbsam #passwords are stored in the /var/lib/samba/private/pass
 
 `pdbedit -L` : list user smb  (better than smbclient)
 
-`smbstatus` : see all connexions on going
+`smbstatus` : see all ongoing connections
 
 `/var/log/samba/estat-nalnfssmb/`
 
@@ -72,7 +72,7 @@ restorecon -RFv  /shared
 
 # set boolean for smbd_anon_write
 
-# user connexion to get its homedir
+# user connection to get its homedir
 setsebool -P samba_enable_home_dirs=on  
 ```
 
@@ -94,11 +94,11 @@ mount -o username=fred credentials=xxx //server/shared  /point/mnt
 
 ```shell
 mount -o multiuser, sec=ntlmssp, username=fred //server/shared  /point/mnt    
- |__ premier connexion fait avec le compte root pour un des user samba (celui qui a le moins de droits)
-			|__ cifscreds (-u user) add / update / clear server7  : les autres users peuvent se connecter a ce partage
+ |__ first connection made with the root account for one of the samba users (the one with the fewest rights)
+			|__ cifscreds (-u user) add / update / clear server7  : the other users can connect to this share
 ```
 
-## Test Connexion with Windows Domains
+## Test Connection with Windows Domains
 
 ```bash
 net -s /etc/samba/smb.conf ads join createcomputer='OU=DC-Unix-Servers,OU=Computers,OU=Common Services,DC=net1,DC=example,DC=com' -Uramdomuser

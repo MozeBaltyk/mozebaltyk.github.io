@@ -1,7 +1,7 @@
 ---
 date: 2026-01-01T21:00:00+08:00
 title: Golang
-navWeight: 90
+nav_weight: 10
 series:
   - Docs
 categories:

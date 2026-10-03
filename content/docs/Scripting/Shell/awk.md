@@ -1,7 +1,7 @@
 ---
 date: 2023-08-01T21:00:00+08:00
 title: 🐦 Awk
-navWeight: 50 # Upper weight gets higher precedence, optional.
+nav_weight: 10 # Upper weight gets higher precedence, optional.
 series:
   - Docs
 categories:
@@ -109,7 +109,7 @@ hostname -s | rev | cut -c 3- | rev
 # Same thing simplier
 echo ${HOSTNAME:: -2}
 
-# Result => 172.16.230
+# Result => 192.168.230
 ip -4 -o addr show | grep ${nic_interconnect} | awk '{print $4}'| sed 's/\/30$//' | cut -d'.' -f-3
 
 # Result =>  230.61

@@ -6,7 +6,7 @@ description: "Methods for discovering open ports"
 noindex: false
 featured: false
 pinned: false
-nav_weight: 2
+nav_weight: 10
 toc: true
 # comments: false
 series:

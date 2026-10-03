@@ -1,7 +1,7 @@
 ---
 date: 2026-02-03T21:00:00+08:00
 title: 🐎 K3D
-navWeight: 60 # Upper weight gets higher precedence, optional.
+nav_weight: 50 # Upper weight gets higher precedence, optional.
 series:
   - Docs
 categories:
@@ -127,14 +127,17 @@ k3d cluster create mycluster \
   --k3s-arg "--kubelet-arg=fail-swap-on=false@agent:*"
 ```
 
-> [!IMPORTANT]
-> Pay attention to always export those variables if you use *k3d* with *podman the rootless way*.
-> Can be added to `~/.zshrc`
->       
-> `XDG_RUNTIME_DIR=${XDG_RUNTIME_DIR:-/run/user/$(id -u)}`      
-> `export DOCKER_HOST=unix://$XDG_RUNTIME_DIR/podman/podman.sock`   
-> `export DOCKER_SOCK=$XDG_RUNTIME_DIR/podman/podman.sock`    
->    
+{{< bs/alert warning >}}
+{{< markdownify >}}
+Pay attention to always export those variables if you use *k3d* with *podman* the rootless way. They can be added to `~/.zshrc`:
+
+```bash
+XDG_RUNTIME_DIR=${XDG_RUNTIME_DIR:-/run/user/$(id -u)}
+export DOCKER_HOST=unix://$XDG_RUNTIME_DIR/podman/podman.sock
+export DOCKER_SOCK=$XDG_RUNTIME_DIR/podman/podman.sock
+```
+{{< /markdownify >}}
+{{< /bs/alert >}}
 
 ## K3D Verify and List
 

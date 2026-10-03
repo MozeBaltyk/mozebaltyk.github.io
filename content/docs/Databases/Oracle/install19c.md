@@ -1,7 +1,7 @@
 ---
 date: 2024-08-01T21:00:00+08:00
 title: Install RAC 19c
-navWeight: 50 # Upper weight gets higher precedence, optional.
+nav_weight: 60 # Upper weight gets higher precedence, optional.
 series:
   - Docs
 categories:

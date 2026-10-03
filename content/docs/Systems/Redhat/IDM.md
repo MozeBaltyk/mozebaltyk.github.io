@@ -1,7 +1,7 @@
 ---
 date: 2023-08-01T21:00:00+08:00
-title: Idm
-navWeight: 900 # Upper weight gets higher precedence, optional.
+title: IDM
+nav_weight: 10 # Upper weight gets higher precedence, optional.
 series:
   - Docs
 categories:
@@ -18,7 +18,7 @@ tags:
   * [ ] NTP synchronize
   * [ ] check config DHCP/DNS 
   * [ ] `hostname -f` == `hostname` 
-  * [ ] acces to webui IDM : https://idm01.idm.ad-support.local/ipa/ui/
+  * [ ] acces to webui IDM : https://idm01.idm.example.com/ipa/ui/
 
 ```bash
 yum install -y ipa-server ipa-server-dns
@@ -100,5 +100,5 @@ EOF
 * Script usage :
 
 ```bash
-./IdmZoneCheck.sh idm.ad-support.local
+./IdmZoneCheck.sh idm.example.com
 ```

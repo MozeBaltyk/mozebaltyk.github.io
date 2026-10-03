@@ -1,5 +1,5 @@
 ---
 title: Rights
 linkTitle: Rights # The title of left navigation, optional.
-navWeight: 200 # Upper weight gets higher precedence, optional.
+nav_weight: 80 # Upper weight gets higher precedence, optional.
 ---

@@ -8,4 +8,4 @@ nav_icon:
   color: grey
 ---
 
-Documentation about Operating Systems and there administration. 
+Documentation about Operating Systems and their administration. 

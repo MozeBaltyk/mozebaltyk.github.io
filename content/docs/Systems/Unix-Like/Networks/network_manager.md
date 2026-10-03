@@ -1,7 +1,7 @@
 ---
 date: 2023-08-27T21:00:00+08:00
 title: 🚩 Network Manager
-navWeight: 530 # Upper weight gets higher precedence, optional.
+nav_weight: 20 # Upper weight gets higher precedence, optional.
 series:
   - Docs
 categories:
@@ -56,7 +56,7 @@ nmcli con up ens192
 
 ```bash
 nmcli con mod enp1s0 +ipv4.addresses "192.168.122.11/24"
-ip addr del 10.163.148.36/24 dev ens160
+ip addr del 10.10.10.36/24 dev ens160
 
 nmcli con reload                     # before to reapply
 nmcli device reapply ens224

@@ -1,7 +1,7 @@
 ---
 date: 2023-08-01T21:00:00+08:00
 title: 🔗 Dependencies
-navWeight: 90 # Upper weight gets higher precedence, optional.
+nav_weight: 10 # Upper weight gets higher precedence, optional.
 series:
   - Docs
 categories:
@@ -42,7 +42,7 @@ pip3 install dist/rp_poetry-0.1.0-py3-none-any.whl
 poetry export --without-hashes -f requirements.txt -o requirements.txt
 ```
 
-## Push dans Nexus 
+## Push to Nexus 
 
 ```bash
 poetry config repositories.test http://localhost

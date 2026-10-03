@@ -1,7 +1,7 @@
 ---
 date: 2023-08-01T21:00:00+08:00
 title: Github
-navWeight: 50 # Upper weight gets higher precedence, optional.
+nav_weight: 20 # Upper weight gets higher precedence, optional.
 nav_icon:
   vendor: bootstrap
   name: github

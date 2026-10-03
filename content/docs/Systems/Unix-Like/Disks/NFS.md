@@ -1,7 +1,7 @@
 ---
 date: 2023-08-27T21:00:00+08:00
 title: 🐛 NFS
-navWeight: 530 # Upper weight gets higher precedence, optional.
+nav_weight: 70 # Upper weight gets higher precedence, optional.
 series:
   - Docs
 categories:
@@ -37,8 +37,8 @@ sudo setsebool -P nfs_export_all_rw 1
 * Configure
 ```bash
 vi /etc/exports 
-/backup 172.16.119.150(rw,async,root_squash)
-/backup 172.16.119.151(rw,async,root_squash)
+/backup 192.168.119.150(rw,async,root_squash)
+/backup 192.168.119.151(rw,async,root_squash)
 ```
 
 * Start
@@ -61,10 +61,10 @@ showmount -a
 
 * First check if you can access the export
 ```bash
-showmount --exports 172.16.239.10
-Export list for 172.16.239.10:
-/volume2/exportdb-dev-nfs 172.16.239.1,172.16.239.2,172.16.239.102,172.16.239.101
-/volume1/exportdb         172.16.233.0/24
+showmount --exports 192.168.239.10
+Export list for 192.168.239.10:
+/volume2/exportdb-dev-nfs 192.168.239.1,192.168.239.2,192.168.239.102,192.168.239.101
+/volume1/exportdb         192.168.233.0/24
 ```
 
 * Open firewalld
@@ -75,7 +75,7 @@ firewall-cmd --reload
 
 * Mount
 ```bash
-mount -t nfs 172.16.239.10:/volume2/exportdb-dev-nfs /backup_tmp
+mount -t nfs 192.168.239.10:/volume2/exportdb-dev-nfs /backup_tmp
 
 chown -R oracle:oinstall /backup_tmp/
 chmod -R 644 /backup_tmp/
@@ -90,5 +90,5 @@ nfsstat -m
 * Add to fstab
 ```bash
 # Below an example for RMAN backup
-172.16.239.10:/volume2/exportdb-dev-nfs /backup nfs hard,rw,noac,rsize=32768,wsize=32768,proto=tcp,vers=4 0 1
+192.168.239.10:/volume2/exportdb-dev-nfs /backup nfs hard,rw,noac,rsize=32768,wsize=32768,proto=tcp,vers=4 0 1
 ```

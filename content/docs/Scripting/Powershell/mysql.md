@@ -1,7 +1,7 @@
 ---
 date: 2023-08-01T21:00:00+08:00
 title: Mysql
-navWeight: 90 # Upper weight gets higher precedence, optional.
+nav_weight: 10 # Upper weight gets higher precedence, optional.
 series:
   - Docs
 categories:
@@ -13,7 +13,7 @@ tags:
 
 ## Example
 ```Powershell
-# Import values with details connexion
+# Import values with connection details
 . .\values.ps1
 
 $scriptFilePath ="$MyPath\Install\MysqlBase\Script.sql"

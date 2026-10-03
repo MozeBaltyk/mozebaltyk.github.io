@@ -1,7 +1,7 @@
 ---
 date: 2025-03-01T21:00:00+08:00
 title: 🚩 Firewalld
-navWeight: 530 # Upper weight gets higher precedence, optional.
+nav_weight: 10 # Upper weight gets higher precedence, optional.
 series:
   - Docs
 categories:

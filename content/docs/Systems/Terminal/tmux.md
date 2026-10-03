@@ -1,7 +1,7 @@
 ---
 date: 2023-08-01T21:00:00+08:00
-title: TMUX
-navWeight: 1200 # Upper weight gets higher precedence, optional.
+title: Tmux
+nav_weight: 50 # Upper weight gets higher precedence, optional.
 series:
   - Docs
 categories:
@@ -15,68 +15,68 @@ tags:
 # Tmux
 git clone https://github.com/tmux-plugins/tmux-logging.git
 
-### Commandes line 
+### Command line
  
-**`tmux new -s ma_session`**        : Create new session.      
-**`tmux attach`**                   : Attach to the last used session.     
-**`tmux attach -t X`**              : Attach to ymux sessions with X number.   
-**`tmux ls`**                       : List active tmux sessions.        
-**`tmux split-window -dh "!!"`**    : Run command in separate panel.      
-**`tmux source-file ~/.tmux.conf`** : Reload config  
+**`tmux new -s my_session`**       : Create a new session.      
+**`tmux attach`**                  : Attach to the last used session.     
+**`tmux attach -t X`**             : Attach to the tmux session with number X.   
+**`tmux ls`**                      : List active tmux sessions.        
+**`tmux split-window -dh "!!"`**   : Run a command in a separate pane.      
+**`tmux source-file ~/.tmux.conf`** : Reload config.
 
-### Base Commandes with key-binding
+### Basic Commands with key-bindings
 
-**`C-b w`**       : List sessions/panels.       
-**`C-b x`**       : Close panel or session.       
+**`C-b w`**       : List sessions/panes.       
+**`C-b x`**       : Close pane or session.       
      
-**`C-b d`**       : Se dettacher de la Session tmux  
-**`C-b C-z`**     : Hang Session  
-**`C-b $`**       : Rename Session  
+**`C-b d`**       : Detach from the tmux session.  
+**`C-b C-z`**     : Hang session.  
+**`C-b $`**       : Rename session.  
    
-**`C-b c`**       : Open new windows.   
-**`C-b n`**       : Switch between window´s session.     
-**`C-b ,`**       : Rename windows.    
-**`C-b X`**       : Choose windows with number X.     
-**`C-b t`**       : Display time in windows.    
-      
-**`C-b »`**       : Split vertical in terminal -> Panel        
-**`C-b %`**       : Split horizontal in terminal -> Panel       
-**`C-b o`**       : Switch between panels.  
-**`C-b C-o`**     : Change order in panels.    
-**`C-b Flêches`** : Move between panels.      
-**`C-b espace`**  : Switch Layout.     
-**`C-b !`**       : Break panels into windows.      
-**`C-b z`**       : Zoom on panel.    
-**`C-b &`**       : Close all panels from a window.    
-      
-**`C-b ?`**       : See all "Bind-key".     
-      
+**`C-b c`**       : Open a new window.   
+**`C-b n`**       : Switch between windows/sessions.     
+**`C-b ,`**       : Rename window.    
+**`C-b X`**       : Choose window with number X.     
+**`C-b t`**       : Display time in the window.    
+       
+**`C-b "`**       : Split into top/bottom panes.        
+**`C-b %`**       : Split into left/right panes.      
+**`C-b o`**       : Switch between panes.  
+**`C-b C-o`**     : Change the order of the panes.    
+**`C-b arrows`**  : Move between panes.      
+**`C-b space`**   : Switch layout.     
+**`C-b !`**       : Break a pane into its own window.      
+**`C-b z`**       : Zoom on a pane.    
+**`C-b &`**       : Close all panes of a window.    
+       
+**`C-b ?`**       : See all key-bindings.     
+       
 **`C-b [`**       : Scroll up/down (q or Enter to quit).    
 * /!\ or add to your `.tmux.conf` this setting `set -g mouse on`.    
 
-## Usefull Changes in your config  
+## Useful Changes in your config  
  
-  * change key-binding **`C-b`** to **`C-q`**  (closer on AZERTY or QWERTY).     
-  * vertical split with `-` instaed of `"`.           
-  * Add new shorcut :  
+  * change the key-binding **`C-b`** to **`C-q`** (closer for AZERTY or QWERTY).     
+  * vertical split with `-` instead of `"`.           
+  * Add new shortcuts :  
       * **`C-b r`** : reload  
-      * **`C-b /`** : look for in `man`  
-      * **`C-b s`** : Sync between panels. 
+      * **`C-b /`** : look up in `man`  
+      * **`C-b s`** : sync between panes. 
 
 ## Command your Tmux
 
   * **`C-b : `**  :  Pass a command to Tmux.  
-  * `setw synchronize-panes` :  (de-)acitvate sync between panels.      
+  * `setw synchronize-panes` :  (de)activate sync between panes.      
 
-```Bash  
-# Put in your .tnux.conf - to Bind "l" open 4 SSH connexions and sync between panels 
+```bash
+# Put in your .tmux.conf - to bind "l" to open 4 SSH connections and sync between panes
 bind l new-window 'ssh server1' \; split-window 'ssh server2' \; split-window 'ssh server3' \; split-window 'ssh server4' \; rename-window LOGS \; select-layout tiled \; setw synchronize-panes
 ```
 
-`tmux source-file ~/.tmux.conf;`  : reload config
+`tmux source-file ~/.tmux.conf;`  : reload config.
 
-```Bash
-# Fonction Tmux, à mettre dans le .bashrc
+```bash
+# Tmux functions, to put in the .bashrc
 function txh {
     tmux split-window -dh "$*"
 }
@@ -93,7 +93,7 @@ fi
 ```
 
 
-## My .Tmux.conf
+## My .tmux.conf
 
 ```bash
 set-option -g mouse on

@@ -1,7 +1,7 @@
 ---
 date: 2023-08-29T21:00:00+08:00
 title: 🌱 MDadm
-navWeight: 510 # Upper weight gets higher precedence, optional.
+nav_weight: 50 # Upper weight gets higher precedence, optional.
 series:
   - Docs
 categories:
@@ -130,7 +130,11 @@ mdadm --stop /dev/md0
 mdadm --assemble /dev/md0
 ```
 
-> The `assemble` command relies on the `/etc/mdadm.conf` file for array configuration. Ensure you've saved your configuration in `mdadm.conf` before stopping the array to prevent issues during reassembly.
+{{< bs/alert info >}}
+{{< markdownify >}}
+The `assemble` command relies on the `/etc/mdadm.conf` file for array configuration. Save your configuration in `mdadm.conf` before stopping the array to prevent issues during reassembly.
+{{< /markdownify >}}
+{{< /bs/alert >}}
 		
 * Add disk to an Array 
 ```bash
