@@ -37,7 +37,7 @@ The site is built with [Hugo](https://gohugo.io/), the [HB Framework](https://hb
 
 A few topics tend to appear more often than others:
 
-`Linux` · `Kubernetes` · `Automation` · `Networking` · `Storage` · `Hugo` · `Scripting`
+`Linux` · `Kubernetes` · `Devops` · `CI/CD` · `Storage` · `Hugo` · `Scripting`
 
 You can browse everything through [categories](/categories/), [tags](/tags/), or [series](/series/).
 
