@@ -13,7 +13,7 @@ carousel: true
 series:
   - Infrastructure
 categories:
-  - Devops
+  - Tutorials
 tags:
   - Containers
   - Security
@@ -21,7 +21,7 @@ tags:
 authors:
   - mozebaltyk
 images:
-  - ./carousel/secrets-in-kubernetes.png
+  - carousel/secrets-in-kubernetes.png
 sidebar: false
 ---
 

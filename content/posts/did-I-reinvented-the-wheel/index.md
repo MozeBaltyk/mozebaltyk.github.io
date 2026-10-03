@@ -13,13 +13,13 @@ carousel: true
 series:
   - Building a Tool
 categories:
-  - Devops
+  - Reflection
 tags:
   - Git
 authors:
   - mozebaltyk
 images:
-  - ./carousel/reinvented-the-wheel.jpg
+  - carousel/reinvented-the-wheel.jpg
 sidebar: false
 ---
 

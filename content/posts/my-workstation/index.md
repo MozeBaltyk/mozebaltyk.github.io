@@ -13,11 +13,11 @@ carousel: true
 series:
   - Workstation
 categories:
-  - SysAdmin
+  - Reflection
 tags:
   - Linux
 images:
-  - ./carousel/my-workstation.avif
+  - carousel/my-workstation.avif
 authors:
   - mozebaltyk
 sidebar: false

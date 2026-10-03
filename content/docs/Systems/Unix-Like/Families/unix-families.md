@@ -2,10 +2,8 @@
 date: 2023-08-06T21:00:00+08:00
 title: 🐧 Unix Families
 nav_weight: 10 # Upper weight gets higher precedence, optional.
-series:
-  - Docs
 categories:
-  - SysAdmin
+  - Memo
 tags:
   - Linux
 ---

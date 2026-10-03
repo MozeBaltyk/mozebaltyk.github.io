@@ -8,8 +8,6 @@ featured: false
 pinned: false
 nav_weight: 10
 # comments: false
-series:
-  - Docs
 categories:
   - Hacking
 tags:

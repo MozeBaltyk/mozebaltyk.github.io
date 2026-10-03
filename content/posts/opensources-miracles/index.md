@@ -13,10 +13,10 @@ carousel: true
 series: 
   - Open Source
 categories:
-  - Tutorials
+  - Reflection
 tags:
 images:
-  - ./carousel/opensources-miracles.jpg
+  - carousel/opensources-miracles.jpg
 authors:
   - mozebaltyk
 sidebar: false

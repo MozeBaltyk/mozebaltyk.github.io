@@ -2,10 +2,8 @@
 date: 2023-08-01T21:00:00+08:00
 title: Mysql
 nav_weight: 10 # Upper weight gets higher precedence, optional.
-series:
-  - Docs
 categories:
-  - DBA
+  - Memo
 tags:
   - Scripting
   - Databases

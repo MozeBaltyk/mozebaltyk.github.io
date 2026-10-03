@@ -18,7 +18,7 @@ tags:
   - Hugo
   - Scripting
 images:
-  - ./carousel/howto-write-hugo-shortcode.avif
+  - carousel/howto-write-hugo-shortcode.avif
 authors:
   - mozebaltyk
 sidebar: false

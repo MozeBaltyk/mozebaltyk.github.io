@@ -2,10 +2,8 @@
 date: 2023-08-26T21:00:00+08:00
 title: 🎶 Samba / CIFS
 nav_weight: 90 # Upper weight gets higher precedence, optional.
-series:
-  - Docs
 categories:
-  - SysAdmin
+  - Memo
 tags:
   - Linux
   - Storage

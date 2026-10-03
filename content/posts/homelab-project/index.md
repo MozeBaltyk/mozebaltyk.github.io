@@ -13,13 +13,13 @@ carousel: false
 series:
   - Homelab Journey 
 categories:
-  - Homelab 
+  - Reflection
 tags:
   - Homelab
 authors:
   - mozebaltyk
 images: 
-  - ./carousel/homelab-project.jpg
+  - carousel/homelab-project.jpg
 sidebar: false
 ---
 

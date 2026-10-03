@@ -2,10 +2,8 @@
 date: 2023-08-30T21:00:00+08:00
 title: 🗿 Partition
 nav_weight: 80 # Upper weight gets higher precedence, optional.
-series:
-  - Docs
 categories:
-  - SysAdmin
+  - Memo
 tags:
   - Linux
   - Storage

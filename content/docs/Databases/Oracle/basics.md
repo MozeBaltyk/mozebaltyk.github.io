@@ -1,11 +1,9 @@
 ---
 date: 2023-08-01T21:00:00+08:00
-title: Oracle Basics
-nav_weight: 20 # Upper weight gets higher precedence, optional.
-series:
-  - Docs
+title: 📘 Oracle Basics
+nav_weight: 10 # Upper weight gets higher precedence, optional.
 categories:
-  - DBA
+  - Memo
 tags:
   - Databases
 ---
@@ -107,11 +105,87 @@ An **Oracle server** includes an **Oracle Instance** and an **Oracle Database**.
     - **RC (Result Cache)**: Stores query results for reuse.
 
 The **SGA** interacts with:
-  - **SPFILE**: A binary file containing authentication information. (Alternatively, there is `init.ora`, which is a text file.)
+  - **SPFILE**: A binary server parameter file (the text equivalent is `init.ora`).
   - **CTRL_File (Control File)**: The most important file, containing version information, the location of backups on disks, and the locations of database files.
   - **REDO**: (50 MB) A log of the most recent operations performed on the database.
 
 - **Background Processes** :
   - **PMON (Process Monitor)**: Monitors processes.
   - **SMON (System Monitor)**: Updates the dictionary cache (DC) and tablespace information.
-  - **RECO**
+  - **RECO (Recoverer Process)**: Recovers distributed transactions.
+
+## Which database am I on?
+
+```sql
+SELECT * FROM global_name;
+SHOW PARAMETER name;
+```
+
+## Oracle default locations
+
+Oracle creates files in these places:
+
+* `/var/tmp/.oracle/`
+* `/etc/oracle/` — `oraInst.loc`, `oratab`
+* `/u01`
+
+## Explore the tables & schemas
+
+```sql
+DESCRIBE ALL_TABLES;                               -- info about the tables.
+SELECT table_name FROM all_tables;                 -- all tables on the instance.
+
+SELECT object_name, object_type FROM user_objects ORDER BY object_type, object_name;
+-- USER_OBJECTS is the data dictionary of the schema you are connected as.
+
+SELECT table_name FROM all_tables WHERE owner = 'YOUR_SCHEMA';  -- tables of one schema.
+```
+
+```sql
+SELECT * FROM employees;   -- see a table.
+DESCRIBE employees;        -- see the columns of the "employees" table.
+```
+
+## Dynamic views (v$…)
+
+`v$fixed_table` lists every available dynamic view. The main ones:
+
+* `v$parameter` — initialization parameters. (`SHOW PARAMETER control` = `SELECT … FROM v$parameter WHERE name LIKE '%control%'`.)
+* `v$system_parameter` — parameters and their pending modifications.
+* `v$sga` — SGA info.
+* `v$option` — the options installed on the server.
+* `v$process` — the current active processes.
+* `v$session` — the current session info.
+* `v$version` — the version number and components.
+* `v$instance` — the current instance state.
+* `v$thread` — threads / redo log groups.
+* `v$controlfile` — the control file names (empty at NOMOUNT).
+* `v$database` — database info.
+* `v$datafile` — data & control file info.
+* `v$datafile_header` — datafile headers from the control file.
+* `v$logfile` — redo log files.
+
+Some parameters are changeable with `ALTER SESSION` or `ALTER SYSTEM`:
+
+```sql
+ALTER SESSION SET sql_trace = TRUE;                 -- current session only.
+ALTER SYSTEM SET timed_statistics = TRUE;           -- until shutdown.
+ALTER SYSTEM SET sort_area_size = 131072 DEFERRED;  -- applies to new connections.
+```
+
+Find the modified parameters:
+
+```sql
+SELECT name, isses_modifiable, issys_modifiable, ismodified
+FROM v$system_parameter WHERE ismodified != 'false';
+```
+
+`v$system_parameter` columns: `NAME`, `TYPE` (1 boolean · 2 string · 3 integer · 4 file · 5 reserved · 6 long integer), `VALUE`, `ISDEFAULT`, `ISSES_MODIFIABLE`, `ISSYS_MODIFIABLE`, `DEFERRED`, `ISMODIFIED`, `ISADJUSTED`, `UPDATE_COMMENT`.
+
+`DESCRIBE` shows the columns of a view:
+
+```sql
+DESCRIBE v$instance;
+```
+
+`SELECT * FROM v$instance;` returns every column of that view.

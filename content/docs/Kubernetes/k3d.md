@@ -2,10 +2,8 @@
 date: 2026-02-03T21:00:00+08:00
 title: 🐎 K3D
 nav_weight: 50 # Upper weight gets higher precedence, optional.
-series:
-  - Docs
 categories:
-  - Devops
+  - Memo
 tags:
   - Kubernetes
   - IaC

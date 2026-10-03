@@ -17,7 +17,7 @@ categories:
 tags:
   - Hugo
 images:
-  - ./carousel/howto-selfhost-rss-reader.jpg
+  - carousel/howto-selfhost-rss-reader.jpg
 authors:
   - mozebaltyk
 sidebar: false

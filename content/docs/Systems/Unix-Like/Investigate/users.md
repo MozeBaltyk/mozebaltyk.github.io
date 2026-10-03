@@ -2,10 +2,8 @@
 date: 2023-08-17T21:00:00+08:00
 title: 👤 Users & Connections
 nav_weight: 40 # Upper weight gets higher precedence, optional.
-series:
-  - Docs
 categories:
-  - SysAdmin
+  - Memo
 tags:
   - Linux
 ---

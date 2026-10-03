@@ -1,21 +1,28 @@
-{{- $name := printf "{code/%s,codes/%s}" ($.Get 0) ($.Get 0) }}
-{{- $res := .Page.Resources.GetMatch $name }}
+{{- $name := .Get 0 -}}
+{{- $lang := .Get 1 | default "" -}}
 
-{{- with $res }}
-  {{- /* 1. Explicit language argument */ -}}
-  {{- $lang := $.Get 1 | default "" }}
+{{- /* 1. Page bundle resource (posts) */ -}}
+{{- $res := .Page.Resources.GetMatch (printf "{code/%s,codes/%s}" $name $name) -}}
 
-  {{- /* 2. Fallback to file extension */ -}}
-  {{- if not $lang }}
-    {{- $lang = replaceRE "^.*\\." "" .Name | lower }}
-  {{- end }}
+{{- /* 2. Global assets/codes fallback (leaf docs) — Hugo >= 0.141 try */ -}}
+{{- if not $res -}}
+  {{- with try (resources.Get (printf "codes/%s" $name)) -}}
+    {{- with .Err -}}
+      {{- warnf "code snippet not found: %s" $name -}}
+    {{- else -}}
+      {{- $res = .Value -}}
+    {{- end -}}
+  {{- end -}}
+{{- end -}}
 
-  {{- /* 3. Final fallback */ -}}
-  {{- if not $lang }}
-    {{- $lang = "txt" }}
-  {{- end }}
-
-  {{- highlight .Content $lang "" }}
-{{- else }}
-  {{- warnf "code snippet not found: %s" $name }}
-{{- end }}
+{{- with $res -}}
+  {{- if not $lang -}}
+    {{- $lang = replaceRE "^.*\\." "" .Name | lower -}}
+  {{- end -}}
+  {{- if not $lang -}}
+    {{- $lang = "txt" -}}
+  {{- end -}}
+  {{- highlight .Content $lang "" -}}
+{{- else -}}
+  {{- warnf "code snippet not found: %s" $name -}}
+{{- end -}}

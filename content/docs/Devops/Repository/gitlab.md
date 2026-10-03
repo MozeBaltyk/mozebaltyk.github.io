@@ -6,10 +6,8 @@ nav_icon:
   vendor: bootstrap
   name: gitlab
   color: grey
-series:
-  - Docs
 categories:
-  - Devops
+  - Memo
 tags:
   - Git
   - Containers

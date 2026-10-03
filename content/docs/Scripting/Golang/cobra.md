@@ -2,10 +2,8 @@
 date: 2023-08-01T21:00:00+08:00
 title: 🐍 Cobra
 nav_weight: 20
-series:
-  - Docs
 categories:
-  - Devops
+  - Memo
 tags:
   - Scripting
 ---

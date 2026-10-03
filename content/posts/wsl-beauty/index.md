@@ -13,14 +13,14 @@ carousel: true
 series:
   - Workstation
 categories:
-  - SysAdmin
+  - Tutorials
 tags:
   - Windows / WSL
   - Linux
 authors:
   - mozebaltyk
 images:
-  - ./carousel/wsl-beauty.webp
+  - carousel/wsl-beauty.webp
 sidebar: false
 ---
 

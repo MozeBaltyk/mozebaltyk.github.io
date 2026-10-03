@@ -2,10 +2,8 @@
 date: 2023-08-05T21:00:00+08:00
 title: 📈 Performance Monitoring & Tuning
 nav_weight: 10 # Upper weight gets higher precedence, optional.
-series:
-  - Docs
 categories:
-  - SysAdmin
+  - Memo
 tags:
   - Linux
 ---

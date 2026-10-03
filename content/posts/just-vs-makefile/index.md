@@ -13,13 +13,13 @@ carousel: true
 series:
   - Building a Tool
 categories:
-  - Devops
+  - Reflection
 tags:
   - Scripting
 authors:
   - mozebaltyk
 images:
-  - ./carousel/MakefileVsJustfile.webp
+  - carousel/MakefileVsJustfile.webp
 sidebar: false
 ---
 

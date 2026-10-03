@@ -18,7 +18,7 @@ tags:
   - Hugo
   - Scripting
 images:
-  - ./carousel/howto-create-custom-widget.jpg
+  - carousel/howto-create-custom-widget.jpg
 authors:
   - mozebaltyk
 sidebar: false

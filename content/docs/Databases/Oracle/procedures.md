@@ -1,11 +1,9 @@
 ---
 date: 2024-08-01T21:00:00+08:00
-title: Procedures
-nav_weight: 70 # Upper weight gets higher precedence, optional.
-series:
-  - Docs
+title: 📋 Procedures
+nav_weight: 170 # Upper weight gets higher precedence, optional.
 categories:
-  - DBA
+  - Memo
 tags:
   - Databases
 ---

@@ -17,7 +17,7 @@ categories:
 tags:
   - Hugo
 images:
-  - ./carousel/howto-customize-feed-rss.avif
+  - carousel/howto-customize-feed-rss.avif
 authors:
   - mozebaltyk
 sidebar: false

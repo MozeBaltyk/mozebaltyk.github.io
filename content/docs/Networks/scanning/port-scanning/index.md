@@ -9,8 +9,6 @@ pinned: false
 nav_weight: 10
 toc: true
 # comments: false
-series:
-  - Docs
 categories:
   - Hacking
 tags:

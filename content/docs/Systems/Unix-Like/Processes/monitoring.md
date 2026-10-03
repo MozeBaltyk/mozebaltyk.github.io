@@ -2,10 +2,8 @@
 date: 2023-08-11T21:00:00+08:00
 title: 📊 Process Monitoring (pidstat)
 nav_weight: 20 # Upper weight gets higher precedence, optional.
-series:
-  - Docs
 categories:
-  - SysAdmin
+  - Memo
 tags:
   - Linux
 ---

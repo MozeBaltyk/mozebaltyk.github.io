@@ -2,10 +2,8 @@
 date: 2025-03-01T21:00:00+08:00
 title: 🚩 Firewalld
 nav_weight: 10 # Upper weight gets higher precedence, optional.
-series:
-  - Docs
 categories:
-  - SysAdmin
+  - Memo
 tags:
   - Linux
   - Networking

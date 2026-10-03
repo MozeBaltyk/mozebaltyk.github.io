@@ -9,7 +9,7 @@
 Content is organised along **three taxonomies**, each with a different purpose:
 
 * **Series** — a *guided journey*: an ordered reading path through related posts.
-* **Categories** — a small set of broad *themes*.
+* **Categories** — the *type* of content (what kind of piece it is).
 * **Tags** — a deliberately *small, fixed vocabulary* of precise *topics*.
 
 ### Series (thematic journeys)
@@ -20,12 +20,15 @@ Content is organised along **three taxonomies**, each with a different purpose:
 * Building a Tool
 * Infrastructure
 * Open Source
-* Docs *(structural)*
-* Projects *(structural)*
 
-### Categories (one per piece)
+### Categories (the type of content)
 
-`Devops` · `SysAdmin` · `DBA` · `Tutorials` · `Hacking` · `Network` · `Homelab`
+`Reflection` · `Memo` · `Tutorials` · `Hacking`
+
+* **Reflection** — an opinion/experience essay ("Did I Reinvent the Wheel?", "My Workstation").
+* **Tutorials** — a step-by-step how-to ("How I Created This Blog", "The Beauty of WSL").
+* **Memo** — a quick reference / cheatsheet (most of `/docs`).
+* **Hacking** — security & pentesting notes (the only *domain* category, kept for the scanning content).
 
 ### Tags (a fixed list — we keep it small on purpose)
 
@@ -42,16 +45,76 @@ We deliberately **limit the number of tags**:
 | Taxonomy | Purpose | Count | Per piece |
 |---|---|---|---|
 | Series | ordered reading path | few, curated | 0 or 1 |
-| Categories | broad theme | 7 | 1 |
+| Categories | content type | 4 | 1 |
 | Tags | precise topics | 18 (fixed) | 1–3 |
 
 ### Conventions for new posts & docs
 
-* Pick **one category** (the closest of the seven) and **1–3 tags from the fixed list** — don't invent new tags without updating this document.
+* Pick **one category** by the *type* of content (`Reflection`, `Memo`, `Tutorials` or `Hacking`) and **1–3 tags from the fixed list** — don't invent new tags without updating this document.
 * Assign a **series** only when it's part of a real narrative; otherwise omit it (or use `Docs`/`Posts` for the structural sections).
 * Write in **English**; keep commands in fenced code blocks.
 * Docs live under `content/docs/<Section>/…` and are ordered with `nav_weight` (lower = higher in the nav); posts live under `content/posts/<slug>/`.
 * Use theme **shortcodes** for notes (`{{< bs/alert info >}}`, `{{< bs/alert warning >}}`) rather than plain `>` blockquotes or GitHub `> [!NOTE]` callouts (the latter don't render here).
+
+## Authoring: shortcodes, images & carousel
+
+### code-snippet — embed a snippet from a file
+
+Keeps long code blocks out of the Markdown; the snippet lives in its own file.
+
+```text
+{{< code-snippet "example.conf" "ini" >}}
+```
+
+Resolution (hybrid), in order:
+
+1. the article's own bundle folder `code/` or `codes/` (posts are leaf bundles);
+2. the shared `assets/codes/` library (for leaf-page **docs**).
+
+The language is optional — it falls back to the file extension, then `txt`.
+
+```text
+{{< code-snippet "oracle/reclaim_space.sql" "sql" >}}   → assets/codes/oracle/reclaim_space.sql
+{{< code-snippet "example.txt" >}}                      → content/posts/…/codes/example.txt
+```
+
+> When *documenting* the shortcode itself, escape it with `{{</* code-snippet … */>}}` so Hugo doesn't execute it.
+
+### table-snippet — render a table from YAML / JSON / TOML
+
+```text
+{{< table-snippet "file" "columns" "sort" "filter" >}}
+```
+
+Resolution: the bundle `table/`/`tables/` folders first, then `data/` (nested path — `data/systems/unix-like/runlevels.yaml` → `"systems/unix-like/runlevels"`).
+
+* `columns` — comma-separated keys (omit to use every key); the headers are generated automatically.
+* `sort` / `filter` — optional key to sort by, and a boolean key to keep only rows where it is `true`.
+* Cell values are markdownified; URLs become clickable links.
+
+### Images
+
+* Global images: `static/images/` (referenced as `images/foo.png` — avatar, logo, default thumbnail).
+* Per-article images: the page's `images/` bundle folder, or `static/posts/<slug>/`.
+
+### Carousel
+
+```yaml
+carousel: true          # enable the image carousel on this post
+featured: true          # mark as featured (surfaced on the homepage)
+images:
+  - ./carousel/my-post.webp
+```
+
+* Carousel images live in `static/carousel/`.
+* Featured posts drive the homepage carousel (tuned via `featured_posts` in `params.yaml`).
+
+### Hybrid codes — bundle vs shared
+
+`code-snippet` tries the article's own `codes/` first (post-style), then the shared `assets/codes/`:
+
+* a snippet that belongs to a **single** article → its `codes/` bundle folder;
+* a snippet **reused** across articles → `assets/codes/` (give the folder path as the argument).
 
 ## Important links
 

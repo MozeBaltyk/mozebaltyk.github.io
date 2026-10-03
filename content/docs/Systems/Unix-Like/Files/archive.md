@@ -4,10 +4,8 @@ title:  📦 Archive
 aliases:
   - /docs/systems/unix-like/disks/archive/
 nav_weight: 20 # Upper weight gets higher precedence, optional.
-series:
-  - Docs
 categories:
-  - SysAdmin
+  - Memo
 tags:
   - Linux
   - Storage

@@ -13,14 +13,14 @@ carousel: true
 series:
   - Infrastructure
 categories:
-  - Devops
+  - Tutorials
 tags:
   - IaC
   - Storage
 authors:
   - mozebaltyk
 images:
-  - ./carousel/own-your-state.webp
+  - carousel/own-your-state.webp
 sidebar: false
 ---
 

@@ -2,10 +2,8 @@
 date: 2023-08-09T21:00:00+08:00
 title: 🖥 Out-of-Band Management
 nav_weight: 60 # Upper weight gets higher precedence, optional.
-series:
-  - Docs
 categories:
-  - SysAdmin
+  - Memo
 tags:
   - Linux
 ---

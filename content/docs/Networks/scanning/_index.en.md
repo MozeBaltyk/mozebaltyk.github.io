@@ -12,8 +12,6 @@ nav_icon:
   name: wifi
   color: yellow
 # comments: false
-series:
-  - Docs
 categories:
   - Hacking
 tags:

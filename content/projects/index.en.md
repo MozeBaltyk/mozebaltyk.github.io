@@ -11,10 +11,8 @@ menu:
         vendor: bs
         name: code-square
         color: "#6610f2"
-series:
-  - Projects
 categories:
-  - Devops
+  - Memo
 tags:
 sidebar: false
 ---

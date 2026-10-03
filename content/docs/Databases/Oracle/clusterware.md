@@ -1,11 +1,9 @@
 ---
 date: 2024-08-01T21:00:00+08:00
-title: Clusterware
-nav_weight: 40 # Upper weight gets higher precedence, optional.
-series:
-  - Docs
+title: 🧩 Clusterware
+nav_weight: 50 # Upper weight gets higher precedence, optional.
 categories:
-  - DBA
+  - Memo
 tags:
   - Databases
 ---
@@ -184,3 +182,40 @@ SCAN listener LISTENER_SCAN2 is running on node host1-env-data1n1.domain
 SCAN Listener LISTENER_SCAN3 is enabled
 SCAN listener LISTENER_SCAN3 is running on node host1-env-data1n1.domain
 ```
+## OCR
+
+The OCR (Oracle Cluster Registry) is the Clusterware registry — below it lives on the `+DATA` volume, which is **not** best practice:
+
+```bash
+ocrcheck
+```
+
+```text
+Status of Oracle Cluster Registry is as follows :
+    Version                  :          4
+    Total space (kbytes)     :     491684
+    Used space (kbytes)      :      84720
+    Available space (kbytes) :     406964
+    ID                       : 1494801194
+    Device/File Name         :      +DATA
+                                  Device/File integrity check succeeded
+    Cluster registry integrity check succeeded
+```
+
+## Voting disk
+
+```bash
+. oraenv +ASM
+sqlplus / as sysasm
+```
+
+```sql
+SELECT group_number, voting_file FROM v$asm_disk;
+-- GROUP_NUMBER V
+-- ------------ -
+--           1 N
+--           2 N
+--           1 Y
+```
+
+The `Y` in the `voting_file` column marks the disk holding a voting file.

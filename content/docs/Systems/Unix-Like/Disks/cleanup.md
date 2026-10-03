@@ -2,10 +2,8 @@
 date: 2023-08-04T21:00:00+08:00
 title: 🧹 Disk Cleanup
 nav_weight: 10 # Upper weight gets higher precedence, optional.
-series:
-  - Docs
 categories:
-  - SysAdmin
+  - Memo
 tags:
   - Linux
   - Storage

@@ -2,10 +2,8 @@
 date: 2023-08-29T21:00:00+08:00
 title: 🌱 MDadm
 nav_weight: 50 # Upper weight gets higher precedence, optional.
-series:
-  - Docs
 categories:
-  - SysAdmin
+  - Memo
 tags:
   - Linux
   - Storage

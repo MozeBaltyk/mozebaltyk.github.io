@@ -2,10 +2,8 @@
 date: 2023-08-16T21:00:00+08:00
 title: 📦 Chroot Jail
 nav_weight: 70 # Upper weight gets higher precedence, optional.
-series:
-  - Docs
 categories:
-  - SysAdmin
+  - Memo
 tags:
   - Linux
 ---

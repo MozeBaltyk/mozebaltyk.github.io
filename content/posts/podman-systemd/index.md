@@ -13,14 +13,14 @@ carousel: true
 series:
   - Workstation
 categories:
-  - Devops
+  - Tutorials
 tags:
   - Containers
   - Git
 authors:
   - mozebaltyk
 images: 
-  - ./carousel/podman-systemd.jpg
+  - carousel/podman-systemd.jpg
 sidebar: false
 ---
 

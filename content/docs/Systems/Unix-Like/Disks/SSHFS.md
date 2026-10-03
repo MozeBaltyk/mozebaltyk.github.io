@@ -2,10 +2,8 @@
 date: 2023-08-25T21:00:00+08:00
 title: 🍻 SSHFS
 nav_weight: 110 # Upper weight gets higher precedence, optional.
-series:
-  - Docs
 categories:
-  - SysAdmin
+  - Memo
 tags:
   - Linux
   - Storage

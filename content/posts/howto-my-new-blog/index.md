@@ -18,7 +18,7 @@ tags:
   - Hugo
   - Git
 images:
-  - ./carousel/howto-my-new-blog.jpg
+  - carousel/howto-my-new-blog.jpg
 authors:
   - mozebaltyk
 sidebar: false

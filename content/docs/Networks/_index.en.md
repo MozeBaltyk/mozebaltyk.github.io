@@ -12,10 +12,8 @@ nav_icon:
   name: diagram-3
   color: "#0ee2cdff"
 # comments: false
-series:
-  - Docs
 categories:
-  - Network
+  - Memo
 tags:
 #  - 
 ---

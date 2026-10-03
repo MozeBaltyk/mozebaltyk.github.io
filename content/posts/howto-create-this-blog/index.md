@@ -20,7 +20,7 @@ tags:
 authors:
   - mozebaltyk
 images:
-  - ./carousel/howto-create-this-blog.webp
+  - carousel/howto-create-this-blog.webp
 sidebar: false
 ---
 

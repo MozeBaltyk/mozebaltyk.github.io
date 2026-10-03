@@ -2,10 +2,8 @@
 date: 2023-08-01T21:00:00+08:00
 title: 👾 Nexus3
 nav_weight: 30 # Upper weight gets higher precedence, optional.
-series:
-  - Docs
 categories:
-  - Devops
+  - Memo
 tags:
   - Containers
 ---

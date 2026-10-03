@@ -13,13 +13,13 @@ carousel: true
 series:
   - Building a Tool
 categories:
-  - Devops
+  - Reflection
 tags:
   - Git
 authors:
   - mozebaltyk
 images:
-  - ./carousel/bad-good-ugly-git.jpg
+  - carousel/bad-good-ugly-git.jpg
 sidebar: false
 ---
 

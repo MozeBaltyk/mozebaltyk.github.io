@@ -1,11 +1,9 @@
 ---
 date: 2024-08-01T21:00:00+08:00
-title: Oracle Clients
-nav_weight: 30 # Upper weight gets higher precedence, optional.
-series:
-  - Docs
+title: 💻 Oracle Clients
+nav_weight: 160 # Upper weight gets higher precedence, optional.
 categories:
-  - DBA
+  - Memo
 tags:
   - Databases
 ---
@@ -79,10 +77,10 @@ Service "+ASM_DATA" has 1 instance(s).
   Instance "+ASM", status READY, has 1 handler(s) for this service...
 Service "+ASM_FRA" has 1 instance(s).
   Instance "+ASM", status READY, has 1 handler(s) for this service...
-Service "IANA" has 1 instance(s).
-  Instance "IANA", status READY, has 1 handler(s) for this service...
-Service "IANAXDB" has 1 instance(s).
-  Instance "IANA", status READY, has 1 handler(s) for this service...
+Service "ORCL" has 1 instance(s).
+  Instance "ORCL", status READY, has 1 handler(s) for this service...
+Service "ORCLXDB" has 1 instance(s).
+  Instance "ORCL", status READY, has 1 handler(s) for this service...
 The command completed successfully
 ```
 

@@ -2,10 +2,8 @@
 date: 2023-08-01T21:00:00+08:00
 title: 🔒 Vault on k8s
 nav_weight: 120 # Upper weight gets higher precedence, optional.
-series:
-  - Docs
 categories:
-  - Devops
+  - Memo
 tags:
   - Kubernetes
   - IaC

@@ -2,10 +2,8 @@
 date: 2023-08-01T21:00:00+08:00
 title: 🎡 Helm
 nav_weight: 40 # Upper weight gets higher precedence, optional.
-series:
-  - Docs
 categories:
-  - Devops
+  - Memo
 tags:
   - Kubernetes
 ---

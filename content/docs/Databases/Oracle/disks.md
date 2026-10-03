@@ -1,11 +1,9 @@
 ---
 date: 2024-08-01T21:00:00+08:00
-title: Disks ASM
-nav_weight: 50 # Upper weight gets higher precedence, optional.
-series:
-  - Docs
+title: 💽 Disks ASM
+nav_weight: 70 # Upper weight gets higher precedence, optional.
 categories:
-  - DBA
+  - Memo
 tags:
   - Databases
   - Storage
@@ -45,24 +43,24 @@ asmcmd lsct
 DB_Name  Status     Software_Version  Compatible_version  Instance_Name  Disk_Group
 +ASM     CONNECTED        19.0.0.0.0          19.0.0.0.0  +ASM           DATA
 +ASM     CONNECTED        19.0.0.0.0          19.0.0.0.0  +ASM           FRA
-MANA     CONNECTED        12.2.0.1.0          12.2.0.0.0  MANA           DATA
-MANA     CONNECTED        12.2.0.1.0          12.2.0.0.0  MANA           FRA
-MREPORT  CONNECTED        12.2.0.1.0          12.2.0.0.0  MREPORT        DATA
-MREPORT  CONNECTED        12.2.0.1.0          12.2.0.0.0  MREPORT        FRA
+ORCL     CONNECTED        12.2.0.1.0          12.2.0.0.0  ORCL           DATA
+ORCL     CONNECTED        12.2.0.1.0          12.2.0.0.0  ORCL           FRA
+MYDB  CONNECTED        12.2.0.1.0          12.2.0.0.0  MYDB        DATA
+MYDB  CONNECTED        12.2.0.1.0          12.2.0.0.0  MYDB        FRA
 
 # Files Open
 asmcmd lsof
 
 DB_Name  Instance_Name  Path
-MANA     MANA           +DATA/MANA/DATAFILE/blob.268.1045299983
-MANA     MANA           +DATA/MANA/DATAFILE/data.270.1045299981
-MANA     MANA           +DATA/MANA/DATAFILE/indx.269.1045299983
-MANA     MANA           +DATA/MANA/control01.ctl
-MANA     MANA           +DATA/MANA/redo01a.log
-MANA     MANA           +DATA/MANA/redo02a.log
-MANA     MANA           +DATA/MANA/redo03a.log
-MANA     MANA           +DATA/MANA/redo04a.log
-MANA     MANA           +DATA/MANA/sysaux01.dbf
+ORCL     ORCL           +DATA/ORCL/DATAFILE/blob.268.1045299983
+ORCL     ORCL           +DATA/ORCL/DATAFILE/data.270.1045299981
+ORCL     ORCL           +DATA/ORCL/DATAFILE/indx.269.1045299983
+ORCL     ORCL           +DATA/ORCL/control01.ctl
+ORCL     ORCL           +DATA/ORCL/redo01a.log
+ORCL     ORCL           +DATA/ORCL/redo02a.log
+ORCL     ORCL           +DATA/ORCL/redo03a.log
+ORCL     ORCL           +DATA/ORCL/redo04a.log
+ORCL     ORCL           +DATA/ORCL/sysaux01.dbf
 [...]
 ```
 
@@ -327,15 +325,15 @@ ORDER BY
 ```txt
 GNAME      DBNAME     FILE_TYPE              MB         GB     #FILES
 ---------- ---------- -------------- ---------- ---------- ----------
-DATA       HCBS       CONTROLFILE            32          0          1
-DATA       HCBS       DATAFILE           290692        284         22
-DATA       HCBS       ONLINELOG           24640         24          8
-DATA       HCBS       PARAMETERFILE           4          0          1
-DATA       HCBS       PASSWORD                0          0          1
-DATA       HCBS       TEMPFILE             6996          7          2
-FRA        HCBS       AUTOBACKUP           7252          7        259
-FRA        HCBS       CONTROLFILE            32          0          1
-FRA        HCBS       ONLINELOG            1632          2          8
+DATA       ORCL       CONTROLFILE            32          0          1
+DATA       ORCL       DATAFILE           290692        284         22
+DATA       ORCL       ONLINELOG           24640         24          8
+DATA       ORCL       PARAMETERFILE           4          0          1
+DATA       ORCL       PASSWORD                0          0          1
+DATA       ORCL       TEMPFILE             6996          7          2
+FRA        ORCL       AUTOBACKUP           7252          7        259
+FRA        ORCL       CONTROLFILE            32          0          1
+FRA        ORCL       ONLINELOG            1632          2          8
 ```
 
 

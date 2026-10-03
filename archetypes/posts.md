@@ -10,21 +10,22 @@ comment: true
 toc: true
 reward: true
 carousel: true
-series: 
-  - Posts
+series:
+# Only for real journeys, one of:
+#  - Workstation
+#  - Homelab Journey
+#  - Building This Blog
+#  - Building a Tool
+#  - Infrastructure
+#  - Open Source
 categories:
 # One of below choices:
-#  - SysAdmin
-#  - DBA
-#  - Network
-#  - Devops
-#  - Homelab
-#  - Hacking
+#  - Reflection
 #  - Tutorials
 tags:
-  - Migration
+#  - from the fixed tag list
 images:
-#  - ./carousel/...
+#  - carousel/...
 authors:
   - mozebaltyk
 sidebar: false

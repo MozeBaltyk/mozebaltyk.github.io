@@ -1,11 +1,9 @@
 ---
 date: 2024-08-01T21:00:00+08:00
-title: Scripting
-nav_weight: 80 # Upper weight gets higher precedence, optional.
-series:
-  - Docs
+title: 📝 Scripting
+nav_weight: 180 # Upper weight gets higher precedence, optional.
 categories:
-  - DBA
+  - Memo
 tags:
   - Databases
   - Scripting
@@ -18,7 +16,7 @@ tags:
 ```bash
 # Set the SID 
 ORAENV_ASK=NO
-export ORACLE_SID=HANA
+export ORACLE_SID=orcl
 . oraenv
 
 # Trigger oneline command
