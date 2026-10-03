@@ -1,7 +1,7 @@
 ---
 title:
 linkTitle:
-description: "What is all about."
+description: "What is all about ?"
 date: 2026-10-04T00:00:00+02:00
 menu:
   main:
@@ -13,28 +13,44 @@ menu:
         color: "#0d6efd"
 sidebar: false
 meta: false
-toc: true
+toc: false
 comments: false
 ---
 
-## Welcome 👋
+## Witam 👋
 
-This is my modest and personal blog. Everything started as personal notes that I moved to markdown format to make them searchable, version-controlled, and optionally public space — this site. It is built with [Hugo](https://gohugo.io/) and the [HB Framework](https://hbstack.dev/), and deployed to [GitHub Pages](https://pages.github.com/).
+This is my personal corner of the internet — a collection of technical notes, experiments, projects, and things I don't want to rediscover twice.
+
+It started as a pile of private notes. Over time, I moved them to Markdown so they could be searchable, version-controlled, and, when useful, published here.
+
+The site is built with [Hugo](https://gohugo.io/), the [HB Framework](https://hbstack.dev/), and deployed with [GitHub Pages](https://pages.github.com/).
+
+![Terminal animation](./images/home-terminal.webp#center)
 
 ## What you'll find here
 
-- **📚 [Docs](/docs/)** — technical documentation, organized by topic
-  (Databases, DevOps, Kubernetes, Networking, Scripting, Storage, Systems,
-  Virtualisation). This is the closest thing to a personal wiki.
-- **✍️ [Posts](/posts/)** — longer articles, reflections, and hands-on
-  walkthroughs written as I learn something new or automate something old.
-- **🧩 [Projects](/projects/)** — pet projects I tinker with in my free time.
+- **📚 [Docs](/docs/)** — technical documentation organized by topic: Databases, DevOps, Kubernetes, Networking, Scripting, Storage, Systems, and Virtualisation.
+- **✍️ [Posts](/posts/)** — longer articles, troubleshooting notes, experiments, and hands-on walkthroughs.
+- **🧩 [Projects](/projects/)** — small projects, tools, scripts, and ideas I build or break in my free time.
 
-Content is also browsable by [categories](/categories/), [tags](/tags/), and
-[series](/series/) if you prefer to explore by theme.
+## Currently interested in
+
+A few topics tend to appear more often than others:
+
+`Linux` · `Kubernetes` · `Automation` · `Networking` · `Storage` · `Hugo` · `Scripting`
+
+You can browse everything through [categories](/categories/), [tags](/tags/), or [series](/series/).
+
+## Why this site exists
+
+Mostly for future me.
+
+Writing things down forces me to understand them better, and publishing some of those notes might help to share my thougth.
+
+If a post helps you, improves something you are working on, or contains something terribly wrong, feel free to drop a comment.
 
 ## Get in touch
 
-- 💬 Comments are powered by [Giscus](https://giscus.app/) — leave one on any post.
-- 🐙 [GitHub](https://github.com/MozeBaltyk) — for issues, PRs, or just a look around.
-- 🔗 [RSS](/feed.xml) — subscribe to stay up to date.
+- 💬 Comments are powered by [Giscus](https://giscus.app/).
+- 🐙 [GitHub](https://github.com/MozeBaltyk) — issues, pull requests, projects, and source code.
+- 🔗 [RSS](/feed.xml) — subscribe to new content.
