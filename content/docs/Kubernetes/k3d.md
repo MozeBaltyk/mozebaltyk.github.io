@@ -1,5 +1,5 @@
 ---
-date: 2026-02-03T21:00:00+08:00
+date: 2023-08-01T21:00:00+08:00
 title: 🐎 K3D
 nav_weight: 50 # Upper weight gets higher precedence, optional.
 categories:

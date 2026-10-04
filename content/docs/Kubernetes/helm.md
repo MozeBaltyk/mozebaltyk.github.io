@@ -8,7 +8,7 @@ tags:
   - Kubernetes
 ---
 
-## Admnistration
+## Administration
 
 * See what is currently installed
 
@@ -22,14 +22,14 @@ nesux3  default         1               2022-08-12 20:01:16.0982324 +0200 CEST  
 ```bash
 helm status nesux3
 helm uninstall nesux3
-helm install nexus3 
+helm install nexus3 <chart>  # chart URL or path 
 helm history nexus3
 
 # work even if already installed
 helm upgrade --install ingress-nginx ${DIR}/helm/ingress-nginx \
   --namespace=ingress-nginx \
   --create-namespace \
-  -f $helm {DIR}/helm/ingress-values.yml
+  -f ${DIR}/helm/ingress-values.yml
 
 #Make helm unsee an apps (it does not delete the apps) 
 kubectl delete secret -l owner=helm,name=argo-cd
@@ -52,12 +52,4 @@ helm search repo hashicorp/vault -l
 
 # download a chart
 helm fetch ingress/ingress-nginx --untar 
-```
-
-
-## Tips 
-
-* List all images needed in helm charts (but not the one with no tags)
-```bash
-helm template -g longhorn-1.4.1.tgz |yq -N '..|.image? | select(. == "*" and . != null)'|sort|uniq|grep ":"|egrep -v '*:[[:blank:]]' || echo ""
 ```
