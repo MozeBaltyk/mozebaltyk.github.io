@@ -75,6 +75,7 @@ hb:
         description: "Notes from a SysAdmin & DevOps journey."
         avatar_size: 100
         avatar: "images/avatar.png"
+        about_url: /about/ # optional: shows a compass link to the About page.
         #company: COMPANY
         #location: Earth
         socials:

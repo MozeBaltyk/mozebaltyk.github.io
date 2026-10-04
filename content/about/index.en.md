@@ -1,16 +1,7 @@
 ---
-title:
-linkTitle:
-description: "What is all about ?"
+title: A word on this blog.
+description: ""
 date: 2026-10-04T00:00:00+02:00
-menu:
-  main:
-    weight: 1
-    params:
-      icon:
-        vendor: bs
-        name: compass
-        color: "#0d6efd"
 sidebar: false
 meta: false
 toc: false
@@ -25,7 +16,7 @@ It started as a pile of private notes. Over time, I moved them to Markdown so th
 
 The site is built with [Hugo](https://gohugo.io/), the [HB Framework](https://hbstack.dev/), and deployed with [GitHub Pages](https://pages.github.com/).
 
-![Terminal animation](./images/home-terminal.webp#center)
+![Terminal animation](images/boot.png#center)
 
 ## What you'll find here
 
