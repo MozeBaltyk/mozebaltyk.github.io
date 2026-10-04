@@ -1,6 +1,6 @@
 ---
 date: 2026-01-01T21:00:00+08:00
-title: Golang
+title: 🐹 Golang
 nav_weight: 10
 categories:
   - Memo
