@@ -182,6 +182,10 @@ hugopress:
         hb-blog-sidebar:
           cacheable: true
           weight: 4
+        # see layouts/partials/hugopress/modules/hb-custom/hooks/hb-docs-nav-beforeend.html.
+        # Not cached: the stoic citation widget is language-aware.
+        hb-docs-nav-beforeend:
+          cacheable: false
     # change the order of sidebar modules.
     hb-blog-sidebar-taxonomies:
       hooks:

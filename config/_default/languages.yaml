@@ -1,3 +1,7 @@
 en:
   languageName: English
   weight: 1
+
+pl:
+  languageName: Polski
+  weight: 2

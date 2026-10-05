@@ -11,7 +11,7 @@
 
         <!-- Quotes -->
         <div class="citation-category" data-category="quote" data-title="💬 Quote">
-          {{ range site.Data.sidebar.quotes }}
+          {{ range site.Data.widget.citation.it.quotes }}
             <div
               data-text="{{ .text }}"
               data-author="{{ .author }}">
@@ -21,14 +21,14 @@
 
         <!-- Jokes -->
         <div class="citation-category" data-category="joke" data-title="😂 IT Joke">
-          {{ range site.Data.sidebar.jokes }}
+          {{ range site.Data.widget.citation.it.jokes }}
             <div data-text="{{ . }}"></div>
           {{ end }}
         </div>
 
         <!-- Wisdom -->
         <div class="citation-category" data-category="wisdom" data-title="🧠 Tech Wisdom">
-          {{ range site.Data.sidebar.wisdom }}
+          {{ range site.Data.widget.citation.it.wisdom }}
             <div data-text="{{ . }}"></div>
           {{ end }}
         </div>

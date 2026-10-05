@@ -1,0 +1,3 @@
+{{- if eq .Page.FirstSection.Type "courses" }}
+  {{ partial "hugopress/modules/hb-custom/hooks/hb-course-sidebar.html" .Page }}
+{{- end }}

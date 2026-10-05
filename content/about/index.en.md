@@ -16,8 +16,6 @@ It started as a pile of private notes. Over time, I moved them to Markdown so th
 
 The site is built with [Hugo](https://gohugo.io/), the [HB Framework](https://hbstack.dev/), and deployed with [GitHub Pages](https://pages.github.com/).
 
-![Terminal animation](images/boot.png#center)
-
 ## What you'll find here
 
 - **📚 [Docs](/docs/)** — technical documentation organized by topic: Databases, DevOps, Kubernetes, Networking, Scripting, Storage, Systems, and Virtualisation.

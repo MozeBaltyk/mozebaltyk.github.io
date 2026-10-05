@@ -1,0 +1,39 @@
+<div class="hb-module text-center">
+  <aside class="hb-sidebar">
+
+    <section class="hb-sidebar-box random-citation js-random-citation">
+      <h6 id="citation-title"></h6>
+
+      <blockquote id="citation-content"></blockquote>
+
+      <!-- Hidden citation data -->
+      <div class="citation-data" hidden>
+
+        <div
+          class="citation-category"
+          data-category="quote"
+          data-title="{{ if eq .Language.Lang "pl" }}💬 Cytat dnia{{ else }}💬 Quote of the day{{ end }}"
+        >
+
+          {{ range site.Data.widget.citation.stoic.quotes }}
+
+            {{ $citation := index . $.Language.Lang }}
+
+            {{ with $citation }}
+              <div
+                class="citation-item"
+                data-text="{{ .citation }}"
+                data-author="{{ .author }}"
+                data-source="{{ .source }}">
+              </div>
+            {{ end }}
+
+          {{ end }}
+
+        </div>
+      </div>
+
+    </section>
+
+  </aside>
+</div>

@@ -56,6 +56,35 @@ We deliberately **limit the number of tags**:
 * Docs live under `content/docs/<Section>/…` and are ordered with `nav_weight` (lower = higher in the nav); posts live under `content/posts/<slug>/`.
 * Use theme **shortcodes** for notes (`{{< bs/alert info >}}`, `{{< bs/alert warning >}}`) rather than plain `>` blockquotes or GitHub `> [!NOTE]` callouts (the latter don't render here).
 
+## Bilingual content & the Courses page
+
+The site is multilingual: **English** (default, at the root) plus **Polish** (under
+`/pl/`). The header **language switch** appears automatically once more than one
+language is listed in `config/_default/languages.yaml`.
+
+- Only the **Courses** section is translated so far. To translate more content, add a
+  `*.pl.md` file next to the `*.en.md` (or `index.md`). Untranslated pages simply stay
+  on the default (English) site.
+
+### Courses
+
+`content/courses/` is a **bilingual section** of the site — a guided IT course
+for kids aged 10–13, separate from the blog (`posts`) and documentation
+(`docs`) sections:
+
+- The **homepage** (`_index.en.md` / `_index.pl.md`) is `type: courses`, rendered by
+  `layouts/courses/list.html` — a landing page with a *Start Course* button, *latest
+  lessons*, a *series progress* checklist, and a *For Parents* call-to-action.
+- The six **course areas** live under `content/courses/<area>/` and are `type: docs`
+  (each sub-section + its lessons render with the docs layout: nav sidebar, TOC,
+  prev/next). Their nav tree is self-contained (driven by `.FirstSection`), so it
+  never mixes with `/docs/`.
+- `data/courses/curriculum.yaml` is the single source of truth for the homepage
+  progress widget: each lesson's `status` (`done` | `current` | `todo`) and localized
+  title.
+- The language-aware **citation sidebar** (stoic quotes) is hooked into the docs nav
+  via `hb-docs-nav-beforeend`, gated to course pages only.
+
 ## Authoring: shortcodes, images & carousel
 
 ### code-snippet — embed a snippet from a file

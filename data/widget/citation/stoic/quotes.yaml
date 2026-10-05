@@ -1,0 +1,370 @@
+# Citation dataset
+#
+# Notes:
+# - "source" is localized separately for English and Polish.
+# - Polish citation wording is a faithful translation for this dataset,
+#   not necessarily a quotation from a published Polish translation.
+# - For translated French sources, the original French is preserved
+#   in "original" where useful.
+
+# ============================================================
+# STOICISM
+# ============================================================
+
+- type: Stoicism
+  theme:
+    - time
+    - focus
+    - discipline
+  en:
+    citation: "It is not that we have a short space of time, but that we waste much of it."
+    author: "Seneca"
+    source: "On the Shortness of Life, Chapter I"
+  pl:
+    citation: "Nie chodzi o to, że mamy mało czasu, lecz o to, że wiele z niego marnujemy."
+    author: "Seneka"
+    source: "O krótkości życia, rozdział I"
+
+- type: Stoicism
+  theme:
+    - time
+    - focus
+    - procrastination
+  en:
+    citation: "Lay hold of to-day's task, and you will not need to depend so much upon to-morrow's."
+    author: "Seneca"
+    source: "Moral Letters to Lucilius, Letter 1"
+  pl:
+    citation: "Podejmij dzisiejsze zadanie, a nie będziesz musiał tak bardzo polegać na jutrze."
+    author: "Seneka"
+    source: "Listy moralne do Lucyliusza, list 1"
+
+- type: Stoicism
+  theme:
+    - control
+    - mind
+    - acceptance
+  en:
+    citation: "Some things are under our control, while others are not under our control."
+    author: "Epictetus"
+    source: "Enchiridion, 1"
+  pl:
+    citation: "Niektóre rzeczy są pod naszą kontrolą, inne zaś od nas nie zależą."
+    author: "Epiktet"
+    source: "Encheiridion, 1"
+
+- type: Stoicism
+  theme:
+    - discipline
+    - desire
+    - training
+  en:
+    citation: "You will have to put yourself under discipline; to eat by rule; to avoid cakes and sweetmeats."
+    author: "Epictetus"
+    source: "Enchiridion, 29"
+  pl:
+    citation: "Będziesz musiał poddać się dyscyplinie, jeść według zasad i powstrzymywać się od słodyczy."
+    author: "Epiktet"
+    source: "Encheiridion, 29"
+
+- type: Stoicism
+  theme:
+    - work
+    - duty
+    - motivation
+  en:
+    citation: "I am rising to the work of a human being."
+    author: "Marcus Aurelius"
+    source: "Meditations, Book V, 1"
+  pl:
+    citation: "Wstaję, aby wykonywać pracę właściwą człowiekowi."
+    author: "Marek Aureliusz"
+    source: "Rozmyślania, księga V, 1"
+
+- type: Stoicism
+  theme:
+    - focus
+    - present
+    - attention
+  en:
+    citation: "Confine thyself to the present."
+    author: "Marcus Aurelius"
+    source: "Meditations, Book VII, 29"
+  pl:
+    citation: "Ogranicz się do chwili obecnej."
+    author: "Marek Aureliusz"
+    source: "Rozmyślania, księga VII, 29"
+
+- type: Stoicism
+  theme:
+    - mind
+    - desire
+    - self-control
+  en:
+    citation: "Efface imagination. Restrain impulse. Quench desire. Keep the ruling Reason in thine own power."
+    author: "Marcus Aurelius"
+    source: "Meditations, Book IX, 7"
+  pl:
+    citation: "Usuń wyobrażenia. Powściągnij impuls. Wygaszaj pragnienia. Zachowaj władzę nad własnym rozumem."
+    author: "Marek Aureliusz"
+    source: "Rozmyślania, księga IX, 7"
+
+- type: Stoicism
+  theme:
+    - focus
+    - duty
+    - distraction
+  en:
+    citation: "I do my own duty; other things do not distract me."
+    author: "Marcus Aurelius"
+    source: "Meditations, Book VI, 22"
+  pl:
+    citation: "Wykonuję własny obowiązek; inne rzeczy mnie nie rozpraszają."
+    author: "Marek Aureliusz"
+    source: "Rozmyślania, księga VI, 22"
+
+- type: Stoicism
+  theme:
+    - anger
+    - self-control
+    - character
+  en:
+    citation: "The best way of avenging thyself is not to become like the wrong-doer."
+    author: "Marcus Aurelius"
+    source: "Meditations, Book VI, 6"
+  pl:
+    citation: "Najlepszym sposobem zemsty jest nie stać się podobnym do tego, kto wyrządził krzywdę."
+    author: "Marek Aureliusz"
+    source: "Rozmyślania, księga VI, 6"
+
+- type: Stoicism
+  theme:
+    - courage
+    - fear
+    - happiness
+  en:
+    citation: "He who is brave is fearless; he who is fearless is free from sadness; he who is free from sadness is happy."
+    author: "Seneca"
+    source: "Moral Letters to Lucilius, Letter 85, 24"
+  pl:
+    citation: "Kto jest odważny, jest wolny od lęku; kto jest wolny od lęku, jest wolny od smutku; kto jest wolny od smutku, jest szczęśliwy."
+    author: "Seneka"
+    source: "Listy moralne do Lucyliusza, list 85, 24"
+
+
+# ============================================================
+# GREEK & ROMAN AUTHORS
+# ============================================================
+
+- type: Greek Philosophy
+  theme:
+    - habits
+    - discipline
+    - character
+  en:
+    citation: "We become just by doing just acts, temperate by doing temperate acts, brave by doing brave acts."
+    author: "Aristotle"
+    source: "Nicomachean Ethics, Book II, 1"
+  pl:
+    citation: "Stajemy się sprawiedliwi, postępując sprawiedliwie; umiarkowani, postępując umiarkowanie; odważni, dokonując czynów odważnych."
+    author: "Arystoteles"
+    source: "Etyka nikomachejska, księga II, 1"
+
+- type: Greek Philosophy
+  theme:
+    - work
+    - idleness
+    - effort
+  en:
+    citation: "Work is no disgrace: it is idleness which is a disgrace."
+    author: "Hesiod"
+    source: "Works and Days, around line 311"
+  pl:
+    citation: "Praca nie jest hańbą; hańbą jest bezczynność."
+    author: "Hezjod"
+    source: "Prace i dni, około wersu 311"
+
+- type: Greek Philosophy
+  theme:
+    - self-control
+    - reason
+    - desire
+  en:
+    citation: "Self-mastery means the control of the worse by the naturally better part."
+    author: "Plato"
+    source: "Republic, Book IV, 431a-b"
+  pl:
+    citation: "Panowanie nad sobą oznacza, że lepsza część naszej natury sprawuje władzę nad gorszą."
+    author: "Platon"
+    source: "Państwo, księga IV, 431a-b"
+
+- type: Roman
+  theme:
+    - mind
+    - character
+    - responsibility
+  en:
+    citation: "The ruler and director of the life of man is the mind."
+    author: "Sallust"
+    source: "The Jugurthine War, Chapter I"
+  pl:
+    citation: "Władcą i przewodnikiem ludzkiego życia jest umysł."
+    author: "Salustiusz"
+    source: "Wojna z Jugurtą, rozdział I"
+
+
+# ============================================================
+# WINSTON CHURCHILL
+# ============================================================
+
+- type: Leadership
+  theme:
+    - focus
+    - present
+    - planning
+  en:
+    citation: "It is a mistake to look too far ahead. Only one link in the chain of destiny can be handled at a time."
+    author: "Winston Churchill"
+    source: "House of Commons, 18 February 1945"
+  pl:
+    citation: "Błędem jest spoglądanie zbyt daleko naprzód. Możemy zajmować się tylko jednym ogniwem łańcucha losu naraz."
+    author: "Winston Churchill"
+    source: "Izba Gmin, 18 lutego 1945"
+
+
+# ============================================================
+# CHARLES DE GAULLE
+# ============================================================
+
+- type: Leadership
+  theme:
+    - character
+    - adversity
+  en:
+    citation: "Character is the virtue of difficult times."
+    author: "Charles de Gaulle"
+    source: "The Edge of the Sword (Le Fil de l'épée), 1932"
+  pl:
+    citation: "Charakter jest cnotą trudnych czasów."
+    author: "Charles de Gaulle"
+    source: "Ostrze miecza (Le Fil de l'épée), 1932"
+  original: "Le caractère, vertu des temps difficiles."
+
+- type: Leadership
+  theme:
+    - character
+    - responsibility
+    - action
+  en:
+    citation: "Faced with events, the man of character turns first to himself."
+    author: "Charles de Gaulle"
+    source: "The Edge of the Sword (Le Fil de l'épée), 1932"
+  pl:
+    citation: "W obliczu wydarzeń człowiek charakteru zwraca się przede wszystkim ku samemu sobie."
+    author: "Charles de Gaulle"
+    source: "Ostrze miecza (Le Fil de l'épée), 1932"
+  original: "Face à l'événement, c'est à soi-même que recourt l'homme de caractère."
+
+- type: Leadership
+  theme:
+    - will
+    - ambition
+    - achievement
+  en:
+    citation: "Nothing great is done without great men, and they are great because they willed it."
+    author: "Charles de Gaulle"
+    source: "The Edge of the Sword (Le Fil de l'épée), 1932"
+  pl:
+    citation: "Nic wielkiego nie dokonuje się bez wielkich ludzi, a są oni wielcy dlatego, że tego chcieli."
+    author: "Charles de Gaulle"
+    source: "Ostrze miecza (Le Fil de l'épée), 1932"
+  original: "On ne fait rien de grand sans de grands hommes, et ceux-ci le sont pour l'avoir voulu."
+
+
+# ============================================================
+# CHRISTIAN AUTHORS
+# ============================================================
+
+- type: Christianity
+  theme:
+    - discipline
+    - self-control
+    - purpose
+  en:
+    citation: "Every athlete exercises self-control in all things."
+    author: "Saint Paul"
+    source: "First Letter to the Corinthians 9:25"
+  pl:
+    citation: "Każdy zawodnik we wszystkim ćwiczy się w opanowaniu."
+    author: "Święty Paweł"
+    source: "Pierwszy List do Koryntian 9,25"
+
+- type: Christianity
+  theme:
+    - work
+    - idleness
+    - discipline
+  en:
+    citation: "Idleness is the enemy of the soul."
+    author: "Saint Benedict"
+    source: "Rule of Saint Benedict, Chapter 48"
+  pl:
+    citation: "Bezczynność jest wrogiem duszy."
+    author: "Święty Benedykt"
+    source: "Reguła Świętego Benedykta, rozdział 48"
+
+- type: Christianity
+  theme:
+    - will
+    - mind
+    - self-control
+  en:
+    citation: "The mind commands the body, and it obeys forthwith; the mind commands itself, and is resisted."
+    author: "Saint Augustine"
+    source: "Confessions, Book VIII, Chapter 9"
+  pl:
+    citation: "Umysł rozkazuje ciału i ono natychmiast słucha; umysł rozkazuje samemu sobie i napotyka opór."
+    author: "Święty Augustyn"
+    source: "Wyznania, księga VIII, rozdział 9"
+
+- type: Christianity
+  theme:
+    - desire
+    - restraint
+    - discipline
+  en:
+    citation: "It is sometimes well to use a little restraint even in good desires and inclinations."
+    author: "Thomas à Kempis"
+    source: "The Imitation of Christ, Book III, Chapter 11"
+  pl:
+    citation: "Czasem dobrze jest zachować pewną powściągliwość nawet wobec dobrych pragnień i skłonności."
+    author: "Tomasz à Kempis"
+    source: "O naśladowaniu Chrystusa, księga III, rozdział 11"
+
+- type: Christianity
+  theme:
+    - focus
+    - work
+    - perseverance
+  en:
+    citation: "We must do our business faithfully, without trouble or disquiet."
+    author: "Brother Lawrence"
+    source: "The Practice of the Presence of God"
+  pl:
+    citation: "Powinniśmy wykonywać swoją pracę wiernie, bez niepokoju i wewnętrznego zamętu."
+    author: "Brat Wawrzyniec"
+    source: "Praktykowanie obecności Bożej"
+
+- type: Christianity
+  theme:
+    - perseverance
+    - focus
+    - discipline
+  en:
+    citation: "Be not discouraged by the repugnance which you may find in it from nature; you must do yourself violence."
+    author: "Brother Lawrence"
+    source: "The Practice of the Presence of God"
+  pl:
+    citation: "Nie zniechęcaj się oporem własnej natury; musisz zmusić samego siebie do wysiłku."
+    author: "Brat Wawrzyniec"
+    source: "Praktykowanie obecności Bożej"
