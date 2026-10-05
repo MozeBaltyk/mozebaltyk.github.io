@@ -141,6 +141,19 @@ images:
 * `featured: true` (with an image) is what surfaces the post in the homepage carousel; the number shown is tuned via `featured_posts` in `params.yaml`.
 * The legacy `carousel: true` frontmatter flag is **not read** by the theme — it can be dropped.
 
+For a carousel **inside an article**, use the custom `image-carousel` shortcode
+with at least two images. Each argument is `IMAGE|ALT` or
+`IMAGE|ALT|CAPTION`:
+
+```text
+{{< image-carousel
+  "/images/computers/cpu.webp|A processor on a motherboard|The processor"
+  "/images/computers/ram.webp|Two RAM modules|Short-term memory"
+>}}
+```
+
+Paths may point to files in `static/` (as above) or to page-bundle resources.
+
 ### Hybrid codes — bundle vs shared
 
 `code-snippet` tries the article's own `codes/` first (post-style), then the shared `assets/codes/`:

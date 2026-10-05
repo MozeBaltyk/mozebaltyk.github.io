@@ -1,0 +1,11 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 450" role="img" aria-labelledby="title desc">
+  <title id="title">Power supply unit</title>
+  <desc id="desc">An illustration of a desktop computer power supply unit</desc>
+  <rect width="800" height="450" fill="#eef2f6"/>
+  <path d="M210 120h380l70 60v190H280l-70-60z" fill="#495057" stroke="#212529" stroke-width="8"/>
+  <path d="M590 120v190l70 60V180z" fill="#343a40" stroke="#212529" stroke-width="8"/>
+  <circle cx="400" cy="245" r="100" fill="#212529" stroke="#adb5bd" stroke-width="10"/>
+  <circle cx="400" cy="245" r="25" fill="#adb5bd"/>
+  <path d="M400 145v200M300 245h200M330 175l140 140M470 175 330 315" stroke="#adb5bd" stroke-width="8"/>
+  <text x="400" y="85" text-anchor="middle" font-family="sans-serif" font-size="42" font-weight="bold" fill="#212529">POWER SUPPLY</text>
+</svg>

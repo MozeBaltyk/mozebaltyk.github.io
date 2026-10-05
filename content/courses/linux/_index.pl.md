@@ -2,7 +2,7 @@
 title: Zabawa z Linuksem
 description: Otwórz terminal i poznaj Linuksa.
 type: docs
-nav_weight: 2
+nav_weight: 3
 nav_icon:
   vendor: bootstrap
   name: terminal
@@ -10,7 +10,7 @@ nav_icon:
 menu:
   main:
     parent: courses
-    weight: 2
+    weight: 3
 ---
 
 Czas na praktykę: zainstaluj Linuksa, zaloguj się po SSH i spraw, by wiersz

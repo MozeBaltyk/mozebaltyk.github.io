@@ -1,0 +1,60 @@
+{{- $pl := eq .Page.Language.Lang "pl" -}}
+<div class="card my-4 energy-calculator">
+  <div class="card-body">
+    <h3 class="h5">{{ if $pl }}Kalkulator zużycia energii{{ else }}Energy consumption calculator{{ end }}</h3>
+    <div class="row g-3 align-items-end">
+      <div class="col-sm-6">
+        <label class="form-label" for="energy-watts-{{ .Ordinal }}">{{ if $pl }}Moc komputera{{ else }}Computer power{{ end }}</label>
+        <div class="input-group">
+          <input class="form-control" id="energy-watts-{{ .Ordinal }}" data-watts type="number" min="0" step="1" value="100">
+          <span class="input-group-text">W</span>
+        </div>
+      </div>
+      <div class="col-sm-6">
+        <label class="form-label" for="energy-period-{{ .Ordinal }}">{{ if $pl }}Okres{{ else }}Period{{ end }}</label>
+        <select class="form-select" id="energy-period-{{ .Ordinal }}" data-hours>
+          <option value="24">{{ if $pl }}Jeden dzień{{ else }}One day{{ end }}</option>
+          <option value="168">{{ if $pl }}Jeden tydzień{{ else }}One week{{ end }}</option>
+          <option value="8760">{{ if $pl }}Jeden rok{{ else }}One year{{ end }}</option>
+        </select>
+      </div>
+    </div>
+    <button class="btn btn-primary mt-3" type="button" data-calculate>{{ if $pl }}Oblicz zużycie i koszt{{ else }}Calculate consumption and cost{{ end }}</button>
+    <p class="mt-3 mb-1">
+      {{ if $pl }}Szacowane zużycie energii:{{ else }}Estimated energy consumption:{{ end }}
+      <strong data-energy aria-live="polite"></strong>
+    </p>
+    <p class="mb-1">
+      {{ if $pl }}Szacowany koszt w Polsce:{{ else }}Estimated cost in Poland:{{ end }}
+      <strong data-cost aria-live="polite"></strong>
+    </p>
+    <small class="text-body-secondary">
+      {{ if $pl }}Zakładamy, że komputer działa bez przerwy. Koszt wykorzystuje średnią cenę dla polskich gospodarstw domowych (2500–4999 kWh rocznie) w drugiej połowie 2025 r.: 1,1505 PLN/kWh (0,2709 EUR/kWh), z podatkami.{{ else }}This assumes the computer runs continuously. Cost uses the average price for Polish households (2,500–4,999 kWh per year) in the second half of 2025: 1.1505 PLN/kWh (€0.2709/kWh), including taxes.{{ end }}
+      <a href="https://ec.europa.eu/eurostat/databrowser/view/nrg_pc_204/default/table?lang={{ .Page.Language.Lang }}" target="_blank" rel="noopener noreferrer">{{ if $pl }}Źródło: Eurostat{{ else }}Source: Eurostat{{ end }}</a>
+    </small>
+  </div>
+</div>
+<script>
+  (() => {
+    const root = document.currentScript.previousElementSibling;
+    const watts = root.querySelector('[data-watts]');
+    const hours = root.querySelector('[data-hours]');
+    const energy = root.querySelector('[data-energy]');
+    const cost = root.querySelector('[data-cost]');
+    const number = new Intl.NumberFormat('{{ .Page.Language.Lang }}', { maximumFractionDigits: 3 });
+    const pln = new Intl.NumberFormat('{{ .Page.Language.Lang }}', { style: 'currency', currency: 'PLN' });
+    const eur = new Intl.NumberFormat('{{ .Page.Language.Lang }}', { style: 'currency', currency: 'EUR' });
+    const calculate = () => {
+      const power = Number(watts.value);
+      if (!Number.isFinite(power) || power < 0) {
+        energy.textContent = cost.textContent = '—';
+        return;
+      }
+      const kwh = power * Number(hours.value) / 1000;
+      energy.textContent = `${number.format(kwh)} kWh`;
+      cost.textContent = `${pln.format(kwh * 1.1505)} / ${eur.format(kwh * 0.2709)}`;
+    };
+    root.querySelector('[data-calculate]').addEventListener('click', calculate);
+    calculate();
+  })();
+</script>

@@ -2,7 +2,7 @@
 title: Play with Linux
 description: Open the terminal and meet Linux.
 type: docs
-nav_weight: 2
+nav_weight: 3
 nav_icon:
   vendor: bootstrap
   name: terminal
@@ -10,7 +10,7 @@ nav_icon:
 menu:
   main:
     parent: courses
-    weight: 2
+    weight: 3
 ---
 
 Time to get hands-on: install Linux, log in over SSH, and make the command

@@ -1,0 +1,13 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 450" role="img" aria-labelledby="title desc">
+  <title id="title">Graphics processing unit</title>
+  <desc id="desc">An illustration of a graphics card with two cooling fans</desc>
+  <rect width="800" height="450" fill="#eef2f6"/>
+  <rect x="105" y="125" width="590" height="225" rx="18" fill="#343a40" stroke="#212529" stroke-width="8"/>
+  <circle cx="310" cy="235" r="82" fill="#212529" stroke="#6c757d" stroke-width="10"/>
+  <circle cx="510" cy="235" r="82" fill="#212529" stroke="#6c757d" stroke-width="10"/>
+  <circle cx="310" cy="235" r="18" fill="#0d6efd"/>
+  <circle cx="510" cy="235" r="18" fill="#0d6efd"/>
+  <path d="M310 153v164M228 235h164M252 177l116 116M368 177 252 293M510 153v164M428 235h164M452 177l116 116M568 177 452 293" stroke="#6c757d" stroke-width="8"/>
+  <path d="M180 350h420v28H180z" fill="#d7b24a"/>
+  <text x="400" y="85" text-anchor="middle" font-family="sans-serif" font-size="42" font-weight="bold" fill="#212529">GRAPHICS CARD</text>
+</svg>

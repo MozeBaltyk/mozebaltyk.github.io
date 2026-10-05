@@ -1,0 +1,37 @@
+{{- if lt (len .Params) 2 -}}
+  {{- errorf "image-carousel requires at least two images: %s" .Position -}}
+{{- end -}}
+{{- $id := printf "image-carousel-%d" .Ordinal -}}
+{{- $page := .Page -}}
+<div id="{{ $id }}" class="hb-carousel carousel slide my-4">
+  <div class="carousel-indicators">
+    {{- range $i, $_ := .Params }}
+      <button type="button" data-bs-target="#{{ $id }}" data-bs-slide-to="{{ $i }}"{{ if eq $i 0 }} class="active" aria-current="true"{{ end }} aria-label="Slide {{ add $i 1 }}"></button>
+    {{- end }}
+  </div>
+  <div class="carousel-inner border border-secondary-subtle rounded-1">
+    {{- range $i, $item := .Params }}
+      {{- $parts := split $item "|" -}}
+      {{- if lt (len $parts) 2 -}}
+        {{- errorf "image-carousel images require IMAGE|ALT: %s" $.Position -}}
+      {{- end -}}
+      {{- $src := index $parts 0 -}}
+      {{- $alt := index $parts 1 -}}
+      {{- $caption := "" -}}
+      {{- if gt (len $parts) 2 }}{{ $caption = index $parts 2 }}{{ end -}}
+      {{- $url := $src | relURL -}}
+      {{- $resource := $page.Resources.GetMatch $src -}}
+      {{- if not $resource -}}
+        {{- with $page.Parent }}{{ $resource = .Resources.GetMatch $src }}{{ end -}}
+      {{- end -}}
+      {{- with $resource }}{{ $url = .RelPermalink }}{{ end -}}
+      <div class="carousel-item{{ if eq $i 0 }} active{{ end }}">
+        <img src="{{ $url }}" class="d-block w-100" alt="{{ $alt }}"{{ if ne $i 0 }} loading="lazy"{{ end }}>
+        {{- with $caption }}
+          <div class="carousel-caption"><p>{{ . }}</p></div>
+        {{- end }}
+      </div>
+    {{- end }}
+  </div>
+  {{ partial "hb/modules/carousel/controls" $id }}
+</div>

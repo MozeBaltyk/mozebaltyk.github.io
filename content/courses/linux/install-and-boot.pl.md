@@ -1,5 +1,5 @@
 ---
-title: Instalacja i uruchamianie
+title: Proces instalacji i uruchamiania
 description: Wgraj Linuksa na komputer i uruchom go.
 type: docs
 nav_weight: 10

@@ -1,5 +1,5 @@
 ---
-title: Install and boot
+title: Install and boot process
 description: Get Linux onto a computer and make it start.
 type: docs
 nav_weight: 10

@@ -29,11 +29,6 @@ sections:
         status: done
         url: /courses/foundations/how-computer-works/
       - title:
-          en: Hardware vs Software
-          pl: Sprzęt a oprogramowanie
-        status: current
-        url: /courses/foundations/hardware-vs-software/
-      - title:
           en: Operating Systems
           pl: Systemy operacyjne
         status: todo
@@ -43,26 +38,42 @@ sections:
           pl: Po co nam IT
         status: todo
         url: /courses/foundations/stakes-of-it/
-      - title:
-          en: Linux, its history
-          pl: Linux i jego historia
-        status: todo
-        url: /courses/foundations/linux-history/
-
   - nav_weight: 2
+    title:
+      en: Infrastructure
+      pl: Infrastruktura
+    url: /courses/infrastructure/
+    lessons:
+      - title:
+          en: Server vs Cloud
+          pl: Serwer a chmura
+        status: todo
+        url: /courses/infrastructure/server-vs-cloud/
+      - title:
+          en: "Networks: Switch and Router"
+          pl: "Sieci: przełącznik i router"
+        status: todo
+        url: /courses/infrastructure/networks-switch-router/
+      - title:
+          en: "The Web: DNS, Certificates, DNS"
+          pl: "Sieć WWW: DNS, certyfikaty, DNS"
+        status: todo
+        url: /courses/infrastructure/web/
+
+  - nav_weight: 3
     title:
       en: Play with Linux
       pl: Zabawa z Linuksem
     url: /courses/linux/
     lessons:
       - title:
-          en: Install and boot
-          pl: Instalacja i uruchamianie
-        status: current
+          en: Install and boot process
+          pl: Proces instalacji i uruchamiania
+        status: todo
         url: /courses/linux/install-and-boot/
       - title:
-          en: Distributions
-          pl: Dystrybucje
+          en: "Distribution: test it with virtualisation"
+          pl: "Dystrybucja: przetestuj ją dzięki wirtualizacji"
         status: todo
         url: /courses/linux/distributions/
       - title:
@@ -70,23 +81,11 @@ sections:
           pl: Połączenie SSH
         status: todo
         url: /courses/linux/ssh/
-
-  - nav_weight: 3
-    title:
-      en: Infrastructure
-      pl: Infrastruktura
-    url: /courses/infrastructure/
-    lessons:
       - title:
-          en: What is a server?
-          pl: Czym jest serwer?
+          en: rpm & deb
+          pl: rpm i deb
         status: todo
-        url: /courses/infrastructure/what-is-a-server/
-      - title:
-          en: Networks for beginners
-          pl: Sieci dla początkujących
-        status: todo
-        url: /courses/infrastructure/networks/
+        url: /courses/linux/rpm-and-deb/
 
   - nav_weight: 4
     title:
@@ -95,29 +94,24 @@ sections:
     url: /courses/programming/
     lessons:
       - title:
-          en: Scratch, first steps
-          pl: Scratch, pierwsze kroki
+          en: Vim
+          pl: Vim
         status: todo
-        url: /courses/programming/scratch/
+        url: /courses/programming/vim/
       - title:
-          en: Python basics
-          pl: Podstawy Pythona
+          en: Bash basics
+          pl: Podstawy Basha
         status: todo
-        url: /courses/programming/python/
+        url: /courses/programming/bash-basics/
+      - title:
+          en: Git versioning
+          pl: Wersjonowanie z Gitem
+        status: todo
+        url: /courses/programming/git-versioning/
 
   - nav_weight: 5
     title:
       en: Challenges
       pl: Wyzwania
     url: /courses/challenges/
-    lessons:
-      - title:
-          en: Build a game
-          pl: Zbuduj grę
-        status: todo
-        url: /courses/challenges/build-a-game/
-      - title:
-          en: Publish your site
-          pl: Opublikuj swoją stronę
-        status: todo
-        url: /courses/challenges/publish-your-site/
+    lessons: []
