@@ -1,16 +1,22 @@
-{{- if lt (len .Params) 2 -}}
+{{- $items := .Params -}}
+{{- $size := "medium" -}}
+{{- if and (gt (len $items) 0) (in (slice "small" "medium" "big") (lower (index $items 0))) -}}
+  {{- $size = lower (index $items 0) -}}
+  {{- $items = after 1 $items -}}
+{{- end -}}
+{{- if lt (len $items) 2 -}}
   {{- errorf "image-carousel requires at least two images: %s" .Position -}}
 {{- end -}}
 {{- $id := printf "image-carousel-%d" .Ordinal -}}
 {{- $page := .Page -}}
-<div id="{{ $id }}" class="hb-carousel carousel slide my-4">
+<div id="{{ $id }}" class="hb-carousel image-carousel image-carousel--{{ $size }} carousel slide my-4">
   <div class="carousel-indicators">
-    {{- range $i, $_ := .Params }}
+    {{- range $i, $_ := $items }}
       <button type="button" data-bs-target="#{{ $id }}" data-bs-slide-to="{{ $i }}"{{ if eq $i 0 }} class="active" aria-current="true"{{ end }} aria-label="Slide {{ add $i 1 }}"></button>
     {{- end }}
   </div>
   <div class="carousel-inner border border-secondary-subtle rounded-1">
-    {{- range $i, $item := .Params }}
+    {{- range $i, $item := $items }}
       {{- $parts := split $item "|" -}}
       {{- if lt (len $parts) 2 -}}
         {{- errorf "image-carousel images require IMAGE|ALT: %s" $.Position -}}
@@ -28,7 +34,7 @@
       <div class="carousel-item{{ if eq $i 0 }} active{{ end }}">
         <img src="{{ $url }}" class="d-block w-100" alt="{{ $alt }}"{{ if ne $i 0 }} loading="lazy"{{ end }}>
         {{- with $caption }}
-          <div class="carousel-caption"><p>{{ . }}</p></div>
+          <div class="carousel-caption"><p class="d-inline-block bg-dark bg-opacity-75 rounded px-2 py-1 mb-0">{{ . }}</p></div>
         {{- end }}
       </div>
     {{- end }}

@@ -305,12 +305,13 @@ This is useful for computers that need to run reliably for a very long time.
 
 
 {{< image-carousel
-       "images/computers/cpu.jpg|A processor|The processor"
+       "medium"
+       "images/computers/CPU.jpg|A processor|The processor"
        "images/computers/RAM.png|RAM modules|Short-term memory"
-       "images/computers/ssd.svg|An NVMe solid-state drive|Long-term storage"
-       "images/computers/motherboard.svg|A computer motherboard|The main board"
-       "images/computers/psu.svg|A computer power supply unit|The power supply"
-       "images/computers/gpu.svg|A graphics card|The GPU"
+       "images/computers/SSD.jpg|An NVMe solid-state drive|Long-term storage"
+       "images/computers/Motherboard.jpg|A computer motherboard|The main board"
+       "images/computers/PSU.jpg|A computer power supply unit|The power supply"
+       "images/computers/GPU.jpg|A graphics card|The GPU"
     >}}
 
 ---
@@ -478,5 +479,51 @@ And most importantly:
 > A computer is not magic.
 
 It is a collection of simple parts doing simple things **extremely quickly**.
+
+{{< quiz title="Test your knowledge" >}}
+questions:
+  - question: "Which list contains the four basic jobs of a computer?"
+    answers:
+      - text: "Input, processing, storage, and output"
+        correct: true
+      - text: "Typing, printing, browsing, and gaming"
+        correct: false
+      - text: "CPU, RAM, SSD, and GPU"
+        correct: false
+  - question: "What does the CPU do?"
+    answers:
+      - text: "Stores files when the computer is off"
+        correct: false
+      - text: "Executes instructions"
+        correct: true
+      - text: "Supplies electricity"
+        correct: false
+  - question: "Which component loses its contents when power is turned off?"
+    answers:
+      - text: "SSD"
+        correct: false
+      - text: "Motherboard"
+        correct: false
+      - text: "RAM"
+        correct: true
+      - text: "Power supply"
+        correct: false
+  - question: "What connects the main components of a computer?"
+    answers:
+      - text: "The motherboard"
+        correct: true
+      - text: "The monitor"
+        correct: false
+      - text: "The operating system"
+        correct: false
+  - question: "Which device uses the least power in the lesson's example?"
+    answers:
+      - text: "Raspberry Pi 5"
+        correct: true
+      - text: "HPE ProLiant DL360 Gen11"
+        correct: false
+      - text: "Dell PowerEdge XE9680"
+        correct: false
+{{< /quiz >}}
 
 In the next lesson, we can start discovering how computers represent information using only **0s and 1s**.

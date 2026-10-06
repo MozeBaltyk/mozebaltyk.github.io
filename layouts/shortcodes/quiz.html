@@ -1,0 +1,72 @@
+{{- $quiz := transform.Unmarshal .Inner -}}
+{{- $questions := index $quiz "questions" -}}
+{{- $pl := eq .Page.Language.Lang "pl" -}}
+{{- $defaultTitle := "Quick check" -}}
+{{- if $pl }}{{ $defaultTitle = "Sprawdź swoją wiedzę" }}{{ end -}}
+{{- if or (not (reflect.IsSlice $questions)) (eq (len $questions) 0) -}}
+  {{- errorf "quiz: %s must contain a non-empty questions list" .Page.File.Path -}}
+{{- end -}}
+{{- $id := printf "quiz-%d" .Ordinal -}}
+<form class="quiz card my-4 shadow-sm" id="{{ $id }}">
+  <div class="card-body p-3 p-md-4">
+    <h2 class="h4 mb-4">{{ .Get "title" | default $defaultTitle }}</h2>
+    {{- range $questionIndex, $question := $questions }}
+      {{- $answers := index $question "answers" -}}
+      {{- $correct := where $answers "correct" true -}}
+      {{- if or (not (reflect.IsSlice $answers)) (lt (len $answers) 2) (ne (len $correct) 1) -}}
+        {{- errorf "quiz: question %d in %s needs at least two answers and exactly one correct answer" (add $questionIndex 1) $.Page.File.Path -}}
+      {{- end }}
+      <fieldset class="quiz-question mb-4" data-quiz-question>
+        <legend class="h6 mb-3">{{ add $questionIndex 1 }}. {{ index $question "question" }}</legend>
+        <div class="d-grid gap-2">
+          {{- range $answerIndex, $answer := $answers }}
+            {{- $answerID := printf "%s-%d-%d" $id $questionIndex $answerIndex }}
+            <label class="quiz-answer d-flex align-items-center gap-2 rounded border p-2" for="{{ $answerID }}">
+              <input class="form-check-input flex-shrink-0" id="{{ $answerID }}" name="{{ $id }}-{{ $questionIndex }}" type="radio"{{ if eq $answerIndex 0 }} required{{ end }}{{ if index $answer "correct" }} data-correct{{ end }}>
+              <span class="flex-grow-1">{{ index $answer "text" }}</span>
+              <strong class="quiz-feedback" aria-live="polite"></strong>
+            </label>
+          {{- end }}
+        </div>
+      </fieldset>
+    {{- end }}
+    <div class="d-flex flex-wrap align-items-center gap-3">
+      <button class="btn btn-primary" type="submit">{{ if $pl }}Sprawdź odpowiedzi{{ else }}Validate answers{{ end }}</button>
+      <output class="quiz-score fw-bold" aria-live="polite"></output>
+    </div>
+  </div>
+</form>
+<script>
+(() => {
+  const quiz = document.getElementById('{{ $id }}');
+  quiz.addEventListener('submit', (event) => {
+    event.preventDefault();
+    let score = 0;
+    const questions = quiz.querySelectorAll('[data-quiz-question]');
+
+    questions.forEach((question) => {
+      const selected = question.querySelector('input:checked');
+      const correct = question.querySelector('input[data-correct]');
+
+      question.querySelectorAll('.quiz-answer').forEach((answer) => {
+        answer.classList.remove('is-correct', 'is-wrong');
+        answer.querySelector('.quiz-feedback').textContent = '';
+      });
+
+      const correctAnswer = correct.closest('.quiz-answer');
+      correctAnswer.classList.add('is-correct');
+      correctAnswer.querySelector('.quiz-feedback').textContent = '✓';
+
+      if (selected === correct) {
+        score++;
+      } else {
+        const selectedAnswer = selected.closest('.quiz-answer');
+        selectedAnswer.classList.add('is-wrong');
+        selectedAnswer.querySelector('.quiz-feedback').textContent = '✕';
+      }
+    });
+
+    quiz.querySelector('.quiz-score').textContent = `{{ if $pl }}Wynik{{ else }}Score{{ end }}: ${score}/${questions.length}`;
+  });
+})();
+</script>

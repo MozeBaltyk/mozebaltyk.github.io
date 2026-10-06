@@ -302,12 +302,13 @@ Przydaje się to w komputerach, które muszą niezawodnie działać przez bardzo
 > Ważne jest to, że komputery mogą zawierać **wyspecjalizowane podzespoły przeznaczone do konkretnych zadań**.
 
 {{< image-carousel
-       "images/computers/cpu.jpg|Procesor|Procesor"
+       "medium"
+       "images/computers/CPU.jpg|Procesor|Procesor"
        "images/computers/RAM.png|Moduły pamięci RAM|Pamięć krótkotrwała"
-       "images/computers/ssd.svg|Dysk SSD NVMe|Pamięć długotrwała"
-       "images/computers/motherboard.svg|Płyta główna komputera|Płyta główna"
-       "images/computers/psu.svg|Zasilacz komputerowy|Zasilacz"
-       "images/computers/gpu.svg|Karta graficzna|Procesor GPU"
+       "images/computers/SSD.jpg|Dysk SSD NVMe|Pamięć długotrwała"
+       "images/computers/Motherboard.jpg|Płyta główna komputera|Płyta główna"
+       "images/computers/PSU.jpg|Zasilacz komputerowy|Zasilacz"
+       "images/computers/GPU.jpg|Karta graficzna|Procesor GPU"
     >}}
 
 ---
@@ -475,5 +476,51 @@ A co najważniejsze:
 > Komputer to nie magia.
 
 To zbiór prostych części, które wykonują proste zadania **niezwykle szybko**.
+
+{{< quiz title="Sprawdź swoją wiedzę" >}}
+questions:
+  - question: "Która lista zawiera cztery podstawowe zadania komputera?"
+    answers:
+      - text: "Wejście, przetwarzanie, przechowywanie i wyjście"
+        correct: true
+      - text: "Pisanie, drukowanie, przeglądanie i granie"
+        correct: false
+      - text: "CPU, RAM, SSD i GPU"
+        correct: false
+  - question: "Co robi procesor?"
+    answers:
+      - text: "Przechowuje pliki po wyłączeniu komputera"
+        correct: false
+      - text: "Wykonuje instrukcje"
+        correct: true
+      - text: "Dostarcza energię elektryczną"
+        correct: false
+  - question: "Który podzespół traci swoją zawartość po wyłączeniu zasilania?"
+    answers:
+      - text: "Dysk SSD"
+        correct: false
+      - text: "Płyta główna"
+        correct: false
+      - text: "Pamięć RAM"
+        correct: true
+      - text: "Zasilacz"
+        correct: false
+  - question: "Co łączy główne podzespoły komputera?"
+    answers:
+      - text: "Płyta główna"
+        correct: true
+      - text: "Monitor"
+        correct: false
+      - text: "System operacyjny"
+        correct: false
+  - question: "Które urządzenie zużywa najmniej energii w przykładzie z lekcji?"
+    answers:
+      - text: "Raspberry Pi 5"
+        correct: true
+      - text: "HPE ProLiant DL360 Gen11"
+        correct: false
+      - text: "Dell PowerEdge XE9680"
+        correct: false
+{{< /quiz >}}
 
 W następnej lekcji możemy zacząć odkrywać, jak komputery przedstawiają informacje za pomocą samych **zer i jedynek**.
