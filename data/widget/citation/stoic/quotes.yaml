@@ -355,16 +355,195 @@
     author: "Brat Wawrzyniec"
     source: "Praktykowanie obecności Bożej"
 
-- type: Christianity
+# ============================================================
+# ADDITIONAL VERIFIED STOICISM
+# ============================================================
+
+- type: Stoicism
   theme:
-    - perseverance
-    - focus
+    - fear
+    - mind
+    - resilience
+  en:
+    citation: "There are more things, Lucilius, likely to frighten us than there are to crush us; we suffer more often in imagination than in reality."
+    author: "Seneca"
+    source: "Moral Letters to Lucilius, Letter 13, 4"
+  pl:
+    citation: "Więcej jest rzeczy, Lucyliuszu, które mogą nas przestraszyć, niż takich, które mogą nas zmiażdżyć; częściej cierpimy w wyobraźni niż w rzeczywistości."
+    author: "Seneka"
+    source: "Listy moralne do Lucyliusza, list 13, 4"
+
+- type: Stoicism
+  theme:
+    - perception
+    - mind
+    - control
+  en:
+    citation: "Men are disturbed not by the things which happen, but by the opinions about the things."
+    author: "Epictetus"
+    source: "Enchiridion, 5"
+  pl:
+    citation: "Ludzi nie niepokoją rzeczy, które się zdarzają, lecz opinie o tych rzeczach."
+    author: "Epiktet"
+    source: "Encheiridion, 5"
+
+- type: Stoicism
+  theme:
+    - character
+    - action
+    - virtue
+  en:
+    citation: "Don't any more discuss at large what the good man is like, but be good."
+    author: "Marcus Aurelius"
+    source: "Meditations, Book X, 16"
+  pl:
+    citation: "Nie rozprawiaj już dłużej o tym, jaki powinien być dobry człowiek, lecz bądź dobry."
+    author: "Marek Aureliusz"
+    source: "Rozmyślania, księga X, 16"
+
+- type: Stoicism
+  theme:
+    - judgment
+    - suffering
+    - self-control
+  en:
+    citation: "Get rid of the judgement; you are rid of the 'I am hurt'."
+    author: "Marcus Aurelius"
+    source: "Meditations, Book IV, 7"
+  pl:
+    citation: "Usuń osąd, a pozbędziesz się myśli: „Zostałem skrzywdzony”."
+    author: "Marek Aureliusz"
+    source: "Rozmyślania, księga IV, 7"
+
+
+# ============================================================
+# ADDITIONAL GREEK & ROMAN AUTHORS
+# ============================================================
+
+- type: Greek Philosophy
+  theme:
+    - virtue
+    - action
+    - practice
+  en:
+    citation: "We are inquiring not in order to know what virtue is, but in order to become good."
+    author: "Aristotle"
+    source: "Nicomachean Ethics, Book II, 2"
+  pl:
+    citation: "Dociekamy nie po to, by wiedzieć, czym jest cnota, lecz po to, by stać się dobrymi."
+    author: "Arystoteles"
+    source: "Etyka nikomachejska, księga II, 2"
+
+- type: Greek Philosophy
+  theme:
+    - beginnings
+    - habits
+    - character
+  en:
+    citation: "The beginning is the most important part of any work, especially in the case of a young and tender thing."
+    author: "Plato"
+    source: "Republic, Book II"
+  pl:
+    citation: "Początek jest najważniejszą częścią każdego dzieła, zwłaszcza gdy chodzi o coś młodego i podatnego na kształtowanie."
+    author: "Platon"
+    source: "Państwo, księga II"
+
+- type: Greek Philosophy
+  theme:
+    - procrastination
+    - work
     - discipline
   en:
-    citation: "Be not discouraged by the repugnance which you may find in it from nature; you must do yourself violence."
-    author: "Brother Lawrence"
-    source: "The Practice of the Presence of God"
+    citation: "Do not put your work off till to-morrow and the day after."
+    author: "Hesiod"
+    source: "Works and Days, around lines 410–411"
   pl:
-    citation: "Nie zniechęcaj się oporem własnej natury; musisz zmusić samego siebie do wysiłku."
-    author: "Brat Wawrzyniec"
-    source: "Praktykowanie obecności Bożej"
+    citation: "Nie odkładaj swojej pracy na jutro ani na pojutrze."
+    author: "Hezjod"
+    source: "Prace i dni, około wersów 410–411"
+
+- type: Roman
+  theme:
+    - duty
+    - society
+    - responsibility
+  en:
+    citation: "We are not born for ourselves alone, but our country claims a share of our being, and our friends a share."
+    author: "Cicero"
+    source: "De Officiis, Book I, 22"
+  pl:
+    citation: "Nie rodzimy się wyłącznie dla siebie; część naszego istnienia należy się ojczyźnie, a część naszym przyjaciołom."
+    author: "Cyceron"
+    source: "O powinnościach, księga I, 22"
+
+
+# ============================================================
+# ADDITIONAL WINSTON CHURCHILL
+# ============================================================
+
+- type: Leadership
+  theme:
+    - action
+    - responsibility
+    - results
+  en:
+    citation: "It is no use saying, 'We are doing our best.' You have got to succeed in doing what is necessary."
+    author: "Winston Churchill"
+    source: "House of Commons, 7 March 1916"
+  pl:
+    citation: "Nie wystarczy mówić: „Robimy, co możemy”. Trzeba odnieść sukces w wykonaniu tego, co konieczne."
+    author: "Winston Churchill"
+    source: "Izba Gmin, 7 marca 1916"
+
+
+# ============================================================
+# ADDITIONAL CHARLES DE GAULLE
+# ============================================================
+
+- type: Leadership
+  theme:
+    - character
+    - action
+    - leadership
+  en:
+    citation: "The man of character gives nobility to action; without him it is the dreary task of a slave, with him the divine game of a hero."
+    author: "Charles de Gaulle"
+    source: "The Edge of the Sword (Le Fil de l'épée), 1932"
+  pl:
+    citation: "Człowiek charakteru nadaje działaniu szlachetność; bez niego jest ono ponurym trudem niewolnika, dzięki niemu — boską grą bohatera."
+    author: "Charles de Gaulle"
+    source: "Ostrze miecza (Le Fil de l'épée), 1932"
+  original: "L'homme de caractère confère à l'action la noblesse ; sans lui morne tâche d'esclave, grâce à lui jeu divin du héros."
+
+
+# ============================================================
+# ADDITIONAL CHRISTIAN AUTHORS
+# ============================================================
+
+- type: Christianity
+  theme:
+    - action
+    - procrastination
+    - discipline
+  en:
+    citation: "Arise and begin in this very instant, and say, Now is the time to be doing, now is the time to be striving."
+    author: "Thomas à Kempis"
+    source: "The Imitation of Christ, Book I, Chapter 22"
+  pl:
+    citation: "Powstań i zacznij w tej właśnie chwili, mówiąc: teraz jest czas działania, teraz jest czas wysiłku."
+    author: "Tomasz à Kempis"
+    source: "O naśladowaniu Chrystusa, księga I, rozdział 22"
+
+- type: Christianity
+  theme:
+    - moderation
+    - discipline
+    - work
+  en:
+    citation: "Let all things be done with moderation, however, for the sake of the faint-hearted."
+    author: "Saint Benedict"
+    source: "Rule of Saint Benedict, Chapter 48"
+  pl:
+    citation: "Niech jednak wszystko będzie czynione z umiarem, ze względu na słabszych."
+    author: "Święty Benedykt"
+    source: "Reguła Świętego Benedykta, rozdział 48"
