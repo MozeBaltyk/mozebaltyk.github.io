@@ -4,7 +4,7 @@ description: "Follow-up article to \"The Bad, the Good and the Ugly Git\"."
 date: 2026-10-03T12:00:00+02:00
 noindex: false
 featured: true
-draft: true
+draft: false
 comment: true
 toc: true
 reward: true
