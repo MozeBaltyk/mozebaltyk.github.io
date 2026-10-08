@@ -96,6 +96,17 @@ Your phone is a powerful little computer that fits in your pocket.
 
 Cars, televisions, watches, traffic lights, washing machines, robots, and even some toys contain computers.
 
+## Computer Types in Pictures
+
+{{< image-carousel
+       "medium"
+       "images/computer-types/laptop.jpg|A laptop computer|Laptop"
+       "images/computer-types/minipc.jpg|A compact desktop computer|Mini PC"
+       "images/computer-types/raspberry-pi.avif|A Raspberry Pi single-board computer|Single-board computer"
+       "images/computer-types/server.jpg|A rack-mounted server|Server"
+       "images/computer-types/rack.webp|Servers installed in racks|Server room"
+    >}}
+
 ---
 
 ## The Components of a Computer
@@ -172,6 +183,16 @@ Modern computers usually use an **SSD**, or Solid-State Drive.
 You may also hear the term **NVMe SSD**. NVMe allows an SSD to communicate with the computer at high speed.
 
 Unlike RAM, storage remembers your files even when the computer is switched off.
+
+---
+
+### GPU — The Graphics Processor
+
+The **GPU**, or **Graphics Processing Unit**, creates the images, video, and 3D graphics shown on a screen.
+
+It can perform many similar calculations at the same time. This also makes GPUs useful for scientific work and artificial intelligence.
+
+Some computers have a separate graphics card, while others include a smaller GPU inside the CPU. Not every computer needs a powerful GPU.
 
 ---
 
@@ -268,6 +289,7 @@ Many common drivers are already included with modern operating systems, so you m
        "images/computers/CPU.jpg|A processor|The processor"
        "images/computers/RAM.png|RAM modules|Short-term memory"
        "images/computers/SSD.jpg|An NVMe solid-state drive|Long-term storage"
+       "images/computers/GPU.jpg|A graphics card|The graphics processor"
        "images/computers/Motherboard.jpg|A computer motherboard|The main board"
        "images/computers/PSU.jpg|A computer power supply unit|The power supply"
     >}}

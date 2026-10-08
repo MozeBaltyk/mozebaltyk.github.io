@@ -96,6 +96,17 @@ Twój telefon to potężny mały komputer, który mieści się w kieszeni.
 
 Samochody, telewizory, zegarki, sygnalizacje świetlne, pralki, roboty, a nawet niektóre zabawki zawierają komputery.
 
+## Rodzaje komputerów na zdjęciach
+
+{{< image-carousel
+       "medium"
+       "images/computer-types/laptop.jpg|Laptop|Laptop"
+       "images/computer-types/minipc.jpg|Kompaktowy komputer stacjonarny|Minikomputer"
+       "images/computer-types/raspberry-pi.avif|Komputer jednopłytkowy Raspberry Pi|Komputer jednopłytkowy"
+       "images/computer-types/server.jpg|Serwer montowany w szafie|Serwer"
+       "images/computer-types/rack.webp|Serwery zamontowane w szafach|Serwerownia"
+    >}}
+
 ---
 
 ## Podzespoły komputera
@@ -170,6 +181,16 @@ Nowoczesne komputery zazwyczaj korzystają z **dysku SSD**, czyli dysku półprz
 Możesz też spotkać określenie **dysk SSD NVMe**. NVMe umożliwia dyskowi SSD szybką komunikację z komputerem.
 
 W przeciwieństwie do pamięci RAM pamięć masowa zachowuje pliki nawet po wyłączeniu komputera.
+
+---
+
+### GPU — procesor graficzny
+
+**GPU**, czyli **procesor graficzny** (ang. *Graphics Processing Unit*), tworzy obrazy, filmy i grafikę 3D wyświetlane na ekranie.
+
+Potrafi wykonywać wiele podobnych obliczeń jednocześnie. Dzięki temu GPU przydaje się również w nauce i sztucznej inteligencji.
+
+Niektóre komputery mają osobną kartę graficzną, a inne mniejszy układ GPU wewnątrz procesora. Nie każdy komputer potrzebuje wydajnego GPU.
 
 ---
 
@@ -266,6 +287,7 @@ Nowoczesne systemy operacyjne zawierają już wiele popularnych sterowników, wi
        "images/computers/CPU.jpg|Procesor|Procesor"
        "images/computers/RAM.png|Moduły pamięci RAM|Pamięć krótkotrwała"
        "images/computers/SSD.jpg|Dysk SSD NVMe|Pamięć długotrwała"
+       "images/computers/GPU.jpg|Karta graficzna|Procesor graficzny"
        "images/computers/Motherboard.jpg|Płyta główna komputera|Płyta główna"
        "images/computers/PSU.jpg|Zasilacz komputerowy|Zasilacz"
     >}}
