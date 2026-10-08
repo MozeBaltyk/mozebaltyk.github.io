@@ -68,20 +68,18 @@ language is listed in `config/_default/languages.yaml`.
 
 ### Courses
 
-`content/courses/` is a **bilingual section** of the site — a guided IT course
-for kids aged 10–13, separate from the blog (`posts`) and documentation
+`content/courses/` is a **bilingual section** of the site — a four-level practical
+IT path for young learners, separate from the blog (`posts`) and documentation
 (`docs`) sections:
 
 - The **homepage** (`_index.en.md` / `_index.pl.md`) is `type: courses`, rendered by
   `layouts/courses/list.html` — a landing page with a *Start Course* button, *latest
   lessons*, a *series progress* checklist, and a *For Parents* call-to-action.
-- The six **course areas** live under `content/courses/<area>/` and are `type: docs`
-  (each sub-section + its lessons render with the docs layout: nav sidebar, TOC,
-  prev/next). Their nav tree is self-contained (driven by `.FirstSection`), so it
-  never mixes with `/docs/`.
-- `data/courses/curriculum.yaml` is the single source of truth for the homepage
-  progress widget: each lesson's `status` (`done` | `current` | `todo`) and localized
-  title.
+- Course content lives under `content/courses/<level>/<area>/`. Every level repeats
+  Foundations, Infrastructure, Linux, Programming, and Challenges.
+- `data/courses/curriculum.yaml` defines the four-level roadmap, localized titles,
+  link availability, and lesson status (`done` | `current` | `todo`).
+- `listed` controls links, while status records whether a lesson has been taught.
 - The language-aware **citation sidebar** (stoic quotes) is hooked into the docs nav
   via `hb-docs-nav-beforeend`, gated to course pages only.
 

@@ -15,7 +15,7 @@ menu:
 
 ## Praktyczne wprowadzenie do informatyki
 
-Ten kurs jest przeznaczony dla dzieci w wieku **od 10 do 13 lat**, które są ciekawe komputerów, technologii i tego, jak różne rzeczy działają.
+Ten kurs jest przeznaczony dla młodych osób, które są ciekawe komputerów, technologii i tego, jak różne rzeczy działają. Jest podzielony na cztery poziomy, zaczynając od wieku **9–11 lat** i stopniowo wprowadzając bardziej zaawansowane zagadnienia.
 
 Kurs ma praktyczny charakter i opiera się na moim doświadczeniu zawodowym jako **starszego inżyniera infrastruktury i DevOps**, pracującego z technologiami używanymi do budowania, obsługi i utrzymywania prawdziwych systemów komputerowych.
 
@@ -27,6 +27,21 @@ Szkoły odgrywają ważną rolę we wprowadzaniu dzieci w świat narzędzi cyfro
 - diagnozowanie usterek i rozwiązywanie problemów.
 
 Ten kurs pozwala dzieciom poznawać te tematy w przystępny i praktyczny sposób.
+
+---
+
+## Cztery poziomy, pięć znanych sekcji
+
+Podany wiek jest wskazówką, a nie sprawdzianem. Dziecko może przejść dalej, gdy czuje się pewnie z materiałem z poprzedniego poziomu.
+
+| Poziom | Sugerowany wiek | Główny cel |
+|---|---:|---|
+| Poziom 1 | 9–11 | Odkrywanie, jak działają komputery |
+| Poziom 2 | 11–12 | Budowanie przydatnych narzędzi |
+| Poziom 3 | 12–14 | Łączenie i obsługa usług |
+| Poziom 4 | 14+ | Projektowanie niezawodnych systemów |
+
+Na każdym poziomie powtarza się pięć tych samych sekcji: **Podstawy**, **Infrastruktura**, **Linux**, **Programowanie** i **Wyzwania**. Nazwy pozostają znajome, a tematy i projekty stają się coraz bardziej zaawansowane.
 
 ---
 

@@ -3,70 +3,26 @@
   {{- $data := site.Data.courses.curriculum }}
 
   <div class="hb-courses hb-module">
+    <div class="hb-content mb-4">{{ .Content }}</div>
 
-    {{- /* ---------- Path intro ---------- */}}
-    <div class="hb-content mb-4">
-      {{ .Content }}
-    </div>
-
-    {{- /* ---------- Series progress ---------- */}}
-    {{- $total := len $data.sections }}
-    {{- $started := 0 }}
-    {{- range $data.sections }}
-      {{- $any := false }}
-      {{- range .lessons }}
-        {{- if in (slice "current" "done") .status }}{{ $any = true }}{{ end }}
-      {{- end }}
-      {{- if $any }}{{ $started = add $started 1 }}{{ end }}
-    {{- end }}
     <div class="mb-4">
       <h2 class="h5 text-uppercase text-body-secondary border-bottom pb-2">
-        🖥️ {{ cond (eq $lang "pl") "Seria kursów" "Courses Series" }}
-        <span class="text-body ms-1">{{ $started }} / {{ $total }}</span>
+        🖥️ {{ cond (eq $lang "pl") "Poziomy kursu" "Course levels" }}
       </h2>
-      <ul class="list-unstyled mb-0">
-        {{- range $data.sections }}
-          {{- $sectDone := true }}
-          {{- $sectAny := false }}
-          {{- $hasLessons := gt (len .lessons) 0 }}
-          {{- range .lessons }}
-            {{- if ne .status "done" }}{{ $sectDone = false }}{{ end }}
-            {{- if in (slice "current" "done") .status }}{{ $sectAny = true }}{{ end }}
-          {{- end }}
-          <li class="mb-3">
-            <div class="fw-semibold">
-              {{- if and $hasLessons $sectDone }}<span class="text-success me-1">✓</span>
-              {{- else if $sectAny }}<span class="text-primary me-1">→</span>
-              {{- else }}<span class="text-muted me-1">○</span>{{ end }}
-              <a href="{{ .url | relLangURL }}">{{ index .title $lang | default (index .title "en") }}</a>
-            </div>
-            {{- if $hasLessons }}
-              <ul class="list-unstyled ps-4 mt-1 mb-0 small">
-                {{- range .lessons }}
-                  <li class="mb-1">
-                    {{- if eq .status "done" }}<span class="text-success me-1">✓</span>
-                    {{- else if eq .status "current" }}<span class="text-primary me-1">→</span>
-                    {{- else }}<span class="text-muted me-1">○</span>{{ end }}
-                    {{- if in (slice "done" "current") .status }}
-                      <a href="{{ .url | relLangURL }}">{{ index .title $lang | default (index .title "en") }}</a>
-                    {{- else }}
-                      <span class="text-body-secondary">{{ index .title $lang | default (index .title "en") }}</span>
-                    {{- end }}
-                  </li>
-                {{- end }}
-              </ul>
-            {{- end }}
-          </li>
-        {{- end }}
-      </ul>
+      {{- range sort $data.levels "nav_weight" }}
+        {{ partial "courses/level" (dict "level" . "types" $data.section_types "lang" $lang "linkTitle" true) }}
+      {{- end }}
     </div>
 
-    {{- /* ---------- Latest lessons ---------- */}}
     {{- $latest := slice }}
-    {{- range $data.sections }}
-      {{- range .lessons }}
-        {{- if in (slice "current" "done") .status }}
-          {{- $latest = $latest | append . }}
+    {{- range $data.levels }}
+      {{- $levelListed := .listed }}
+      {{- range .sections }}
+        {{- $sectionListed := and $levelListed .listed }}
+        {{- range .lessons }}
+          {{- if and $sectionListed (in (slice "current" "done") .status) }}
+            {{- $latest = $latest | append . }}
+          {{- end }}
         {{- end }}
       {{- end }}
     {{- end }}
@@ -77,26 +33,18 @@
         </h2>
         <ul class="list-unstyled mb-0">
           {{- range first 5 $latest }}
-            <li class="mb-2">
-              <a href="{{ .url | relLangURL }}">
-                {{ index .title $lang | default (index .title "en") }}
-              </a>
-            </li>
+            <li class="mb-2"><a href="{{ .url | relLangURL }}">{{ index .title $lang | default (index .title "en") }}</a></li>
           {{- end }}
         </ul>
       </div>
     {{- end }}
 
-    {{- /* ---------- For parents ---------- */}}
     {{- with $data.for_parents }}
       <div class="mb-4">
         <h2 class="h5 text-uppercase text-body-secondary border-bottom pb-2">{{ index .title $lang | default (index .title "en") }}</h2>
         <p class="text-body-secondary mb-3">{{ index .text $lang | default (index .text "en") }}</p>
-        <a class="btn btn-outline-primary" href="{{ .url | relLangURL }}">
-          {{ cond (eq $lang "pl") "Przeczytaj więcej" "Read more" }}
-        </a>
+        <a class="btn btn-outline-primary" href="{{ .url | relLangURL }}">{{ cond (eq $lang "pl") "Przeczytaj więcej" "Read more" }}</a>
       </div>
     {{- end }}
-
   </div>
 {{- end }}

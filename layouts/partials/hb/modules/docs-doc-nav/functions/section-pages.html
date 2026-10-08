@@ -1,0 +1,5 @@
+{{- $pages := slice -}}
+{{- if ne .Section "courses" -}}
+  {{- $pages = union (sort (where .Pages "Params.nav_weight" ">" 0) "Params.nav_weight") (sort .Pages "LinkTitle") -}}
+{{- end -}}
+{{- return $pages -}}

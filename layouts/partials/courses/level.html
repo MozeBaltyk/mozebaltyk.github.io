@@ -1,0 +1,55 @@
+{{- $level := .level -}}
+{{- $types := .types -}}
+{{- $lang := .lang -}}
+<section id="{{ $level.id }}" class="mb-5">
+  <h3 class="h5 mb-1">
+    {{- if and .linkTitle $level.listed }}
+      <a href="{{ $level.url | relLangURL }}">{{ index $level.title $lang | default (index $level.title "en") }}</a>
+    {{- else }}
+      {{ index $level.title $lang | default (index $level.title "en") }}
+    {{- end }}
+    <span class="badge text-bg-secondary ms-2">{{ $level.ages }}</span>
+  </h3>
+  <p class="text-body-secondary">{{ index $level.description $lang | default (index $level.description "en") }}</p>
+  <ul class="list-unstyled mb-0">
+    {{- range $level.sections }}
+      {{- $section := . -}}
+      {{- $type := index $types $section.id -}}
+      {{- $available := and $level.listed $section.listed -}}
+      {{- $sectionDone := gt (len $section.lessons) 0 -}}
+      {{- $sectionAny := false -}}
+      {{- range $section.lessons }}
+        {{- if ne .status "done" }}{{ $sectionDone = false }}{{ end -}}
+        {{- if in (slice "current" "done") .status }}{{ $sectionAny = true }}{{ end -}}
+      {{- end }}
+      <li class="mb-3">
+        <div class="fw-semibold">
+          {{- if $sectionDone }}<span class="text-success me-1">✓</span>
+          {{- else if $sectionAny }}<span class="text-primary me-1">→</span>
+          {{- else }}<span class="text-muted me-1">○</span>{{ end }}
+          {{- if $available }}
+            <a href="{{ $section.url | relLangURL }}">{{ index $type.title $lang | default (index $type.title "en") }}</a>
+          {{- else }}
+            <span class="text-body-secondary">{{ index $type.title $lang | default (index $type.title "en") }}</span>
+          {{- end }}
+        </div>
+        {{- with $section.lessons }}
+          <ul class="list-unstyled ps-4 mt-1 mb-0 small">
+            {{- range . }}
+              <li class="mb-1">
+                {{- if eq .status "done" }}<span class="text-success me-1">✓</span>
+                {{- else if eq .status "current" }}<span class="text-primary me-1">→</span>
+                {{- else }}<span class="text-muted me-1">○</span>{{ end }}
+                {{- if and $available (in (slice "done" "current") .status) }}
+                  <a href="{{ .url | relLangURL }}">{{ index .title $lang | default (index .title "en") }}</a>
+                {{- else }}
+                  <span class="text-body-secondary">{{ index .title $lang | default (index .title "en") }}</span>
+                {{- end }}
+              </li>
+            {{- end }}
+          </ul>
+        {{- end }}
+      </li>
+    {{- end }}
+  </ul>
+</section>

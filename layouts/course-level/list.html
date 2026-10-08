@@ -1,0 +1,10 @@
+{{- define "main" }}
+  {{- $lang := .Language.Lang }}
+  {{- $data := site.Data.courses.curriculum }}
+  {{- $matches := where $data.levels "id" .Params.level_id }}
+  {{- if ne (len $matches) 1 }}{{ errorf "unknown course level %q: %s" .Params.level_id .Path }}{{ end }}
+  <div class="hb-courses hb-module">
+    <div class="hb-content mb-4">{{ .Content }}</div>
+    {{ partial "courses/level" (dict "level" (index $matches 0) "types" $data.section_types "lang" $lang "linkTitle" false) }}
+  </div>
+{{- end }}

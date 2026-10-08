@@ -1,7 +1,8 @@
 ---
 title: Kursy
-description: Wprowadzenie do IT dla dzieci w wieku 10–13 lat.
+description: Praktyczna, czteropoziomowa ścieżka informatyczna dla młodych osób.
 type: courses
+docs_root_section: false
 menu:
   main:
     identifier: courses

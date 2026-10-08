@@ -1,7 +1,8 @@
 ---
 title: Courses
-description: A guided IT path for kids aged 10–13.
+description: A practical four-level IT path for young learners.
 type: courses
+docs_root_section: false
 menu:
   main:
     identifier: courses

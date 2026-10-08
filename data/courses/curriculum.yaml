@@ -1,11 +1,8 @@
-# Courses curriculum — single source of truth for the /courses/ homepage.
+# Course roadmap for the /courses/ pages.
 #
-# Everything is bilingual via `{en, pl}` maps. `url` is a language-neutral
-# path (without the /pl/ prefix); templates render it with `relLangURL`.
-# `status` is one of: done | current | todo.
-#
-# ponytail: lesson titles and status live here (not duplicated in frontmatter),
-# so the homepage progress/start/latest all read this one file.
+# Every level repeats the same five familiar sections. `listed` controls links:
+# all levels and sections remain visible in the roadmap. Lesson `status` records
+# teaching history and is one of: done | current | todo.
 
 for_parents:
   url: /courses/for-parents/
@@ -13,105 +10,180 @@ for_parents:
     en: For Parents
     pl: Dla rodziców
   text:
-    en: Understand what your child will learn and how you can support him.
-    pl: Dowiedz się, czego nauczy się Twoje dziecko i jak możesz je wspierać.
+    en: Understand the course levels and how you can support your child.
+    pl: Poznaj poziomy kursu i dowiedz się, jak wspierać swoje dziecko.
 
-sections:
-  - nav_weight: 1
+section_types:
+  foundations:
     title:
       en: Foundations
       pl: Podstawy
-    url: /courses/foundations/
-    lessons:
-      - title:
-          en: How computer works?
-          pl: Jak działa komputer?
-        status: done
-        url: /courses/foundations/how-computer-works/
-      - title:
-          en: Operating Systems
-          pl: Systemy operacyjne
-        status: todo
-        url: /courses/foundations/operating-systems/
-      - title:
-          en: The Stakes of IT
-          pl: Po co nam IT
-        status: todo
-        url: /courses/foundations/stakes-of-it/
-  - nav_weight: 2
+  infrastructure:
     title:
       en: Infrastructure
       pl: Infrastruktura
-    url: /courses/infrastructure/
-    lessons:
-      - title:
-          en: Server vs Cloud
-          pl: Serwer a chmura
-        status: todo
-        url: /courses/infrastructure/server-vs-cloud/
-      - title:
-          en: "Networks: Switch and Router"
-          pl: "Sieci: przełącznik i router"
-        status: todo
-        url: /courses/infrastructure/networks-switch-router/
-      - title:
-          en: "The Web: DNS, Certificates, DNS"
-          pl: "Sieć WWW: DNS, certyfikaty, DNS"
-        status: todo
-        url: /courses/infrastructure/web/
-
-  - nav_weight: 3
+  linux:
     title:
       en: Play with Linux
       pl: Zabawa z Linuksem
-    url: /courses/linux/
-    lessons:
-      - title:
-          en: Install and boot process
-          pl: Proces instalacji i uruchamiania
-        status: todo
-        url: /courses/linux/install-and-boot/
-      - title:
-          en: "Distribution: test it with virtualisation"
-          pl: "Dystrybucja: przetestuj ją dzięki wirtualizacji"
-        status: todo
-        url: /courses/linux/distributions/
-      - title:
-          en: SSH connection
-          pl: Połączenie SSH
-        status: todo
-        url: /courses/linux/ssh/
-      - title:
-          en: rpm & deb
-          pl: rpm i deb
-        status: todo
-        url: /courses/linux/rpm-and-deb/
-
-  - nav_weight: 4
+  programming:
     title:
       en: Programming
       pl: Programowanie
-    url: /courses/programming/
-    lessons:
-      - title:
-          en: Vim
-          pl: Vim
-        status: todo
-        url: /courses/programming/vim/
-      - title:
-          en: Bash basics
-          pl: Podstawy Basha
-        status: todo
-        url: /courses/programming/bash-basics/
-      - title:
-          en: Git versioning
-          pl: Wersjonowanie z Gitem
-        status: todo
-        url: /courses/programming/git-versioning/
-
-  - nav_weight: 5
+  challenges:
     title:
       en: Challenges
       pl: Wyzwania
-    url: /courses/challenges/
-    lessons: []
+
+levels:
+  - id: level-1
+    nav_weight: 1
+    ages: 9–11
+    listed: true
+    url: /courses/level-1/
+    title:
+      en: Level 1
+      pl: Poziom 1
+    description:
+      en: Discover how computers work through simple, practical projects.
+      pl: Odkrywaj działanie komputerów dzięki prostym, praktycznym projektom.
+    sections:
+      - id: foundations
+        listed: true
+        url: /courses/level-1/foundations/
+        lessons:
+          - title:
+              en: How Does a Computer Work?
+              pl: Jak działa komputer?
+            status: current
+            url: /courses/level-1/foundations/how-computer-works/
+          - title:
+              en: Operating Systems
+              pl: Systemy operacyjne
+            status: todo
+            url: /courses/level-1/foundations/operating-systems/
+          - title:
+              en: Why IT Matters
+              pl: Dlaczego IT jest ważne
+            status: todo
+            url: /courses/level-1/foundations/stakes-of-it/
+      - id: infrastructure
+        listed: false
+        url: /courses/level-1/infrastructure/
+        lessons:
+          - title:
+              en: Server vs Cloud
+              pl: Serwer a chmura
+            status: todo
+            url: /courses/level-1/infrastructure/server-vs-cloud/
+          - title:
+              en: "Networks: Switch and Router"
+              pl: "Sieci: przełącznik i router"
+            status: todo
+            url: /courses/level-1/infrastructure/networks-switch-router/
+          - title:
+              en: "The Web: DNS and Certificates"
+              pl: "Sieć WWW: DNS i certyfikaty"
+            status: todo
+            url: /courses/level-1/infrastructure/web/
+      - id: linux
+        listed: false
+        url: /courses/level-1/linux/
+        lessons:
+          - title:
+              en: Install and Boot Process
+              pl: Proces instalacji i uruchamiania
+            status: todo
+            url: /courses/level-1/linux/install-and-boot/
+          - title:
+              en: Try a Linux Distribution
+              pl: Wypróbuj dystrybucję Linuksa
+            status: todo
+            url: /courses/level-1/linux/distributions/
+          - title:
+              en: SSH Connection
+              pl: Połączenie SSH
+            status: todo
+            url: /courses/level-1/linux/ssh/
+          - title:
+              en: RPM and DEB Packages
+              pl: Pakiety RPM i DEB
+            status: todo
+            url: /courses/level-1/linux/rpm-and-deb/
+      - id: programming
+        listed: false
+        url: /courses/level-1/programming/
+        lessons:
+          - title:
+              en: Vim
+              pl: Vim
+            status: todo
+            url: /courses/level-1/programming/vim/
+          - title:
+              en: Bash Basics
+              pl: Podstawy Basha
+            status: todo
+            url: /courses/level-1/programming/bash-basics/
+          - title:
+              en: Git Versioning
+              pl: Wersjonowanie z Gitem
+            status: todo
+            url: /courses/level-1/programming/git-versioning/
+      - id: challenges
+        listed: false
+        url: /courses/level-1/challenges/
+        lessons: []
+
+  - id: level-2
+    nav_weight: 2
+    ages: 11–12
+    listed: false
+    url: /courses/level-2/
+    title:
+      en: Level 2
+      pl: Poziom 2
+    description:
+      en: Build useful tools with Linux, networks, and code.
+      pl: Buduj przydatne narzędzia z użyciem Linuksa, sieci i kodu.
+    sections:
+      - { id: foundations, listed: false, url: /courses/level-2/foundations/, lessons: [] }
+      - { id: infrastructure, listed: false, url: /courses/level-2/infrastructure/, lessons: [] }
+      - { id: linux, listed: false, url: /courses/level-2/linux/, lessons: [] }
+      - { id: programming, listed: false, url: /courses/level-2/programming/, lessons: [] }
+      - { id: challenges, listed: false, url: /courses/level-2/challenges/, lessons: [] }
+
+  - id: level-3
+    nav_weight: 3
+    ages: 12–14
+    listed: false
+    url: /courses/level-3/
+    title:
+      en: Level 3
+      pl: Poziom 3
+    description:
+      en: Connect and operate services using more advanced tools.
+      pl: Łącz i obsługuj usługi za pomocą bardziej zaawansowanych narzędzi.
+    sections:
+      - { id: foundations, listed: false, url: /courses/level-3/foundations/, lessons: [] }
+      - { id: infrastructure, listed: false, url: /courses/level-3/infrastructure/, lessons: [] }
+      - { id: linux, listed: false, url: /courses/level-3/linux/, lessons: [] }
+      - { id: programming, listed: false, url: /courses/level-3/programming/, lessons: [] }
+      - { id: challenges, listed: false, url: /courses/level-3/challenges/, lessons: [] }
+
+  - id: level-4
+    nav_weight: 4
+    ages: 14+
+    listed: false
+    url: /courses/level-4/
+    title:
+      en: Level 4
+      pl: Poziom 4
+    description:
+      en: Design, automate, and operate complete reliable systems.
+      pl: Projektuj, automatyzuj i obsługuj kompletne, niezawodne systemy.
+    sections:
+      - { id: foundations, listed: false, url: /courses/level-4/foundations/, lessons: [] }
+      - { id: infrastructure, listed: false, url: /courses/level-4/infrastructure/, lessons: [] }
+      - { id: linux, listed: false, url: /courses/level-4/linux/, lessons: [] }
+      - { id: programming, listed: false, url: /courses/level-4/programming/, lessons: [] }
+      - { id: challenges, listed: false, url: /courses/level-4/challenges/, lessons: [] }

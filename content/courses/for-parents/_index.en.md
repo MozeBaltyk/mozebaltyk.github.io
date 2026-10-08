@@ -15,7 +15,7 @@ menu:
 
 ## A Practical Introduction to IT
 
-This course is for children aged **10 to 13** who are curious about computers, technology, and how things work.
+This course is for young people who are curious about computers, technology, and how things work. It is divided into four levels, beginning with ages **9–11** and gradually introducing more advanced ideas.
 
 The approach is practical and draws on my professional experience as a **Senior Infrastructure and DevOps Engineer** working with technologies used to build, operate, and maintain real computer systems.
 
@@ -27,6 +27,21 @@ Schools do an important job of introducing children to digital tools and program
 - troubleshooting and problem-solving.
 
 This course lets children explore these subjects in an accessible, hands-on way.
+
+---
+
+## Four Levels, Five Familiar Sections
+
+The suggested ages are a guide, not a test. Children can move forward when they feel confident with the previous level.
+
+| Level | Suggested age | Main goal |
+|---|---:|---|
+| Level 1 | 9–11 | Discover how computers work |
+| Level 2 | 11–12 | Build useful tools |
+| Level 3 | 12–14 | Connect and operate services |
+| Level 4 | 14+ | Design reliable systems |
+
+Every level repeats the same five sections: **Foundations**, **Infrastructure**, **Linux**, **Programming**, and **Challenges**. The names stay familiar while the topics and projects become more advanced.
 
 ---
 
