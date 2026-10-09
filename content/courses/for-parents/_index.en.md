@@ -57,20 +57,15 @@ They do not need to remember every technical term. Understanding the **ideas** i
 
 ---
 
-## Open Source First
+## Open Source and Collaboration First
 
 The course strongly emphasises **open-source technology**.
 
-Open-source software allows children to look inside, experiment, make changes, and understand how systems are built.
+Open-source software allows children to look inside, experiment, make changes, and understand how systems are built. Collaboration allows children to carry ambitious projects. 
 
-Throughout the course, we may use technologies such as:
+In fact the two main pillar of this course are Linux and Git. Linux as the opensource foundation of the important concept of IT and Git as the perfect collaborative tools. If children after this class will master Linux and Git, everything is possible. 
 
-- Linux;
-- shell tools;
-- Git;
-- HTML and CSS.
-
-Most of these tools are also freely available, so children can continue experimenting at home without expensive professional software.
+Most of the tools that we are going to use, are freely available, so children can continue experimenting at home without any expense.
 
 Open source also encourages an important idea:
 
@@ -87,15 +82,15 @@ There is also an open-source culture built around collaboration, sharing, and cu
 
 Coding comes more naturally once children understand the basic concepts of computers.
 
+> **I want to show children that they can type, not only click.**
+
 ---
 
 ## Learning to Troubleshoot
 
-One of the most useful technology skills is knowing what to do when something does not work.
+One of the most useful skills in IT is knowing what to do when something does not work.
 
-Instead of immediately saying:
-
-> "It doesn't work."
+Instead of immediately saying:  **"It doesn't work."**
 
 we learn to ask:
 
@@ -136,34 +131,21 @@ Learning to recover from mistakes is one of the most important skills a young te
 
 ---
 
-## A Safe Environment for Experimentation
-
-Some parts of IT involve powerful tools.
-
-Learning about networks, servers, Linux, or cybersecurity naturally involves experimentation.
-
-Whenever possible, exercises will take place in controlled environments, mainly on local computers isolated from the internet.
-
-At this stage, I want to focus on computers and programming, so topics such as cybersecurity and AI will not be covered in depth.
-
-> **I want to show children that they can type, not only click.**
-
----
-
 ## Screen Time With a Purpose
 
 Not all screen time is the same.
 
 Watching videos for two hours and spending two hours building a Python script are very different activities.
 
-During these courses, the computer is primarily a **tool** that extends what we can do in the real world.
+During these courses, the computer is primarily a **tool** that extends what we can do in the real world. I stronghly promote the usage of Terminal, a black screen where things need to be ask to the computer. 
 
 Children are encouraged to:
 
+- design;
+- collaborate;
 - build;
 - write;
 - investigate;
-- design;
 - experiment;
 - solve problems.
 
@@ -193,36 +175,23 @@ You may even learn something yourself.
 
 ## Encourage Projects
 
-Once the foundations are in place, the course will gradually become more project-oriented.
+Once the foundations are in place, that we aquired some skills. The last module of the course is  a small project where Children are tought to understand what is the problems, divide it in smaller field, collaborate and take actions.
 
-Small personal projects are valuable because they give children something exercises alone cannot provide:
+Small group projects are valuable because they give children something exercises alone cannot provide:
 
-**ownership**.
+**ownership** and **group collaboration**.
 
-The question changes from:
+The question changes from: **"What does the teacher want me to do?"** to: **"How do we divide the problem and get organize around it?"**
 
-> "What does the teacher want me to do?"
-
-to:
-
-> "How can I make my idea work?"
-
-That is an important transition.
+That's my goal. Make Children involved, participating and realize things together. That's the all spirit of Opensource collaboration.
 
 ---
 
 ## You Do Not Need Expensive Equipment
 
-Most of the course can be followed using an ordinary family computer.
-
 When additional equipment is useful, I will bring some hardware myself.
 
-Students are welcome to bring an old computer that is no longer used, but there is no need to buy expensive hardware.
-
-Suitable computers include:
-
-- a Raspberry Pi or similar single-board computer;
-- recycled computer hardware.
+Students are welcome to bring an old computer that is no longer used, but there is no need to buy any new hardware.
 
 Curiosity is much more important than hardware.
 
@@ -235,31 +204,30 @@ I use these pages as supporting material for the courses I teach.
 I made the material available online so that children can:
 
 - return to a lesson after class;
-- repeat an experiment;
+- repeat an experiment or an exercice;
 - continue a project at home;
 - explore additional topics;
 - learn at their own pace.
 
 Curious young learners and their parents can also use the website independently.
 
-The material will continue to evolve as new lessons and projects are added.
+The material will continue to evolve as new lessons and I hope to continously improve the course.
 
 ---
 
 ## What I Hope Children Take Away
 
-Not every child who follows this course will become a programmer or engineer. That is not the goal.
+In general, I consider that informatic is well used when mix with another field. Not every child who follows this course will become a programmer or engineer. But a doctor, a police officer, a teacher mastering those notions could use those technology in his carreer and bring something completely new in his field of expertise.
 
 I hope they leave with something more fundamental:
 
+- capacity to collaborate and drive ambitious projects. 
 - confidence around computers;
 - curiosity about technology;
-- an understanding of how digital systems work;
 - the ability to solve problems;
 - the confidence to experiment;
-- healthy scepticism when technology gives them an answer;
 - the habit of learning independently.
 
-Most importantly, I want them to understand that computers are not mysterious objects controlled by experts. They are machines built by people.
+Most importantly, I want them to understand that computers are not mysterious objects controlled by experts. They are tools built by people.
 
 With enough curiosity, patience, and practice, **children can learn to build things with them too**.
