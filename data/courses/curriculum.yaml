@@ -58,6 +58,11 @@ levels:
             status: current
             url: /courses/level-1/foundations/how-computer-works/
           - title:
+              en: Binary and Data Size
+              pl: System binarny i rozmiar danych
+            status: todo
+            url: /courses/level-1/foundations/binary-and-size/
+          - title:
               en: Operating Systems
               pl: Systemy operacyjne
             status: todo
@@ -130,7 +135,7 @@ levels:
             status: todo
             url: /courses/level-1/programming/git-versioning/
       - id: challenges
-        listed: false
+        listed: true
         url: /courses/level-1/challenges/
         lessons: []
 
@@ -187,3 +192,21 @@ levels:
       - { id: linux, listed: false, url: /courses/level-4/linux/, lessons: [] }
       - { id: programming, listed: false, url: /courses/level-4/programming/, lessons: [] }
       - { id: challenges, listed: false, url: /courses/level-4/challenges/, lessons: [] }
+
+  - id: level-5
+    nav_weight: 5
+    ages: 16+
+    listed: false
+    url: /courses/level-5/
+    title:
+      en: Level 5
+      pl: Poziom 5
+    description:
+      en: Build and operate production-ready systems independently.
+      pl: Samodzielnie buduj i obsługuj systemy gotowe do pracy produkcyjnej.
+    sections:
+      - { id: foundations, listed: false, url: /courses/level-5/foundations/, lessons: [] }
+      - { id: infrastructure, listed: false, url: /courses/level-5/infrastructure/, lessons: [] }
+      - { id: linux, listed: false, url: /courses/level-5/linux/, lessons: [] }
+      - { id: programming, listed: false, url: /courses/level-5/programming/, lessons: [] }
+      - { id: challenges, listed: false, url: /courses/level-5/challenges/, lessons: [] }

@@ -15,7 +15,7 @@ menu:
 
 ## A Practical Introduction to IT
 
-This course is for young people who are curious about computers, technology, and how things work. It is divided into four levels, beginning with ages **9–11** and gradually introducing more advanced ideas.
+This course is for young people who are curious about computers, technology, and how things work. It is divided into five levels, beginning with ages **9–11** and gradually introducing more advanced ideas.
 
 The approach is practical and draws on my professional experience as a **Senior Infrastructure and DevOps Engineer** working with technologies used to build, operate, and maintain real computer systems.
 
@@ -23,16 +23,16 @@ Schools do an important job of introducing children to digital tools and program
 
 - how computers actually work;
 - operating systems such as Linux;
-- command-line tools in a shell terminal;
+- command-line tools and shell terminals;
 - troubleshooting and problem-solving.
 
 This course lets children explore these subjects in an accessible, hands-on way.
 
 ---
 
-## Four Levels, Five Familiar Sections
+## Five Levels, Five Familiar Sections
 
-The suggested ages are a guide, not a test. Children can move forward when they feel confident with the previous level.
+The suggested ages are a guide, not a test. Children can move forward when they feel confident with the material from the previous level.
 
 | Level | Suggested age | Main goal |
 |---|---:|---|
@@ -40,8 +40,9 @@ The suggested ages are a guide, not a test. Children can move forward when they 
 | Level 2 | 11–12 | Build useful tools |
 | Level 3 | 12–14 | Connect and operate services |
 | Level 4 | 14+ | Design reliable systems |
+| Level 5 | 16+ | Build production-ready systems |
 
-Every level repeats the same five sections: **Foundations**, **Infrastructure**, **Linux**, **Programming**, and **Challenges**. The names stay familiar while the topics and projects become more advanced.
+Each level follows the same five-section structure: **Foundations**, **Infrastructure**, **Linux**, **Programming**, and **Challenges**. This familiar structure remains consistent while the topics and projects become more advanced.
 
 ---
 
@@ -61,11 +62,11 @@ They do not need to remember every technical term. Understanding the **ideas** i
 
 The course strongly emphasises **open-source technology**.
 
-Open-source software allows children to look inside, experiment, make changes, and understand how systems are built. Collaboration allows children to carry ambitious projects. 
+Open-source software allows children to look inside, experiment, make changes, and understand how systems are built. Collaboration allows children to carry out ambitious projects.
 
-In fact the two main pillar of this course are Linux and Git. Linux as the opensource foundation of the important concept of IT and Git as the perfect collaborative tools. If children after this class will master Linux and Git, everything is possible. 
+In fact, the two main pillars of this course are Linux and Git: Linux as the open-source foundation for important IT concepts, and Git as the perfect collaboration tool. If children master Linux and Git through this course, many possibilities will open up.
 
-Most of the tools that we are going to use, are freely available, so children can continue experimenting at home without any expense.
+Most of the tools that we are going to use are freely available, so children can continue experimenting at home at no cost.
 
 Open source also encourages an important idea:
 
@@ -90,9 +91,7 @@ Coding comes more naturally once children understand the basic concepts of compu
 
 One of the most useful skills in IT is knowing what to do when something does not work.
 
-Instead of immediately saying:  **"It doesn't work."**
-
-we learn to ask:
+Instead of immediately saying, **"It doesn't work,"** we learn to ask:
 
 - What did I expect to happen?
 - What actually happened?
@@ -137,7 +136,7 @@ Not all screen time is the same.
 
 Watching videos for two hours and spending two hours building a Python script are very different activities.
 
-During these courses, the computer is primarily a **tool** that extends what we can do in the real world. I stronghly promote the usage of Terminal, a black screen where things need to be ask to the computer. 
+During these courses, the computer is primarily a **tool** that extends what we can do in the real world. I strongly encourage the use of the terminal: a text-based interface where we type instructions for the computer.
 
 Children are encouraged to:
 
@@ -175,15 +174,15 @@ You may even learn something yourself.
 
 ## Encourage Projects
 
-Once the foundations are in place, that we aquired some skills. The last module of the course is  a small project where Children are tought to understand what is the problems, divide it in smaller field, collaborate and take actions.
+Once the foundations are in place and the children have acquired some skills, the final module of the course is a small project. Children learn to understand the problem, divide it into smaller parts, collaborate, and take action.
 
 Small group projects are valuable because they give children something exercises alone cannot provide:
 
 **ownership** and **group collaboration**.
 
-The question changes from: **"What does the teacher want me to do?"** to: **"How do we divide the problem and get organize around it?"**
+The question changes from **"What does the teacher want me to do?"** to **"How do we divide the problem and organise ourselves around it?"**
 
-That's my goal. Make Children involved, participating and realize things together. That's the all spirit of Opensource collaboration.
+That is my goal: to get children involved, encourage them to participate, and help them accomplish things together. That is the spirit of open-source collaboration.
 
 ---
 
@@ -204,24 +203,24 @@ I use these pages as supporting material for the courses I teach.
 I made the material available online so that children can:
 
 - return to a lesson after class;
-- repeat an experiment or an exercice;
+- repeat an experiment or an exercise;
 - continue a project at home;
 - explore additional topics;
 - learn at their own pace.
 
 Curious young learners and their parents can also use the website independently.
 
-The material will continue to evolve as new lessons and I hope to continously improve the course.
+The material will continue to evolve as I add new lessons and improve the course.
 
 ---
 
 ## What I Hope Children Take Away
 
-In general, I consider that informatic is well used when mix with another field. Not every child who follows this course will become a programmer or engineer. But a doctor, a police officer, a teacher mastering those notions could use those technology in his carreer and bring something completely new in his field of expertise.
+I believe that technology is most useful when combined with another field. Not every child who takes this course will become a programmer or engineer. However, a doctor, police officer, or teacher who understands these concepts could use technology in their career to bring something completely new to their field of expertise.
 
 I hope they leave with something more fundamental:
 
-- capacity to collaborate and drive ambitious projects. 
+- the ability to collaborate on and lead ambitious projects;
 - confidence around computers;
 - curiosity about technology;
 - the ability to solve problems;

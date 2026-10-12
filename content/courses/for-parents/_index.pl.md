@@ -15,7 +15,7 @@ menu:
 
 ## Praktyczne wprowadzenie do informatyki
 
-Ten kurs jest przeznaczony dla młodych osób, które są ciekawe komputerów, technologii i tego, jak różne rzeczy działają. Jest podzielony na cztery poziomy, zaczynając od wieku **9–11 lat** i stopniowo wprowadzając bardziej zaawansowane zagadnienia.
+Ten kurs jest przeznaczony dla młodych osób, które są ciekawe komputerów, technologii i tego, jak różne rzeczy działają. Jest podzielony na pięć poziomów, zaczynając od wieku **9–11 lat** i stopniowo wprowadzając bardziej zaawansowane zagadnienia.
 
 Kurs ma praktyczny charakter i opiera się na moim doświadczeniu zawodowym jako **starszego inżyniera infrastruktury i DevOps**, pracującego z technologiami używanymi do budowania, obsługi i utrzymywania prawdziwych systemów komputerowych.
 
@@ -23,14 +23,14 @@ Szkoły odgrywają ważną rolę we wprowadzaniu dzieci w świat narzędzi cyfro
 
 - jak naprawdę działają komputery;
 - systemy operacyjne, takie jak Linux;
-- narzędzia wiersza poleceń w terminalu powłoki;
+- narzędzia wiersza poleceń i terminale powłoki;
 - diagnozowanie usterek i rozwiązywanie problemów.
 
 Ten kurs pozwala dzieciom poznawać te tematy w przystępny i praktyczny sposób.
 
 ---
 
-## Cztery poziomy, pięć znanych sekcji
+## Pięć poziomów, pięć znanych sekcji
 
 Podany wiek jest wskazówką, a nie sprawdzianem. Dziecko może przejść dalej, gdy czuje się pewnie z materiałem z poprzedniego poziomu.
 
@@ -40,8 +40,9 @@ Podany wiek jest wskazówką, a nie sprawdzianem. Dziecko może przejść dalej,
 | Poziom 2 | 11–12 | Budowanie przydatnych narzędzi |
 | Poziom 3 | 12–14 | Łączenie i obsługa usług |
 | Poziom 4 | 14+ | Projektowanie niezawodnych systemów |
+| Poziom 5 | 16+ | Budowanie systemów gotowych do pracy produkcyjnej |
 
-Na każdym poziomie powtarza się pięć tych samych sekcji: **Podstawy**, **Infrastruktura**, **Linux**, **Programowanie** i **Wyzwania**. Nazwy pozostają znajome, a tematy i projekty stają się coraz bardziej zaawansowane.
+Każdy poziom ma tę samą strukturę pięciu sekcji: **Podstawy**, **Infrastruktura**, **Linux**, **Programowanie** i **Wyzwania**. Ta znajoma struktura pozostaje niezmienna, a tematy i projekty stają się coraz bardziej zaawansowane.
 
 ---
 
@@ -57,20 +58,15 @@ Nie muszą zapamiętywać każdego terminu technicznego. Znacznie ważniejsze je
 
 ---
 
-## Najpierw otwarte oprogramowanie
+## Najpierw otwarte oprogramowanie i współpraca
 
 Kurs kładzie duży nacisk na **technologie open source**.
 
-Otwarte oprogramowanie pozwala dzieciom zajrzeć do środka, eksperymentować, wprowadzać zmiany i zrozumieć, jak zbudowane są systemy.
+Otwarte oprogramowanie pozwala dzieciom zajrzeć do środka, eksperymentować, wprowadzać zmiany i zrozumieć, jak zbudowane są systemy. Współpraca pozwala im realizować ambitne projekty.
 
-Podczas kursu możemy korzystać z takich technologii jak:
+W rzeczywistości dwa główne filary tego kursu to Linux i Git: Linux jako otwarta podstawa ważnych koncepcji informatycznych, a Git jako doskonałe narzędzie do współpracy. Jeśli dzieci opanują podczas tego kursu Linuksa i Gita, otworzy się przed nimi wiele możliwości.
 
-- Linux;
-- narzędzia powłoki;
-- Git;
-- HTML i CSS.
-
-Większość tych narzędzi jest również dostępna bezpłatnie, więc dzieci mogą dalej eksperymentować w domu bez drogiego profesjonalnego oprogramowania.
+Większość narzędzi, z których będziemy korzystać, jest dostępna bezpłatnie, więc dzieci mogą dalej eksperymentować w domu bez ponoszenia kosztów.
 
 Open source promuje też ważną ideę:
 
@@ -87,17 +83,15 @@ Istnieje również kultura open source oparta na współpracy, dzieleniu się wi
 
 Programowanie przychodzi bardziej naturalnie, gdy dzieci rozumieją podstawowe pojęcia związane z komputerami.
 
+> **Chcę pokazać dzieciom, że można nie tylko klikać, lecz także pisać.**
+
 ---
 
 ## Nauka diagnozowania problemów
 
 Jedną z najbardziej przydatnych umiejętności technicznych jest wiedza, co zrobić, gdy coś nie działa.
 
-Zamiast od razu mówić:
-
-> „To nie działa”.
-
-uczymy się pytać:
+Zamiast od razu mówić **„To nie działa”**, uczymy się pytać:
 
 - Jaki miał być wynik?
 - Co wydarzyło się w rzeczywistości?
@@ -136,34 +130,21 @@ Nauka naprawiania błędów jest jedną z najważniejszych umiejętności, jakie
 
 ---
 
-## Bezpieczne środowisko do eksperymentowania
-
-Niektóre dziedziny informatyki korzystają z potężnych narzędzi.
-
-Poznawanie sieci, serwerów, Linuksa czy cyberbezpieczeństwa w naturalny sposób wiąże się z eksperymentowaniem.
-
-Gdy tylko będzie to możliwe, ćwiczenia będą wykonywane w kontrolowanych środowiskach, głównie na lokalnych komputerach odizolowanych od internetu.
-
-Na tym etapie chcę skupić się na komputerach i programowaniu, dlatego takie tematy jak cyberbezpieczeństwo i sztuczna inteligencja nie będą omawiane szczegółowo.
-
-> **Chcę pokazać dzieciom, że można nie tylko klikać, lecz także pisać.**
-
----
-
 ## Czas przed ekranem z konkretnym celem
 
 Nie każdy czas spędzony przed ekranem jest taki sam.
 
 Dwie godziny oglądania filmów i dwie godziny tworzenia skryptu w Pythonie to zupełnie inne zajęcia.
 
-Podczas tych kursów komputer jest przede wszystkim **narzędziem**, które zwiększa nasze możliwości w prawdziwym świecie.
+Podczas tych kursów komputer jest przede wszystkim **narzędziem**, które zwiększa nasze możliwości w prawdziwym świecie. Zdecydowanie zachęcam do korzystania z terminala — tekstowego interfejsu, w którym wpisujemy instrukcje dla komputera.
 
 Zachęcam dzieci, aby:
 
+- projektowały;
+- współpracowały;
 - budowały;
 - pisały;
 - badały;
-- projektowały;
 - eksperymentowały;
 - rozwiązywały problemy.
 
@@ -193,36 +174,23 @@ Być może przy okazji samodzielnie nauczysz się czegoś nowego.
 
 ## Zachęcaj do tworzenia projektów
 
-Gdy opanujemy podstawy, kurs będzie stopniowo coraz bardziej skupiał się na projektach.
+Gdy dzieci opanują podstawy i zdobędą pewne umiejętności, ostatnim modułem kursu będzie mały projekt. Dzieci uczą się rozumieć problem, dzielić go na mniejsze części, współpracować i podejmować działania.
 
-Małe samodzielne projekty są wartościowe, ponieważ dają dzieciom coś, czego nie zapewnią same ćwiczenia:
+Małe projekty grupowe są wartościowe, ponieważ dają dzieciom coś, czego nie zapewnią same ćwiczenia:
 
-**poczucie odpowiedzialności za własne dzieło**.
+**poczucie sprawczości** i **współpracę w grupie**.
 
-Pytanie zmienia się z:
+Pytanie zmienia się z **„Co nauczyciel chce, żebym zrobił?”** na **„Jak podzielimy problem i zorganizujemy się, aby go rozwiązać?”**
 
-> „Co nauczyciel chce, żebym zrobił?”
-
-na:
-
-> „Jak mogę zrealizować swój pomysł?”
-
-To ważna zmiana.
+To jest mój cel: zaangażować dzieci, zachęcić je do uczestnictwa i pomóc im wspólnie coś osiągnąć. Na tym polega duch współpracy w świecie open source.
 
 ---
 
 ## Nie potrzebujesz drogiego sprzętu
 
-Większość kursu można zrealizować na zwykłym rodzinnym komputerze.
+Gdy przyda się dodatkowe wyposażenie, przyniosę część sprzętu we własnym zakresie.
 
-Gdy przyda się dodatkowe wyposażenie, przyniosę część sprzętu.
-
-Uczniowie mogą przynieść stary, nieużywany komputer, ale nie trzeba kupować drogiego sprzętu.
-
-Odpowiednie komputery to między innymi:
-
-- Raspberry Pi lub podobny komputer jednopłytkowy;
-- sprzęt komputerowy z odzysku.
+Uczniowie mogą przynieść stary, nieużywany komputer, ale nie trzeba kupować żadnego nowego sprzętu.
 
 Ciekawość jest znacznie ważniejsza niż sprzęt.
 
@@ -235,31 +203,30 @@ Używam tych stron jako materiałów pomocniczych do prowadzonych przeze mnie ku
 Udostępniam materiały w internecie, aby dzieci mogły:
 
 - wrócić do lekcji po zajęciach;
-- powtórzyć eksperyment;
+- powtórzyć eksperyment lub ćwiczenie;
 - kontynuować projekt w domu;
 - poznawać dodatkowe tematy;
 - uczyć się we własnym tempie.
 
 Dociekliwi młodzi uczniowie i ich rodzice mogą również samodzielnie korzystać z tej strony.
 
-Materiały będą się rozwijać wraz z dodawaniem nowych lekcji i projektów.
+Materiały będą się rozwijać w miarę dodawania nowych lekcji i ulepszania kursu.
 
 ---
 
 ## Co, mam nadzieję, dzieci wyniosą z kursu
 
-Nie każde dziecko uczestniczące w tym kursie zostanie programistą lub inżynierem. Nie taki jest cel.
+Uważam, że technologia jest najbardziej przydatna w połączeniu z inną dziedziną. Nie każde dziecko uczestniczące w tym kursie zostanie programistą lub inżynierem. Jednak lekarz, policjant czy nauczyciel, który rozumie te zagadnienia, może wykorzystać technologię w swojej pracy i wnieść coś zupełnie nowego do swojej dziedziny.
 
 Mam nadzieję, że wyniosą z niego coś bardziej podstawowego:
 
+- umiejętność współpracy przy ambitnych projektach i kierowania nimi;
 - swobodę w korzystaniu z komputerów;
 - ciekawość technologii;
-- zrozumienie działania systemów cyfrowych;
 - umiejętność rozwiązywania problemów;
 - odwagę do eksperymentowania;
-- zdrowy sceptycyzm wobec odpowiedzi udzielanych przez technologię;
 - nawyk samodzielnej nauki.
 
-Przede wszystkim chcę, aby zrozumiały, że komputery nie są tajemniczymi przedmiotami kontrolowanymi przez ekspertów. To maszyny zbudowane przez ludzi.
+Przede wszystkim chcę, aby zrozumiały, że komputery nie są tajemniczymi przedmiotami kontrolowanymi przez ekspertów. To narzędzia stworzone przez ludzi.
 
 Przy odpowiedniej ciekawości, cierpliwości i praktyce **dzieci również mogą nauczyć się tworzyć za ich pomocą**.

@@ -38,16 +38,12 @@
   max-width: 45rem;
 }
 
-.image-carousel--big {
+.image-carousel--large {
   max-width: 60rem;
 }
 
-.image-carousel .carousel-inner {
-  aspect-ratio: 16 / 9;
-}
-
 .image-carousel .carousel-item {
-  height: 100%;
+  aspect-ratio: 16 / 9;
 }
 
 .image-carousel .carousel-item img {

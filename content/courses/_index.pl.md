@@ -1,6 +1,6 @@
 ---
 title: Kursy
-description: Praktyczna, czteropoziomowa ścieżka informatyczna dla młodych osób.
+description: Praktyczna, pięciopoziomowa ścieżka informatyczna dla młodych osób.
 type: courses
 docs_root_section: false
 menu:

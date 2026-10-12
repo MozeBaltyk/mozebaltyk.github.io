@@ -2,14 +2,16 @@
 {{- $types := .types -}}
 {{- $lang := .lang -}}
 <section id="{{ $level.id }}" class="mb-5">
-  <h3 class="h5 mb-1">
-    {{- if and .linkTitle $level.listed }}
-      <a href="{{ $level.url | relLangURL }}">{{ index $level.title $lang | default (index $level.title "en") }}</a>
-    {{- else }}
-      {{ index $level.title $lang | default (index $level.title "en") }}
-    {{- end }}
-    <span class="badge text-bg-secondary ms-2">{{ $level.ages }}</span>
-  </h3>
+  {{- if not .hideTitle }}
+    <h3 class="h5 mb-1">
+      {{- if and .linkTitle $level.listed }}
+        <a href="{{ $level.url | relLangURL }}">{{ index $level.title $lang | default (index $level.title "en") }}</a>
+      {{- else }}
+        {{ index $level.title $lang | default (index $level.title "en") }}
+      {{- end }}
+      <span class="badge text-bg-secondary ms-2">{{ $level.ages }}</span>
+    </h3>
+  {{- end }}
   <p class="text-body-secondary">{{ index $level.description $lang | default (index $level.description "en") }}</p>
   <ul class="list-unstyled mb-0">
     {{- range $level.sections }}

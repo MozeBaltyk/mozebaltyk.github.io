@@ -1,6 +1,6 @@
 {{- $items := .Params -}}
 {{- $size := "medium" -}}
-{{- if and (gt (len $items) 0) (in (slice "small" "medium" "big") (lower (index $items 0))) -}}
+{{- if and (gt (len $items) 0) (in (slice "small" "medium" "large") (lower (index $items 0))) -}}
   {{- $size = lower (index $items 0) -}}
   {{- $items = after 1 $items -}}
 {{- end -}}

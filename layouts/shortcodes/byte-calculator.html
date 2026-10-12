@@ -1,0 +1,54 @@
+{{- $pl := eq .Page.Language.Lang "pl" -}}
+<div class="card my-4 byte-calculator">
+  <div class="card-body">
+    <h3 class="h5">{{ if $pl }}Kalkulator bajtów{{ else }}Byte calculator{{ end }}</h3>
+    <div class="row g-3 align-items-end">
+      <div class="col-sm-7">
+        <label class="form-label" for="byte-value-{{ .Ordinal }}">{{ if $pl }}Wartość{{ else }}Value{{ end }}</label>
+        <input class="form-control" id="byte-value-{{ .Ordinal }}" data-byte-value type="number" min="0" step="any" value="1">
+      </div>
+      <div class="col-sm-5">
+        <label class="form-label" for="byte-unit-{{ .Ordinal }}">{{ if $pl }}Jednostka{{ else }}Unit{{ end }}</label>
+        <select class="form-select" id="byte-unit-{{ .Ordinal }}" data-byte-unit>
+          <option value="0.125">bit</option>
+          <option value="1" selected>byte (B)</option>
+          <option value="1000">kilobyte (KB)</option>
+          <option value="1000000">megabyte (MB)</option>
+          <option value="1000000000">gigabyte (GB)</option>
+          <option value="1024">kibibyte (KiB)</option>
+          <option value="1048576">mebibyte (MiB)</option>
+          <option value="1073741824">gibibyte (GiB)</option>
+        </select>
+      </div>
+    </div>
+    <dl class="row mt-3 mb-0">
+      <dt class="col-sm-4">bits</dt><dd class="col-sm-8" data-byte-result="bits" aria-live="polite"></dd>
+      <dt class="col-sm-4">bytes</dt><dd class="col-sm-8" data-byte-result="bytes"></dd>
+      <dt class="col-sm-4">KB / MB / GB</dt><dd class="col-sm-8" data-byte-result="decimal"></dd>
+      <dt class="col-sm-4">KiB / MiB / GiB</dt><dd class="col-sm-8" data-byte-result="binary"></dd>
+    </dl>
+  </div>
+</div>
+<script>
+  (() => {
+    const root = document.currentScript.previousElementSibling;
+    const value = root.querySelector('[data-byte-value]');
+    const unit = root.querySelector('[data-byte-unit]');
+    const format = new Intl.NumberFormat('{{ .Page.Language.Lang }}', { maximumFractionDigits: 6 });
+    const output = name => root.querySelector(`[data-byte-result="${name}"]`);
+    const calculate = () => {
+      const bytes = Number(value.value) * Number(unit.value);
+      if (!Number.isFinite(bytes) || bytes < 0) {
+        root.querySelectorAll('[data-byte-result]').forEach(result => result.textContent = '—');
+        return;
+      }
+      output('bits').textContent = format.format(bytes * 8);
+      output('bytes').textContent = format.format(bytes);
+      output('decimal').textContent = `${format.format(bytes / 1e3)} / ${format.format(bytes / 1e6)} / ${format.format(bytes / 1e9)}`;
+      output('binary').textContent = `${format.format(bytes / 1024)} / ${format.format(bytes / 1048576)} / ${format.format(bytes / 1073741824)}`;
+    };
+    value.addEventListener('input', calculate);
+    unit.addEventListener('change', calculate);
+    calculate();
+  })();
+</script>

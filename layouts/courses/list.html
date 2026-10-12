@@ -9,9 +9,23 @@
       <h2 class="h5 text-uppercase text-body-secondary border-bottom pb-2">
         🖥️ {{ cond (eq $lang "pl") "Poziomy kursu" "Course levels" }}
       </h2>
-      {{- range sort $data.levels "nav_weight" }}
-        {{ partial "courses/level" (dict "level" . "types" $data.section_types "lang" $lang "linkTitle" true) }}
-      {{- end }}
+      {{- $levels := sort (where $data.levels "listed" true) "nav_weight" }}
+      <ul class="nav nav-underline mb-3" role="tablist">
+        {{- range $i, $level := $levels }}
+          <li class="nav-item" role="presentation">
+            <button class="nav-link{{ if eq $i 0 }} active{{ end }}" id="{{ $level.id }}-tab" data-bs-toggle="tab" data-bs-target="#{{ $level.id }}-tab-pane" type="button" role="tab" aria-controls="{{ $level.id }}-tab-pane" aria-selected="{{ if eq $i 0 }}true{{ else }}false{{ end }}"{{ if ne $i 0 }} tabindex="-1"{{ end }}>
+              {{ index $level.title $lang | default (index $level.title "en") }}
+            </button>
+          </li>
+        {{- end }}
+      </ul>
+      <div class="tab-content">
+        {{- range $i, $level := $levels }}
+          <div class="tab-pane fade{{ if eq $i 0 }} show active{{ end }}" id="{{ $level.id }}-tab-pane" role="tabpanel" aria-labelledby="{{ $level.id }}-tab" tabindex="0">
+            {{ partial "courses/level" (dict "level" $level "types" $data.section_types "lang" $lang "linkTitle" true "hideTitle" true) }}
+          </div>
+        {{- end }}
+      </div>
     </div>
 
     {{- $latest := slice }}

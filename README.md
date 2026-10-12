@@ -68,7 +68,7 @@ language is listed in `config/_default/languages.yaml`.
 
 ### Courses
 
-`content/courses/` is a **bilingual section** of the site — a four-level practical
+`content/courses/` is a **bilingual section** of the site — a five-level practical
 IT path for young learners, separate from the blog (`posts`) and documentation
 (`docs`) sections:
 
@@ -77,9 +77,10 @@ IT path for young learners, separate from the blog (`posts`) and documentation
   lessons*, a *series progress* checklist, and a *For Parents* call-to-action.
 - Course content lives under `content/courses/<level>/<area>/`. Every level repeats
   Foundations, Infrastructure, Linux, Programming, and Challenges.
-- `data/courses/curriculum.yaml` defines the four-level roadmap, localized titles,
+- `data/courses/curriculum.yaml` defines the five-level roadmap, localized titles,
   link availability, and lesson status (`done` | `current` | `todo`).
-- `listed` controls links, while status records whether a lesson has been taught.
+- A level appears in the homepage tabs only when its `listed` value is `true`.
+  Section `listed` values control links, while status records whether a lesson has been taught.
 - The language-aware **citation sidebar** (stoic quotes) is hooked into the docs nav
   via `hb-docs-nav-beforeend`, gated to course pages only.
 
@@ -140,11 +141,13 @@ images:
 * The legacy `carousel: true` frontmatter flag is **not read** by the theme — it can be dropped.
 
 For a carousel **inside an article**, use the custom `image-carousel` shortcode
-with at least two images. Each argument is `IMAGE|ALT` or
+with at least two images. The optional first argument sets its width to `small`,
+`medium` (the default), or `large`. Each image is `IMAGE|ALT` or
 `IMAGE|ALT|CAPTION`:
 
 ```text
 {{< image-carousel
+  "medium"
   "/images/computers/cpu.webp|A processor on a motherboard|The processor"
   "/images/computers/ram.webp|Two RAM modules|Short-term memory"
 >}}
