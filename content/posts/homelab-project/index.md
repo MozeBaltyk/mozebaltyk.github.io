@@ -1,7 +1,7 @@
 ---
 title: 🚀 A journey to my homelab.
 description: "A journey to my homelab..."
-date: 2025-06-01T03:48:10+02:00
+date: 2026-10-20T03:48:10+02:00
 noindex: false
 featured: true
 draft: true
@@ -23,7 +23,7 @@ sidebar: false
 ---
 
 > [!IMPORTANT]
-> I wrote this article before the RAM shortage due to high AI demand. 
+> I wrote this article before the RAM shortage due to high AI demand. But even after refreshing the figures, my assumption is still valid. 
 
 Let expose the problem, I need a homelab, of course on budget. My wife won't let me spend 5000$ in hardware just for house heating. First talk with my friend: "Ah you need a good NAS and a NUC!".
 Ok, so the NAS have no CPU power but the NUC have it, the NUC does not have enough disks space but the NAS have it. What about playing with cluster technologies ? "Oh, then install proxmox!", Yep. but what the purpose to do virtualisation when there is no redondancy ?
@@ -33,58 +33,51 @@ So, Let's find out, if there is not another setup possible which will be more or
 
 Let's study three possible setup with a rough estimation about costs:
 
-| Setup            | Components                        | Approximate Price |
-|------------------|-----------------------------------|-------------------|
-| NAS + NUC        | NAS (e.g., Synology DS220+)       | $300              |
-|                  | NUC (e.g., Intel NUC 11)          | $400              |
-|                  | 2x HDD - 2TB                      | $200 ($100 each)  |
-|                  | Total                             | **$900**          |
-| Raspberry Pi     | 3x Raspberry Pi 5 - 16Gb RAM      | $450 ($150 each)  |
-|                  | 3x Hat GeeekPi P33 M.2 NVME + POE | $120 ($40 each)   |
-|                  | 3x NVME M2 500GB                  | $120 ($40 each)   |
-|                  | 3x SD cards - 64Gb                | $40               |
-|                  | Switch POE - 1Gb / 8 ports        | $50               |
-|                  | Others (Case, cables, etc )       | $40               |
-|                  | Total                             | **$820**          |
-| 3 mini PCs       | 3 x Mini PC (e.g., HP mini G4 i5) | $420 ($140 each)  |
-|                  | 3 x 32GB RAM DDR4                 | $150 ($50 each)   |
-|                  | 3 x NVME 500GB                    | $120 ($40 each)   |
-|                  | Switch - 1Gb / 8 ports            | $30               |
-|                  | Others (Case, cables, etc )       | $40               |
-|                  | Total                             | **$760**          |
+| Setup | Components | Approximate Price | Pros | Cons |
+|---|---|---|---|---|
+| **NAS + NUC** | NAS (e.g., Synology DS225+) | $350–400 | Low power consumption | Not modular |
+| | Used NUC 11 i5, 16 GB RAM, 500 GB SSD | $300–400 | Compact | No high availability |
+| | 2× NAS HDD – 2 TB | $160–220 ($80–110 each) | Simple to maintain | Limited extensibility |
+| | **Total** | **$810–1,020** | | |
+| **Raspberry Pi** | 3× Raspberry Pi 5 – 16 GB RAM | $915 ($305 each) | Low power consumption | Limited CPU resources |
+| | 3× GeeekPi P33 M.2 NVMe + PoE HAT | $120–150 ($40–50 each) | Compact | Poor CPU-to-price ratio |
+| | 3× NVMe M.2 – 500 GB | $240–375 ($80–125 each) | Supports high availability | ARM compatibility limitations |
+| | 3× SD cards – 64 GB | $30–45 | Extensible | |
+| | PoE switch – 1 Gb / 8 ports | $60–100 | Modular | |
+| | Others (cases, cables, etc.) | $50–60 | | |
+| | **Total** | **$1,415–1,645** | | |
+| **3 Mini PCs – G4** | 3× used HP Mini G4 i5, 32 GB RAM and 500 GB SSD each | $750–900 | Low power consumption | More complicated cable management |
+| | Switch – 1 Gb / 8 ports | $30–50 | Supports high availability | Takes more space |
+| | Others (cables, etc.) | $40–60 | Modular and extensible | Limited GPU expansion |
+| | **Total** | **$820–1,010** | | |
+| **3 Mini PCs – G6** | 3× used HP Mini G6 i5, 32 GB RAM and 500 GB SSD each | $1,050–1,250 | Low power consumption | More complicated cable management |
+| | Switch – 1 Gb / 8 ports | $30–50 | Supports high availability | 2.5 GbE requires compatible hardware |
+| | Others (cables, etc.) | $40–60 | Newer CPU, optional Flex IO 2.5 GbE | Limited GPU expansion |
+| | **Total** | **$1,120–1,360** | | |
 
-I repeat but the table above is a rough estimation and about the 3 mini pc, I am talking about second hand pc bought on Ebay. 
-But as you can see, there is not a big difference in the price. And you could for other more performant PC like *core i7* or more recent *HP mini G5*. 
+These are approximate US prices before tax and shipping, checked in October 2026. The NAS, Raspberry Pi hardware, storage, and networking components are priced new; the NUC and Mini PCs are assumed to be complete second-hand or refurbished systems. Used-system prices vary with CPU, memory, storage, condition, and warranty. High availability requires appropriate cluster software, quorum and storage configuration; it isn't guaranteed simply by having three nodes.
 
-About the "NAS + NUC" option:
-  - Pros:
-        * low-power
-        * Compact
-  - Cons:
-        * Not modular 
-        * No High Availibity
+The Raspberry Pi cluster is now the most expensive option because of the 16 GB board price and the additional storage, PoE, and cooling hardware. Used G4 Mini PCs currently offer the best CPU/RAM-to-price ratio, while G6 systems cost more but provide newer CPUs and better expansion options.
 
-About the "Raspberry Pi" option:
-  - Pros:
-        * low-power
-        * Compact
-        * High Availibity
-        * Modular and extensible
-  - Cons:
-        * Limited resources
+You could also choose more powerful configurations, such as *Core i7* processors, or newer models such as the *HP EliteDesk 800 G6 Mini*, which can support an optional 2.5 GbE network interface via a compatible Flex IO module.
 
-About the "3 mini PCs" option:
-  - Pros:
-        * low-power
-        * High Availibity
-        * Modular and extensible
-        * More CPU/RAM available
-        * The less expensive option
-  - Cons:
-        * Take a bit more space
-        * Cable management a bit more tricky 
+A fourth option would be to use actual bare-metal servers. If you have access to inexpensive electricity and have the budget, this could be worth considering. However, we won't explore that option in this article.
 
-Forth options would be with real servers bare-metal, if you have access to cheap energy and have the budget for it, go for it... In the article, we will not dig into this option. But my point here is the "3 mini PCs" option can be much fun option and not so costly for a homelab.
+The main point is that **a cluster of three Mini PCs can be an affordable, flexible, and enjoyable homelab setup**, particularly for experimenting with Proxmox, Kubernetes, distributed storage, and high availability.
+
+I'm not including SFF desktops in this comparison. While an SFF PC may have a power supply rated around 300 W, that doesn't mean it continuously consumes 300 W. Actual power usage depends on the workload and installed components. SFF systems offer better PCIe and GPU expandability, but those advantages may not justify the additional space and potential power consumption for a compact homelab.
+
+At higher budgets, compact alternatives such as the *Minisforum MS-A2* may also be worth considering.
+
+A quick glance at the CPU/RAM-to-price ratio:
+
+| Setup             | CPU (Cores) | RAM   | CPU TDP |Max-load Power Estimate |
+|-------------------|-------------|-------|---------|------------------------|
+| NAS + NUC         | 6           | 18 GB | 43 W    |90 W                    |
+| 3× Raspberry Pi 5 | 12          | 48 GB | N/A     |55 W                    |
+| 3× HP Mini G4     | 18          | 96 GB | 105 W   |167 W                   |
+| 3× HP Mini G6     | 18          | 96 GB | 105 W   |188 W                   |
+
 
 ## What would I install on it...
 
@@ -115,6 +108,12 @@ Let's see where I will arrive with those projects...
 * [Amrut](https://github.com/amrut-asm/homelab)
 * [sawa2d2](https://github.com/sawa2d2/k8s-on-kvm)
 * [hivenetes/bootstrapper](https://github.com/hivenetes/k8s-bootstrapper/)
+* [Talos homelab](https://github.com/prateekjaindev/homelab)
 
 ### Hardware
 * [Jakub Homelab](https://www.linkedin.com/pulse/building-multi-node-homelab-economy-jakub-hovorka-trepe/)
+* [Raspberry Pi 5 pricing](https://www.raspberrypi.com/products/raspberry-pi-5/)
+* [Synology DiskStation DS225+](https://www.synology.com/en-us/products/DS225+)
+* [Used HP EliteDesk 800 Mini G4 prices](https://www.hardwarehoard.com/prices/hp-elitedesk-800-g4-mini)
+* [Used HP EliteDesk 800 Mini G6 prices](https://www.hardwarehoard.com/prices/hp-elitedesk-800-g6-mini)
+* [500 GB NVMe price tracker](https://rampricehistory.com/ssd/us/500gb-nvme)
