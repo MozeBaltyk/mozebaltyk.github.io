@@ -1,5 +1,5 @@
 ---
-title: 🚀 A journey to my homelab.
+title: 🚀 A journey to my homelab. - Part 1
 description: "A journey to my homelab..."
 date: 2026-10-20T03:48:10+02:00
 noindex: false
@@ -18,7 +18,7 @@ tags:
 authors:
   - mozebaltyk
 images: 
-  - carousel/homelab-project.jpg
+  - carousel/homelab-part1.jpg
 sidebar: false
 ---
 
@@ -69,51 +69,86 @@ I'm not including SFF desktops in this comparison. While an SFF PC may have a po
 
 At higher budgets, compact alternatives such as the *Minisforum MS-A2* may also be worth considering.
 
-A quick glance at the CPU/RAM-to-price ratio:
+A quick glance at the CPU/RAM/Power-to-prize ratio:
 
-| Setup             | CPU (Cores) | RAM   | CPU TDP |Max-load Power Estimate |
-|-------------------|-------------|-------|---------|------------------------|
-| NAS + NUC         | 6           | 18 GB | 43 W    |90 W                    |
-| 3× Raspberry Pi 5 | 12          | 48 GB | N/A     |55 W                    |
-| 3× HP Mini G4     | 18          | 96 GB | 105 W   |167 W                   |
-| 3× HP Mini G6     | 18          | 96 GB | 105 W   |188 W                   |
-
-
-## What would I install on it...
-
-A kubernetes of course but which one k3s, rke2, OKD... for now, it's hard to say. My first though was k3s since there is so many example already out there, well documented like [Picluster](https://picluster.ricsanfre.com/docs/home/),
-[Khue's Homelab](https://homelab.khuedoan.com/) or [rpi4cluster](https://rpi4cluster.com/). K3s is lightweight but what I see usually is that you add stuff on it like *cilium*, *ingress-nginx*, etc. at the end, they were building a *rke2*... That's why I went directly to *rke2* with an Ansible Collection to deploy it with some customizations through the project named [Rkub](https://github.com/MozeBaltyk/Rkub).
-
-OKD/Openshift also have is homelab but not on bare-metal, mostly KVM or Proxmox like this [one](https://github.com/amrut-asm/homelab) or this [one](https://github.com/sawa2d2/k8s-on-kvm). So in parallel, I also started a Terraform project to deploy OKD, named [Okub](https://github.com/MozeBaltyk/Okub).
-
-About the gitops methods to autodeploy, this could be a nice inspiration: [hivenetes/bootstrapper](https://github.com/hivenetes/k8s-bootstrapper/)
-
-Let's see where I will arrive with those projects... 
-
-## The Goal
+| Setup                   | CPU (Cores:Threads) | RAM   | Max-load Power Estimate | Price   |
+|-------------------------|---------------------|-------|-------------------------|---------|
+| NAS + NUC               | 6 : 10              | 18 GB | 90 W                    | $900    |
+| 3× Raspberry Pi 5       | 12 : 12             | 48 GB | 55 W                    | $820    |
+| 3× HP Mini G4 (i5-8th)  | 18 : 18             | 96 GB | 195 W                   | ~$1000  |
+| 3× HP Mini G6 (i5-10th) | 18 : 36             | 96 GB | 195 W                   | ~$1300  |
 
 
-## Roadmap
+## Which Platform?
+
+### 1. RKE2 / Ubuntu
+
+**Pros:**
+- Standard, well-known Linux distribution and Kubernetes architecture.
+- Most administrators know how to inspect and troubleshoot Ubuntu servers.
+- Broad hardware, driver, storage, and networking compatibility.
+- Large ecosystem, extensive documentation, and community support.
+- Flexible customization and integration with existing infrastructure.
+- Familiar debugging tools (`systemctl`, `journalctl`, `tcpdump`, etc.).
+- RKE2 provides a security-focused Kubernetes distribution.
+
+**Cons:**
+- Requires OS hardening, patching, and ongoing security management.
+- Larger attack surface compared to minimal, purpose-built operating systems.
+- Potential configuration drift between nodes.
+- OS and Kubernetes upgrades require coordinated lifecycle management.
+- Greater operational responsibility for the underlying hosts.
+
+### 2. Talos Linux
+
+**Pros:**
+- Immutable, minimal, purpose-built Kubernetes operating system.
+- Small attack surface and security-first architecture.
+- Declarative, API-driven configuration and management.
+- No traditional SSH access or general-purpose package manager.
+- Consistent node configuration reduces configuration drift.
+- Integrated OS and Kubernetes lifecycle management.
+- Suitable for reproducible, automated infrastructure.
+
+**Cons:**
+- Different operational model and steeper learning curve.
+- Troubleshooting depends on `talosctl`, APIs, and supported diagnostics.
+- Less flexibility for installing custom host packages or agents.
+- Hardware and driver support is constrained by the Talos kernel and extensions.
+- Some existing monitoring, security, and storage tools may require adaptation.
+- Smaller ecosystem than Ubuntu-based Kubernetes deployments.
 
 
-## Sources 
+### 3. OKD / Fedora CoreOS
 
-### Code
-* [Khue's Homelab](https://homelab.khuedoan.com/)
-* [Khue's Cloudlab](https://github.com/khuedoan/cloudlab)
-* [OneDrop](https://github.com/onedr0p/home-ops)
-* [rpi4cluster](https://rpi4cluster.com/)
-* [Picluster](https://picluster.ricsanfre.com/docs/home/)
-* [Angelnu](https://github.com/angelnu/k8s-gitops)
-* [Amrut](https://github.com/amrut-asm/homelab)
-* [sawa2d2](https://github.com/sawa2d2/k8s-on-kvm)
-* [hivenetes/bootstrapper](https://github.com/hivenetes/k8s-bootstrapper/)
-* [Talos homelab](https://github.com/prateekjaindev/homelab)
+**Pros:**
+- Immutable-style, container-focused operating system with transactional updates.
+- Integrated Kubernetes platform with Operators and declarative management.
+- Automated node configuration through the Machine Config Operator.
+- Coordinated platform and OS lifecycle management.
+- Built-in authentication, routing, monitoring, and cluster administration capabilities.
+- Consistent node configuration reduces drift.
+- Strong platform standardization and automation.
 
-### Hardware
-* [Jakub Homelab](https://www.linkedin.com/pulse/building-multi-node-homelab-economy-jakub-hovorka-trepe/)
-* [Raspberry Pi 5 pricing](https://www.raspberrypi.com/products/raspberry-pi-5/)
-* [Synology DiskStation DS225+](https://www.synology.com/en-us/products/DS225+)
-* [Used HP EliteDesk 800 Mini G4 prices](https://www.hardwarehoard.com/prices/hp-elitedesk-800-g4-mini)
-* [Used HP EliteDesk 800 Mini G6 prices](https://www.hardwarehoard.com/prices/hp-elitedesk-800-g6-mini)
-* [500 GB NVMe price tracker](https://rampricehistory.com/ssd/us/500gb-nvme)
+**Cons:**
+- More complex architecture and additional platform components.
+- Higher baseline resource consumption than lightweight Kubernetes distributions.
+- More opinionated networking, ingress, storage, and cluster configuration.
+- Steeper learning curve for administrators unfamiliar with OpenShift.
+- Less flexibility for direct host customization.
+- Troubleshooting often requires knowledge of OpenShift-specific components and Operators.
+- Version compatibility and upgrades depend on the supported OKD release lifecycle.
+
+### Conclusion for My Homelab
+
+**RKE2 / Ubuntu** — If my homelab were also a general-purpose Linux environment, with VMs, custom drivers, debugging tools, stuff running outside Kubernetes, etc., why not? But it's probably not the best choice for my use case.
+
+**Talos** — If I want reproducible Kubernetes nodes, minimal OS maintenance, a GitOps-oriented approach, and the ability to rebuild nodes easily, this is the one. [This article](https://schoenwald.aero/posts/2026-07-26_from-ubuntu-to-talos/#why-i-used-ubuntu-in-the-first-place) helped me understand the benefits of Talos over Ubuntu/RKE2.
+
+**OKD** — If my goal, besides homelabbing, is to learn OpenShift, Operators, MachineConfig, Routes, OAuth, and enterprise-style platform operations, then OKD is the way to go.
+
+**Conclusion of the Conclusion:** 
+
+In my case, **Talos would probably be the most rational choice**. But since I also want to learn OpenShift for professional reasons, **I'm going with OKD**.
+
+It's not a marriage, though. I'm not ruling out switching to Talos later on.
