@@ -10,28 +10,30 @@ toc: true
 reward: true
 pinned: false
 series:
-  - Homelab Journey 
+  - Homelab Journey
 categories:
   - Reflection
 tags:
   - Homelab
 authors:
   - mozebaltyk
-images: 
+images:
   - carousel/homelab-part1.jpg
 sidebar: false
 ---
 
 > [!IMPORTANT]
-> I wrote this article before the RAM shortage due to high AI demand. But even after refreshing the figures, my assumption is still valid. 
+> I wrote this article before the RAM shortage due to high AI demand. But even after refreshing the figures, my assumption is still valid.
 
-Let expose the problem, I need a homelab, of course on budget. My wife won't let me spend 5000$ in hardware just for house heating. First talk with my friend: "Ah you need a good NAS and a NUC!".
-Ok, so the NAS have no CPU power but the NUC have it, the NUC does not have enough disks space but the NAS have it. What about playing with cluster technologies ? "Oh, then install proxmox!", Yep. but what the purpose to do virtualisation when there is no redondancy ?
-So, Let's find out, if there is not another setup possible which will be more or less at the same price!
+Let me state the problem: I need a homelab, of course on a budget. My wife won't let me spend $5,000 in hardware just for house heating. First conversation with my friend: "Ah, you need a good NAS and a NUC!"
+
+Okay, so the NAS has no CPU power but the NUC does; the NUC doesn't have enough disk space but the NAS does. What about playing with cluster technologies? "Oh, then install Proxmox!" Yep. But what's the point of virtualization when there is no redundancy?
+
+So let's find out whether another setup is possible, for more or less the same price.
 
 ## First the hardware
 
-Let's study three possible setup with a rough estimation about costs:
+Let's study three possible setups with a rough estimate of the costs:
 
 | Setup | Components | Approximate Price | Pros | Cons |
 |---|---|---|---|---|
@@ -74,7 +76,7 @@ A quick glance at the CPU/RAM/Power-to-price ratio:
 | Setup                   | CPU (Cores:Threads) | RAM   | Max-load Power Estimate | Price   |
 |-------------------------|---------------------|-------|-------------------------|---------|
 | NAS + NUC               | 6 : 10              | 18 GB | 90 W                    | $900    |
-| 3× Raspberry Pi 5       | 12 : 12             | 48 GB | 55 W                    | $820    |
+| 3× Raspberry Pi 5       | 12 : 12             | 48 GB | 55 W                    | ~$1500  |
 | 3× HP Mini G4 (i5-8th)  | 18 : 18             | 96 GB | 195 W                   | ~$1000  |
 | 3× HP Mini G6 (i5-10th) | 18 : 36             | 96 GB | 195 W                   | ~$1300  |
 
@@ -107,9 +109,9 @@ Timing is the other parameter. A DDR4-3200 kit is typically sold as CL16-18-18-3
 
 One caveat that does not apply here: desktop RAM kits are validated for a specific platform (EXPO for AMD, XMP for Intel), and mixing them can be hit or miss. The Mini PCs use SO-DIMMs, which carry no XMP/EXPO profiles and run at JEDEC defaults, so there is nothing to tune — a reputable kit is enough.
 
-## Extra harware
+## Extra hardware
 
-Homelab could completed with a UPS or with a Ugreen NAS for backup.
+The homelab could be completed with a UPS or a Ugreen NAS for backup.
 
 ## Which Platform?
 
@@ -179,7 +181,7 @@ Homelab could completed with a UPS or with a Ugreen NAS for backup.
 
 **OKD** — If my goal, besides homelabbing, is to learn OpenShift, Operators, MachineConfig, Routes, OAuth, and enterprise-style platform operations, then OKD is the way to go.
 
-**Conclusion of the Conclusion:** 
+**Conclusion of the Conclusion:**
 
 In my case, **Talos would probably be the most rational choice**. But since I also want to learn OpenShift for professional reasons, **I'm going with OKD**.
 

@@ -20,7 +20,7 @@ tags:
 authors:
   - mozebaltyk
 images:
-  - carousel/secrets-in-kubernetes.png
+  - carousel/secrets-in-kubernetes.webp
 sidebar: false
 ---
 

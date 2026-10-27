@@ -10,15 +10,15 @@ toc: true
 reward: true
 pinned: false
 series:
-  - Homelab Journey 
+  - Homelab Journey
 categories:
   - Reflection
 tags:
   - Homelab
 authors:
   - mozebaltyk
-images: 
-  - carousel/homelab-part3.jpg
+images:
+  - carousel/homelab-part3.webp
 sidebar: false
 ---
 
@@ -158,7 +158,7 @@ I am writing a small tool for that seam, [Okub](https://github.com/mozebaltyk/Ok
 
 Everything around those two steps — configuration validation, rendering, install monitoring — is scaffolding, and none of it is battle-tested. If it does not survive the first real install, the fallback is the documented path: `openshift-install` by hand, and the tool earns its place later or does not.
 
-## Sources 
+## Sources
 
 None of the thinking above is original. These are the repositories I read to see how other people solved the same problems, and the documentation I keep open while doing it. They solve different problems with different hardware, so the value is in the structure rather than in the manifests.
 

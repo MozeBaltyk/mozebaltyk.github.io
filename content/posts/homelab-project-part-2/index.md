@@ -17,7 +17,7 @@ tags:
   - Homelab
 authors:
   - mozebaltyk
-images: 
+images:
   - carousel/homelab-part2.webp
 sidebar: false
 ---

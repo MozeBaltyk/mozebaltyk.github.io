@@ -6,4 +6,11 @@
 @import 'header';
 @import 'body';
 
+// Keep homepage carousel slides stable while allowing older images to retain
+// their original files and crops on article pages.
+.carousel-img {
+  aspect-ratio: 8 / 3;
+  object-fit: cover;
+}
+
 /*! purgecss end ignore */
