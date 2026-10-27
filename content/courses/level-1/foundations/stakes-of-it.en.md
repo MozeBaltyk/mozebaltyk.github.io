@@ -7,7 +7,7 @@ aliases:
   - /courses/foundations/stakes-of-it/
 ---
 
-**Information technology (IT)** means using computers to work with information. IT helps us learn, work, communicate, and understand the world. It can solve useful problems, but it can also cause problems. That is why our choices matter.
+**Information technology (IT)** means using computers to work with information. IT helps us learn, work, communicate, and understand the world. It can solve useful problems, but it can also cause problems.
 
 ---
 
