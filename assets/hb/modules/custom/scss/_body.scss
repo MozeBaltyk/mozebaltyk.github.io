@@ -42,13 +42,17 @@
   max-width: 60rem;
 }
 
-.image-carousel .carousel-item {
+.image-carousel .carousel-inner {
   aspect-ratio: 16 / 9;
+  background-color: var(--bs-tertiary-bg);
+}
+
+.image-carousel .carousel-item {
+  height: 100%;
 }
 
 .image-carousel .carousel-item img {
   width: 100%;
   height: 100%;
-  object-fit: contain;
-  background-color: var(--bs-tertiary-bg);
+  object-fit: cover;
 }
