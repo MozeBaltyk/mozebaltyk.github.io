@@ -1,6 +1,6 @@
 ---
 title: 🚀 A journey to my homelab. - Part 1
-description: "A journey to my homelab..."
+description: "A three-node homelab on a budget."
 date: 2026-10-20T03:48:10+02:00
 noindex: false
 featured: true
@@ -69,7 +69,7 @@ I'm not including SFF desktops in this comparison. While an SFF PC may have a po
 
 At higher budgets, compact alternatives such as the *Minisforum MS-A2* may also be worth considering.
 
-A quick glance at the CPU/RAM/Power-to-prize ratio:
+A quick glance at the CPU/RAM/Power-to-price ratio:
 
 | Setup                   | CPU (Cores:Threads) | RAM   | Max-load Power Estimate | Price   |
 |-------------------------|---------------------|-------|-------------------------|---------|
@@ -78,6 +78,38 @@ A quick glance at the CPU/RAM/Power-to-prize ratio:
 | 3× HP Mini G4 (i5-8th)  | 18 : 18             | 96 GB | 195 W                   | ~$1000  |
 | 3× HP Mini G6 (i5-10th) | 18 : 36             | 96 GB | 195 W                   | ~$1300  |
 
+### Other Hardware Considerations
+
+**SSD: TLC NAND and Endurance**
+
+For storage, I'm leaning toward TLC NAND SSDs with an endurance rating of around 600 TBW for a 1 TB drive.
+
+There are two important specifications to consider:
+
+- **TLC (Triple-Level Cell):** Each NAND memory cell stores 3 bits of data. It provides a good balance between price, performance, and endurance, making it an interesting option for a homelab.
+- **TBW (Terabytes Written):** Represents the total amount of data that can be written to an SSD within its rated endurance. For example, a 1 TB SSD rated at 600 TBW can theoretically be rewritten approximately 600 times before reaching that rating.
+
+QLC (Quad-Level Cell) is the cheaper alternative: 4 bits per cell, so more capacity for the same silicon, but its endurance and sustained write speed are a fraction of TLC. It is worth avoiding for anything that writes continuously.
+
+A 600 TBW rating corresponds to roughly 328 GB of writes per day over five years. This doesn't mean the SSD will stop working after five years or after reaching 600 TBW. It's an endurance rating, not an expiration date.
+
+For OKD, storage performance is also important, particularly for **etcd**, which is sensitive to disk latency. The etcd documentation recommends keeping fsync latency below 10 ms, and a DRAM-less or SMR drive can easily miss that under load.
+
+Since the cluster will run continuously, I would rather prioritize reliable TLC storage with good sustained performance than simply look for the highest advertised sequential read and write speeds.
+
+**RAM: Capacity Before Performance**
+
+For RAM, the classic considerations are capacity and frequency. In my case, 32 GB of DDR4 is plenty.
+
+Note that the G4 (i5-8500T) and G6 (i5-10500T) Mini PCs are both officially rated for DDR4-2666, so a 3200 MHz kit simply runs at 2666. Buy on capacity and price, not on the frequency printed on the box.
+
+Timing is the other parameter. A DDR4-3200 kit is typically sold as CL16-18-18-38: the first number (CAS latency) gets the marketing, but the sub-timings matter just as much for real-world latency.
+
+One caveat that does not apply here: desktop RAM kits are validated for a specific platform (EXPO for AMD, XMP for Intel), and mixing them can be hit or miss. The Mini PCs use SO-DIMMs, which carry no XMP/EXPO profiles and run at JEDEC defaults, so there is nothing to tune — a reputable kit is enough.
+
+## Extra harware
+
+Homelab could completed with a UPS or with a Ugreen NAS for backup.
 
 ## Which Platform?
 
