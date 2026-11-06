@@ -18,14 +18,7 @@
   {{- end }}
 {{- end }}
 
-{{- $pctx := . }}
-{{- if .IsHome }}{{ $pctx = .Site }}{{ end }}
-{{- $pages := slice }}
-{{- if or $.IsHome $.IsSection }}
-{{- $pages = $pctx.RegularPages }}
-{{- else }}
-{{- $pages = $pctx.Pages }}
-{{- end }}
+{{- $pages := where (where .Site.Pages ".Section" "posts") "Kind" "page" }}
 {{- $limit := .Site.Config.Services.RSS.Limit }}
 {{- if ge $limit 1 }}
 {{- $pages = $pages | first $limit }}
@@ -45,8 +38,9 @@
     {{- with .OutputFormats.Get "RSS" }}
     {{ printf "<atom:link href=%q rel=\"self\" type=%q />" .Permalink .MediaType | safeHTML }}
     {{- end }}
-    {{- range where (where .Site.Pages ".Section" "posts") "Kind" "page" }}
+    {{- range $pages }}
     <item>
+      {{- $title := .Title }}
       <title>{{ .Title }}</title>
       <link>{{ .Permalink }}</link>
       <pubDate>{{ .PublishDate.Format "Mon, 02 Jan 2006 15:04:05 -0700" | safeHTML }}</pubDate>
@@ -56,9 +50,9 @@
       <description>
         {{- with index .Params.images 0 }}
           {{- $imageURL := printf "%s%s" $.Site.BaseURL . | absURL }}
-          {{ "<" | html }}img src="{{ $imageURL }}" 
-            alt="Featured image for {{ $.Title }}" 
-            width="600" height="400" 
+          {{ "<" | html }}img src="{{ $imageURL }}"
+            alt="Featured image for {{ $title }}"
+            width="600" height="400"
           {{ "/>" | html }}
         {{- end }}
         {{ $content }}

@@ -1,6 +1,6 @@
 ---
 title: "🔔 Customize RSS Feed in Hugo"
-description: "How to Customize in an Hugo Blogs the RSS feed and why it matters!"
+description: "How to customize an RSS feed in a Hugo blog and why it matters!"
 date: 2026-01-20T11:15:28+01:00
 draft: false
 noindex: false
@@ -50,9 +50,9 @@ So let’s take care of our feeds — and maybe, by doing so, take care of the w
 
 ## Config customization
 
-All the RSS config are done in `.config/hugo.yaml`
+All RSS configuration is in `config/_default/hugo.yaml`.
 
-* Limit the number of articles in your RSS feed to not overwhelm the feed. 
+* Limit the number of articles so as not to overwhelm the feed.
 ```yaml
 services:
   RSS:
@@ -75,7 +75,7 @@ outputs:
     - RSS
     - SearchIndex    # required by search module.
     - WebAppManifest # required by PWA module to make your site installable.
-  # default outputs for other kinds of pages (avoid produce RSS unecessarily).
+  # Default outputs for other kinds of pages (avoid producing RSS unnecessarily).
   section: ['html']
   taxonomy: ['html']
   term: ['html']
@@ -83,13 +83,19 @@ outputs:
 
 ## Customize the output 
 
-To customize the XML of your RSS feed, you need to override the default template. For this, create a file named `layouts/_default/rss.xml` with the [default Hugo rss.xml](https://github.com/gohugoio/hugo/blob/master/tpl/tplimpl/embedded/templates/rss.xml), then adapt it.    
+To customize the XML of your RSS feed, you need to override the default template. For this, create a file named `layouts/_default/rss.xml` from the [default Hugo rss.xml](https://github.com/gohugoio/hugo/blob/master/tpl/tplimpl/embedded/templates/rss.xml), then adapt it.
 
-For example in my case - display just type "page" (not the Categories, Authors, etc ) and only "posts" section, then I diplay the full content with my Github avatar as front image (since I do not have regular name for each post):
+For example, in my case, I display only pages (not categories, authors, etc.) from the `posts` section. I then display the full content with the first image listed in each post's front matter:
 
 ```xml
-    {{- range where (where .Site.Pages ".Section" "posts") "Kind" "page" }}
+    {{- $pages := where (where .Site.Pages ".Section" "posts") "Kind" "page" }}
+    {{- $limit := .Site.Config.Services.RSS.Limit }}
+    {{- if ge $limit 1 }}
+      {{- $pages = $pages | first $limit }}
+    {{- end }}
+    {{- range $pages }}
     <item>
+      {{- $title := .Title }}
       <title>{{ .Title }}</title>
       <link>{{ .Permalink }}</link>
       <pubDate>{{ .PublishDate.Format "Mon, 02 Jan 2006 15:04:05 -0700" | safeHTML }}</pubDate>
@@ -100,7 +106,7 @@ For example in my case - display just type "page" (not the Categories, Authors, 
         {{- with index .Params.images 0 }}
           {{- $imageURL := printf "%s%s" $.Site.BaseURL . | absURL }}
           {{ "<" | html }}img src="{{ $imageURL }}" 
-            alt="Featured image for {{ $.Title }}" 
+            alt="Featured image for {{ $title }}"
             width="600" height="400" 
           {{ "/>" | html }}
         {{- end }}
@@ -110,7 +116,7 @@ For example in my case - display just type "page" (not the Categories, Authors, 
     {{- end }}
 ```
 
-Nice RSS optimization from [Romain Blog](https://blog.laromierre.com/posts/how-to-customize-and-optimize-your-hugo-rss-feed/) which also remember some basic facts: 
+Here is a nice RSS optimization from [Romain's blog](https://blog.laromierre.com/posts/how-to-customize-and-optimize-your-hugo-rss-feed/), which also reminds us of some basic facts:
 
 > Beyond standard feed readers, a clean RSS feed is the backbone of automated newsletters. 
 > Tools like **Mailchimp**, **ConvertKit**, or **MailerLite** have features called *“RSS-to-Email”*.
@@ -118,19 +124,19 @@ Nice RSS optimization from [Romain Blog](https://blog.laromierre.com/posts/how-t
 
 ## Check and Validate
 
-* Validate RSS feed with [W3C Feed Validation Service](https://validator.w3.org/feed/).
+* Validate the RSS feed with the [W3C Feed Validation Service](https://validator.w3.org/feed/).
 
-* Check with a RSS reader like *FeedDesk* for Windows or *FreshRSS* for Linux users the final output. 
+* Check the final output with an RSS reader such as *FeedDesk* for Windows or *FreshRSS* for Linux.
 
-* Find RSS feed from a blog [here](https://www.rsslookup.com/)
+* Find a blog's RSS feed [here](https://www.rsslookup.com/).
 
 ## Bonus
 
-🐍 Here is the bonus, a python script to convert a *yaml* file to *OPML* file that I can import it in my *feedDesk*.
+🐍 As a bonus, here is a Python script that converts a *YAML* file to an *OPML* file that I can import into *FeedDesk*.
 
 {{< code-snippet yaml-to-opml.py>}}
 
-It takes a *yaml* file with this structure: 
+It takes a *YAML* file with this structure:
 
 ```yaml
 # Name; URL; description; feed; active (true/false)
