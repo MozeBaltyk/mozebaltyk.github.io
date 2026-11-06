@@ -1,5 +1,5 @@
 ---
-title: 🚀 A Journey Through My Homelab - Part 2
+title: 🚀 A Journey to My Homelab - Part 2
 description: "What network should I use for a three-node homelab?"
 date: 2026-10-20T03:48:10+02:00
 noindex: false
@@ -45,7 +45,7 @@ The initial hardware setup would therefore remain fairly simple:
 
 - **Router/firewall:** Netgate appliance running pfSense.
 - **Switch:** Basic unmanaged 8-port Gigabit Ethernet switch.
-- **Cluster:** Three HP Mini nodes (G4 or G6, see [Part 1](../homelab-project/)) connected to the switch, running OKD.
+- **Cluster:** Three HP Mini nodes (G4 or G6, see [Part 1](../homelab-project-part-1/)) connected to the switch, running OKD.
 
 Nothing fancy, but it should be enough to get started.
 
@@ -63,7 +63,7 @@ For this setup, I'm considering the following services:
 | DHCP | Assign IP addresses, with permanent reservations for the nodes — OKD expects addresses that never change |
 | Routing / Firewall | Provide internet access and control traffic between networks |
 | NTP | Keep the nodes' clocks accurate; the control plane dislikes drift |
-| HAProxy | Load balance access to the OKD API and application ingress endpoints |
+| HAProxy | Load balance access to the OKD API, Machine Config Server, and application ingress endpoints |
 | PXE / HTTP boot | Optionally automate node installation and provisioning |
 
 pfSense can handle DNS, DHCP, routing, and firewall rules directly. I will keep load balancing on a dedicated external HAProxy host so it does not share pfSense's failure domain.
@@ -136,13 +136,14 @@ The topology then looks like this:
               |             +-- OVN-Kubernetes
               |             +-- OpenShift ingress
               |
-              +-- :6443 ----> control-plane API
-              +-- :80/:443 --> ingress on the OKD nodes
+              +-- :6443 ------> control-plane API
+              +-- :22623 -----> Machine Config Server
+              +-- :80/:443 ---> ingress on the OKD nodes
 ```
 
 The diagram is intentionally simplified.
 
-pfSense provides DNS, DHCP, routing, and firewall services, while the switch connects HAProxy and the physical OKD nodes. Both `api` names and the `*.apps` wildcard resolve to HAProxy. Port 6443 is balanced across the control-plane API endpoints; ports 80 and 443 are balanced across the nodes running ingress.
+pfSense provides DNS, DHCP, routing, and firewall services, while the switch connects HAProxy and the physical OKD nodes. Both `api` names and the `*.apps` wildcard resolve to HAProxy. Port 6443 is balanced across the control-plane API endpoints; port 22623 reaches the Machine Config Server on those nodes; ports 80 and 443 are balanced across the nodes running ingress.
 
 Within OKD, OVN-Kubernetes would handle the cluster's internal networking, while OpenShift Routes would expose applications through the cluster ingress infrastructure.
 
@@ -164,7 +165,7 @@ Three different certificates are in play here, and mixing them up is how a homel
 
 DNS-01 is what makes this work: Let's Encrypt only reads the `_acme-challenge` TXT record from the public zone, so that zone has to live at a provider with an API. The internal view stays on pfSense, with an Unbound wildcard/local-zone record pointing `*.apps` at HAProxy. Split horizon, one zone, no manual steps.
 
-The decision that matters is where TLS stops. If HAProxy terminated it, the wildcard would have to live there too, and I would be exporting a Kubernetes Secret and importing it by hand after every renewal. Instead, HAProxy passes the traffic through without decrypting it: TCP for 6443, 80, and 443. Neither pfSense nor HAProxy sees the certificate, and the OpenShift router keeps owning application TLS. The integration here is the absence of one.
+The decision that matters is where TLS stops. If HAProxy terminated it, the wildcard would have to live there too, and I would be exporting a Kubernetes Secret and importing it by hand after every renewal. Instead, HAProxy passes the traffic through without decrypting it: TCP for 6443, 22623, 80, and 443. Neither pfSense nor HAProxy sees the certificate, and the OpenShift router keeps owning application TLS. The integration here is the absence of one.
 
 The DNS provider token belongs only to cert-manager unless I later add separate public-DNS automation. It is a real credential — it can rewrite records and therefore redirect the domain — so it gets scoped to the required zone and permissions, stored as a Kubernetes Secret, and never committed to git.
 

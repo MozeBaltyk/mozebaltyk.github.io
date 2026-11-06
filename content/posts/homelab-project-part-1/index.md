@@ -1,5 +1,5 @@
 ---
-title: 🚀 A journey to my homelab. - Part 1
+title: 🚀 A Journey to My Homelab - Part 1
 description: "A three-node homelab on a budget."
 date: 2026-10-20T03:48:10+02:00
 noindex: false
@@ -95,7 +95,7 @@ QLC (Quad-Level Cell) is the cheaper alternative: 4 bits per cell, so more capac
 
 A 600 TBW rating corresponds to roughly 328 GB of writes per day over five years. This doesn't mean the SSD will stop working after five years or after reaching 600 TBW. It's an endurance rating, not an expiration date.
 
-For OKD, storage performance is also important, particularly for **etcd**, which is sensitive to disk latency. The etcd documentation recommends keeping fsync latency below 10 ms, and a DRAM-less or SMR drive can easily miss that under load.
+For OKD, storage performance is also important, particularly for **etcd**, which is sensitive to disk latency. The etcd documentation recommends keeping fsync latency below 10 ms, and a consumer SSD with poor sustained-write performance can easily miss that under load.
 
 Since the cluster will run continuously, I would rather prioritize reliable TLC storage with good sustained performance than simply look for the highest advertised sequential read and write speeds.
 

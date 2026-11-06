@@ -1,5 +1,5 @@
 ---
-title: 🚀 A journey to my homelab. - Part 3
+title: 🚀 A Journey to My Homelab - Part 3
 description: "What to run on a three-node homelab..."
 date: 2026-10-20T03:48:10+02:00
 noindex: false
@@ -24,7 +24,7 @@ sidebar: false
 
 ## What would I install on it...
 
-OKD is the interesting part of this project, but it is not the reason for it. The reason is a handful of services I already run, scattered across a NAS, a laptop and a few containers I restart by hand — plus somewhere to try things without breaking the house. The hardware comes from [Part 1](../homelab-project/) and the network from [Part 2](../homelab-project-part-2/); this part is about what actually lands on the cluster.
+OKD is the interesting part of this project, but it is not the reason for it. The reason is a handful of services I already run, scattered across a NAS, a laptop and a few containers I restart by hand — plus somewhere to try things without breaking the house. The hardware comes from [Part 1](../homelab-project-part-1/) and the network from [Part 2](../homelab-project-part-2/); this part is about what actually lands on the cluster.
 
 That gives me a filter for every candidate: does it replace something I currently run badly, and can I back it up? Anything that fails both questions is a demo, and demos belong in a namespace I can delete.
 
@@ -44,9 +44,9 @@ Before listing anything, it is worth separating what the platform brings from wh
 | Backups | etcd snapshots | application backups |
 | Upgrades | ClusterVersionOperator and the MCO | nothing |
 
-Two rows sold me on OKD. The internal registry means images I build on the cluster can be pushed and pulled without a second registry to maintain, and ImageStreams give me something k3s has no answer for: the cluster records which image a Deployment actually ran, not only which tag it asked for. The upgrade row is the other one — the Machine Config Operator drains and reboots one node at a time, and the ClusterVersionOperator refuses to move on while an operator is degraded. On k3s, upgrading is a script I wrote and will eventually forget.
+Two rows sold me on OKD. The internal registry means images I build on the cluster can be pushed and pulled without a second registry to maintain, and ImageStreams give me policy and automation around image identity and tag changes that k3s does not provide by itself. Ordinary Kubernetes records the resolved image ID for running containers; ImageStreams also track imported images and can trigger builds or workload updates as tags move. The upgrade row is the other one — the Machine Config Operator drains and reboots one node at a time, and the ClusterVersionOperator refuses to move on while an operator is degraded. On k3s, upgrading is a script I wrote and will eventually forget.
 
-Everything else is mine to install, and the order matters more than the list: a StorageClass first, because nothing else works without one; cert-manager second, because every Route I expose wants a certificate; ArgoCD third, because from that point on nothing should be applied by hand; MetalLB and the logging operator only if something actually needs them.
+Everything else is mine to install, and the order matters more than the list: a StorageClass first, because stateful workloads need one; cert-manager second, because every Route I expose wants a certificate; ArgoCD third, because from that point on nothing should be applied by hand; MetalLB and the logging operator only if something actually needs them.
 
 Then comes the part I care about. In rough order of how much I would miss them: Forgejo for the repositories this blog and the cluster configuration live in, Immich for photos, Jellyfin and the *arr stack for media, Paperless-ngx for anything that still arrives on paper, Home Assistant for the house, and Uptime Kuma for noticing when one of the others has quietly died.
 
@@ -67,7 +67,7 @@ Which is why the "would not install" list is longer than the "would" list: OpenS
 
 Some of these will move to the other column eventually. That is fine. The point of writing the list down is to notice when the reason changes.
 
-## Categorie and Structure
+## Category and Structure
 
 Every homelab repository I read before starting had already answered this question, and no two answered it the same way.
 
@@ -84,7 +84,7 @@ For my own cluster, four categories seem to cover everything:
 | Apps | the things I use | independent of each other; a failure is visible and local | Forgejo, Immich, Jellyfin |
 | Sandbox | experiments | disposable, no backup, quota-capped | whatever I am trying this week |
 
-These are not folders with nicer names. They are a deployment order. ArgoCD applies them in waves — platform, then system, then apps — because an application that starts before its StorageClass exists does not fail politely: it crash-loops, and the only signal is a wall of red in a UI that does not explain why. Grouping by dependency is what makes the sync order a property of the repository instead of a list of `dependsOn` entries I maintain by hand.
+These are not folders with nicer names. They are a deployment order. ArgoCD applies them in waves — platform, then system, then apps — because an application whose PVC cannot bind stays Pending instead of starting. Grouping by dependency is what makes the sync order a property of the repository instead of a list of `dependsOn` entries I maintain by hand.
 
 Once the categories exist, the layout is almost forced: one directory per category, one per namespace, one per application.
 
