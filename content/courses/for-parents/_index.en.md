@@ -15,24 +15,15 @@ menu:
 
 ## A Practical Introduction to IT
 
-This course is for young people who are curious about computers, technology, and how things work. It is divided into five levels, beginning with ages **9–11** and gradually introducing more advanced ideas.
+This course is for young people who are curious about computers, technology, and how things work. It begins with ages **9–11** and gradually introduces more advanced ideas.
 
-The approach is practical and draws on my professional experience as a **Senior Infrastructure and DevOps Engineer** working with technologies used to build, operate, and maintain real computer systems.
-
-Schools do an important job of introducing children to digital tools and programming. However, many practical areas of IT are often overlooked, especially topics such as:
-
-- how computers actually work;
-- operating systems such as Linux;
-- command-line tools and shell terminals;
-- troubleshooting and problem-solving.
-
-This course lets children explore these subjects in an accessible, hands-on way.
+The practical approach draws on my experience as a **Senior Infrastructure and DevOps Engineer**. It covers subjects that schools may have less time to explore: how computers work, Linux, the terminal, troubleshooting, versioning, and collaboration.
 
 ---
 
 ## Five Levels, Five Familiar Sections
 
-The suggested ages are a guide, not a test. Children can move forward when they feel confident with the material from the previous level.
+The suggested ages are a guide, not a test. Children can move forward when they feel confident with the previous level.
 
 | Level | Suggested age | Main goal |
 |---|---:|---|
@@ -42,191 +33,65 @@ The suggested ages are a guide, not a test. Children can move forward when they 
 | Level 4 | 14+ | Design reliable systems |
 | Level 5 | 16+ | Build production-ready systems |
 
-Each level follows the same five-section structure: **Foundations**, **Infrastructure**, **Linux**, **Programming**, and **Challenges**. This familiar structure remains consistent while the topics and projects become more advanced.
+Every level uses the same five sections: **Foundations**, **Infrastructure**, **Linux**, **Programming**, and **Challenges**.
 
 ---
 
-## Understanding Before Memorising
+## Learning by Understanding and Doing
 
-Modern technology can look like magic, but it is built on understandable concepts.
+Technology can look like magic, but it is built on understandable concepts. The aim is not to memorise every technical term, but to understand the ideas underneath.
 
-Processors execute instructions. Memory stores information. Networks move data. Programs make decisions. Servers provide services.
+Children learn by designing, building, investigating, experimenting, and solving problems. Each level culminates in a small project where they apply their skills and collaborate with others.
 
-My aim is to gradually remove the "magic" and help children understand what is happening underneath.
-
-They do not need to remember every technical term. Understanding the **ideas** is much more important.
+Some activities use paper, drawings, cards, or physical components before a computer. The goal is active learning, not passive screen time.
 
 ---
 
-## Open Source and Collaboration First
+## Open Source, Linux, and Git
 
-The course strongly emphasises **open-source technology**.
+Open-source software lets children look inside, make changes, and understand how systems are built. The course is organised around two practical pillars:
 
-Open-source software allows children to look inside, experiment, make changes, and understand how systems are built. Collaboration allows children to carry out ambitious projects.
+- **Linux** teaches how computers, files, processes, networks, and small tools work together.
+- **Git** teaches how to make traceable changes, experiment safely, recover earlier work, and collaborate.
 
-In fact, the two main pillars of this course are Linux and Git: Linux as the open-source foundation for important IT concepts, and Git as the perfect collaboration tool. If children master Linux and Git through this course, many possibilities will open up.
+Children meet both tools gradually through age-appropriate exercises. Git can initially be used locally, without an account on an online platform. Most course tools are freely available, so children can continue experimenting at home.
 
-Most of the tools that we are going to use are freely available, so children can continue experimenting at home at no cost.
-
-Open source also encourages an important idea:
-
-> Technology is not only something we consume.\
-> It is something we can understand, modify, and contribute to.
-
----
-
-## More Than Coding
-
-Coding is an important part of IT, but IT is much broader than programming.
-
-There is also an open-source culture built around collaboration, sharing, and curiosity.
-
-Coding comes more naturally once children understand the basic concepts of computers.
-
-> **I want to show children that they can type, not only click.**
-
----
-
-## Learning to Troubleshoot
-
-One of the most useful skills in IT is knowing what to do when something does not work.
-
-Instead of immediately saying, **"It doesn't work,"** we learn to ask:
-
-- What did I expect to happen?
-- What actually happened?
-- Is there an error message?
-- What changed?
-- Can I test one part at a time?
-- Can I search for information?
-- Can I explain the problem clearly?
-
-This way of thinking is useful far beyond computers. It develops:
-
-- patience;
-- logical thinking;
-- independence;
-- curiosity;
-- resilience;
-- problem-solving skills.
-
----
-
-## Making Mistakes Is Part of the Course
-
-Children will make mistakes.
-
-Commands will be typed incorrectly. Files may disappear. Projects may refuse to work five minutes before the end of a lesson.
-
-That is normal. Professional engineers experience the same thing.
-
-A healthy relationship with technology means learning that mistakes are not something to fear. They are information.
-
-An error message is often the computer saying:
-
-> "Something happened. Let's find out why."
-
-Learning to recover from mistakes is one of the most important skills a young technologist can develop.
-
----
-
-## Screen Time With a Purpose
-
-Not all screen time is the same.
-
-Watching videos for two hours and spending two hours building a Python script are very different activities.
-
-During these courses, the computer is primarily a **tool** that extends what we can do in the real world. I strongly encourage the use of the terminal: a text-based interface where we type instructions for the computer.
-
-Children are encouraged to:
-
-- design;
-- collaborate;
-- build;
-- write;
-- investigate;
-- experiment;
-- solve problems.
-
-Some activities may not require a computer at all.
-
-We may use paper, drawings, physical components, cards, or small experiments to understand concepts before using a computer.
-
-The goal is active learning, not passive screen time.
+> Technology is not only something we consume. It is something we can understand, modify, and contribute to.
 
 ---
 
 ## How Parents Can Help
 
-Let your child explain things to you.
-
-Ask them:
+Let your child explain what they are learning. You might ask:
 
 - What is open source?
-- Why is Linux so cool?
-- How can we listen to music from the terminal?
+- What did you build or change today?
+- How does Git remember your work?
+- What did you try when something did not work?
 
-Explaining a technical idea to someone else is one of the best ways to find out whether you really understand it.
+Explaining an idea is one of the best ways to understand it. Projects also give children ownership and help them learn how to divide a problem and work together.
 
-You may even learn something yourself.
-
----
-
-## Encourage Projects
-
-Once the foundations are in place and the children have acquired some skills, the final module of the course is a small project. Children learn to understand the problem, divide it into smaller parts, collaborate, and take action.
-
-Small group projects are valuable because they give children something exercises alone cannot provide:
-
-**ownership** and **group collaboration**.
-
-The question changes from **"What does the teacher want me to do?"** to **"How do we divide the problem and organise ourselves around it?"**
-
-That is my goal: to get children involved, encourage them to participate, and help them accomplish things together. That is the spirit of open-source collaboration.
+There is no need to buy expensive equipment. Students may bring an unused computer, and I will provide additional hardware when it is helpful. Curiosity matters much more than hardware.
 
 ---
 
-## You Do Not Need Expensive Equipment
+## About the Online Material
 
-When additional equipment is useful, I will bring some hardware myself.
-
-Students are welcome to bring an old computer that is no longer used, but there is no need to buy any new hardware.
-
-Curiosity is much more important than hardware.
-
----
-
-## About This Online Course
-
-I use these pages as supporting material for the courses I teach.
-
-I made the material available online so that children can:
-
-- return to a lesson after class;
-- repeat an experiment or an exercise;
-- continue a project at home;
-- explore additional topics;
-- learn at their own pace.
-
-Curious young learners and their parents can also use the website independently.
-
-The material will continue to evolve as I add new lessons and improve the course.
+These pages support the courses I teach. Children can revisit lessons, repeat experiments, continue projects at home, or learn at their own pace. The material will evolve as I add and improve lessons.
 
 ---
 
 ## What I Hope Children Take Away
 
-I believe that technology is most useful when combined with another field. Not every child who takes this course will become a programmer or engineer. However, a doctor, police officer, or teacher who understands these concepts could use technology in their career to bring something completely new to their field of expertise.
+Not every child will become a programmer or engineer. Technology is valuable in every field, and these foundations can help children bring new ideas to whatever they choose to do.
 
-I hope they leave with something more fundamental:
+I hope they leave with:
 
-- the ability to collaborate on and lead ambitious projects;
-- confidence around computers;
-- curiosity about technology;
-- the ability to solve problems;
-- the confidence to experiment;
-- the habit of learning independently.
+- an understanding of how computer systems fit together;
+- confidence and curiosity around technology;
+- the ability to solve problems and experiment;
+- experience collaborating on projects;
+- the habit of recording and sharing their work;
+- the confidence to keep learning independently.
 
-Most importantly, I want them to understand that computers are not mysterious objects controlled by experts. They are tools built by people.
-
-With enough curiosity, patience, and practice, **children can learn to build things with them too**.
+Computers are not mysterious objects controlled only by experts. They are tools built by people—and **children can learn to build with them too**.
