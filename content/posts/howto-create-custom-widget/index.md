@@ -89,6 +89,9 @@ In this project, we write our code in TypeScript (`.ts`) because:
 Hugo Pipes can compile the TypeScript file into JavaScript, so the browser
 never sees the `.ts` file directly.
 
+The script assigns YAML-derived values with `textContent` and creates the
+optional footer as a DOM element, so citation text is never interpreted as HTML.
+
 The theme does not automatically include custom JavaScript files.
 
 Instead, we explicitly register our TypeScript file using a Hugo hook so
@@ -130,7 +133,7 @@ time a page is loaded.
 The site remains fully static, while the browser randomly selects which
 citation to display at runtime.
 
-![Random citation widget](./posts/howto-create-custom-widget/result_widget.png#center)
+![Random citation widget](/posts/howto-create-custom-widget/result_widget.png#center)
 
 ## Troubleshooting
 

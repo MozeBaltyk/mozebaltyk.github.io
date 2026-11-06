@@ -23,7 +23,7 @@ document.addEventListener("DOMContentLoaded", () => {
   title.textContent = category.dataset.title ?? "";
 
   // 2️⃣ Pick a random item inside the category
-  const items = category.querySelectorAll<HTMLElement>(".citation-item");
+  const items = category.querySelectorAll<HTMLElement>("[data-text]");
   if (!items.length) return;
 
   const chosen = items[Math.floor(Math.random() * items.length)];
@@ -32,16 +32,19 @@ document.addEventListener("DOMContentLoaded", () => {
   const author = chosen.dataset.author;
   const source = chosen.dataset.source;
 
-  blockquote.innerHTML = `
-    “${text}”
-    ${
-      author
-        ? `<footer>
-             — ${author}
-             ${source ? `<br><small>${source}</small>` : ""}
-           </footer>`
-        : ""
+  blockquote.textContent = `“${text}”`;
+
+  if (author) {
+    const footer = document.createElement("footer");
+    footer.textContent = `— ${author}`;
+
+    if (source) {
+      const sourceElement = document.createElement("small");
+      sourceElement.textContent = source;
+      footer.append(document.createElement("br"), sourceElement);
     }
-  `;
+
+    blockquote.append(footer);
+  }
 });
 // End of random citation
