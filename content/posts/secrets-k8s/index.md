@@ -2,7 +2,7 @@
 title: 💫 Secrets in Kubernetes
 description: "The Rabbit Hole of Kubernetes Secrets Management"
 date: 2026-08-26T03:48:10+02:00
-draft: true
+draft: false
 noindex: false
 featured: true
 comment: true
