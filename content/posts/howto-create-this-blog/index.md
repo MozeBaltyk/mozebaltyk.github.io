@@ -312,7 +312,7 @@ It was also relatively easy to configure and extend.
 
 Here is a quick overview of what the theme provided:
 
-![Center](./posts/howto-create-this-blog/HBS-list-feat.PNG#center)
+![Center](/posts/howto-create-this-blog/HBS-list-feat.PNG#center)
 
 ## Let's build it
 
@@ -348,17 +348,30 @@ tar -xf dart-sass-${DART_SASS_VERSION}-linux-x64.tar.gz
 sudo cp -r dart-sass/* /usr/local/bin
 rm -rf dart-sass*
 
-# Install Hugo Extended (.deb)
+```
+
+Install Hugo Extended using the commands for your distribution. The Ubuntu `.deb` and RHEL tarball methods below are alternatives; do not run both.
+
+On Ubuntu:
+
+```bash
 HUGO_VERSION="0.117.0"
 curl -LJO https://github.com/gohugoio/hugo/releases/download/v${HUGO_VERSION}/hugo_extended_${HUGO_VERSION}_linux-amd64.deb
 sudo apt install -y ./hugo_extended_${HUGO_VERSION}_linux-amd64.deb
+```
 
-# Install Hugo Extended on RHEL 9
+On RHEL 9:
+
+```bash
 HUGO_VERSION="0.135.0"
 curl -LJO https://github.com/gohugoio/hugo/releases/download/v${HUGO_VERSION}/hugo_extended_${HUGO_VERSION}_linux-amd64.tar.gz
 tar -xzf hugo_extended_${HUGO_VERSION}_linux-amd64.tar.gz
 sudo mv hugo /usr/bin/hugo
+```
 
+Whichever method you use, verify the installation with:
+
+```bash
 hugo version
 ```
 
@@ -624,7 +637,7 @@ These resources could then be resized into several versions for different screen
 Other article images could simply be stored in the article directory and referenced from Markdown:
 
 ```markdown
-![Center](/HBS-list-feat.PNG#center)
+![Center](/posts/howto-create-this-blog/HBS-list-feat.PNG#center)
 ```
 
 ## Organization

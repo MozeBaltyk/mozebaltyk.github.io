@@ -22,8 +22,6 @@ images:
 sidebar: false
 ---
 
-Makefile vs Justfile
-
 <!--more-->
 
 ## What is great about Make?
@@ -465,6 +463,8 @@ instead of maintaining a collection of unrelated shell scripts.
 For example:
 
 ```makefile
+set windows-shell := ["powershell.exe", "-NoLogo", "-NoProfile", "-Command"]
+
 [private]
 @default:
   just --list

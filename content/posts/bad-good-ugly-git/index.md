@@ -200,19 +200,16 @@ In `.git/config`, by default, you will find something like:
         url = https://github.com/MozeBaltyk/Colt.git
 ```
 
-But it will request authentication every time you push, which is where OAuth2 tokens come in.
+Keep this URL free of credentials. A token embedded in a remote URL or a global `url.*.insteadOf` rule can leak through `.git/config`, `~/.gitconfig`, shell history, logs, and process arguments.
 
-```cfg
-[remote "origin"]
-        url = https://oauth2:xxxxxxxxxxxx@github.com/MozeBaltyk/Colt.git
-```
-
-You can configure this globally from the command line if you do not want to edit the `.git/config` of each repository.
+For GitHub, let the provider CLI authenticate and register itself as Git's credential helper instead:
 
 ```bash
-# Connect with token
-git config --global url."https://${username}:${access_token}@github.com".insteadOf "https://github.com"
+gh auth login --web --git-protocol https
+gh auth setup-git
 ```
+
+Another safe choice is an established credential manager backed by the operating system keyring. In both cases, Git asks the helper for credentials when needed without putting the secret in the remote URL.
 
 * SSH protocol.
 
@@ -262,7 +259,9 @@ But you are limited to Git operations and excluded from provider-specific operat
 
 Provider CLIs also allow you to choose between HTTPS and SSH.
 
-Usually, these tools use `~/.config/` to store protocol preferences, credentials, and general configuration.
+Usually, these tools keep protocol preferences and general configuration under `~/.config/`, while using the operating system credential store for secrets when one is available.
+
+Pay attention to any warning during login: on a host without a secure credential store, a provider CLI may fall back to a plaintext configuration file. That is not a good choice on a shared or untrusted host.
 
 They are also designed to handle several target hosts.
 
@@ -270,25 +269,17 @@ They are also designed to handle several target hosts.
 git clone https://github.com/MozeBaltyk/mozebaltyk.github.io.git
 ```
 
-But GitHub.com decided to block password authentication.
+But GitHub.com no longer accepts account passwords for Git operations over HTTPS.
 
-So you need to authenticate first with `gh`, which gives you a token as shown below:
+So you can authenticate in the browser with `gh` and configure it as Git's credential helper:
 
 ```bash
-gh auth login
+gh auth login --web --git-protocol https
+gh auth setup-git
+gh auth status
 
-gh auth status -t
-github.com
-  ✓ Logged in to github.com as MozeBaltyk (~/.config/gh/hosts.yml)
-  ✓ Git operations for github.com configured to use ssh protocol.
-  ✓ Token: gho_*******************************
-  ✓ Token scopes: admin:public_key, gist, read:org, repo
-
-# Then provide the token whenever you want to push...
-# The "password" prompt is actually expecting the token.
+# Normal Git commands now ask the helper for HTTPS credentials.
 git push
-Username for 'https://github.com': MozeBaltyk
-Password for 'https://MozeBaltyk@github.com':
 Enumerating objects: 21, done.
 Counting objects: 100% (21/21), done.
 Delta compression using up to 8 threads
@@ -304,14 +295,7 @@ To https://github.com/mozebaltyk/mozebaltyk.github.io.git
 
 So here comes the choice.
 
-Either you set the username and token in the `.git/config` as shown below:
-
-```bash
-# Connect with token
-git config --global url."https://${username}:${access_token}@github.com".insteadOf "https://github.com"
-```
-
-Or configure Git to use a credential helper, as we will see later.
+For HTTPS, configure Git to use the provider CLI or an operating-system-backed credential manager, as we will see later. Do not put a token in `.git/config`, `~/.gitconfig`, or the remote URL, and avoid commands that print it because their output may end up in logs.
 
 Note that this only concerns the HTTPS protocol.
 
@@ -336,9 +320,9 @@ gh repo clone git+https://github.com/MozeBaltyk/MozeBaltyk.git
 
 The logic is exactly the same with `glab`, the CLI for GitLab.
 
-The problem here is that `git pull` and `git push` do not automatically use the authentication configured through `gh auth login`.
+Depending on the login choices and CLI version, `git pull` and `git push` may not yet use the authentication configured through `gh auth login`.
 
-So you need to configure a helper in your Git configuration.
+Running `gh auth setup-git` explicitly configures the helper in your Git configuration.
 
 ## Credential Helper
 
@@ -360,23 +344,14 @@ You can check which helper is currently configured with:
 git config --show-origin --get-all credential.helper
 ```
 
-Git provides some simple helpers itself.
-
-For example:
+Git also provides a simple helper for temporary use:
 
 ```bash
 # Keep credentials temporarily in memory
 git config --global credential.helper cache
-
-# Store credentials on disk
-git config --global credential.helper store
 ```
 
-Be careful with the second one: `store` saves credentials unencrypted on disk.
-
-It works, but this is probably not what you want for a Personal Access Token.
-
-On a desktop, another possibility is to use a credential manager integrated with your operating system.
+For persistent desktop storage, prefer Git Credential Manager or the platform helper backed by macOS Keychain, Windows Credential Manager, or Linux Secret Service. Avoid `credential.helper store`: it saves credentials unencrypted on disk, which is not appropriate for a Personal Access Token.
 
 But in my case, I am also interested in something that works nicely on a bare Linux host, so adding another desktop-oriented credential manager is not necessarily what I want.
 
@@ -387,7 +362,7 @@ This is where it becomes interesting.
 After:
 
 ```bash
-gh auth login
+gh auth login --web --git-protocol https
 ```
 
 the GitHub CLI already knows how to authenticate against GitHub.
@@ -548,4 +523,3 @@ But behind this small mistake, there are actually several different questions:
 Those concepts are related, but they are not the same thing.
 
 And I think this is exactly why I ended up writing this article from what was, initially, just a simple Git configuration mistake.
-

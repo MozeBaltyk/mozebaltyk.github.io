@@ -155,11 +155,12 @@ sudo apt install xsltproc uidmap
 # GUI tools
 sudo apt -y install qemu-system virt-manager
 
-sudo addgroup kvm
-sudo adduser "$(id -un)" libvirt-qemu
+# Allow your user to manage system libvirt and access KVM
+sudo adduser "$(id -un)" libvirt
 sudo adduser "$(id -un)" kvm
-newgrp libvirt
 ```
+
+Log out and back in to apply both group memberships. The `libvirt-qemu` group is for libvirt's QEMU service account, not your login user, and none of these groups is required for rootless Podman.
 
 ## Make Podman engine and Kind work on WSL2
 
@@ -177,8 +178,18 @@ kernelCommandLine = cgroup_no_v1=all systemd.unified_cgroup_hierarchy=1
 # Rootless Podman 4.9.3 on WSL2 + Ubuntu 24.04
 sudo apt-get install uidmap
 
-echo "ubuntu:100000:2097152" | sudo tee /etc/subuid
-echo "ubuntu:100000:2097152" | sudo tee /etc/subgid
+user=$(id -un)
+
+# Ubuntu normally creates these mappings with the user; check them first
+getsubids "$user"
+getsubids -g "$user"
+
+# If a mapping is missing, first confirm that 100000-165535 is unused
+# in the corresponding file. The guards make this safe to run again.
+getsubids "$user" >/dev/null 2>&1 ||
+  sudo usermod --add-subuids 100000-165535 "$user"
+getsubids -g "$user" >/dev/null 2>&1 ||
+  sudo usermod --add-subgids 100000-165535 "$user"
 
 mkdir -p "$HOME/.config/containers"
 
@@ -194,7 +205,7 @@ events_logger = "journald"
 EOF
 ```
 
-Replace `ubuntu` with your actual Linux user if needed.
+Rootless Podman needs subordinate UID and GID mappings, usually at least 65,536 IDs. `usermod` adds only this user's missing mapping, so unlike `tee /etc/subuid` or `tee /etc/subgid`, it does not erase mappings for other users. Never reuse a range already present in the corresponding file.
 
 * Install Kind:
 

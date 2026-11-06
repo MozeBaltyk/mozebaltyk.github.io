@@ -55,13 +55,13 @@ Examples:
 When documenting Hugo shortcodes, you must escape them using `{{</* /* … */ */>}}`, otherwise Hugo will try to execute them at build time.
 {{< /bs/alert >}}
 
-In this [posts](https://mozebaltyk.github.io/posts/howto-my-new-blog/#shortcodes), we already saw that we can use shortcode provided by the theme's modules, but let's write some customs.
+In this [post](https://mozebaltyk.github.io/posts/howto-my-new-blog/#shortcodes), we already saw that we can use shortcodes provided by the theme's modules, but let's write some custom ones.
 
 ## Some use cases
 
-### Split code from the articles
+### Split code from articles
 
-On this blog, I often include large code blocks. Instead of embedding them directly in Markdown, it’s often cleaner to keep them next to the article - for example in a `code/` or `codes/` folder - and include them using a dedicated shortcode.
+On this blog, I often include large code blocks. Instead of embedding them directly in Markdown, it’s often cleaner to keep them next to the article—for example, in a `code/` or `codes/` folder—and include them using a dedicated shortcode.
 
 This approach makes the article easier to read and allows *code snippets* to be reused or updated independently of the content. Separating code from content keeps articles readable while letting code evolve independently. You can achieve this with a `code-snippet` shortcode.     
 
@@ -84,12 +84,12 @@ content/
 
 * The usage: 
 
-Language is taken from the file extension
+The language is taken from the file extension.
 ```go
 {{</* code-snippet example.txt*/>}} 
 ```
 
-Or you can declare the language
+Or you can declare the language.
 ```go
 {{</* code-snippet example.txt ini*/>}}
 ```       
@@ -98,22 +98,22 @@ Or you can declare the language
          
 {{< bs/alert warning >}}
 {{< markdownify >}}
-One exception: In the folder `code` do not put file with an `.html` extension, otherwise Hugo will try to build it.
+One exception: do not put files with an `.html` extension in the `code` folder; otherwise, Hugo will try to build them.
 {{< /markdownify >}}
 {{< /bs/alert >}}
 
-### Generate a Table from a yaml
+### Generate a table from YAML
 
 You can generate a table from a configuration file using a shortcode. This is especially useful when you need to apply custom styling or effects, or when the dataset is large.
 
-Instead of maintaining a long Markdown table, you can store the data in a `a-long-list-of-stuffs.yaml` file, which is easier to read and update over time.
+Instead of maintaining a long Markdown table, you can store the data in an `a-long-list-of-stuffs.yaml` file, which is easier to read and update over time.
 
-So let do a *shortcode* which:   
-✔ Generate a valid table   
-✔ Auto-generates headers   
-✔ Makes URLs clickable    
-✔ Renders Markdown / HTML when present   
-✔ Supports YAML / JSON / TOML inputs   
+So let's create a *shortcode* that:
+- ✔ Generates a valid table
+- ✔ Automatically generates headers
+- ✔ Makes URLs clickable
+- ✔ Renders Markdown / HTML when present
+- ✔ Supports YAML / JSON / TOML inputs
 
 * The code in `./layouts/shortcodes/table-snippet.html`:
 
@@ -123,23 +123,23 @@ So let do a *shortcode* which:
 
 * The result: {{< table-snippet list "name,description" >}}    
 
-NB: I have generated HTML output, so the right syntax to use it, is `{{</* */>}}` and not `{{%/* */%}}` which is *markdown-aware*.
+Note: Because I generated HTML output, the right syntax is `{{</* */>}}`, not `{{%/* */%}}`, which is *Markdown-aware*.
 
-By then, I improved the *table-snippet* shortcode with:   
-✔ Uses positional parameters only   
-✔ Looks in the folder `./page/table` first, then `./data`   
-✔ Handles nested path  *rss/my-super-list*   
-✔ Optional sorting arguments   
-✔ Optional filtering boolean arguments   
+I then improved the *table-snippet* shortcode so that it:
+- ✔ Uses positional parameters only
+- ✔ Looks in the page bundle's `table/` or `tables/` directory first, then `data/`
+- ✔ Handles nested paths such as *rss/my-super-list*
+- ✔ Supports optional sorting arguments
+- ✔ Supports optional Boolean filtering arguments
 
 * The usage now: `{{</* table-snippet DATA_FILE COLUMNS SORT FILTER */>}}`   
 
-* Usage Example: `{{</* table-snippet rss/list "name,description,url" name active */>}}`   
+* Usage example: `{{</* table-snippet rss/list "name,description,url" name active */>}}`
 
-NB about Hugo:   
-- Page bundle (local to the `article/table` or `article/tables`) = Scoped to the page   
-- Global data directory (`data/`) = Reusable across the site   
-- Hugo behavior is *format-agnostic configuration*, it matches all config files (`.yaml, .yml, .json, .toml` all work)   
+Note about Hugo:
+- A page bundle (local to `article/table` or `article/tables`) is scoped to the page
+- The global data directory (`data/`) is reusable across the site
+- Hugo's configuration loading is *format-agnostic*: `.yaml`, `.yml`, `.json`, and `.toml` files all work
 
 ## Some ideas for future shortcodes
 
@@ -153,17 +153,17 @@ Here are a few additional shortcode ideas that would fit well in an IT-focused b
 
 ## Summary
 
-Hugo shortcodes act as a *"controller"*. It allows you to:
+Hugo shortcodes act as *"controllers"*. They allow you to:
 
-📄 Keeps Markdown clean and readable
+📄 Keep Markdown clean and readable
 
-🔁 Makes data reusable across multiple posts. (Loads data *page* or *data/*)
+🔁 Make data reusable across multiple posts (loading it from the *page* or *data/*)
 
-🧩 Separates content from presentation
+🧩 Separate content from presentation
 
-🛠 Makes large among of data easy to maintain
+🛠 Make large amounts of data easy to maintain
 
-⚠️ Handles errors, Fails loudly if the file is missing
+⚠️ Handle errors and fail loudly if a file is missing
 
 Well-designed shortcodes turn repetitive documentation patterns into reusable, expressive building blocks.
 
