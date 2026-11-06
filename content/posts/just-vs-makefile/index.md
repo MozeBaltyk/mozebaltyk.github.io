@@ -580,3 +580,4 @@ The underlying tools may change, but the developer interface remains simple and 
 - [GitHub — casey/just](https://github.com/casey/just)
 - [Create some command-line spells](https://dany98.hashnode.dev/just-harness-command-line-spells)
 - [Creating an internal CLI](https://blog.chay.dev/create-an-internal-cli/)
+- [Make-vs-justfile](https://thibaud.space/2026/10/the-case-against-makefiles.html)

@@ -7,10 +7,6 @@ nav_icon:
   vendor: bootstrap
   name: people
   color: teal
-menu:
-  main:
-    parent: courses
-    weight: 6
 ---
 
 ## A Practical Introduction to IT
